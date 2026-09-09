@@ -15,9 +15,9 @@ Course website (GitHub Pages): **[https://<user>.github.io/<repo>/](https://exam
 
 | Full name | Student ID | Main role | GitHub |
 |---|---|---|---|
-| Nguyễn Nhật Nam | 2352778 | [role] | — |
+| Nguyễn Nhật Nam | 2352778 | [role] | <https://github.com/nnam128> |
 | Hồ Hồng Phúc Nguyên | 2352824 | [role] | <https://github.com/nguyenhohongphuc> |
-| Phan Quốc Đại Sơn | **[MSSV còn thiếu]** | [role] | <https://github.com/sonphan-02> |
+| Phan Quốc Đại Sơn | 2353053 | [role] | <https://github.com/sonphan-02> |
 
 > Do not invent GitHub profile links. Leave the cell blank if a member has no profile.
 
