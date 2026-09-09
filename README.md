@@ -3,8 +3,8 @@
 Group **[ID]** · Faculty of Computer Science and Engineering · Ho Chi Minh City University of Technology (HCMUT), VNU-HCM
 Instructor: Lê Thành Sách · LMS: <https://lms.hcmut.edu.vn/course/view.php?id=142848>
 
-Course website (GitHub Pages): **<https://nguyenhohongphuc.github.io/-co3133-deep-learning-project/>**
-Repository: **<https://github.com/nguyenhohongphuc/-co3133-deep-learning-project>**
+Course website (GitHub Pages): **<https://nguyenhohongphuc.github.io/co3133-deep-learning-project/>**
+Repository: **<https://github.com/nguyenhohongphuc/co3133-deep-learning-project>**
 
 | Assignment | Topic | Weight | Page |
 |---|---|---|---|
