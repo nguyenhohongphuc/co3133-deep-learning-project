@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 2 &ndash; Deep Learning on Large-Scale Data and Specialized Tasks</title>
+<meta name="description" content="CO3133 Assignment 2: deep learning on large-scale data for a specialized computer vision or language task.">
+<link rel="icon" type="image/png" href="../assets/img/bk-logo.png">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="page">
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">CO3133 <span>&middot; Group [ID]</span></a>
+    <nav class="nav">
+      <a href="../index.html">Home</a>
+      <a href="assignment-1.html">Assignment 1</a>
+      <a href="assignment-2.html" aria-current="page">Assignment 2</a>
+      <a href="assignment-3.html">Assignment 3</a>
+      <a href="#ai-usage">AI Usage</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Assignment 2 &middot; 30% of the course project &middot; <span class="badge todo">Not started</span></p>
+    <h1>Deep Learning on Large-Scale Data and Specialized Tasks</h1>
+    <p class="lede">Deep learning on large-scale data for a specialized computer vision or language task:
+      one track, in depth.</p>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <div class="note">
+    <strong>Page skeleton.</strong> Headings follow the minimum assignment-page content required by the handbook.
+    Replace every <span class="fill">[placeholder]</span>; keep the required headings even while a section is empty.
+    <strong>Main implementation may start only after the Dataset Proposal is Approved or Approved with conditions.</strong>
+  </div>
+
+  <!-- ============ AT A GLANCE ============ -->
+  <section id="overview">
+    <h2>At a glance</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="margin-top:0">Assignment</h3>
+        <dl class="kv">
+          <dt>Title</dt><dd>Deep Learning on Large-Scale Data and Specialized Tasks</dd>
+          <dt>Instructor</dt><dd>L&ecirc; Th&agrave;nh S&aacute;ch</dd>
+          <dt>Group</dt><dd><span class="fill">[Group name / ID]</span></dd>
+          <dt>Members</dt><dd>Nguy&#7877;n Nh&#7853;t Nam (2352778), H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n (2352824), Phan Qu&#7889;c &#272;&#7841;i S&#417;n (<span class="fill">[student ID]</span>)</dd>
+          <dt>Task track</dt><dd><span class="fill">[image classification | text classification / sequence labeling | object detection | semantic or instance segmentation | person/vehicle re-ID | monocular depth estimation | other approved task]</span></dd>
+        </dl>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Milestones</h3>
+        <dl class="kv">
+          <dt>M1 Proposal</dt><dd>07 Oct 2026 &middot; 15% of A2 &middot; <span class="badge todo">Not started</span></dd>
+          <dt>M2 Draft</dt><dd>28 Oct 2026 &middot; 25% of A2 &middot; <span class="badge todo">Not started</span></dd>
+          <dt>M3 Final</dt><dd>11 Nov 2026 &middot; 60% of A2 &middot; <span class="badge todo">Not started</span></dd>
+        </dl>
+        <p style="font-size:14px;color:var(--muted);margin:12px 0 0">
+          M2 minimum: simple baseline plus a pretrained model in progress, EDA, preliminary metrics.
+          M3 minimum: controlled experiment, error analysis, report, slides, video, this page, checkpoints.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LINKS ============ -->
+  <section id="links">
+    <h2>Links</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Item</th><th>Link</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Dataset proposal</td><td><span class="fill">[document URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>Source code</td><td><span class="fill">[repository / subfolder URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>Checkpoints (or reconstruction instructions)</td><td><span class="fill">[URL or README section]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>Report</td><td><span class="fill">[PDF URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>Slides</td><td><span class="fill">[slides URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>YouTube presentation</td><td><span class="fill">[video URL &ndash; title: CO3133-Semester-261 &ndash; Group [ID] &ndash; Assignment 2]</span></td><td><span class="badge todo">TODO</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ PROPOSAL ============ -->
+  <section id="proposal">
+    <h2>Dataset proposal and approval</h2>
+    <p>Approval status: <span class="badge todo">Not submitted</span>
+       <span class="fill">[Approved | Approved with conditions | Rejected + date + conditions]</span></p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Proposal field</th><th>Content</th></tr></thead>
+        <tbody>
+          <tr><td>Dataset name, source, version, license</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Task, input, output definitions</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Number of samples and annotation types</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Preliminary distribution analysis</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Data-splitting plan</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Split unit preventing leakage</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Evaluation metrics</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Baseline plan</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Planned pretrained models</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Compute estimate</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Subset selection rules (if any)</td><td><span class="fill">[&hellip;]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px;color:var(--muted)">Default size thresholds per track (exceptions need explicit approval):
+      text classification &ge; 5 classes and &ge; 5,000 training samples; detection &ge; 5 classes, ~3,000+ images and
+      ~5,000+ instances; segmentation &ge; 3 foreground classes and ~1,000+ masked images; re-ID ~300+ training
+      identities with non-overlapping test identities; depth ~5,000+ RGB&ndash;depth pairs.</p>
+  </section>
+
+  <!-- ============ PROBLEM ============ -->
+  <section id="problem">
+    <h2>Problem statement</h2>
+    <p><span class="fill">[Real-world motivation; input; output; prediction unit; formulation; main difficulties at this scale.]</span></p>
+    <h3>Research question</h3>
+    <p><span class="fill">[&hellip;]</span></p>
+  </section>
+
+  <!-- ============ DATA ============ -->
+  <section id="data">
+    <h2>Dataset description and EDA</h2>
+    <p><span class="fill">[Source, version, license; collection/labeling process; sample counts and annotations; target distribution; storage size and formats; bias and limitations.]</span></p>
+
+    <h3>Track-specific EDA</h3>
+    <ul>
+      <li>Classification: class distribution, input size/length, imbalance &mdash; <span class="fill">[&hellip;]</span></li>
+      <li>Detection: object counts, class distribution, bounding-box sizes &mdash; <span class="fill">[&hellip;]</span></li>
+      <li>Segmentation: pixel distribution, region size, mask quality &mdash; <span class="fill">[&hellip;]</span></li>
+      <li>Re-ID: identity distribution, images per identity, camera distribution &mdash; <span class="fill">[&hellip;]</span></li>
+      <li>Depth: depth distribution, invalid pixels, scene distribution &mdash; <span class="fill">[&hellip;]</span></li>
+    </ul>
+    <p style="font-size:14px;color:var(--muted)">Keep only the row that matches the chosen track.</p>
+
+    <h3>Splitting and preprocessing</h3>
+    <p>Split unit: <span class="fill">[unit]</span> &middot; Seed: <span class="fill">[seed]</span> &middot;
+       Stratification: <span class="fill">[policy]</span> &middot; Subset rules: <span class="fill">[if any]</span>.</p>
+    <p><span class="fill">[Cleaning; resize/normalization/tokenization/padding; augmentation; invalid annotation handling; input tensor shapes; one example batch after preprocessing.]</span></p>
+  </section>
+
+  <!-- ============ METHOD ============ -->
+  <section id="methodology">
+    <h2>Methodology</h2>
+    <h3>Pipeline overview</h3>
+    <pre><code>raw data -&gt; preprocessing -&gt; data loader -&gt; model -&gt; loss
+         -&gt; optimization -&gt; prediction -&gt; post-processing -&gt; evaluation</code></pre>
+    <p><span class="fill">[Pipeline diagram and walkthrough, including large-scale data loading strategy.]</span></p>
+
+    <h3>Models</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Role</th><th>Model</th><th>Input representation / loss</th><th>Self-implemented vs. library</th><th>Params</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Simple baseline</td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>Pretrained / modern model</td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Fine-tuning procedure</h3>
+    <p><span class="fill">[Which layers are frozen/unfrozen and when; learning-rate schedule per group of layers; input resolution; how the pretrained weights were obtained.]</span></p>
+  </section>
+
+  <!-- ============ SETUP ============ -->
+  <section id="setup">
+    <h2>Experimental setup</h2>
+    <dl class="kv">
+      <dt>Optimizer / LR / scheduler</dt><dd><span class="fill">[&hellip;]</span></dd>
+      <dt>Batch size / epochs</dt><dd><span class="fill">[&hellip;]</span></dd>
+      <dt>Regularization / early stopping</dt><dd><span class="fill">[&hellip;]</span></dd>
+      <dt>Checkpoint criterion</dt><dd><span class="fill">[&hellip;]</span></dd>
+      <dt>Seeds / number of runs</dt><dd><span class="fill">[&hellip;]</span></dd>
+      <dt>Hardware</dt><dd><span class="fill">[&hellip;]</span></dd>
+      <dt>Software versions</dt><dd><span class="fill">[&hellip;]</span></dd>
+      <dt>Mixed precision</dt><dd><span class="fill">[yes/no]</span></dd>
+    </dl>
+
+    <h3>Controlled experiment (mandatory)</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Hypothesis</th><th>Changed factor</th><th>Fixed factors</th><th>Metrics</th><th>Decision criterion</th></tr></thead>
+        <tbody>
+          <tr><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[freeze vs full fine-tune | with vs without augmentation | backbone A vs B | loss A vs B | resolution A vs B | other]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ RESULTS ============ -->
+  <section id="results">
+    <h2>Results</h2>
+    <h3>Quantitative results</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Model / config</th><th>Primary metric</th><th>Secondary metric</th><th>Params</th><th>Training time</th><th>Inference cost</th></tr></thead>
+        <tbody>
+          <tr><td>Simple baseline</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
+          <tr><td>Pretrained / modern model</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
+          <tr><td>Controlled experiment variant</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px;color:var(--muted)">
+      Track metrics: classification &rarr; accuracy and macro-F1; detection &rarr; mAP and AP by class and/or size;
+      segmentation &rarr; mIoU and Dice (instance segmentation also mask AP); re-ID &rarr; Rank-1, Rank-5, mAP;
+      depth &rarr; Abs Rel, RMSE, delta accuracy; text tasks &rarr; justified task-appropriate metrics.
+      Report mean &plusmn; standard deviation where feasible.
+    </p>
+
+    <h3>Training behaviour</h3>
+    <p><span class="fill">[Loss and metric curves; selected checkpoint; over/underfitting; training time; implementation issues and fixes.]</span></p>
+
+    <h3>Qualitative results</h3>
+    <p><span class="fill">[Correct predictions; difficult but correct cases; failures; predictions versus ground truth with task-appropriate visualizations.]</span></p>
+
+    <h3>Compute-cost analysis</h3>
+    <p><span class="fill">[GPU hours, memory, throughput, cost of the accuracy gained.]</span></p>
+  </section>
+
+  <!-- ============ DISCUSSION ============ -->
+  <section id="discussion">
+    <h2>Comparison and discussion</h2>
+    <p><span class="fill">[Which method is better and by how much; where the differences appear; causes tied to data, architecture, loss, or training; accuracy-speed-parameter trade-offs; which hypotheses hold; what cannot yet be concluded.]</span></p>
+  </section>
+
+  <!-- ============ ERROR ANALYSIS ============ -->
+  <section id="error-analysis">
+    <h2>Error analysis</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Error group</th><th>Frequency / rate</th><th>Examples</th><th>Hypothesised cause</th><th>Improvement idea</th></tr></thead>
+        <tbody>
+          <tr><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[x%]</span></td><td><span class="fill">[figure]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Ablation study (mandatory for A2)</h3>
+    <p><span class="fill">[Ablation or equivalent controlled factor study, with the conclusion criterion stated in advance.]</span></p>
+  </section>
+
+  <!-- ============ CONCLUSION ============ -->
+  <section id="conclusion">
+    <h2>Limitations and conclusion</h2>
+    <p><span class="fill">[Data, method, and experimental limits; generalization; future work; short answer to the research question.]</span></p>
+  </section>
+
+  <!-- ============ REPRODUCIBILITY ============ -->
+  <section id="reproducibility">
+    <h2>Reproducibility</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Result</th><th>Config</th><th>Split</th><th>Checkpoint</th><th>Log / run ID</th><th>Commit / tag</th></tr></thead>
+        <tbody>
+          <tr><td><span class="fill">[Table row]</span></td><td><span class="fill">[configs/&hellip;.yaml]</span></td><td><span class="fill">[split id]</span></td><td><span class="fill">[ckpt]</span></td><td><span class="fill">[run id]</span></td><td><span class="fill">[sha]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ AI USAGE ============ -->
+  <section id="ai-usage">
+    <h2>AI usage disclosure (Assignment 2)</h2>
+    <div class="note">The group declares that generative AI tools <strong>were used</strong>. The same disclosure
+      must also appear in the report and, in full detail, in <code>AI_USAGE.md</code>. Add one row per further use.</div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Tool / model</th><th>Used by</th><th>Stage</th><th>Purpose</th><th>Affected files / sections</th><th>Verification</th><th>Responsible member</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Claude (Claude Code, Opus 5)</td>
+            <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
+            <td>09 Sep 2026 &mdash; course website setup</td>
+            <td>Generate this assignment page template from the course handbook (section structure, proposal
+                fields, track metrics, rubric)</td>
+            <td><code>docs/assignments/assignment-2.html</code></td>
+            <td>Every section checked against the handbook requirements; the page was opened and its links
+                verified. No experimental content was generated.</td>
+            <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
+          </tr>
+          <tr><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ RUBRIC ============ -->
+  <section id="rubric">
+    <h2>Grading rubric (within Assignment 2)</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Component</th><th>What is assessed</th><th>Weight</th></tr></thead>
+        <tbody>
+          <tr><td>Problem &amp; data understanding</td><td>Proposal quality, EDA, split/leakage control</td><td>15%</td></tr>
+          <tr><td>Data &amp; training pipeline</td><td>Large-scale loading, preprocessing, training loop</td><td>15%</td></tr>
+          <tr><td>Methods &amp; implementation</td><td>Baseline, pretrained/modern model, fine-tuning</td><td>25%</td></tr>
+          <tr><td>Experimental design &amp; results</td><td>Controlled experiment, metrics, compute cost</td><td>20%</td></tr>
+          <tr><td>Analysis &amp; error analysis</td><td>Qualitative evidence, error taxonomy, ablation</td><td>15%</td></tr>
+          <tr><td>Reproducibility, report &amp; presentation</td><td>Repo, pages, video, disclosure, writing</td><td>10%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>CO3133 &ndash; Deep Learning and Its Applications &middot; Semester-261 &middot; Instructor: L&ecirc; Th&agrave;nh S&aacute;ch</p>
+    <p><a href="../index.html">Back to the landing page</a></p>
+  </div>
+</footer>
+
+</div><!-- /.page -->
+</body>
+</html>

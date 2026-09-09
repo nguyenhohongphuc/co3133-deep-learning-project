@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Data and artifacts (keep out of git; document how to obtain them in README.md)
+data/
+datasets/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+runs/
+logs/
+wandb/
+outputs/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local working notes (not part of the submission)
+GROUP_INFO.md

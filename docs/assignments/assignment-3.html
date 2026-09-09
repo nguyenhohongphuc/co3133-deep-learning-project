@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 3 &ndash; Multimodal Deep Learning</title>
+<meta name="description" content="CO3133 Assignment 3: multimodal deep learning - representation, fusion, and evaluation.">
+<link rel="icon" type="image/png" href="../assets/img/bk-logo.png">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="page">
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">CO3133 <span>&middot; Group [ID]</span></a>
+    <nav class="nav">
+      <a href="../index.html">Home</a>
+      <a href="assignment-1.html">Assignment 1</a>
+      <a href="assignment-2.html">Assignment 2</a>
+      <a href="assignment-3.html" aria-current="page">Assignment 3</a>
+      <a href="#ai-usage">AI Usage</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Assignment 3 &middot; 30% of the course project &middot; <span class="badge todo">Not started</span></p>
+    <h1>Multimodal Deep Learning</h1>
+    <p class="lede">Representation, fusion, and evaluation across at least two genuinely related modalities.</p>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <div class="note">
+    <strong>Page skeleton.</strong> Headings follow the minimum assignment-page content required by the handbook.
+    Replace every <span class="fill">[placeholder]</span>; keep the required headings even while a section is empty.
+    <strong>Main experiments may start only after the Dataset Proposal is Approved or Approved with conditions.</strong>
+  </div>
+
+  <!-- ============ AT A GLANCE ============ -->
+  <section id="overview">
+    <h2>At a glance</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="margin-top:0">Assignment</h3>
+        <dl class="kv">
+          <dt>Title</dt><dd>Multimodal Deep Learning</dd>
+          <dt>Instructor</dt><dd>L&ecirc; Th&agrave;nh S&aacute;ch</dd>
+          <dt>Group</dt><dd><span class="fill">[Group name / ID]</span></dd>
+          <dt>Members</dt><dd>Nguy&#7877;n Nh&#7853;t Nam (2352778), H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n (2352824), Phan Qu&#7889;c &#272;&#7841;i S&#417;n (<span class="fill">[student ID]</span>)</dd>
+          <dt>Task</dt><dd><span class="fill">[image-text classification | image-text retrieval | VQA | captioning | open-vocabulary detection | text-guided segmentation | RGB-depth prediction | video-text retrieval | re-ID with image + metadata | other approved task]</span></dd>
+          <dt>Modalities</dt><dd>A = <span class="fill">[modality A]</span>, B = <span class="fill">[modality B]</span></dd>
+        </dl>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Milestones</h3>
+        <dl class="kv">
+          <dt>M1 Proposal</dt><dd>18 Nov 2026 &middot; 15% of A3 &middot; <span class="badge todo">Not started</span></dd>
+          <dt>M2 Draft</dt><dd>25 Nov 2026 &middot; 25% of A3 &middot; <span class="badge todo">Not started</span></dd>
+          <dt>M3 Final</dt><dd>02 Dec 2026 &middot; 60% of A3 &middot; <span class="badge todo">Not started</span></dd>
+        </dl>
+        <p style="font-size:14px;color:var(--muted);margin:12px 0 0">
+          M2 minimum: unimodal A, unimodal B, and a simple fusion model with quantitative results.
+          M3 minimum: improved fusion, ablation, report, slides, video, this page, checkpoints.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LINKS ============ -->
+  <section id="links">
+    <h2>Links</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Item</th><th>Link</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Dataset proposal</td><td><span class="fill">[document URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>Source code</td><td><span class="fill">[repository / subfolder URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>Checkpoints (or reconstruction instructions)</td><td><span class="fill">[URL or README section]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>Report</td><td><span class="fill">[PDF URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>Slides</td><td><span class="fill">[slides URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>YouTube presentation</td><td><span class="fill">[video URL &ndash; title: CO3133-Semester-261 &ndash; Group [ID] &ndash; Assignment 3]</span></td><td><span class="badge todo">TODO</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px;color:var(--muted)">The A3 video must also discuss modality interaction (cases where
+       the modalities support each other and cases where they conflict).</p>
+  </section>
+
+  <!-- ============ PROPOSAL ============ -->
+  <section id="proposal">
+    <h2>Dataset proposal and approval</h2>
+    <p>Approval status: <span class="badge todo">Not submitted</span>
+       <span class="fill">[Approved | Approved with conditions | Rejected + date + conditions]</span></p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Proposal field</th><th>Content</th></tr></thead>
+        <tbody>
+          <tr><td>Dataset name, source, version, license</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Task, modalities, input, output</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Paired-sample count and annotation types</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Preliminary pair-quality and distribution analysis</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Split plan and leakage-prevention unit</td><td><span class="fill">[entity / event / scene]</span></td></tr>
+          <tr><td>Metrics, baselines, planned models</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Compute estimate and subset rules</td><td><span class="fill">[&hellip;]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px;color:var(--muted)">Default thresholds: multimodal classification &ge; 5 classes and
+       ~5,000 paired samples; image&ndash;text retrieval ~5,000+ pairs; captioning ~5,000+ images (multiple captions
+       preferred); VQA ~10,000+ question&ndash;image pairs; RGB&ndash;depth ~5,000+ aligned pairs; video&ndash;text may be
+       approved lower when processing cost is high.</p>
+  </section>
+
+  <!-- ============ PROBLEM ============ -->
+  <section id="problem">
+    <h2>Problem statement</h2>
+    <p><span class="fill">[Real-world motivation; inputs per modality; output; prediction unit; formulation; main difficulties.]</span></p>
+    <h3>Research question</h3>
+    <p><span class="fill">[e.g. does modality B add information beyond modality A for this task, and where?]</span></p>
+  </section>
+
+  <!-- ============ DATA ============ -->
+  <section id="data">
+    <h2>Dataset description and EDA</h2>
+    <p><span class="fill">[Source, version, license; collection/labeling process; sample counts and annotations; target distribution; storage size and formats; bias and limitations.]</span></p>
+
+    <h3>Cross-modal validity</h3>
+    <ul>
+      <li>Linking key across modalities (same entity / event / scene / timestamp): <span class="fill">[&hellip;]</span></li>
+      <li>Pairs are native to the dataset, not randomly assembled from two independent sources: <span class="fill">[evidence]</span></li>
+      <li>Missing, noisy, and mismatched pairs: <span class="fill">[rates and handling]</span></li>
+      <li>Split unit preventing leakage; all records of one entity stay in the same split: <span class="fill">[&hellip;]</span></li>
+    </ul>
+
+    <h3>Multimodal EDA (required items)</h3>
+    <ul>
+      <li>Pair counts &mdash; <span class="fill">[&hellip;]</span></li>
+      <li>Missing-modality rates &mdash; <span class="fill">[&hellip;]</span></li>
+      <li>Text length distribution, if applicable &mdash; <span class="fill">[&hellip;]</span></li>
+      <li>Pair quality &mdash; <span class="fill">[&hellip;]</span></li>
+    </ul>
+
+    <h3>Splitting and preprocessing</h3>
+    <p>Split unit: <span class="fill">[unit]</span> &middot; Seed: <span class="fill">[seed]</span> &middot;
+       Sizes: <span class="fill">[train / val / test]</span>.</p>
+    <p><span class="fill">[Per-modality preprocessing; alignment procedure; tensor shapes; one example batch after preprocessing.]</span></p>
+  </section>
+
+  <!-- ============ METHOD ============ -->
+  <section id="methodology">
+    <h2>Methodology</h2>
+    <h3>Pipeline overview</h3>
+    <pre><code>raw paired data -&gt; preprocessing -&gt; data loader
+                -&gt; encoders -&gt; fusion -&gt; loss
+                -&gt; optimization -&gt; prediction -&gt; evaluation</code></pre>
+    <p><span class="fill">[Pipeline diagram and walkthrough.]</span></p>
+
+    <h3>Mandatory models</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>#</th><th>Model</th><th>Description</th><th>Params</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Unimodal baseline &mdash; modality A</td><td><span class="fill">[encoder + head]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>2</td><td>Unimodal baseline &mdash; modality B</td><td><span class="fill">[encoder + head]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>3</td><td>Simple fusion baseline</td><td><span class="fill">[e.g. late fusion by concatenation]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>4</td><td>Improved multimodal / fusion model</td><td><span class="fill">[e.g. cross-attention fusion]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px;color:var(--muted)">Multimodal results are not required to beat the unimodal
+       baselines. If they do not, the cause must be explained with data properties and experimental evidence.</p>
+
+    <h3>Mandatory method content</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Item</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Encoder per modality</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Representation per modality</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Data alignment procedure</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Fusion stage (early / intermediate / late)</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Fusion operation</td><td><span class="fill">[concat / gating / attention / &hellip;]</span></td></tr>
+          <tr><td>Per-modality losses and overall loss</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Training procedure</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Missing-modality handling (if applicable)</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Pretraining and fine-tuning strategy</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Ablation removing/changing a modality or fusion component</td><td><span class="fill">[&hellip;]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ SETUP ============ -->
+  <section id="setup">
+    <h2>Experimental setup</h2>
+    <dl class="kv">
+      <dt>Optimizer / LR / scheduler</dt><dd><span class="fill">[&hellip;]</span></dd>
+      <dt>Batch size / epochs</dt><dd><span class="fill">[&hellip;]</span></dd>
+      <dt>Regularization / early stopping</dt><dd><span class="fill">[&hellip;]</span></dd>
+      <dt>Checkpoint criterion</dt><dd><span class="fill">[&hellip;]</span></dd>
+      <dt>Seeds / number of runs</dt><dd><span class="fill">[&hellip;]</span></dd>
+      <dt>Hardware / software versions</dt><dd><span class="fill">[&hellip;]</span></dd>
+    </dl>
+    <h3>Experimental design</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Experiment</th><th>Hypothesis</th><th>Changed factor</th><th>Fixed factors</th><th>Metrics</th><th>Conclusion criterion</th></tr></thead>
+        <tbody>
+          <tr><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ RESULTS ============ -->
+  <section id="results">
+    <h2>Results</h2>
+    <h3>Unimodal versus multimodal</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Model</th><th>Primary metric</th><th>Secondary metric</th><th>Params</th><th>Training time</th><th>Inference cost</th></tr></thead>
+        <tbody>
+          <tr><td>Unimodal A</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
+          <tr><td>Unimodal B</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
+          <tr><td>Simple fusion</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
+          <tr><td>Improved fusion</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px;color:var(--muted)">
+      Reference metrics: classification &rarr; accuracy and macro-F1; retrieval &rarr; Recall@1/5/10 and median rank;
+      captioning &rarr; CIDEr/BLEU plus qualitative evaluation; VQA &rarr; accuracy under the stated protocol;
+      detection/segmentation &rarr; mAP or mIoU; RGB&ndash;depth &rarr; the corresponding depth metrics.
+    </p>
+
+    <h3>Training behaviour</h3>
+    <p><span class="fill">[Curves; selected checkpoints; over/underfitting; training time; issues and fixes.]</span></p>
+
+    <h3>Qualitative results</h3>
+    <p><span class="fill">[Examples with predictions versus ground truth for each model.]</span></p>
+
+    <h3>Modality interaction</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="margin-top:0">Modalities support each other</h3>
+        <p><span class="fill">[Cases where fusion succeeds while at least one unimodal model fails, with examples.]</span></p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Modalities conflict</h3>
+        <p><span class="fill">[Cases where the modalities disagree and fusion degrades, with examples and the reason.]</span></p>
+      </div>
+    </div>
+
+    <h3>Compute-cost analysis</h3>
+    <p><span class="fill">[GPU hours, memory, throughput per configuration.]</span></p>
+  </section>
+
+  <!-- ============ DISCUSSION ============ -->
+  <section id="discussion">
+    <h2>Comparison and discussion</h2>
+    <p><span class="fill">[Which model is better and by how much; where the gains or losses come from; whether the fusion design choices are justified; trade-offs; supported and unsupported hypotheses.]</span></p>
+  </section>
+
+  <!-- ============ ERROR ANALYSIS ============ -->
+  <section id="error-analysis">
+    <h2>Error analysis</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Error group</th><th>Frequency / rate</th><th>Examples</th><th>Hypothesised cause</th><th>Improvement idea</th></tr></thead>
+        <tbody>
+          <tr><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[x%]</span></td><td><span class="fill">[figure]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Ablation study (mandatory for A3)</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Ablation</th><th>Change</th><th>Metric</th><th>Delta</th><th>Interpretation</th></tr></thead>
+        <tbody>
+          <tr><td><span class="fill">[remove modality B]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td><span class="fill">[change fusion stage/operation]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ CONCLUSION ============ -->
+  <section id="conclusion">
+    <h2>Limitations and conclusion</h2>
+    <p><span class="fill">[Data, method, and experimental limits; generalization; future work; short answer to the research question.]</span></p>
+  </section>
+
+  <!-- ============ REPRODUCIBILITY ============ -->
+  <section id="reproducibility">
+    <h2>Reproducibility</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Result</th><th>Config</th><th>Split</th><th>Checkpoint</th><th>Log / run ID</th><th>Commit / tag</th></tr></thead>
+        <tbody>
+          <tr><td><span class="fill">[Table row]</span></td><td><span class="fill">[configs/&hellip;.yaml]</span></td><td><span class="fill">[split id]</span></td><td><span class="fill">[ckpt]</span></td><td><span class="fill">[run id]</span></td><td><span class="fill">[sha]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ AI USAGE ============ -->
+  <section id="ai-usage">
+    <h2>AI usage disclosure (Assignment 3)</h2>
+    <div class="note">The group declares that generative AI tools <strong>were used</strong>. The same disclosure
+      must also appear in the report and, in full detail, in <code>AI_USAGE.md</code>. Add one row per further use.</div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Tool / model</th><th>Used by</th><th>Stage</th><th>Purpose</th><th>Affected files / sections</th><th>Verification</th><th>Responsible member</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Claude (Claude Code, Opus 5)</td>
+            <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
+            <td>09 Sep 2026 &mdash; course website setup</td>
+            <td>Generate this assignment page template from the course handbook (section structure, cross-modal
+                validity checklist, method-content table, rubric)</td>
+            <td><code>docs/assignments/assignment-3.html</code></td>
+            <td>Every section checked against the handbook requirements; the page was opened and its links
+                verified. No experimental content was generated.</td>
+            <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
+          </tr>
+          <tr><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ RUBRIC ============ -->
+  <section id="rubric">
+    <h2>Grading rubric (within Assignment 3)</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Component</th><th>What is assessed</th><th>Weight</th></tr></thead>
+        <tbody>
+          <tr><td>Problem &amp; data understanding</td><td>Pair validity, EDA, leakage-aware splits</td><td>15%</td></tr>
+          <tr><td>Data &amp; training pipeline</td><td>Multimodal loading, alignment, training loop</td><td>15%</td></tr>
+          <tr><td>Methods &amp; implementation</td><td>Unimodal baselines, fusion, improved multimodal model</td><td>25%</td></tr>
+          <tr><td>Experimental design &amp; results</td><td>Comparisons, metrics, compute cost</td><td>20%</td></tr>
+          <tr><td>Analysis &amp; error analysis</td><td>Support/conflict cases, ablation, limitations</td><td>15%</td></tr>
+          <tr><td>Reproducibility, report &amp; presentation</td><td>Repo, pages, video, disclosure, writing</td><td>10%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>CO3133 &ndash; Deep Learning and Its Applications &middot; Semester-261 &middot; Instructor: L&ecirc; Th&agrave;nh S&aacute;ch</p>
+    <p><a href="../index.html">Back to the landing page</a></p>
+  </div>
+</footer>
+
+</div><!-- /.page -->
+</body>
+</html>
