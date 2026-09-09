@@ -34,11 +34,6 @@
 
 <main class="wrap">
 
-  <div class="note">
-    <strong>Page skeleton.</strong> Headings follow the minimum assignment-page content required by the handbook.
-    Replace every <span class="fill">[placeholder]</span>; keep the required headings even while a section is empty.
-    <strong>Main experiments may start only after the Dataset Proposal is Approved or Approved with conditions.</strong>
-  </div>
 
   <!-- ============ AT A GLANCE ============ -->
   <section id="overview">
@@ -62,10 +57,6 @@
           <dt>M2 Draft</dt><dd>25 Nov 2026 &middot; 25% of A3 &middot; <span class="badge todo">Not started</span></dd>
           <dt>M3 Final</dt><dd>02 Dec 2026 &middot; 60% of A3 &middot; <span class="badge todo">Not started</span></dd>
         </dl>
-        <p style="font-size:14px;color:var(--muted);margin:12px 0 0">
-          M2 minimum: unimodal A, unimodal B, and a simple fusion model with quantitative results.
-          M3 minimum: improved fusion, ablation, report, slides, video, this page, checkpoints.
-        </p>
       </div>
     </div>
   </section>
@@ -86,8 +77,7 @@
         </tbody>
       </table>
     </div>
-    <p style="font-size:14px;color:var(--muted)">The A3 video must also discuss modality interaction (cases where
-       the modalities support each other and cases where they conflict).</p>
+    <!-- Ghi chu noi bo: video A3 phai noi them ve tuong tac giua cac modality (ho tro / mau thuan). -->
   </section>
 
   <!-- ============ PROPOSAL ============ -->
@@ -109,10 +99,6 @@
         </tbody>
       </table>
     </div>
-    <p style="font-size:14px;color:var(--muted)">Default thresholds: multimodal classification &ge; 5 classes and
-       ~5,000 paired samples; image&ndash;text retrieval ~5,000+ pairs; captioning ~5,000+ images (multiple captions
-       preferred); VQA ~10,000+ question&ndash;image pairs; RGB&ndash;depth ~5,000+ aligned pairs; video&ndash;text may be
-       approved lower when processing cost is high.</p>
   </section>
 
   <!-- ============ PROBLEM ============ -->
@@ -171,8 +157,7 @@
         </tbody>
       </table>
     </div>
-    <p style="font-size:14px;color:var(--muted)">Multimodal results are not required to beat the unimodal
-       baselines. If they do not, the cause must be explained with data properties and experimental evidence.</p>
+    <!-- Ghi chu noi bo: ket qua da phuong thuc khong bat buoc phai hon unimodal; neu kem hon phai giai thich bang bang chung. -->
 
     <h3>Mandatory method content</h3>
     <div class="table-scroll">
@@ -231,11 +216,6 @@
         </tbody>
       </table>
     </div>
-    <p style="font-size:14px;color:var(--muted)">
-      Reference metrics: classification &rarr; accuracy and macro-F1; retrieval &rarr; Recall@1/5/10 and median rank;
-      captioning &rarr; CIDEr/BLEU plus qualitative evaluation; VQA &rarr; accuracy under the stated protocol;
-      detection/segmentation &rarr; mAP or mIoU; RGB&ndash;depth &rarr; the corresponding depth metrics.
-    </p>
 
     <h3>Training behaviour</h3>
     <p><span class="fill">[Curves; selected checkpoints; over/underfitting; training time; issues and fixes.]</span></p>
@@ -310,8 +290,7 @@
   <!-- ============ AI USAGE ============ -->
   <section id="ai-usage">
     <h2>AI usage disclosure (Assignment 3)</h2>
-    <div class="note">The group declares that generative AI tools <strong>were used</strong>. The same disclosure
-      must also appear in the report and, in full detail, in <code>AI_USAGE.md</code>. Add one row per further use.</div>
+    <div class="note">The group declares that generative AI tools <strong>were used</strong> in this assignment. The full log is kept in <code>AI_USAGE.md</code>.</div>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Tool / model</th><th>Used by</th><th>Stage</th><th>Purpose</th><th>Affected files / sections</th><th>Verification</th><th>Responsible member</th></tr></thead>

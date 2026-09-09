@@ -35,11 +35,6 @@
 
 <main class="wrap">
 
-  <div class="note">
-    <strong>Page skeleton.</strong> Headings follow the minimum assignment-page content required by the handbook.
-    Replace every <span class="fill">[placeholder]</span>; keep the required headings even while a section is empty.
-    <strong>Main implementation may start only after the Dataset Proposal is Approved or Approved with conditions.</strong>
-  </div>
 
   <!-- ============ AT A GLANCE ============ -->
   <section id="overview">
@@ -62,10 +57,6 @@
           <dt>M2 Draft</dt><dd>28 Oct 2026 &middot; 25% of A2 &middot; <span class="badge todo">Not started</span></dd>
           <dt>M3 Final</dt><dd>11 Nov 2026 &middot; 60% of A2 &middot; <span class="badge todo">Not started</span></dd>
         </dl>
-        <p style="font-size:14px;color:var(--muted);margin:12px 0 0">
-          M2 minimum: simple baseline plus a pretrained model in progress, EDA, preliminary metrics.
-          M3 minimum: controlled experiment, error analysis, report, slides, video, this page, checkpoints.
-        </p>
       </div>
     </div>
   </section>
@@ -111,10 +102,6 @@
         </tbody>
       </table>
     </div>
-    <p style="font-size:14px;color:var(--muted)">Default size thresholds per track (exceptions need explicit approval):
-      text classification &ge; 5 classes and &ge; 5,000 training samples; detection &ge; 5 classes, ~3,000+ images and
-      ~5,000+ instances; segmentation &ge; 3 foreground classes and ~1,000+ masked images; re-ID ~300+ training
-      identities with non-overlapping test identities; depth ~5,000+ RGB&ndash;depth pairs.</p>
   </section>
 
   <!-- ============ PROBLEM ============ -->
@@ -138,7 +125,7 @@
       <li>Re-ID: identity distribution, images per identity, camera distribution &mdash; <span class="fill">[&hellip;]</span></li>
       <li>Depth: depth distribution, invalid pixels, scene distribution &mdash; <span class="fill">[&hellip;]</span></li>
     </ul>
-    <p style="font-size:14px;color:var(--muted)">Keep only the row that matches the chosen track.</p>
+    <!-- Ghi chu noi bo: giu lai dung dong ung voi track da chon, xoa cac dong con lai. -->
 
     <h3>Splitting and preprocessing</h3>
     <p>Split unit: <span class="fill">[unit]</span> &middot; Seed: <span class="fill">[seed]</span> &middot;
@@ -208,12 +195,6 @@
         </tbody>
       </table>
     </div>
-    <p style="font-size:14px;color:var(--muted)">
-      Track metrics: classification &rarr; accuracy and macro-F1; detection &rarr; mAP and AP by class and/or size;
-      segmentation &rarr; mIoU and Dice (instance segmentation also mask AP); re-ID &rarr; Rank-1, Rank-5, mAP;
-      depth &rarr; Abs Rel, RMSE, delta accuracy; text tasks &rarr; justified task-appropriate metrics.
-      Report mean &plusmn; standard deviation where feasible.
-    </p>
 
     <h3>Training behaviour</h3>
     <p><span class="fill">[Loss and metric curves; selected checkpoint; over/underfitting; training time; implementation issues and fixes.]</span></p>
@@ -268,8 +249,7 @@
   <!-- ============ AI USAGE ============ -->
   <section id="ai-usage">
     <h2>AI usage disclosure (Assignment 2)</h2>
-    <div class="note">The group declares that generative AI tools <strong>were used</strong>. The same disclosure
-      must also appear in the report and, in full detail, in <code>AI_USAGE.md</code>. Add one row per further use.</div>
+    <div class="note">The group declares that generative AI tools <strong>were used</strong> in this assignment. The full log is kept in <code>AI_USAGE.md</code>.</div>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Tool / model</th><th>Used by</th><th>Stage</th><th>Purpose</th><th>Affected files / sections</th><th>Verification</th><th>Responsible member</th></tr></thead>

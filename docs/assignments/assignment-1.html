@@ -34,11 +34,6 @@
 
 <main class="wrap">
 
-  <div class="note">
-    <strong>Page skeleton.</strong> Section headings follow the minimum assignment-page content required by the
-    handbook. Replace every <span class="fill">[placeholder]</span> with real content; do not delete a required
-    heading even if a section is still empty at draft time.
-  </div>
 
   <!-- ============ AT A GLANCE ============ -->
   <section id="overview">
@@ -59,10 +54,6 @@
           <dt>M1 Draft</dt><dd>23 Sep 2026 &middot; 25% of A1 &middot; <span class="badge todo">Not started</span></dd>
           <dt>M2 Final</dt><dd>21 Oct 2026 &middot; 75% of A1 &middot; <span class="badge todo">Not started</span></dd>
         </dl>
-        <p style="font-size:14px;color:var(--muted);margin:12px 0 0">
-          M1 minimum: EDA, Dataset/DataLoader, train/val loop, Linear + MLP runnable (CNN optional).
-          M2 minimum: all five models, full comparison, report, slides, video, this page, checkpoints.
-        </p>
       </div>
     </div>
   </section>
@@ -113,8 +104,7 @@
         </tbody>
       </table>
     </div>
-    <p style="font-size:14px;color:var(--muted)">State explicitly which dataset is used for debugging, which for
-       the main comparison, and which extension datasets (if any) were evaluated.</p>
+    <!-- Ghi chu noi bo: neu ro dataset nao de debug, dataset nao cho so sanh chinh. -->
 
     <h3>EDA (required items)</h3>
     <ul>
@@ -166,10 +156,7 @@
         </tbody>
       </table>
     </div>
-    <p style="font-size:14px;color:var(--muted)">
-      Pretrained backbones are allowed only as extensions or ablation references. State for each model which parts
-      were self-implemented and which came from libraries (name them).
-    </p>
+    <!-- Ghi chu noi bo: backbone pretrained chi dung nhu extension/ablation; ghi ro phan tu cai va phan dung thu vien. -->
 
     <h3>Optional extensions (do not replace core work)</h3>
     <ul>
@@ -227,7 +214,7 @@
         </tbody>
       </table>
     </div>
-    <p style="font-size:14px;color:var(--muted)">Report mean &plusmn; standard deviation over multiple runs where feasible.</p>
+    <!-- Ghi chu noi bo: bao cao mean +/- std qua nhieu lan chay neu du thoi gian. -->
 
     <h3>Training behaviour</h3>
     <p><span class="fill">[Training/validation loss and metric curves per model; selected checkpoint; over/underfitting; training time; implementation issues and fixes.]</span></p>
@@ -245,8 +232,6 @@
     <p><span class="fill">[Which method is better and by how much; where the differences appear; causes related to data, architecture, loss, and training; accuracy-speed-parameter trade-offs; whether each hypothesis is supported; conclusions that cannot yet be drawn.]</span></p>
     <h3>Data representation and inductive bias</h3>
     <p><span class="fill">[How flattened pixels, spatial features, and row/column/patch sequences affect each family.]</span></p>
-    <div class="note">Listing metrics and declaring the highest score the winner is not sufficient, and accuracy
-      alone is not a valid basis for the claim.</div>
   </section>
 
   <!-- ============ ERROR ANALYSIS ============ -->
@@ -290,8 +275,7 @@
   <!-- ============ AI USAGE ============ -->
   <section id="ai-usage">
     <h2>AI usage disclosure (Assignment 1)</h2>
-    <div class="note">The group declares that generative AI tools <strong>were used</strong>. The same disclosure
-      must also appear in the report and, in full detail, in <code>AI_USAGE.md</code>. Add one row per further use.</div>
+    <div class="note">The group declares that generative AI tools <strong>were used</strong> in this assignment. The full log is kept in <code>AI_USAGE.md</code>.</div>
 
     <div class="table-scroll">
       <table>
