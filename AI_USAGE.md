@@ -1,4 +1,4 @@
-# AI Usage Disclosure — CO3133 Course Project, Group [ID]
+# AI Usage Disclosure — CO3133 Course Project, Group NNs
 
 This file is the detailed log required by the course handbook. Shorter summaries appear on the landing page, on
 each assignment page, and in each report; this file holds the full record.
