@@ -1,0 +1,16 @@
+# Shared A2 settings. Fill in after the Dataset Proposal is approved (A2-05).
+seed: 42
+dataset: TODO                  # name/source/version from the approved proposal
+data_dir: data/
+split_file: results/a2/splits/split_seed42.json
+task: TODO                     # classification | detection | segmentation | reid | depth
+metrics: [TODO]                # handbook 20.1 for the chosen track
+
+training:
+  batch_size: 32
+  epochs: 10
+  optimizer: adamw
+  lr: 0.0003
+  scheduler: cosine
+  checkpoint_metric: TODO
+  checkpoint_mode: max

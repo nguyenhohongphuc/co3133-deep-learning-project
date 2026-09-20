@@ -1,0 +1,10 @@
+# A2-07 / A2-11 - TV 2 - frozen backbone (arm A of the controlled experiment)
+defaults: configs/a2/base.yaml
+run_name: a2_pretrained_frozen
+model:
+  name: a2_pretrained
+  backbone: TODO               # e.g. resnet18
+  pretrained: true
+  freeze_backbone: true
+training:
+  lr: 0.001

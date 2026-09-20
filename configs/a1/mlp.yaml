@@ -1,0 +1,8 @@
+# A1-07 - TV 1
+defaults: configs/a1/base.yaml
+run_name: a1_mlp
+model:
+  name: mlp
+  hidden_sizes: [256, 128]     # at least one hidden layer (handbook 11.1)
+  activation: relu
+  dropout: 0.2

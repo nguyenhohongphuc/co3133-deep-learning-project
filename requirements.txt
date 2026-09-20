@@ -1,0 +1,10 @@
+# Pinned dependency versions are required by handbook §4.2.
+# Install, then freeze the exact versions:  pip freeze > requirements.lock.txt
+torch
+torchvision
+numpy
+pandas
+matplotlib
+scikit-learn
+pyyaml
+tqdm

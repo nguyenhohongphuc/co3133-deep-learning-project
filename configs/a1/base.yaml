@@ -1,0 +1,25 @@
+# Shared A1 settings. Per-model configs override only what they need.
+# Owner: TV 1 (data block) + TV 2 (training block). Change sparingly - everyone depends on it.
+seed: 42                       # same seed for every model in the main comparison (handbook 10, 12.2)
+dataset: fashion_mnist         # MNIST is for debugging only (handbook 10)
+data_dir: data/
+split_file: results/a1/splits/split_seed42.json
+
+data:
+  val_size: 6000               # 54k train / 6k val, stratified
+  stratified: true
+  normalize: true              # mean/std filled in after EDA (TV 1)
+  augmentation: none
+
+training:
+  batch_size: 128
+  epochs: 20
+  optimizer: adam
+  lr: 0.001
+  weight_decay: 0.0
+  scheduler: none
+  early_stopping_patience: 5
+  checkpoint_metric: val_macro_f1   # checkpoint selection rule (handbook 3.2, 12.2)
+  checkpoint_mode: max
+  num_workers: 2
+  device: auto

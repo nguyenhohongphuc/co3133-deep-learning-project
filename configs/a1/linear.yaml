@@ -1,0 +1,5 @@
+# A1-06 - TV 1
+defaults: configs/a1/base.yaml
+run_name: a1_linear
+model:
+  name: linear                 # flatten -> Linear -> logits, NO softmax before CrossEntropyLoss

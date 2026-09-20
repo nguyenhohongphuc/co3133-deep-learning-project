@@ -1,0 +1,5 @@
+# A2-06 - TV 3 - simple baseline (handbook 20, item 1)
+defaults: configs/a2/base.yaml
+run_name: a2_baseline
+model:
+  name: a2_baseline

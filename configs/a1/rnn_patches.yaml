@@ -1,0 +1,6 @@
+# A1-15 - TV 3 - ablation variant: same model, patches instead of rows
+defaults: configs/a1/rnn_rows.yaml
+run_name: a1_rnn_patches
+model:
+  sequence: patches
+  patch_size: 7                # 4x4 = 16 tokens of 49 features

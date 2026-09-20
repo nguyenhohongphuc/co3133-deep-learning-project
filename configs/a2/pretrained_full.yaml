@@ -1,0 +1,7 @@
+# A2-07 / A2-11 - TV 2 - full fine-tune (arm B; only this factor differs from arm A)
+defaults: configs/a2/pretrained_frozen.yaml
+run_name: a2_pretrained_full
+model:
+  freeze_backbone: false
+training:
+  lr: 0.0001

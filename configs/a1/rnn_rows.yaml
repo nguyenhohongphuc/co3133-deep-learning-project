@@ -1,0 +1,10 @@
+# A1-10 - TV 3 - image as a sequence of rows (28 timesteps x 28 features)
+defaults: configs/a1/base.yaml
+run_name: a1_rnn_rows
+model:
+  name: rnn
+  cell: lstm                   # lstm | gru
+  sequence: rows               # rows | cols | patches
+  hidden_size: 128
+  num_layers: 1
+  bidirectional: false

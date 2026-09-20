@@ -25,15 +25,38 @@ Repository: **<https://github.com/nguyenhohongphuc/co3133-deep-learning-project>
 ## Repository layout
 
 ```
-docs/                     GitHub Pages site (published from the /docs folder on main)
+configs/a1|a2/            One YAML per reported run (base.yaml holds the shared settings)
+src/
+  common/                 seed, run ids + git hash, model registry          (TV 2)
+  data/                   split, transforms, Dataset, DataLoader            (TV 1)
+  engine/                 trainer, metrics, plots, profiler                 (TV 2)
+  models/                 linear, mlp (TV 1) · cnn (TV 2) · rnn, transformer (TV 3)
+  train.py evaluate.py    Entry points: python -m src.train --config ...
+scripts/                  prepare_data.py, run_a1_all.ps1, make_tables.py
+notebooks/                EDA and error analysis only (never the pipeline)
+results/a1|a2/            COMMITTED: splits/, runs/<run_id>/, figures/, tables/
+reports/a1|a2/            Report sources, slides, A2 proposal + approval status
+docs/                     GitHub Pages site (published from /docs on main)
   index.html              Shared landing page
   assignments/            One page per assignment
   assets/css/style.css    Site stylesheet
-configs/                  Experiment configuration files (one per reported run)
-src/                      Source code (data, models, training, evaluation)
-scripts/                  Entry-point scripts / helper commands
+planning/                 Team task sheet + task guidelines (not a deliverable)
+data/ checkpoints/ runs/  Ignored by git; see "Dataset preparation" below
 AI_USAGE.md               Detailed AI usage log (mandatory)
 ```
+
+### Who owns what
+
+| Area | Owner | Files |
+|---|---|---|
+| Data pipeline, Linear + MLP | TV 1 | `src/data/**`, `src/models/linear.py`, `src/models/mlp.py` |
+| Training engine, metrics, plots, CNN | TV 2 | `src/engine/**`, `src/common/**`, `src/train.py`, `src/evaluate.py`, `src/models/cnn.py` |
+| LSTM/GRU, Transformer | TV 3 | `src/models/rnn.py`, `src/models/transformer.py` |
+
+Two interfaces are fixed so the three areas stay independent:
+`build_loaders(config) -> (train, val, test)` yielding `(images [B,1,28,28], labels [B])`,
+and every model is an `nn.Module` with `forward(x) -> logits [B, num_classes]`.
+Each model registers itself with `@register("name")` from `src/common/registry.py`.
 
 ## Publishing the site (one-time setup)
 
@@ -58,23 +81,35 @@ Pinned dependency versions live in `requirements.txt` (TODO: create it once the 
 ## Dataset preparation
 
 ```bash
-# TODO: exact commands, download source, expected folder layout, checksum
-python scripts/prepare_data.py --dataset fashion-mnist --out data/
+python scripts/prepare_data.py --dataset fashion-mnist --out data/   # primary dataset
+python scripts/prepare_data.py --dataset mnist --out data/           # debugging only
+```
+
+The fixed split is built once and then reused by every model:
+
+```bash
+python -m src.data.split --config configs/a1/base.yaml   # writes results/a1/splits/split_seed42.json
 ```
 
 ## Train
 
 ```bash
-# TODO
-python src/train.py --config configs/a1_linear.yaml
+python -m src.train --config configs/a1/linear.yaml
+python -m src.train --config configs/a1/cnn.yaml --seed 1
+
+./scripts/run_a1_all.ps1      # all five models, one split, one seed
+./scripts/run_a1_seeds.ps1    # the same comparison over 3 seeds (mean ± std)
 ```
 
 ## Evaluate
 
 ```bash
-# TODO
-python src/evaluate.py --config configs/a1_linear.yaml --checkpoint checkpoints/a1_linear_best.pt
+python -m src.evaluate --config configs/a1/cnn.yaml --checkpoint checkpoints/a1_cnn_best.pt
+python scripts/make_tables.py --assignment a1   # results/a1/tables/comparison.csv
 ```
+
+Each run writes `results/a1/runs/<run_id>/` containing `config.yaml`, `history.csv` and
+`metrics.json`, where `run_id = <run_name>_s<seed>_<MMDD-HHMM>`.
 
 ## Reproducibility
 

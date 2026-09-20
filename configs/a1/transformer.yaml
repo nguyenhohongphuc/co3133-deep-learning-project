@@ -1,0 +1,13 @@
+# A1-12 - TV 3
+defaults: configs/a1/base.yaml
+run_name: a1_transformer
+model:
+  name: transformer
+  sequence: patches
+  patch_size: 7
+  d_model: 128
+  nhead: 4
+  num_layers: 4
+  dim_feedforward: 256
+  dropout: 0.1
+  positional_encoding: learned  # required by handbook 11.1

@@ -1,0 +1,9 @@
+# A1-09 - TV 3 (own design, not a pretrained backbone - handbook 11.1)
+defaults: configs/a1/base.yaml
+run_name: a1_cnn
+model:
+  name: cnn
+  channels: [32, 64]
+  kernel_size: 3
+  pool: max
+  dropout: 0.25
