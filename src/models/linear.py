@@ -17,7 +17,11 @@ class LinearClassifier(nn.Module):
 
     def __init__(self, num_classes: int = 10, in_features: int = 28 * 28):
         super().__init__()
-        raise NotImplementedError  # TODO (TV 1, A1-06)
+        
+        self.flatten = nn.Flatten()
+        self.classifier = nn.Linear(in_features, num_classes)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        raise NotImplementedError
+        x = self.flatten(x)
+        logits = self.classifier(x)
+        return logits
