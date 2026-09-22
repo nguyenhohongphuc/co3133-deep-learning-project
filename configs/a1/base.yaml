@@ -9,6 +9,8 @@ data:
   val_size: 6000               # 54k train / 6k val, stratified
   stratified: true
   normalize: true              # mean/std filled in after EDA (TV 1)
+  mean: [0.286209]
+  std: [0.353160]
   augmentation: none
 
 training:
