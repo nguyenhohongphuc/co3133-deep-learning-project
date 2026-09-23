@@ -51,6 +51,68 @@ Copy the template below for every distinct use. Group the entries by assignment.
 
 ### Assignment 1
 
+**Entry 1 — Review of the data pipeline pull request (A1-01, A1-03, A1-04, A1-06, A1-07)**
+
+- **Tool:** Claude (Claude Code, model Opus 5)
+- **Used by:** Hồ Hồng Phúc Nguyên (2352824)
+- **Time / stage:** 22 Sep 2026 — reviewing the `feature/a1-data-baseline` branch before merging it into `main`
+- **Purpose:** coding assistance / debugging — review a teammate's data pipeline and verify its claims
+- **Affected assignment section(s) and files:** `src/data/split.py`, `src/data/loaders.py`,
+  `src/data/fashion_mnist.py`, `src/data/transforms.py`, `src/models/linear.py`, `src/models/mlp.py`;
+  report §3.1 (data splitting, preprocessing)
+- **Representative prompt:** "My teammate just pushed some code to a feature branch on GitHub. Could you review
+  and merge it for me?"
+- **How the output was edited and verified:** the review was run as real checks, not opinion — the split was
+  rebuilt from seed 42 and compared index-by-index with the committed `split_seed42.json` (identical), the
+  normalization statistics were recomputed on the 54,000 training images only (0.286209 / 0.353160, matching the
+  config), and the loaders were driven to confirm the agreed batch contract `[B, 1, 28, 28]` float32 /
+  `[B]` int64. The review also found that `notebooks/a1_eda.ipynb` cannot regenerate its own committed figures;
+  that finding was passed to TV 1 rather than patched here.
+- **Sources used for verification:** PyTorch and torchvision documentation; the committed split file; live runs
+- **Member responsible for final verification:** Hồ Hồng Phúc Nguyên (2352824)
+
+**Entry 2 — Training and evaluation pipeline (A1-02, A1-05, A1-11)**
+
+- **Tool:** Claude (Claude Code, model Opus 5)
+- **Used by:** Hồ Hồng Phúc Nguyên (2352824)
+- **Time / stage:** 22–23 Sep 2026 — implementing the TV 2 training framework before the M1 draft milestone
+- **Purpose:** coding assistance / debugging / concept explanation — complete the metrics, trainer, entry points,
+  figures and profiling, and explain the checkpoint-selection rule
+- **Affected assignment section(s) and files:** `src/engine/metrics.py`, `src/engine/trainer.py`,
+  `src/engine/plots.py`, `src/engine/profiler.py`, `src/train.py`, `src/evaluate.py`,
+  `configs/a1/base.yaml`; report §3.2 (training setup) and §3.3 (results, figures)
+- **Representative prompt:** "write metrics.py and wire up the checkpointing"; earlier in the same session,
+  "I thought selecting the checkpoint was based on train and val loss, so why do we need Macro-F1 here?"
+- **How the output was edited and verified:** `accuracy`, `macro_f1` and `confusion` were cross-checked against
+  `sklearn.metrics` on 5,000 random labels and on hand-computed cases, including the empty-input and
+  length-mismatch errors. The loop was verified end to end: `python -m src.train --config configs/a1/linear.yaml`
+  trains, checkpoints on validation macro-F1 and early-stops; the same seed run twice produced identical per-epoch
+  numbers; `python -m src.evaluate --split test` reproduced test accuracy 0.8356 / macro-F1 0.8354 for the linear
+  model and generated the §12.1 figures, which were inspected by eye. Several defects in the AI-written or
+  AI-suggested code were found this way and fixed: a missing `pandas` import that killed `fit()` *after* training,
+  three missing imports in `plots.py`, a `ZeroDivisionError` in `inference_time` on short loaders, and a
+  `UnicodeEncodeError` from printing Vietnamese to the cp1252 Windows console.
+- **Sources used for verification:** scikit-learn and PyTorch documentation; the course handbook §§3.2, 3.3, 4.2,
+  12.1, 12.2; live training and evaluation runs committed as `results/a1/runs/<run_id>/`
+- **Member responsible for final verification:** Hồ Hồng Phúc Nguyên (2352824)
+
+**Entry 3 — Documentation of the A1 setup**
+
+- **Tool:** Claude (Claude Code, model Opus 5)
+- **Used by:** Hồ Hồng Phúc Nguyên (2352824)
+- **Time / stage:** 23 Sep 2026 — filling the assignment page and README before the M1 draft
+- **Purpose:** report writing / document structuring — write up the dataset, EDA, split, preprocessing, training
+  setup and environment sections from the values the code actually uses
+- **Affected assignment section(s) and files:** `docs/assignments/assignment-1.html`, `README.md`,
+  `requirements.lock.txt`, this file
+- **Representative prompt:** "update docs for me"
+- **How the output was edited and verified:** every number written into the page was taken from a real artefact —
+  the committed split file, the config, `pip freeze`, and the machine's own CPU/RAM/GPU report — not from memory.
+  Sections with no results yet (CNN, LSTM/GRU, Transformer, the comparison table, slides, video) were left marked
+  TODO rather than filled with plausible text.
+- **Sources used for verification:** the repository's own files and run outputs; course handbook §§2.2, 3, 4.2
+- **Member responsible for final verification:** Hồ Hồng Phúc Nguyên (2352824)
+
 <!-- template — copy per use -->
 - **Tool:** [tool name + version/model if known]
 - **Used by:** [member name]

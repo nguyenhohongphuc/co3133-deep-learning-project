@@ -104,12 +104,20 @@ python -m src.train --config configs/a1/cnn.yaml --seed 1
 ## Evaluate
 
 ```bash
-python -m src.evaluate --config configs/a1/cnn.yaml --checkpoint checkpoints/a1_cnn_best.pt
+python -m src.evaluate --config configs/a1/cnn.yaml \
+    --checkpoint results/a1/runs/<run_id>/best.pt --split test
 python scripts/make_tables.py --assignment a1   # results/a1/tables/comparison.csv
 ```
 
-Each run writes `results/a1/runs/<run_id>/` containing `config.yaml`, `history.csv` and
-`metrics.json`, where `run_id = <run_name>_s<seed>_<MMDD-HHMM>`.
+Each run writes `results/a1/runs/<run_id>/` containing `config.yaml` (the *resolved* config,
+with any `--seed` / `--epochs` override applied), `history.csv`, `metrics.json` and `best.pt`,
+where `run_id = <run_name>_s<seed>_<MMDD-HHMM>`.
+
+`src/train.py` never touches the test set: it trains on the train split and selects the
+checkpoint on validation macro-F1. `src/evaluate.py --split test` is the only code that reads
+the test set, and it is meant to be run once per model, at the end. It writes
+`metrics_test.json`, folds accuracy, macro-F1 and inference time back into `metrics.json`, and
+saves the handbook §12.1 figures to `results/a1/figures/`.
 
 ## Reproducibility
 
@@ -118,11 +126,11 @@ the corresponding commit or tag.
 
 | Item | Value |
 |---|---|
-| Seed(s) | [seed] |
-| Hardware | [GPU / CPU / RAM] |
-| Software | Python [x], PyTorch [x], CUDA [x] |
-| Checkpoint access | [link or reconstruction instructions] |
-| Experiment tracking | [tool / log location] |
+| Seed(s) | 42 for the main comparison; 42, 1, 2 for the seed study (`scripts/run_a1_seeds.ps1`) |
+| Hardware | AMD Ryzen 7 7735HS, 15.2 GB RAM, Windows 11. An RTX 4060 Laptop GPU is present but unused — PyTorch is a CPU-only build, so every reported run is CPU |
+| Software | Python 3.10.21, PyTorch 2.14.0+cpu, torchvision 0.29.0, CUDA not used. Exact versions: `requirements.lock.txt` |
+| Checkpoint access | Each run writes `results/a1/runs/<run_id>/best.pt` (git-ignored). Reconstruct with the train command below plus that run's `config.yaml` and the committed split |
+| Experiment tracking | Run folders under `results/a1/runs/`; no external tracking service |
 
 A pre-run notebook without reproduction instructions is not an acceptable submission.
 

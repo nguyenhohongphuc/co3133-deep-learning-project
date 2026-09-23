@@ -6,17 +6,31 @@ is fair (12.2).
 """
 from __future__ import annotations
 
-import torch.nn as nn
+import time
+
+import torch
+
+def count_parameters(model, trainable_only=True):
+    params = [p for p in model.parameters() if p.requires_grad or not trainable_only]
+    return sum(p.numel() for p in params)
 
 
-def count_parameters(model: nn.Module, trainable_only: bool = True) -> int:
-    """TODO (TV 2, A1-11)."""
-    raise NotImplementedError
-
-
-def inference_time(model: nn.Module, loader, device: str, warmup_batches: int = 5) -> dict:
-    """{'ms_per_batch': ..., 'ms_per_image': ..., 'batch_size': ..., 'device': ...}.
-
-    TODO (TV 2, A1-11): warm up first, then time with torch.cuda.synchronize() on GPU.
-    """
-    raise NotImplementedError
+def inference_time(model, loader, device, warmup_batches=5):
+    model = model.to(device).eval()
+    times, batch_size = [], loader.batch_size
+    with torch.no_grad():
+        for i, (images, _) in enumerate(loader):
+            images = images.to(device)
+            if device == "cuda":
+                torch.cuda.synchronize()
+            start = time.perf_counter()
+            model(images)
+            if device == "cuda":
+                torch.cuda.synchronize()
+            if i >= warmup_batches:             # bỏ qua các batch khởi động
+                times.append(time.perf_counter() - start)
+    if not times:
+        raise ValueError(f"loader has {warmup_batches + 1} batches or fewer; nothing left to time")
+    ms = 1000 * sum(times) / len(times)
+    return {"ms_per_batch": ms, "ms_per_image": ms / batch_size,
+            "batch_size": batch_size, "device": device}

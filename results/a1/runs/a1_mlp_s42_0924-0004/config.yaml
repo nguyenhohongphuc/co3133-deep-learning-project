@@ -1,0 +1,34 @@
+data:
+  augmentation: none
+  mean:
+  - 0.286209
+  normalize: true
+  std:
+  - 0.35316
+  stratified: true
+  val_size: 6000
+data_dir: data/
+dataset: fashion_mnist
+model:
+  activation: relu
+  dropout: 0.2
+  hidden_sizes:
+  - 256
+  - 128
+  name: mlp
+run_name: a1_mlp
+seed: 42
+split_file: results/a1/splits/split_seed42.json
+training:
+  batch_size: 128
+  checkpoint_metric: val_macro_f1
+  checkpoint_mode: max
+  device: auto
+  early_stopping_patience: 5
+  epochs: 20
+  loss: cross_entropy
+  lr: 0.001
+  num_workers: 2
+  optimizer: adam
+  scheduler: none
+  weight_decay: 0.0

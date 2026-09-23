@@ -26,7 +26,7 @@
 
 <div class="hero">
   <div class="wrap">
-    <p class="eyebrow">Assignment 1 &middot; 40% of the course project &middot; <span class="badge todo">Not started</span></p>
+    <p class="eyebrow">Assignment 1 &middot; 40% of the course project &middot; <span class="badge wip">In progress</span></p>
     <h1>Foundations of Deep Learning Pipelines and Architectures</h1>
     <p class="lede">From linear models to modern sequence models: a comparative study for image classification.</p>
   </div>
@@ -51,7 +51,8 @@
       <div class="card">
         <h3 style="margin-top:0">Milestones</h3>
         <dl class="kv">
-          <dt>M1 Draft</dt><dd>23 Sep 2026 &middot; 25% of A1 &middot; <span class="badge todo">Not started</span></dd>
+          <dt>M1 Draft</dt><dd>23 Sep 2026 &middot; 25% of A1 &middot; <span class="badge wip">In progress</span>
+            <div style="font-size:13px;color:var(--muted);margin-top:4px">Pipeline complete and verified end to end; linear and MLP trained and evaluated on the test split. CNN, LSTM/GRU and Transformer, the report draft, slides and video are outstanding.</div></dd>
           <dt>M2 Final</dt><dd>21 Oct 2026 &middot; 75% of A1 &middot; <span class="badge todo">Not started</span></dd>
         </dl>
       </div>
@@ -66,7 +67,7 @@
         <thead><tr><th>Item</th><th>Link</th><th>Status</th></tr></thead>
         <tbody>
           <tr><td>Source code</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project">github.com/nguyenhohongphuc/co3133-deep-learning-project</a></td><td><span class="badge wip">In progress</span></td></tr>
-          <tr><td>Checkpoints (or reconstruction instructions)</td><td><span class="fill">[URL or README section]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>Checkpoints (or reconstruction instructions)</td><td>Each run writes <code>results/a1/runs/&lt;run_id&gt;/best.pt</code> (git-ignored). Reconstruct any reported number with the train command in the repository <code>README.md</code> plus that run's committed <code>config.yaml</code> and the fixed split.</td><td><span class="badge wip">Reconstructible</span></td></tr>
           <tr><td>Report</td><td><span class="fill">[PDF URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
           <tr><td>Slides</td><td><span class="fill">[slides URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
           <tr><td>YouTube presentation</td><td><span class="fill">[video URL &ndash; title: CO3133-Semester-261 &ndash; Group NNs &ndash; Assignment 1]</span></td><td><span class="badge todo">TODO</span></td></tr>
@@ -78,9 +79,35 @@
   <!-- ============ PROBLEM ============ -->
   <section id="problem">
     <h2>Problem statement</h2>
-    <p><span class="fill">[Real-world motivation; input; output; prediction unit; mathematical formulation; main difficulties.]</span></p>
+    <p><strong>Motivation.</strong> Online clothing retailers receive product photographs faster than staff can
+       label them, and the category a garment is filed under drives search, recommendation and stock reporting.
+       Fashion-MNIST is the controlled-scale stand-in for that task: it keeps the ten-way garment decision while
+       removing the confounds of colour, background and resolution, so that differences between models can be
+       attributed to the model rather than to the data.</p>
+    <p><strong>Input.</strong> One grayscale image <code>x &isin; R<sup>1&times;28&times;28</sup></code>, pixel
+       intensities in [0, 255] before preprocessing. <strong>Output.</strong> One of
+       <code>K = 10</code> mutually exclusive classes (T-shirt/top, Trouser, Pullover, Dress, Coat, Sandal, Shirt,
+       Sneaker, Bag, Ankle boot). <strong>Prediction unit.</strong> One image, one label &mdash; single-label
+       multi-class classification, not multi-label.</p>
+    <p><strong>Formulation.</strong> Each model is a function
+       <code>f<sub>&theta;</sub>: R<sup>1&times;28&times;28</sup> &rarr; R<sup>10</sup></code> producing raw
+       logits <code>z = f<sub>&theta;</sub>(x)</code>. Class probabilities are
+       <code>p(y = k | x) = softmax(z)<sub>k</sub></code> and training minimises the mean cross-entropy
+       <code>L(&theta;) = -(1/N) &sum;<sub>i</sub> log p(y<sub>i</sub> | x<sub>i</sub>)</code> over the training
+       split. The softmax is never applied before the loss: <code>nn.CrossEntropyLoss</code> takes the logits
+       directly and applies log-softmax internally, so applying softmax first would compute the loss twice and
+       flatten the gradients. Prediction is <code>&#375; = argmax<sub>k</sub> z<sub>k</sub></code>.</p>
+    <p><strong>Main difficulties.</strong> (i) Several classes are visually near-identical at 28&times;28 &mdash;
+       Shirt, T-shirt/top, Pullover and Coat share outline and texture, and the confusion matrices below show that
+       this one cluster dominates the error budget. (ii) The images are grayscale and low-resolution, so colour and
+       fine texture cues are unavailable. (iii) The architecture families receive genuinely different views of the
+       same image &mdash; a flat 784-vector, a 2D grid, or a sequence of rows or patches &mdash; which is exactly
+       the inductive-bias question this assignment is built around.</p>
     <h3>Research question</h3>
-    <p><span class="fill">[The single question the comparison is meant to answer.]</span></p>
+    <p>Under one fixed data split, one seed and one shared training protocol, <em>how much does the way an image
+       is represented to a model &mdash; flattened pixels, a 2D grid, or a sequence of rows or patches &mdash;
+       change classification quality on Fashion-MNIST, and is the accuracy gained worth the parameters and the
+       training and inference time it costs?</em></p>
     <h3>Learning objectives covered</h3>
     <ul>
       <li>Complete PyTorch pipeline: Dataset, DataLoader, preprocessing, augmentation, optimization, evaluation.</li>
@@ -98,9 +125,9 @@
       <table>
         <thead><tr><th>Dataset</th><th>Role</th><th>Source / version / license</th><th>Samples</th></tr></thead>
         <tbody>
-          <tr><td>MNIST</td><td>Development and debugging only</td><td><span class="fill">[source]</span></td><td><span class="fill">[n]</span></td></tr>
-          <tr><td>Fashion-MNIST</td><td><strong>Primary results (main comparison)</strong></td><td><span class="fill">[source]</span></td><td><span class="fill">[n]</span></td></tr>
-          <tr><td>CIFAR-10</td><td>Optional extension</td><td><span class="fill">[source or not used]</span></td><td><span class="fill">[n]</span></td></tr>
+          <tr><td>MNIST</td><td>Development and debugging only</td><td><code>torchvision.datasets.MNIST</code> &middot; CC BY-SA 3.0</td><td>60,000 train / 10,000 test &mdash; not used for any reported number</td></tr>
+          <tr><td>Fashion-MNIST</td><td><strong>Primary results (main comparison)</strong></td><td>Zalando Research, via <code>torchvision.datasets.FashionMNIST</code> &middot; MIT licence</td><td>70,000 grayscale 28&times;28 images: 60,000 official train, 10,000 official test, 10 balanced classes</td></tr>
+          <tr><td>CIFAR-10</td><td>Optional extension</td><td>Not used</td><td>&mdash;</td></tr>
         </tbody>
       </table>
     </div>
@@ -108,30 +135,49 @@
 
     <h3>EDA (required items)</h3>
     <ul>
-      <li>Class distribution &mdash; <span class="fill">[figure + table]</span></li>
-      <li>Input size / shape &mdash; <span class="fill">[value]</span></li>
-      <li>Imbalance analysis &mdash; <span class="fill">[finding]</span></li>
-      <li>Representative samples &mdash; <span class="fill">[image grid]</span></li>
-      <li>Storage size, formats, bias and limitations &mdash; <span class="fill">[notes]</span></li>
+      <li>Class distribution &mdash; <code>results/a1/figures/a1_class_distribution.png</code> with the counts in <code>results/a1/tables/a1_class_distribution.csv</code>: 6,000 images per class in the official train set, 5,400 / 600 after the train/validation split.</li>
+      <li>Input size / shape &mdash; raw images are <code>uint8</code> 28&times;28 in [0, 255]; after preprocessing each sample is a float32 tensor of shape <code>[1, 28, 28]</code>, batched as <code>[B, 1, 28, 28]</code>.</li>
+      <li>Imbalance analysis &mdash; the dataset is perfectly balanced (10&nbsp;% per class in every split), so no resampling or class weighting is used. Macro-F1 is still reported next to accuracy because per-class <em>difficulty</em> is very uneven even when the counts are not.</li>
+      <li>Representative samples &mdash; <code>results/a1/figures/a1_representative_samples.png</code>.</li>
+      <li>Storage size, formats, bias and limitations &mdash; about 30&nbsp;MB of idx-ubyte files fetched by <code>scripts/prepare_data.py</code> (git-ignored; see the README). Limitations: one centred object per image, grayscale, low resolution and no metadata, so conclusions transfer poorly to real catalogue photographs.</li>
     </ul>
+
+    <figure>
+      <img src="../assets/img/a1/a1_class_distribution.png" alt="Bar chart of the number of images per class in the Fashion-MNIST train and validation splits, all equal." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure A &mdash; Class distribution: 6,000 images per class before splitting, 5,400 / 600 after.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/img/a1/a1_representative_samples.png" alt="Grid of representative Fashion-MNIST images, one row per class." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure B &mdash; Representative samples, one row per class. The upper-body garments in rows 1, 3, 5 and 7 are the cluster the models confuse.</figcaption>
+    </figure>
 
     <h3>Data splitting</h3>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Split</th><th>Samples</th><th>Source</th><th>Stratified</th></tr></thead>
         <tbody>
-          <tr><td>Train</td><td><span class="fill">[n]</span></td><td><span class="fill">[official / custom]</span></td><td><span class="fill">[yes/no]</span></td></tr>
-          <tr><td>Validation</td><td><span class="fill">[n]</span></td><td><span class="fill">[official / custom]</span></td><td><span class="fill">[yes/no]</span></td></tr>
-          <tr><td>Test</td><td><span class="fill">[n]</span></td><td><span class="fill">[official / custom]</span></td><td><span class="fill">[yes/no]</span></td></tr>
+          <tr><td>Train</td><td>54,000 (5,400 per class)</td><td>Custom split of the official train set</td><td>Yes</td></tr>
+          <tr><td>Validation</td><td>6,000 (600 per class)</td><td>Custom split of the official train set</td><td>Yes</td></tr>
+          <tr><td>Test</td><td>10,000 (1,000 per class)</td><td>Official Fashion-MNIST test set, untouched</td><td>Official</td></tr>
         </tbody>
       </table>
     </div>
-    <p>Seed: <span class="fill">[seed]</span> &middot; Split unit: <span class="fill">[unit]</span> &middot;
-       Leakage prevention: <span class="fill">[how]</span>.
+    <p>Seed: 42 &middot; Split unit: one image &middot;
+       Leakage prevention: the split is generated once by <code>python -m src.data.split</code> (scikit-learn
+       <code>StratifiedShuffleSplit</code>) and committed as <code>results/a1/splits/split_seed42.json</code>;
+       every loader reads that file and nobody re-splits on the fly. The train and validation index sets are
+       verified disjoint and to cover all 60,000 training images, the normalization statistics are computed on the
+       54,000 training images only, and the test set is read solely by <code>src/evaluate.py</code>.
        All models in the main comparison use this same split and seed.</p>
 
     <h3>Preprocessing</h3>
-    <p><span class="fill">[Cleaning; resize/normalization; augmentation; invalid annotation handling; input tensor shapes; one example batch after preprocessing.]</span></p>
+    <p>No cleaning or resizing is needed: Fashion-MNIST ships as fixed-size 28&times;28 grayscale images with no
+       invalid annotations. The pipeline is <code>ToTensor()</code> (scaling to [0,&nbsp;1]) followed by
+       <code>Normalize(mean=0.286209, std=0.353160)</code>, both statistics measured on the 54,000-image training
+       split only &mdash; never on validation or test. <strong>No augmentation</strong> is applied in the main
+       comparison, so all five architectures see identical inputs; augmentation is listed as a candidate ablation.
+       Input tensors after preprocessing are <code>[B, 1, 28, 28]</code> float32 with <code>[B]</code> int64
+       labels, verified to have batch mean &asymp; 0 and standard deviation &asymp; 1.</p>
   </section>
 
   <!-- ============ METHOD ============ -->
@@ -139,17 +185,73 @@
     <h2>Methodology</h2>
 
     <h3>Pipeline overview</h3>
-    <pre><code>raw data -&gt; preprocessing -&gt; data loader -&gt; model -&gt; loss
-         -&gt; optimization -&gt; prediction -&gt; post-processing -&gt; evaluation</code></pre>
-    <p><span class="fill">[Replace with the group pipeline diagram (figure) and a short walkthrough.]</span></p>
+    <figure class="pipeline">
+      <svg viewBox="0 0 980 236" width="100%" role="img" aria-label="A1 pipeline: raw data, preprocessing, data loader, model and loss on the top row; optimization, checkpoint, prediction, post-processing and evaluation on the bottom row, with the module implementing each stage.">
+        <defs><marker id="a1arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5d6b78"/></marker></defs>
+        <rect x="10" y="20" width="176" height="54" fill="#ffffff" stroke="#a8cfec" stroke-width="1.5" rx="8"/>
+        <text x="98" y="43" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">Raw data</text>
+        <text x="98" y="62" font-family="Consolas, Menlo, monospace" font-size="11.5" fill="#5d6b78" text-anchor="middle">scripts/prepare_data.py</text>
+        <line x1="186" y1="47" x2="200" y2="47" stroke="#5d6b78" stroke-width="1.5" fill="none" marker-end="url(#a1arrow)"/>
+        <rect x="204" y="20" width="176" height="54" fill="#ffffff" stroke="#a8cfec" stroke-width="1.5" rx="8"/>
+        <text x="292" y="43" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">Preprocessing</text>
+        <text x="292" y="62" font-family="Consolas, Menlo, monospace" font-size="11.5" fill="#5d6b78" text-anchor="middle">data/transforms.py</text>
+        <line x1="380" y1="47" x2="394" y2="47" stroke="#5d6b78" stroke-width="1.5" fill="none" marker-end="url(#a1arrow)"/>
+        <rect x="398" y="20" width="176" height="54" fill="#ffffff" stroke="#a8cfec" stroke-width="1.5" rx="8"/>
+        <text x="486" y="43" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">Data loader</text>
+        <text x="486" y="62" font-family="Consolas, Menlo, monospace" font-size="11.5" fill="#5d6b78" text-anchor="middle">data/loaders.py</text>
+        <line x1="574" y1="47" x2="588" y2="47" stroke="#5d6b78" stroke-width="1.5" fill="none" marker-end="url(#a1arrow)"/>
+        <rect x="592" y="20" width="176" height="54" fill="#e4f0fa" stroke="#2f7cc0" stroke-width="1.5" rx="8"/>
+        <text x="680" y="43" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">Model</text>
+        <text x="680" y="62" font-family="Consolas, Menlo, monospace" font-size="11.5" fill="#5d6b78" text-anchor="middle">models/*.py</text>
+        <line x1="768" y1="47" x2="782" y2="47" stroke="#5d6b78" stroke-width="1.5" fill="none" marker-end="url(#a1arrow)"/>
+        <rect x="786" y="20" width="176" height="54" fill="#ffffff" stroke="#a8cfec" stroke-width="1.5" rx="8"/>
+        <text x="874" y="43" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">Loss</text>
+        <text x="874" y="62" font-family="Consolas, Menlo, monospace" font-size="11.5" fill="#5d6b78" text-anchor="middle">CrossEntropyLoss</text>
+        <rect x="10" y="124" width="176" height="54" fill="#ffffff" stroke="#a8cfec" stroke-width="1.5" rx="8"/>
+        <text x="98" y="147" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">Optimization</text>
+        <text x="98" y="166" font-family="Consolas, Menlo, monospace" font-size="11.5" fill="#5d6b78" text-anchor="middle">engine/trainer.py</text>
+        <line x1="186" y1="151" x2="200" y2="151" stroke="#5d6b78" stroke-width="1.5" fill="none" marker-end="url(#a1arrow)"/>
+        <rect x="204" y="124" width="176" height="54" fill="#ffffff" stroke="#a8cfec" stroke-width="1.5" rx="8"/>
+        <text x="292" y="147" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">Checkpoint</text>
+        <text x="292" y="166" font-family="Consolas, Menlo, monospace" font-size="11.5" fill="#5d6b78" text-anchor="middle">best.pt on val macro-F1</text>
+        <line x1="380" y1="151" x2="394" y2="151" stroke="#5d6b78" stroke-width="1.5" fill="none" marker-end="url(#a1arrow)"/>
+        <rect x="398" y="124" width="176" height="54" fill="#ffffff" stroke="#a8cfec" stroke-width="1.5" rx="8"/>
+        <text x="486" y="147" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">Prediction</text>
+        <text x="486" y="166" font-family="Consolas, Menlo, monospace" font-size="11.5" fill="#5d6b78" text-anchor="middle">argmax of logits</text>
+        <line x1="574" y1="151" x2="588" y2="151" stroke="#5d6b78" stroke-width="1.5" fill="none" marker-end="url(#a1arrow)"/>
+        <rect x="592" y="124" width="176" height="54" fill="#ffffff" stroke="#a8cfec" stroke-width="1.5" rx="8"/>
+        <text x="680" y="147" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">Post-processing</text>
+        <text x="680" y="166" font-family="Consolas, Menlo, monospace" font-size="11.5" fill="#5d6b78" text-anchor="middle">none for this task</text>
+        <line x1="768" y1="151" x2="782" y2="151" stroke="#5d6b78" stroke-width="1.5" fill="none" marker-end="url(#a1arrow)"/>
+        <rect x="786" y="124" width="176" height="54" fill="#e4f0fa" stroke="#2f7cc0" stroke-width="1.5" rx="8"/>
+        <text x="874" y="147" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#111111" text-anchor="middle">Evaluation</text>
+        <text x="874" y="166" font-family="Consolas, Menlo, monospace" font-size="11.5" fill="#5d6b78" text-anchor="middle">engine/metrics.py</text>
+        <path d="M 946 74 L 946 100 L 98 100 L 98 122" stroke="#5d6b78" stroke-width="1.5" fill="none" marker-end="url(#a1arrow)"/>
+        <text x="522" y="96" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#5d6b78" text-anchor="middle">backward pass and parameter update, once per batch</text>
+        <text x="10" y="216" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#5d6b78">Fixed split: results/a1/splits/split_seed42.json &mdash; committed, and shared by every model.</text>
+        <text x="10" y="232" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#5d6b78">The test split is read only at the Evaluation stage, by src/evaluate.py.</text>
+      </svg>
+      <figcaption>Figure 1 &mdash; A1 pipeline, with the module that implements each stage.</figcaption>
+    </figure>
+    <p><strong>Walkthrough.</strong> <code>scripts/prepare_data.py</code> downloads Fashion-MNIST once.
+       <code>src/data/split.py</code> produces the stratified 54k/6k split and commits it as a JSON index file, so
+       every model in the comparison trains on byte-identical data. <code>src/data/transforms.py</code> converts
+       each image to a float tensor and normalizes it with the training-split statistics;
+       <code>src/data/loaders.py</code> wraps the three splits in DataLoaders with seeded workers.
+       <code>src/train.py</code> resolves the model config, seeds every RNG, builds the model through a registry
+       and hands everything to <code>fit()</code> in <code>src/engine/trainer.py</code>, which runs the
+       train/validate loop, logs one row per epoch to <code>history.csv</code> and saves <code>best.pt</code>
+       whenever validation macro-F1 improves. Prediction is a plain <code>argmax</code> over the logits; there is
+       no post-processing step for this task. <code>src/evaluate.py</code> then loads the best checkpoint, runs the
+       test split exactly once, and writes the metrics and figures required by handbook &sect;12.1.</p>
 
     <h3>Mandatory models</h3>
     <div class="table-scroll">
       <table>
         <thead><tr><th>#</th><th>Model</th><th>Input representation</th><th>Key design notes</th><th>Params</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td>Linear / softmax</td><td>Flattened image vector</td><td>Single linear layer to logits; CrossEntropyLoss (no softmax applied before the loss)</td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
-          <tr><td>2</td><td>MLP</td><td>Flattened image vector</td><td><span class="fill">[hidden layers; activations; regularization + why]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>1</td><td>Linear / softmax</td><td>Flattened image vector</td><td>Single linear layer to logits; CrossEntropyLoss (no softmax applied before the loss)</td><td>7,850</td><td><span class="badge done">Implemented</span></td></tr>
+          <tr><td>2</td><td>MLP</td><td>Flattened image vector</td><td>Hidden layers 256 and 128 with ReLU; dropout 0.2 after each hidden layer, since the flattened-pixel models overfit fastest; CrossEntropyLoss on raw logits</td><td>235,146</td><td><span class="badge done">Implemented</span></td></tr>
           <tr><td>3</td><td>CNN (self-designed)</td><td>2D image tensor</td><td><span class="fill">[conv/pool stack; explain convolution, pooling, feature maps]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
           <tr><td>4</td><td>LSTM or GRU</td><td>Sequence of rows / columns / patches</td><td><span class="fill">[timestep definition; input size; hidden representation]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
           <tr><td>5</td><td>Transformer</td><td>Sequence of rows / columns / patches</td><td><span class="fill">[token embedding/projection; positional encoding; attention inputs and outputs]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
@@ -160,7 +262,10 @@
 
     <h3>Optional extensions (do not replace core work)</h3>
     <ul>
-      <li><span class="fill">[e.g. LSTM vs GRU comparison / state-space model / CIFAR-10 / robustness / interpretability / matched parameter budget / PyTorch vs Keras]</span></li>
+      <li>Under consideration, none completed at the M1 draft: (a) LSTM vs GRU on the identical row-sequence
+        representation; (b) an augmentation ablation, since the main comparison deliberately uses none;
+        (c) a matched-parameter-budget comparison, so that the CNN and MLP are contrasted at similar capacity
+        rather than similar depth. These are extensions and do not substitute for any missing core model.</li>
     </ul>
   </section>
 
@@ -172,28 +277,73 @@
       <table>
         <thead><tr><th>Setting</th><th>Linear</th><th>MLP</th><th>CNN</th><th>LSTM/GRU</th><th>Transformer</th></tr></thead>
         <tbody>
-          <tr><td>Optimizer</td><td colspan="5"><span class="fill">[per model]</span></td></tr>
-          <tr><td>Learning rate / scheduler</td><td colspan="5"><span class="fill">[per model]</span></td></tr>
-          <tr><td>Batch size / epochs</td><td colspan="5"><span class="fill">[per model]</span></td></tr>
-          <tr><td>Regularization / early stopping</td><td colspan="5"><span class="fill">[per model]</span></td></tr>
-          <tr><td>Checkpoint criterion</td><td colspan="5"><span class="fill">[e.g. best validation macro-F1]</span></td></tr>
+          <tr><td>Optimizer</td><td colspan="5">Adam, weight decay 0.0 &mdash; shared default in <code>configs/a1/base.yaml</code></td></tr>
+          <tr><td>Learning rate / scheduler</td><td colspan="5">1e-3, constant (no scheduler) for the main comparison</td></tr>
+          <tr><td>Batch size / epochs</td><td colspan="5">128 / up to 20 epochs</td></tr>
+          <tr><td>Regularization / early stopping</td><td colspan="5">Per-model dropout where stated; early stopping after 5 epochs with no improvement in validation macro-F1</td></tr>
+          <tr><td>Checkpoint criterion</td><td colspan="5">Best validation macro-F1 (saved as <code>best.pt</code>), the same rule for every model. Validation loss is logged but not used for selection, because macro-F1 is the reported metric and the two can disagree.</td></tr>
         </tbody>
       </table>
     </div>
     <h3>Environment and fairness</h3>
     <dl class="kv">
-      <dt>Hardware</dt><dd><span class="fill">[GPU/CPU, RAM]</span></dd>
-      <dt>Software versions</dt><dd><span class="fill">[Python, PyTorch, CUDA]</span></dd>
-      <dt>Seeds</dt><dd><span class="fill">[seed(s); number of runs]</span></dd>
-      <dt>Mixed precision</dt><dd><span class="fill">[yes/no]</span></dd>
-      <dt>Hyperparameter selection</dt><dd><span class="fill">[method]</span></dd>
+      <dt>Hardware</dt><dd>AMD Ryzen 7 7735HS, 15.2&nbsp;GB RAM, Windows 11. An NVIDIA RTX 4060 Laptop GPU is present but unused: the installed PyTorch is a CPU-only build, so every reported run is CPU and all models are timed on the same hardware.</dd>
+      <dt>Software versions</dt><dd>Python 3.10.21 &middot; PyTorch 2.14.0+cpu &middot; torchvision 0.29.0 &middot; NumPy 2.2.6 &middot; pandas 2.3.3 &middot; scikit-learn 1.7.2 &middot; matplotlib 3.10.9 &middot; CUDA not used. Exact versions are frozen in <code>requirements.lock.txt</code>.</dd>
+      <dt>Seeds</dt><dd>42 for the main comparison; the seed study repeats it with 42, 1 and 2 (<code>scripts/run_a1_seeds.ps1</code>). Python, NumPy, torch and the DataLoader workers are all seeded through <code>src/common/seed.py</code>, and a repeated run with the same seed reproduces identical per-epoch numbers.</dd>
+      <dt>Mixed precision</dt><dd>No &mdash; CPU-only training.</dd>
+      <dt>Hyperparameter selection</dt><dd>Shared defaults across all models rather than a per-model search, so architecture is the only factor that changes (handbook &sect;12.2). Any deviation is recorded in that model&rsquo;s own config file.</dd>
     </dl>
     <p>Fairness constraints: identical dataset split for all main models, identical evaluation protocol and
        metrics, reported hardware/software/seed and checkpoint-selection rule.</p>
 
     <h3>Experimental design</h3>
     <p>For each experiment state: hypothesis, changed factor, fixed factors, metrics, conclusion criteria.</p>
-    <p><span class="fill">[Experiment table]</span></p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>#</th><th>Hypothesis</th><th>Changed factor</th><th>Fixed factors</th><th>Metrics</th><th>Conclusion criterion</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>E1</td>
+            <td>Adding a hidden layer to the linear classifier raises macro-F1, because the classes are not
+                linearly separable in raw pixel space.</td>
+            <td>Architecture: linear &rarr; MLP (both on flattened pixels)</td>
+            <td>Split, seed, optimizer, lr, batch size, epoch budget, checkpoint rule</td>
+            <td>Test accuracy, macro-F1, parameters, training and inference time</td>
+            <td>MLP macro-F1 exceeds linear by more than the seed-to-seed spread of the three-seed study.</td>
+          </tr>
+          <tr>
+            <td>E2</td>
+            <td>A convolutional model beats both flattened-pixel models, because weight sharing and locality match
+                the spatial structure of the images.</td>
+            <td>Input representation: flat vector &rarr; 2D grid</td>
+            <td>Split, seed, training protocol</td>
+            <td>As E1, plus per-class F1 on the Shirt cluster</td>
+            <td>CNN macro-F1 exceeds the best flattened-pixel model, and the gain concentrates in the
+                Shirt/Pullover/Coat classes.</td>
+          </tr>
+          <tr>
+            <td>E3</td>
+            <td>Sequence models reach comparable accuracy but cost more time per image, because a 28-step recurrence
+                cannot be parallelised the way a convolution can.</td>
+            <td>Input representation: 2D grid &rarr; sequence of rows / patches</td>
+            <td>Split, seed, training protocol</td>
+            <td>As E1, with emphasis on inference time per image</td>
+            <td>Accuracy within a small margin of the CNN while inference time per image is clearly higher.</td>
+          </tr>
+          <tr>
+            <td>E4</td>
+            <td>Results are stable across seeds, so the ranking is a property of the architectures and not of one
+                lucky initialisation.</td>
+            <td>Seed: 42, 1, 2</td>
+            <td>Everything else</td>
+            <td>Mean &plusmn; standard deviation of accuracy and macro-F1</td>
+            <td>The ranking of the five models is unchanged across all three seeds.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px;color:var(--muted)">At the M1 draft only E1 has been run; E2&ndash;E4 are blocked on
+       the three remaining models.</p>
   </section>
 
   <!-- ============ RESULTS ============ -->
@@ -206,32 +356,115 @@
           <tr><th>Model</th><th>Accuracy</th><th>Macro-F1</th><th>Parameters</th><th>Training time</th><th>Inference time</th></tr>
         </thead>
         <tbody>
-          <tr><td>Linear / softmax</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
-          <tr><td>MLP</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
+          <tr><td>Linear / softmax</td><td>0.8403</td><td>0.8408</td><td>7,850</td><td>459&nbsp;s (17 epochs, early-stopped)</td><td>0.0034&nbsp;ms/image</td></tr>
+          <tr><td>MLP</td><td><strong>0.8940</strong></td><td><strong>0.8941</strong></td><td>235,146</td><td>586&nbsp;s (20 epochs)</td><td>0.0070&nbsp;ms/image</td></tr>
           <tr><td>CNN</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
           <tr><td>LSTM / GRU</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
           <tr><td>Transformer</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
         </tbody>
       </table>
     </div>
+    <p style="font-size:14px;color:var(--muted)">Test split, seed 42, checkpoint selected by best validation
+       macro-F1, all runs on the CPU described under Environment. Accuracy and macro-F1 come from
+       <code>results/a1/runs/&lt;run_id&gt;/metrics_test.json</code>; the test split was read once per model, after
+       training. Mean &plusmn; standard deviation over seeds 42, 1 and 2 (experiment E4) is still to run, so no
+       claim is made here about how stable these numbers are.</p>
     <!-- Ghi chu noi bo: bao cao mean +/- std qua nhieu lan chay neu du thoi gian. -->
 
     <h3>Training behaviour</h3>
-    <p><span class="fill">[Training/validation loss and metric curves per model; selected checkpoint; over/underfitting; training time; implementation issues and fixes.]</span></p>
+    <figure>
+      <img src="../assets/img/a1/a1_linear_curves.png" alt="Linear classifier: training and validation loss, and validation accuracy and macro-F1, per epoch." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 2 &mdash; Linear classifier, 17 epochs (early-stopped).</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/img/a1/a1_mlp_curves.png" alt="MLP: training and validation loss, and validation accuracy and macro-F1, per epoch." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 3 &mdash; MLP (256, 128, dropout 0.2), 20 epochs.</figcaption>
+    </figure>
+    <p><strong>Linear classifier.</strong> Training and validation loss fall together for the first few epochs and
+       then flatten near 0.39 &mdash; the two curves stay close, which is underfitting rather than overfitting: the
+       model has 7,850 parameters and simply cannot represent the decision boundary any better. Validation
+       macro-F1 peaked at 0.8658 at <strong>epoch 11</strong>, that epoch was checkpointed, and training stopped at
+       epoch 16 after five epochs without improvement. Note that epoch 16 had a lower validation <em>loss</em> than
+       several earlier epochs while its macro-F1 was worse &mdash; the concrete case for selecting on the metric
+       being reported rather than on loss.</p>
+    <p><strong>MLP.</strong> The gap between the curves opens steadily after about epoch 8: training loss reaches
+       0.202 while validation loss stalls at 0.284. That gap is ordinary overfitting, held in check by dropout 0.2,
+       and validation macro-F1 was still improving slowly at the epoch budget (best 0.9048 at
+       <strong>epoch 16</strong> of 20), so early stopping never triggered. A longer budget would probably gain a
+       little more, which is worth revisiting once the remaining three models set a fair common budget.</p>
+    <p><strong>Implementation issues and fixes.</strong> Three defects were found by running the pipeline rather
+       than by reading it: <code>fit()</code> raised <code>NameError</code> after the final epoch because pandas
+       was not imported, which would have destroyed <code>history.csv</code> at the end of a long run;
+       <code>inference_time</code> divided by zero when a loader had fewer batches than the warm-up count; and the
+       Vietnamese completion message crashed with <code>UnicodeEncodeError</code> on the cp1252 Windows console,
+       returning a non-zero exit code that would have halted <code>run_a1_all.ps1</code> mid-batch. All three are
+       fixed. The training loop itself was validated by checking that it can drive a 100-image subset to near-zero
+       loss, and that a repeated run with the same seed reproduces identical per-epoch numbers.</p>
 
     <h3>Confusion matrices</h3>
-    <p><span class="fill">[One confusion matrix per model, or for the models being contrasted.]</span></p>
+    <figure>
+      <img src="../assets/img/a1/a1_linear_confusion_test.png" alt="Confusion matrix of the linear classifier on the test split." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 4 &mdash; Linear classifier, test split (rows = truth, columns = prediction).</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/img/a1/a1_mlp_confusion_test.png" alt="Confusion matrix of the MLP on the test split." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 5 &mdash; MLP, test split.</figcaption>
+    </figure>
+    <p>Both matrices have the same shape: a strong diagonal for the footwear, bag and trouser classes, and one
+       dense off-diagonal block among T-shirt/top, Pullover, Coat and Shirt.</p>
 
     <h3>Qualitative results</h3>
-    <p><span class="fill">[Correct predictions; difficult but correct cases; failures; predictions versus ground truth.]</span></p>
+    <figure>
+      <img src="../assets/img/a1/a1_mlp_wrong_test.png" alt="Sixteen test images the MLP classified incorrectly, captioned with the true and predicted class." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 6 &mdash; MLP failures on the test split; each caption gives the true and the predicted class.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/img/a1/a1_mlp_correct_test.png" alt="Sixteen test images the MLP classified correctly, captioned with the true and predicted class." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 7 &mdash; MLP correct predictions on the test split.</figcaption>
+    </figure>
+    <p>The failure grid is dominated by long-sleeved upper-body garments that are genuinely ambiguous at
+       28&times;28 &mdash; a Pullover read as a Shirt, a Coat read as a Pullover &mdash; plus a handful of
+       sneaker/ankle-boot swaps where the ankle height is only a few pixels. Several of these would be hard for a
+       human annotator without the original colour photograph, which puts a practical ceiling on what any model in
+       this comparison can reach.</p>
   </section>
 
   <!-- ============ DISCUSSION ============ -->
   <section id="discussion">
     <h2>Comparison and discussion</h2>
-    <p><span class="fill">[Which method is better and by how much; where the differences appear; causes related to data, architecture, loss, and training; accuracy-speed-parameter trade-offs; whether each hypothesis is supported; conclusions that cannot yet be drawn.]</span></p>
+    <p><strong>How much better.</strong> The MLP beats the linear classifier by 5.37 accuracy points
+       (0.8940 vs. 0.8403) and 5.33 macro-F1 points (0.8941 vs. 0.8408). This supports hypothesis E1: the classes
+       are not linearly separable in raw pixel space, and one hidden layer pair recovers a substantial part of what
+       the linear model cannot express.</p>
+    <p><strong>Where the difference appears.</strong> Not uniformly. The two models are within about one point of
+       each other on Trouser, Bag, Sandal, Sneaker and Ankle boot &mdash; classes with distinctive silhouettes that
+       a linear boundary already separates. The gain concentrates in the ambiguous cluster: Shirt recall rises from
+       0.595 to 0.714, Pullover from 0.732 to 0.817 and Coat from 0.767 to 0.842. Errors inside the
+       T-shirt/Pullover/Coat/Shirt block fall from 964 to 674, which is 60&nbsp;% and 64&nbsp;% of each model's
+       total errors respectively &mdash; so the extra capacity is spent almost entirely where the classes overlap.</p>
+    <p><strong>Cost.</strong> The MLP uses 30&times; the parameters (235,146 vs. 7,850), 28&nbsp;% more wall-clock
+       training time (586&nbsp;s vs. 459&nbsp;s, though the linear run early-stopped three epochs sooner) and about
+       2&times; the inference time per image (0.0070&nbsp;ms vs. 0.0034&nbsp;ms on CPU). At this scale both are
+       cheap in absolute terms, so the accuracy is worth buying; the trade-off becomes interesting only once the
+       convolutional and sequence models enter, where inference cost grows much faster than parameter count.</p>
+    <p><strong>What cannot be concluded yet.</strong> Both models see the same flattened 784-vector, so this
+       comparison says nothing about inductive bias &mdash; it measures depth and capacity, not representation.
+       The representation question (E2, E3) needs the CNN and the sequence models. And with a single seed there is
+       no evidence yet that a 5-point gap is beyond run-to-run variation, although a gap this size is very unlikely
+       to be noise; E4 will quantify that.</p>
     <h3>Data representation and inductive bias</h3>
-    <p><span class="fill">[How flattened pixels, spatial features, and row/column/patch sequences affect each family.]</span></p>
+    <p>Both models implemented so far discard spatial structure at the first layer: flattening
+       <code>[1, 28, 28]</code> into a 784-vector means a pixel and the pixel directly below it are no more related
+       than any other pair, and each has its own independent weight. That is visible in the failure mode &mdash;
+       the errors are concentrated exactly where classes differ by local shape (a collar, a sleeve edge, a button
+       placket) rather than by overall brightness or silhouette. It is also why the linear model needs only 7,850
+       parameters to capture most of the &ldquo;easy&rdquo; classes, and why the MLP must spend 235,146 to buy back
+       part of the hard cluster. The remaining three models are precisely the test of this: a CNN reuses one kernel
+       across all positions, so local shape is learnt once and matched everywhere; a recurrent model reads rows in
+       order, imposing a top-to-bottom reading of the garment; a Transformer lets every patch attend to every
+       other, at the cost of having to learn positional structure from data rather than assuming it. Whether those
+       biases pay for themselves on 28&times;28 grayscale images is the research question, and this draft can only
+       set the flattened-pixel baseline for it.</p>
   </section>
 
   <!-- ============ ERROR ANALYSIS ============ -->
@@ -241,18 +474,69 @@
       <table>
         <thead><tr><th>Error group</th><th>Frequency / rate</th><th>Examples</th><th>Hypothesised cause</th><th>Improvement idea</th></tr></thead>
         <tbody>
-          <tr><td><span class="fill">[e.g. shirt vs coat confusion]</span></td><td><span class="fill">[x%]</span></td><td><span class="fill">[figure]</span></td><td><span class="fill">[cause]</span></td><td><span class="fill">[idea]</span></td></tr>
+          <tr>
+            <td>Upper-body garment cluster: T-shirt/top &harr; Pullover &harr; Coat &harr; Shirt</td>
+            <td>674 of the MLP&rsquo;s 1,060 test errors (63.6&nbsp;%); 964 of the linear model&rsquo;s 1,597 (60.4&nbsp;%)</td>
+            <td>Figure 5, Figure 6</td>
+            <td>The four classes share outline, aspect ratio and mean brightness; they differ by local detail
+                (collar, buttons, sleeve edge) that survives poorly at 28&times;28 and is destroyed entirely by
+                flattening, which gives every pixel an independent weight</td>
+            <td>A convolutional model, whose shared kernels detect local shape wherever it occurs (experiment E2);
+                secondarily, augmentation so that small shifts do not change the prediction</td>
+          </tr>
+          <tr>
+            <td>Shirt specifically, the worst class in both models</td>
+            <td>Recall 0.595 (linear) &rarr; 0.714 (MLP); absorbs 121 T-shirt/top, 119 Pullover and 114 Coat
+                misclassifications in the linear model</td>
+            <td>Figure 4, Figure 5</td>
+            <td>Shirt is the visual midpoint of the cluster &mdash; long-sleeved like a Pullover, open like a Coat,
+                thin like a T-shirt &mdash; so it receives errors from every neighbour and loses its own</td>
+            <td>Report per-class F1 next to macro-F1 so this class cannot hide in the average; consider it the
+                headline metric when comparing the five architectures</td>
+          </tr>
+          <tr>
+            <td>Footwear: Sneaker &harr; Ankle boot &harr; Sandal</td>
+            <td>A small residue &mdash; both models exceed 0.95 recall on Sneaker and Trouser</td>
+            <td>Figure 6</td>
+            <td>Ankle height is a few pixels; some sandals with a back strap are geometrically close to sneakers</td>
+            <td>Low priority: the absolute count is small and the cause is genuine image ambiguity rather than
+                model capacity</td>
+          </tr>
         </tbody>
       </table>
     </div>
     <h3>Ablation study (recommended for A1)</h3>
-    <p><span class="fill">[e.g. sequence representation, augmentation, or regularizer ablation.]</span></p>
+    <p>Planned, not yet run. The main comparison deliberately uses no augmentation so that every architecture
+       sees identical inputs, which makes augmentation the natural first ablation: re-run the best model with
+       random horizontal flips and small translations, everything else fixed, and report the change in macro-F1.
+       The second candidate is the sequence representation (rows vs. 7&times;7 patches) for the recurrent model,
+       for which <code>configs/a1/rnn_rows.yaml</code> and <code>configs/a1/rnn_patches.yaml</code> already exist
+       and differ only in that factor. An ablation is recommended rather than mandatory for Assignment 1
+       (handbook &sect;3.3).</p>
   </section>
 
   <!-- ============ CONCLUSION ============ -->
   <section id="conclusion">
     <h2>Limitations and conclusion</h2>
-    <p><span class="fill">[Data, method, and experimental limits; generalization; future work; short answer to the research question.]</span></p>
+    <p><strong>Draft status.</strong> Two of the five mandatory models are implemented and trained, so the
+       research question cannot be answered yet; what follows is what the evidence so far does and does not
+       support.</p>
+    <p><strong>Data limits.</strong> Fashion-MNIST is 28&times;28, grayscale, one centred object per image, with no
+       metadata and no duplicates removed. It is a controlled benchmark, not a sample of real catalogue
+       photographs, so absolute accuracies here say little about production performance; the comparison
+       <em>between</em> architectures is what transfers.</p>
+    <p><strong>Method limits.</strong> All models share one hyperparameter setting (Adam, lr 1e-3, batch 128)
+       rather than a per-model search. This is deliberate &mdash; it keeps architecture the only factor that varies
+       (&sect;12.2) &mdash; but it means no model is shown at its own best, and a model that simply prefers a
+       different learning rate could be under-represented. No scheduler and no augmentation are used in the main
+       comparison.</p>
+    <p><strong>Experimental limits.</strong> Results at this draft come from a single seed on CPU. The three-seed
+       study that gives mean &plusmn; standard deviation is designed (E4) but not yet run, so no claim about the
+       <em>stability</em> of any ranking is made here. Inference timings are CPU-only and would re-order if the
+       models were re-timed on the GPU.</p>
+    <p><strong>Future work for M2.</strong> Implement the CNN, LSTM/GRU and Transformer; run the five-model
+       comparison over three seeds; add one ablation; and write the inductive-bias discussion that the comparison
+       is designed to support.</p>
   </section>
 
   <!-- ============ REPRODUCIBILITY ============ -->
@@ -293,11 +577,16 @@
             <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
           </tr>
           <tr>
-            <td><span class="fill">[tool + version]</span></td>
+            <td>Claude (Claude Code, Opus 5)</td>
             <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
-            <td><span class="fill">[date / stage]</span></td>
-            <td><span class="fill">[purpose]</span></td>
-            <td><span class="fill">[files; report sections]</span></td>
+            <td>22&ndash;23 Sep 2026 &mdash; implementation and review before the M1 draft</td>
+            <td>Coding assistance and debugging: reviewing the merged data-pipeline branch, and completing the
+                training framework (metrics, train/validation loop with checkpointing and early stopping, entry
+                points, figures, profiling). Also used to draft the descriptive sections of this page from the
+                values the code uses.</td>
+            <td><code>src/engine/metrics.py</code>, <code>src/engine/trainer.py</code>,
+                <code>src/engine/plots.py</code>, <code>src/engine/profiler.py</code>, <code>src/train.py</code>,
+                <code>src/evaluate.py</code>, <code>configs/a1/base.yaml</code>; this page; <code>README.md</code></td>
             <td><span class="fill">[how the output was edited and checked, and against what sources]</span></td>
             <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
           </tr>

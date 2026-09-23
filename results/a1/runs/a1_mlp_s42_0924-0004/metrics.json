@@ -1,0 +1,15 @@
+{
+  "run_id": "a1_mlp_s42_0924-0004",
+  "model": "mlp",
+  "seed": 42,
+  "commit": "d55c030",
+  "device": "cpu",
+  "params": 235146,
+  "epochs_run": 20,
+  "train_time_sec": 586.27,
+  "best_epoch": 16,
+  "best_val_macro_f1": 0.9048404460698182,
+  "accuracy": 0.894,
+  "macro_f1": 0.894085389232582,
+  "inference_ms_per_image": 0.00704514357761508
+}
