@@ -17,6 +17,7 @@ training:
   batch_size: 128
   epochs: 20
   optimizer: adam
+  loss: cross_entropy          # read by trainer.build_loss
   lr: 0.001
   weight_decay: 0.0
   scheduler: none
