@@ -1,0 +1,12 @@
+{
+  "run_id": "a1_linear_s42_0923-1915",
+  "model": "linear",
+  "seed": 42,
+  "commit": "89bd6fc",
+  "device": "cpu",
+  "params": 7850,
+  "epochs_run": 3,
+  "train_time_sec": 67.07,
+  "best_epoch": 2,
+  "best_val_macro_f1": 0.8619922741472393
+}

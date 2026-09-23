@@ -98,9 +98,9 @@
       <table>
         <thead><tr><th>Dataset</th><th>Role</th><th>Source / version / license</th><th>Samples</th></tr></thead>
         <tbody>
-          <tr><td>MNIST</td><td>Development and debugging only</td><td><span class="fill">[source]</span></td><td><span class="fill">[n]</span></td></tr>
-          <tr><td>Fashion-MNIST</td><td><strong>Primary results (main comparison)</strong></td><td><span class="fill">[source]</span></td><td><span class="fill">[n]</span></td></tr>
-          <tr><td>CIFAR-10</td><td>Optional extension</td><td><span class="fill">[source or not used]</span></td><td><span class="fill">[n]</span></td></tr>
+          <tr><td>MNIST</td><td>Development and debugging only</td><td><code>torchvision.datasets.MNIST</code> &middot; CC BY-SA 3.0</td><td>60,000 train / 10,000 test &mdash; not used for any reported number</td></tr>
+          <tr><td>Fashion-MNIST</td><td><strong>Primary results (main comparison)</strong></td><td>Zalando Research, via <code>torchvision.datasets.FashionMNIST</code> &middot; MIT licence</td><td>70,000 grayscale 28&times;28 images: 60,000 official train, 10,000 official test, 10 balanced classes</td></tr>
+          <tr><td>CIFAR-10</td><td>Optional extension</td><td>Not used</td><td>&mdash;</td></tr>
         </tbody>
       </table>
     </div>
@@ -108,11 +108,11 @@
 
     <h3>EDA (required items)</h3>
     <ul>
-      <li>Class distribution &mdash; <span class="fill">[figure + table]</span></li>
-      <li>Input size / shape &mdash; <span class="fill">[value]</span></li>
-      <li>Imbalance analysis &mdash; <span class="fill">[finding]</span></li>
-      <li>Representative samples &mdash; <span class="fill">[image grid]</span></li>
-      <li>Storage size, formats, bias and limitations &mdash; <span class="fill">[notes]</span></li>
+      <li>Class distribution &mdash; <code>results/a1/figures/a1_class_distribution.png</code> with the counts in <code>results/a1/tables/a1_class_distribution.csv</code>: 6,000 images per class in the official train set, 5,400 / 600 after the train/validation split.</li>
+      <li>Input size / shape &mdash; raw images are <code>uint8</code> 28&times;28 in [0, 255]; after preprocessing each sample is a float32 tensor of shape <code>[1, 28, 28]</code>, batched as <code>[B, 1, 28, 28]</code>.</li>
+      <li>Imbalance analysis &mdash; the dataset is perfectly balanced (10&nbsp;% per class in every split), so no resampling or class weighting is used. Macro-F1 is still reported next to accuracy because per-class <em>difficulty</em> is very uneven even when the counts are not.</li>
+      <li>Representative samples &mdash; <code>results/a1/figures/a1_representative_samples.png</code>.</li>
+      <li>Storage size, formats, bias and limitations &mdash; about 30&nbsp;MB of idx-ubyte files fetched by <code>scripts/prepare_data.py</code> (git-ignored; see the README). Limitations: one centred object per image, grayscale, low resolution and no metadata, so conclusions transfer poorly to real catalogue photographs.</li>
     </ul>
 
     <h3>Data splitting</h3>
@@ -120,18 +120,28 @@
       <table>
         <thead><tr><th>Split</th><th>Samples</th><th>Source</th><th>Stratified</th></tr></thead>
         <tbody>
-          <tr><td>Train</td><td><span class="fill">[n]</span></td><td><span class="fill">[official / custom]</span></td><td><span class="fill">[yes/no]</span></td></tr>
-          <tr><td>Validation</td><td><span class="fill">[n]</span></td><td><span class="fill">[official / custom]</span></td><td><span class="fill">[yes/no]</span></td></tr>
-          <tr><td>Test</td><td><span class="fill">[n]</span></td><td><span class="fill">[official / custom]</span></td><td><span class="fill">[yes/no]</span></td></tr>
+          <tr><td>Train</td><td>54,000 (5,400 per class)</td><td>Custom split of the official train set</td><td>Yes</td></tr>
+          <tr><td>Validation</td><td>6,000 (600 per class)</td><td>Custom split of the official train set</td><td>Yes</td></tr>
+          <tr><td>Test</td><td>10,000 (1,000 per class)</td><td>Official Fashion-MNIST test set, untouched</td><td>Official</td></tr>
         </tbody>
       </table>
     </div>
-    <p>Seed: <span class="fill">[seed]</span> &middot; Split unit: <span class="fill">[unit]</span> &middot;
-       Leakage prevention: <span class="fill">[how]</span>.
+    <p>Seed: 42 &middot; Split unit: one image &middot;
+       Leakage prevention: the split is generated once by <code>python -m src.data.split</code> (scikit-learn
+       <code>StratifiedShuffleSplit</code>) and committed as <code>results/a1/splits/split_seed42.json</code>;
+       every loader reads that file and nobody re-splits on the fly. The train and validation index sets are
+       verified disjoint and to cover all 60,000 training images, the normalization statistics are computed on the
+       54,000 training images only, and the test set is read solely by <code>src/evaluate.py</code>.
        All models in the main comparison use this same split and seed.</p>
 
     <h3>Preprocessing</h3>
-    <p><span class="fill">[Cleaning; resize/normalization; augmentation; invalid annotation handling; input tensor shapes; one example batch after preprocessing.]</span></p>
+    <p>No cleaning or resizing is needed: Fashion-MNIST ships as fixed-size 28&times;28 grayscale images with no
+       invalid annotations. The pipeline is <code>ToTensor()</code> (scaling to [0,&nbsp;1]) followed by
+       <code>Normalize(mean=0.286209, std=0.353160)</code>, both statistics measured on the 54,000-image training
+       split only &mdash; never on validation or test. <strong>No augmentation</strong> is applied in the main
+       comparison, so all five architectures see identical inputs; augmentation is listed as a candidate ablation.
+       Input tensors after preprocessing are <code>[B, 1, 28, 28]</code> float32 with <code>[B]</code> int64
+       labels, verified to have batch mean &asymp; 0 and standard deviation &asymp; 1.</p>
   </section>
 
   <!-- ============ METHOD ============ -->
@@ -148,8 +158,8 @@
       <table>
         <thead><tr><th>#</th><th>Model</th><th>Input representation</th><th>Key design notes</th><th>Params</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td>Linear / softmax</td><td>Flattened image vector</td><td>Single linear layer to logits; CrossEntropyLoss (no softmax applied before the loss)</td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
-          <tr><td>2</td><td>MLP</td><td>Flattened image vector</td><td><span class="fill">[hidden layers; activations; regularization + why]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>1</td><td>Linear / softmax</td><td>Flattened image vector</td><td>Single linear layer to logits; CrossEntropyLoss (no softmax applied before the loss)</td><td>7,850</td><td><span class="badge done">Implemented</span></td></tr>
+          <tr><td>2</td><td>MLP</td><td>Flattened image vector</td><td>Hidden layers 256 and 128 with ReLU; dropout 0.2 after each hidden layer, since the flattened-pixel models overfit fastest; CrossEntropyLoss on raw logits</td><td>235,146</td><td><span class="badge done">Implemented</span></td></tr>
           <tr><td>3</td><td>CNN (self-designed)</td><td>2D image tensor</td><td><span class="fill">[conv/pool stack; explain convolution, pooling, feature maps]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
           <tr><td>4</td><td>LSTM or GRU</td><td>Sequence of rows / columns / patches</td><td><span class="fill">[timestep definition; input size; hidden representation]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
           <tr><td>5</td><td>Transformer</td><td>Sequence of rows / columns / patches</td><td><span class="fill">[token embedding/projection; positional encoding; attention inputs and outputs]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
@@ -172,21 +182,21 @@
       <table>
         <thead><tr><th>Setting</th><th>Linear</th><th>MLP</th><th>CNN</th><th>LSTM/GRU</th><th>Transformer</th></tr></thead>
         <tbody>
-          <tr><td>Optimizer</td><td colspan="5"><span class="fill">[per model]</span></td></tr>
-          <tr><td>Learning rate / scheduler</td><td colspan="5"><span class="fill">[per model]</span></td></tr>
-          <tr><td>Batch size / epochs</td><td colspan="5"><span class="fill">[per model]</span></td></tr>
-          <tr><td>Regularization / early stopping</td><td colspan="5"><span class="fill">[per model]</span></td></tr>
-          <tr><td>Checkpoint criterion</td><td colspan="5"><span class="fill">[e.g. best validation macro-F1]</span></td></tr>
+          <tr><td>Optimizer</td><td colspan="5">Adam, weight decay 0.0 &mdash; shared default in <code>configs/a1/base.yaml</code></td></tr>
+          <tr><td>Learning rate / scheduler</td><td colspan="5">1e-3, constant (no scheduler) for the main comparison</td></tr>
+          <tr><td>Batch size / epochs</td><td colspan="5">128 / up to 20 epochs</td></tr>
+          <tr><td>Regularization / early stopping</td><td colspan="5">Per-model dropout where stated; early stopping after 5 epochs with no improvement in validation macro-F1</td></tr>
+          <tr><td>Checkpoint criterion</td><td colspan="5">Best validation macro-F1 (saved as <code>best.pt</code>), the same rule for every model. Validation loss is logged but not used for selection, because macro-F1 is the reported metric and the two can disagree.</td></tr>
         </tbody>
       </table>
     </div>
     <h3>Environment and fairness</h3>
     <dl class="kv">
-      <dt>Hardware</dt><dd><span class="fill">[GPU/CPU, RAM]</span></dd>
-      <dt>Software versions</dt><dd><span class="fill">[Python, PyTorch, CUDA]</span></dd>
-      <dt>Seeds</dt><dd><span class="fill">[seed(s); number of runs]</span></dd>
-      <dt>Mixed precision</dt><dd><span class="fill">[yes/no]</span></dd>
-      <dt>Hyperparameter selection</dt><dd><span class="fill">[method]</span></dd>
+      <dt>Hardware</dt><dd>AMD Ryzen 7 7735HS, 15.2&nbsp;GB RAM, Windows 11. An NVIDIA RTX 4060 Laptop GPU is present but unused: the installed PyTorch is a CPU-only build, so every reported run is CPU and all models are timed on the same hardware.</dd>
+      <dt>Software versions</dt><dd>Python 3.10.21 &middot; PyTorch 2.14.0+cpu &middot; torchvision 0.29.0 &middot; NumPy 2.2.6 &middot; pandas 2.3.3 &middot; scikit-learn 1.7.2 &middot; matplotlib 3.10.9 &middot; CUDA not used. Exact versions are frozen in <code>requirements.lock.txt</code>.</dd>
+      <dt>Seeds</dt><dd>42 for the main comparison; the seed study repeats it with 42, 1 and 2 (<code>scripts/run_a1_seeds.ps1</code>). Python, NumPy, torch and the DataLoader workers are all seeded through <code>src/common/seed.py</code>, and a repeated run with the same seed reproduces identical per-epoch numbers.</dd>
+      <dt>Mixed precision</dt><dd>No &mdash; CPU-only training.</dd>
+      <dt>Hyperparameter selection</dt><dd>Shared defaults across all models rather than a per-model search, so architecture is the only factor that changes (handbook &sect;12.2). Any deviation is recorded in that model&rsquo;s own config file.</dd>
     </dl>
     <p>Fairness constraints: identical dataset split for all main models, identical evaluation protocol and
        metrics, reported hardware/software/seed and checkpoint-selection rule.</p>
