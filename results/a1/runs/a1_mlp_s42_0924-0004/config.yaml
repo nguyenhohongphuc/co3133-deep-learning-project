@@ -10,8 +10,13 @@ data:
 data_dir: data/
 dataset: fashion_mnist
 model:
-  name: linear
-run_name: a1_linear
+  activation: relu
+  dropout: 0.2
+  hidden_sizes:
+  - 256
+  - 128
+  name: mlp
+run_name: a1_mlp
 seed: 42
 split_file: results/a1/splits/split_seed42.json
 training:
@@ -20,7 +25,7 @@ training:
   checkpoint_mode: max
   device: auto
   early_stopping_patience: 5
-  epochs: 3
+  epochs: 20
   loss: cross_entropy
   lr: 0.001
   num_workers: 2

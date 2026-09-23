@@ -20,7 +20,7 @@ training:
   checkpoint_mode: max
   device: auto
   early_stopping_patience: 5
-  epochs: 3
+  epochs: 20
   loss: cross_entropy
   lr: 0.001
   num_workers: 2
