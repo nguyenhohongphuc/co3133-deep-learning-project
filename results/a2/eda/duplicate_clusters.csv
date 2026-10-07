@@ -1,0 +1,310 @@
+cluster,size,splits,classes,cross_split,cross_label
+4,2,Train,Banh beo,False,False
+42,2,Test|Train,Banh beo,True,False
+44,2,Train,Banh beo|Banh bot loc,False,True
+187,2,Train|Validate,Banh beo,True,False
+280,2,Test|Train,Banh beo,True,False
+323,2,Test|Train,Banh beo,True,False
+347,2,Train,Banh beo|Banh bot loc,False,True
+410,2,Train,Banh beo,False,False
+411,2,Train,Banh beo,False,False
+422,2,Test|Train,Banh beo,True,False
+424,2,Test|Train,Banh beo,True,False
+433,2,Train,Banh beo|Banh gio,False,True
+458,2,Test|Train,Banh bot loc,True,False
+465,2,Train,Banh bot loc,False,False
+467,2,Test|Train,Banh bot loc,True,False
+472,2,Train,Banh bot loc,False,False
+484,2,Test|Train,Banh bot loc,True,False
+564,2,Train,Banh bot loc,False,False
+567,3,Train,Banh bot loc,False,False
+586,2,Train,Banh bot loc,False,False
+597,2,Train|Validate,Banh bot loc,True,False
+679,2,Train,Banh bot loc|Goi cuon,False,True
+680,2,Train,Banh bot loc,False,False
+863,3,Test|Train,Banh beo|Banh bot loc|Banh duc,True,True
+879,2,Test|Train,Banh bot loc|Banh gio,True,True
+884,2,Test|Train,Banh bot loc,True,False
+924,3,Test|Train,Banh bot loc,True,False
+926,2,Test|Train,Banh bot loc,True,False
+938,2,Test|Train,Banh bot loc,True,False
+956,2,Train|Validate,Banh can,True,False
+966,2,Test|Train,Banh can,True,False
+1019,2,Train|Validate,Banh can,True,False
+1062,2,Test|Train,Banh can|Banh khot,True,True
+1072,2,Test|Train,Banh can,True,False
+1096,2,Train,Banh can|Banh khot,False,True
+1126,2,Test|Train,Banh can,True,False
+1142,2,Train|Validate,Banh can|Banh khot,True,True
+1168,2,Test|Train,Banh can,True,False
+1452,2,Train|Validate,Banh can,True,False
+1488,2,Test|Train,Banh canh,True,False
+1563,2,Train,Banh canh,False,False
+1629,2,Train,Banh canh,False,False
+1659,2,Train,Banh canh,False,False
+1662,3,Train,Banh canh|Bun bo Hue,False,True
+1675,2,Train|Validate,Banh canh|Pho,True,True
+1845,2,Train,Banh canh,False,False
+1879,2,Test|Train,Banh canh|Hu tieu,True,True
+2019,2,Train,Banh canh,False,False
+2067,2,Train|Validate,Banh canh|Bun rieu,True,True
+2097,2,Test|Train,Banh canh|Chao long,True,True
+2150,2,Test|Train,Banh chung,True,False
+2157,2,Train,Banh chung,False,False
+2160,2,Train,Banh chung,False,False
+2161,2,Train,Banh chung,False,False
+2193,2,Train,Banh chung,False,False
+2198,2,Train,Banh chung,False,False
+2200,2,Test|Train,Banh chung,True,False
+2202,2,Train|Validate,Banh chung,True,False
+2214,2,Train,Banh chung,False,False
+2220,2,Train,Banh chung,False,False
+2232,2,Train,Banh chung,False,False
+2245,2,Test|Train,Banh chung,True,False
+2257,2,Train|Validate,Banh chung|Banh tet,True,True
+2390,2,Train,Banh chung,False,False
+2394,2,Train,Banh chung,False,False
+2415,2,Test|Train,Banh chung,True,False
+2417,2,Train,Banh chung,False,False
+2425,2,Test|Train,Banh chung,True,False
+2426,2,Test|Train,Banh chung,True,False
+2429,2,Test|Train,Banh chung,True,False
+2437,2,Test|Train,Banh chung,True,False
+2448,2,Test|Train,Banh chung,True,False
+2460,2,Test|Train,Banh chung,True,False
+2489,2,Test|Train,Banh chung|Banh tet,True,True
+2503,2,Train,Banh cuon,False,False
+2612,2,Train,Banh cuon,False,False
+2615,2,Test|Train,Banh cuon,True,False
+2624,2,Train,Banh cuon,False,False
+2649,2,Train,Banh cuon,False,False
+2715,2,Train|Validate,Banh cuon,True,False
+2728,2,Train,Banh cuon|Banh gio,False,True
+2775,2,Train,Banh cuon,False,False
+2794,2,Train,Banh cuon|Banh duc,False,True
+2808,2,Test|Train,Banh cuon|Banh duc,True,True
+2884,2,Train,Banh cuon,False,False
+3318,2,Test|Train,Banh duc,True,False
+3369,2,Train,Banh duc|Banh gio,False,True
+3415,2,Train,Banh duc,False,False
+3477,2,Train|Validate,Banh duc,True,False
+3574,2,Train,Banh duc|Banh gio,False,True
+3835,2,Test|Train,Banh duc|Banh gio,True,True
+3934,2,Train|Validate,Banh duc|Banh gio,True,True
+4079,2,Test|Train,Banh gio,True,False
+4374,2,Train,Banh khot,False,False
+4481,2,Test|Train,Banh khot,True,False
+4603,2,Train|Validate,Banh can|Banh khot,True,True
+4659,2,Test|Train,Banh bot loc|Banh khot,True,True
+4714,2,Train,Banh khot|Banh xeo,False,True
+4772,2,Test|Train,Banh khot,True,False
+4783,2,Test|Train,Banh khot,True,False
+4933,3,Test|Train,Banh mi|Goi cuon,True,True
+5083,2,Train|Validate,Banh mi,True,False
+5088,2,Train,Banh mi,False,False
+5091,2,Train,Banh mi,False,False
+5109,2,Train,Banh mi,False,False
+5111,2,Train,Banh mi,False,False
+5117,2,Train,Banh mi,False,False
+5120,2,Train,Banh mi,False,False
+5158,3,Test|Train,Banh mi,True,False
+5178,2,Train,Banh mi,False,False
+5235,2,Train,Banh mi,False,False
+5294,2,Train|Validate,Banh mi,True,False
+5314,2,Test|Train,Banh mi,True,False
+5332,2,Train,Banh mi,False,False
+5354,2,Train,Banh mi,False,False
+5406,2,Train,Banh mi,False,False
+5768,2,Test|Train,Banh pia,True,False
+5952,2,Test|Train,Banh pia,True,False
+6011,2,Test|Train,Banh pia,True,False
+6027,2,Train,Banh pia,False,False
+6056,2,Test|Train,Banh tet,True,False
+6066,2,Train|Validate,Banh tet,True,False
+6108,2,Train,Banh tet,False,False
+6145,2,Train,Banh tet,False,False
+6175,2,Test|Train,Banh chung|Banh tet,True,True
+6197,2,Test|Train,Banh tet,True,False
+6285,2,Train,Banh tet,False,False
+6467,2,Test|Train,Banh tet,True,False
+6527,2,Train,Banh trang nuong,False,False
+6534,2,Test|Train,Banh trang nuong,True,False
+6541,2,Train,Banh trang nuong,False,False
+6556,2,Train,Banh trang nuong,False,False
+6562,2,Train,Banh trang nuong,False,False
+6650,3,Test|Train,Banh trang nuong,True,False
+6737,2,Train,Banh trang nuong,False,False
+6769,2,Train,Banh trang nuong,False,False
+7315,2,Train,Banh xeo,False,False
+7320,2,Train|Validate,Banh xeo,True,False
+7365,2,Test|Train,Banh xeo,True,False
+7539,2,Train|Validate,Banh xeo,True,False
+7568,2,Train|Validate,Banh xeo,True,False
+7735,2,Train,Banh xeo,False,False
+8031,2,Test|Train,Bun bo Hue|Mi quang,True,True
+8057,2,Train,Bun bo Hue|Pho,False,True
+8101,2,Test|Train,Banh cuon|Bun bo Hue,True,True
+8119,2,Train,Bun bo Hue|Bun rieu,False,True
+8297,2,Test|Train,Bun bo Hue,True,False
+8299,2,Test|Train,Bun bo Hue,True,False
+8300,2,Train,Bun bo Hue,False,False
+8346,2,Test|Train,Bun bo Hue,True,False
+8386,2,Train,Bun bo Hue,False,False
+8469,2,Train,Bun bo Hue,False,False
+8506,2,Train,Bun bo Hue|Pho,False,True
+8514,2,Train,Bun bo Hue,False,False
+8526,2,Train,Bun bo Hue,False,False
+8694,2,Test|Train,Bun bo Hue|Bun rieu,True,True
+8712,3,Train|Validate,Banh xeo|Bun bo Hue|Bun rieu,True,True
+8732,2,Test|Train,Bun bo Hue,True,False
+8826,2,Train,Bun bo Hue|Bun rieu,False,True
+8827,2,Test|Train,Bun bo Hue|Bun rieu,True,True
+8909,2,Train,Bun bo Hue,False,False
+9550,2,Train,Bun dau mam tom,False,False
+9875,2,Train,Bun mam|Bun rieu,False,True
+9921,2,Train,Bun mam|Pho,False,True
+10188,2,Train,Bun rieu,False,False
+10389,2,Train|Validate,Bun rieu,True,False
+10590,2,Test|Train,Bun mam|Bun rieu,True,True
+10713,2,Train,Bun rieu,False,False
+10967,2,Train,Bun thit nuong,False,False
+11087,2,Train,Bun thit nuong,False,False
+11180,2,Train,Bun thit nuong,False,False
+11489,2,Test|Train,Ca kho to,True,False
+11501,2,Train,Ca kho to,False,False
+11528,2,Train,Ca kho to,False,False
+11550,2,Train|Validate,Ca kho to,True,False
+11592,2,Train,Ca kho to,False,False
+11718,2,Train,Ca kho to,False,False
+11721,2,Test|Train,Ca kho to,True,False
+11918,2,Test|Train,Ca kho to,True,False
+11935,2,Train,Ca kho to,False,False
+11988,2,Test|Train,Canh chua,True,False
+12013,2,Test|Train,Canh chua,True,False
+12036,2,Train,Canh chua,False,False
+12057,2,Train,Canh chua,False,False
+12077,2,Test|Train,Canh chua,True,False
+12089,2,Train,Canh chua,False,False
+12160,2,Train|Validate,Canh chua,True,False
+12243,2,Train|Validate,Canh chua,True,False
+12280,2,Train,Canh chua,False,False
+12314,2,Train|Validate,Ca kho to|Canh chua,True,True
+12661,2,Test|Train,Cao lau,True,False
+12682,2,Train,Cao lau,False,False
+12721,2,Test|Train,Cao lau|Mi quang,True,True
+12756,2,Test|Train,Cao lau|Mi quang,True,True
+12790,2,Test|Train,Cao lau,True,False
+12863,2,Train|Validate,Cao lau,True,False
+13012,2,Train,Chao long,False,False
+13033,2,Train,Chao long,False,False
+13039,2,Train,Chao long,False,False
+13179,2,Test|Train,Chao long,True,False
+13599,2,Train|Validate,Chao long,True,False
+13626,2,Test|Train,Chao long,True,False
+13651,3,Train|Validate,Chao long|Hu tieu,True,True
+13716,2,Train,Com tam,False,False
+13737,2,Train,Com tam,False,False
+13738,2,Train,Com tam,False,False
+13777,3,Train|Validate,Com tam,True,False
+13789,2,Train,Com tam,False,False
+13834,2,Train,Com tam,False,False
+13857,2,Train|Validate,Com tam,True,False
+13884,2,Test|Train,Com tam,True,False
+13992,2,Train,Com tam,False,False
+13999,2,Train|Validate,Com tam,True,False
+14192,2,Train|Validate,Com tam,True,False
+14435,3,Train|Validate,Goi cuon,True,False
+14464,2,Train,Goi cuon,False,False
+14564,2,Test|Train,Goi cuon,True,False
+14589,2,Train,Goi cuon,False,False
+14660,2,Train|Validate,Goi cuon,True,False
+14770,2,Train,Goi cuon,False,False
+14940,2,Test|Train,Goi cuon,True,False
+15020,2,Train|Validate,Hu tieu,True,False
+15052,2,Test|Train,Hu tieu,True,False
+15054,2,Train,Hu tieu,False,False
+15085,2,Train,Hu tieu,False,False
+15149,2,Train,Hu tieu,False,False
+15172,2,Train,Hu tieu,False,False
+15196,2,Test|Train,Hu tieu|Mi quang,True,True
+15285,2,Test|Train,Hu tieu,True,False
+15314,3,Test|Train,Banh canh|Bun rieu|Hu tieu,True,True
+15346,2,Train,Hu tieu,False,False
+15360,2,Train,Hu tieu,False,False
+15476,2,Test|Train,Hu tieu,True,False
+15661,2,Train,Mi quang,False,False
+15663,2,Test|Train,Mi quang,True,False
+15667,2,Train,Mi quang,False,False
+15668,2,Test|Train,Mi quang,True,False
+15685,2,Test|Train,Mi quang,True,False
+15699,2,Test|Train,Mi quang,True,False
+15701,2,Train,Mi quang,False,False
+15707,2,Train,Mi quang,False,False
+15717,2,Train|Validate,Mi quang,True,False
+15727,2,Train,Mi quang,False,False
+15729,2,Train,Mi quang,False,False
+15736,2,Test|Train,Mi quang,True,False
+15790,2,Train,Mi quang,False,False
+15844,2,Train|Validate,Mi quang,True,False
+15858,3,Test|Train,Mi quang,True,False
+15880,2,Train|Validate,Mi quang,True,False
+15900,2,Train|Validate,Mi quang,True,False
+15946,2,Train,Mi quang,False,False
+15965,2,Train,Mi quang,False,False
+15969,2,Train,Mi quang,False,False
+15983,2,Test|Train,Mi quang,True,False
+16197,2,Train,Mi quang,False,False
+16216,3,Train|Validate,Mi quang,True,False
+16220,2,Test|Train,Mi quang,True,False
+16230,2,Train|Validate,Mi quang,True,False
+16237,2,Test|Train,Mi quang,True,False
+16247,2,Test|Train,Mi quang,True,False
+16251,2,Train|Validate,Mi quang,True,False
+16257,2,Test|Train,Mi quang,True,False
+16263,2,Train|Validate,Mi quang,True,False
+16301,2,Test|Train,Nem chua,True,False
+16416,2,Train,Nem chua,False,False
+16545,2,Test|Train,Banh cuon|Nem chua,True,True
+16590,2,Train,Nem chua,False,False
+16619,2,Train,Nem chua,False,False
+16684,2,Train,Pho,False,False
+16695,2,Train,Pho,False,False
+16745,2,Train,Pho,False,False
+16760,2,Train,Pho,False,False
+16894,2,Test|Train,Bun bo Hue|Pho,True,True
+16909,2,Train,Pho,False,False
+17055,2,Test|Train,Pho,True,False
+17095,2,Test|Train,Pho,True,False
+17131,2,Train,Pho,False,False
+17142,2,Train|Validate,Pho,True,False
+17278,2,Train,Xoi xeo,False,False
+17742,2,Validate,Banh can,False,False
+17910,2,Validate,Banh chung,False,False
+17933,2,Test|Validate,Banh chung,True,False
+17972,2,Test|Validate,Banh cuon,True,False
+18149,2,Test|Validate,Banh duc|Banh gio,True,True
+18192,2,Test|Validate,Banh khot,True,False
+18316,2,Test|Validate,Banh mi,True,False
+18442,2,Test|Validate,Banh pia,True,False
+18773,2,Test|Validate,Bun bo Hue,True,False
+18778,2,Test|Validate,Bun bo Hue,True,False
+19223,2,Test|Validate,Bun thit nuong,True,False
+19235,2,Test|Validate,Ca kho to,True,False
+19251,2,Validate,Ca kho to,False,False
+19637,2,Test|Validate,Goi cuon|Nem chua,True,True
+19739,2,Test|Validate,Banh canh|Hu tieu,True,True
+19818,2,Test|Validate,Hu tieu,True,False
+20047,2,Test|Validate,Xoi xeo,True,False
+20173,2,Test,Banh beo,False,False
+20220,2,Test,Banh beo|Banh bot loc,False,True
+20389,2,Test,Banh can,False,False
+20750,2,Test,Banh chung|Banh tet,False,True
+20762,2,Test,Banh chung|Banh tet,False,True
+22199,2,Test,Banh xeo,False,False
+22547,2,Test,Bun bo Hue|Bun rieu,False,True
+22551,2,Test,Bun bo Hue,False,False
+23687,2,Test,Cao lau,False,False
+23845,2,Test,Chao long,False,False
+23857,2,Test,Chao long,False,False
+24592,2,Test,Mi quang,False,False
+24632,2,Test,Mi quang,False,False

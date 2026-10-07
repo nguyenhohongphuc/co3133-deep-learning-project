@@ -1,0 +1,379 @@
+split,class,relpath,cluster,reason,action
+Train,Banh beo,Train\Banh beo\98.jpg,4,within_split_duplicate,optional
+Train,Banh beo,Train\Banh beo\152.jpg,42,leak_copy_of_Test,drop
+Train,Banh beo,Train\Banh beo\157.jpg,44,cross_label_duplicate,drop
+Train,Banh bot loc,Train\Banh bot loc\381.jpg,44,cross_label_duplicate,drop
+Train,Banh beo,Train\Banh beo\34.jpg,187,leak_copy_of_Validate,drop
+Train,Banh beo,Train\Banh beo\45.jpg,280,leak_copy_of_Test,drop
+Train,Banh beo,Train\Banh beo\50.jpg,323,leak_copy_of_Test,drop
+Train,Banh beo,Train\Banh beo\539.jpg,347,cross_label_duplicate,drop
+Train,Banh bot loc,Train\Banh bot loc\565.jpg,347,cross_label_duplicate,drop
+Train,Banh beo,Train\Banh beo\69.jpg,410,within_split_duplicate,optional
+Train,Banh beo,Train\Banh beo\99.jpg,411,within_split_duplicate,optional
+Train,Banh beo,Train\Banh beo\642.jpg,422,leak_copy_of_Test,drop
+Train,Banh beo,Train\Banh beo\65.jpg,424,leak_copy_of_Test,drop
+Train,Banh beo,Train\Banh beo\77.jpg,433,cross_label_duplicate,drop
+Train,Banh gio,Train\Banh gio\72.jpg,433,cross_label_duplicate,drop
+Train,Banh bot loc,Train\Banh bot loc\11.jpg,458,leak_copy_of_Test,drop
+Train,Banh bot loc,Train\Banh bot loc\711.jpg,465,within_split_duplicate,optional
+Train,Banh bot loc,Train\Banh bot loc\12.jpg,467,leak_copy_of_Test,drop
+Train,Banh bot loc,Train\Banh bot loc\130.jpg,472,within_split_duplicate,optional
+Train,Banh bot loc,Train\Banh bot loc\14.jpg,484,leak_copy_of_Test,drop
+Train,Banh bot loc,Train\Banh bot loc\716.jpg,564,within_split_duplicate,optional
+Train,Banh bot loc,Train\Banh bot loc\251.jpg,567,within_split_duplicate,optional
+Train,Banh bot loc,Train\Banh bot loc\706.jpg,567,within_split_duplicate,optional
+Train,Banh bot loc,Train\Banh bot loc\275.jpg,586,within_split_duplicate,optional
+Train,Banh bot loc,Train\Banh bot loc\29.jpg,597,leak_copy_of_Validate,drop
+Train,Banh bot loc,Train\Banh bot loc\399.jpg,679,cross_label_duplicate,drop
+Train,Goi cuon,Train\Goi cuon\815.jpg,679,cross_label_duplicate,drop
+Train,Banh bot loc,Train\Banh bot loc\43.jpg,680,within_split_duplicate,optional
+Train,Banh bot loc,Train\Banh bot loc\635.jpg,863,cross_label_duplicate,drop
+Train,Banh duc,Train\Banh duc\398.jpg,863,cross_label_duplicate,drop
+Test,Banh beo,Test\Banh beo\270.jpg,863,cross_label_duplicate,drop
+Train,Banh bot loc,Train\Banh bot loc\655.jpg,879,cross_label_duplicate,drop
+Test,Banh gio,Test\Banh gio\528.jpg,879,cross_label_duplicate,drop
+Train,Banh bot loc,Train\Banh bot loc\66.jpg,884,leak_copy_of_Test,drop
+Train,Banh bot loc,Train\Banh bot loc\713.jpg,924,leak_copy_of_Test,drop
+Train,Banh bot loc,Train\Banh bot loc\719.jpg,924,leak_copy_of_Test,drop
+Train,Banh bot loc,Train\Banh bot loc\715.jpg,926,leak_copy_of_Test,drop
+Train,Banh bot loc,Train\Banh bot loc\81.jpg,938,leak_copy_of_Test,drop
+Train,Banh can,Train\Banh can\101.jpg,956,leak_copy_of_Validate,drop
+Train,Banh can,Train\Banh can\114.jpg,966,leak_copy_of_Test,drop
+Train,Banh can,Train\Banh can\176.jpg,1019,leak_copy_of_Validate,drop
+Train,Banh can,Train\Banh can\233.jpg,1062,cross_label_duplicate,drop
+Test,Banh khot,Test\Banh khot\215.jpg,1062,cross_label_duplicate,drop
+Train,Banh can,Train\Banh can\25.jpg,1072,leak_copy_of_Test,drop
+Train,Banh can,Train\Banh can\286.jpg,1096,cross_label_duplicate,drop
+Train,Banh khot,Train\Banh khot\274.jpg,1096,cross_label_duplicate,drop
+Train,Banh can,Train\Banh can\317.jpg,1126,leak_copy_of_Test,drop
+Train,Banh can,Train\Banh can\338.jpg,1142,cross_label_duplicate,drop
+Validate,Banh khot,Validate\Banh khot\316.jpg,1142,cross_label_duplicate,drop
+Train,Banh can,Train\Banh can\368.jpg,1168,leak_copy_of_Test,drop
+Train,Banh can,Train\Banh can\744.jpg,1452,leak_copy_of_Validate,drop
+Train,Banh canh,Train\Banh canh\115.jpg,1488,leak_copy_of_Test,drop
+Train,Banh canh,Train\Banh canh\214.jpg,1563,within_split_duplicate,optional
+Train,Banh canh,Train\Banh canh\288.jpg,1629,within_split_duplicate,optional
+Train,Banh canh,Train\Banh canh\326.jpg,1659,within_split_duplicate,optional
+Train,Banh canh,Train\Banh canh\328.jpg,1662,cross_label_duplicate,drop
+Train,Banh canh,Train\Banh canh\332.jpg,1662,cross_label_duplicate,drop
+Train,Bun bo Hue,Train\Bun bo Hue\344.jpg,1662,cross_label_duplicate,drop
+Train,Banh canh,Train\Banh canh\347.jpg,1675,cross_label_duplicate,drop
+Validate,Pho,Validate\Pho\112.jpg,1675,cross_label_duplicate,drop
+Train,Banh canh,Train\Banh canh\580.jpg,1845,within_split_duplicate,optional
+Train,Banh canh,Train\Banh canh\624.jpg,1879,cross_label_duplicate,drop
+Test,Hu tieu,Test\Hu tieu\402.jpg,1879,cross_label_duplicate,drop
+Train,Banh canh,Train\Banh canh\82.jpg,2019,within_split_duplicate,optional
+Train,Banh canh,Train\Banh canh\861.jpg,2067,cross_label_duplicate,drop
+Validate,Bun rieu,Validate\Bun rieu\764.jpg,2067,cross_label_duplicate,drop
+Train,Banh canh,Train\Banh canh\90.jpg,2097,cross_label_duplicate,drop
+Test,Chao long,Test\Chao long\43.jpg,2097,cross_label_duplicate,drop
+Train,Banh chung,Train\Banh chung\100.jpg,2150,leak_copy_of_Test,drop
+Train,Banh chung,Train\Banh chung\502.jpg,2157,within_split_duplicate,optional
+Train,Banh chung,Train\Banh chung\477.jpg,2160,within_split_duplicate,optional
+Train,Banh chung,Train\Banh chung\448.jpg,2161,within_split_duplicate,optional
+Train,Banh chung,Train\Banh chung\446.jpg,2193,within_split_duplicate,optional
+Train,Banh chung,Train\Banh chung\500.jpg,2198,within_split_duplicate,optional
+Train,Banh chung,Train\Banh chung\164.jpg,2200,leak_copy_of_Test,drop
+Train,Banh chung,Train\Banh chung\166.jpg,2202,leak_copy_of_Validate,drop
+Train,Banh chung,Train\Banh chung\485.jpg,2214,within_split_duplicate,optional
+Train,Banh chung,Train\Banh chung\499.jpg,2220,within_split_duplicate,optional
+Train,Banh chung,Train\Banh chung\481.jpg,2232,within_split_duplicate,optional
+Train,Banh chung,Train\Banh chung\217.jpg,2245,leak_copy_of_Test,drop
+Train,Banh chung,Train\Banh chung\234.jpg,2257,cross_label_duplicate,drop
+Validate,Banh tet,Validate\Banh tet\462.jpg,2257,cross_label_duplicate,drop
+Train,Banh chung,Train\Banh chung\447.jpg,2390,within_split_duplicate,optional
+Train,Banh chung,Train\Banh chung\476.jpg,2394,within_split_duplicate,optional
+Train,Banh chung,Train\Banh chung\441.jpg,2415,leak_copy_of_Test,drop
+Train,Banh chung,Train\Banh chung\59.jpg,2417,within_split_duplicate,optional
+Train,Banh chung,Train\Banh chung\451.jpg,2425,leak_copy_of_Test,drop
+Train,Banh chung,Train\Banh chung\453.jpg,2426,leak_copy_of_Test,drop
+Train,Banh chung,Train\Banh chung\458.jpg,2429,leak_copy_of_Test,drop
+Train,Banh chung,Train\Banh chung\468.jpg,2437,leak_copy_of_Test,drop
+Train,Banh chung,Train\Banh chung\482.jpg,2448,leak_copy_of_Test,drop
+Train,Banh chung,Train\Banh chung\5.jpg,2460,leak_copy_of_Test,drop
+Train,Banh chung,Train\Banh chung\79.jpg,2489,cross_label_duplicate,drop
+Test,Banh tet,Test\Banh tet\463.jpg,2489,cross_label_duplicate,drop
+Train,Banh cuon,Train\Banh cuon\98.jpg,2503,within_split_duplicate,optional
+Train,Banh cuon,Train\Banh cuon\223.jpg,2612,within_split_duplicate,optional
+Train,Banh cuon,Train\Banh cuon\1137.jpg,2615,leak_copy_of_Test,drop
+Train,Banh cuon,Train\Banh cuon\126.jpg,2624,within_split_duplicate,optional
+Train,Banh cuon,Train\Banh cuon\156.jpg,2649,within_split_duplicate,optional
+Train,Banh cuon,Train\Banh cuon\249.jpg,2715,leak_copy_of_Validate,drop
+Train,Banh cuon,Train\Banh cuon\266.jpg,2728,cross_label_duplicate,drop
+Train,Banh gio,Train\Banh gio\376.jpg,2728,cross_label_duplicate,drop
+Train,Banh cuon,Train\Banh cuon\323.jpg,2775,within_split_duplicate,optional
+Train,Banh cuon,Train\Banh cuon\341.jpg,2794,cross_label_duplicate,drop
+Train,Banh duc,Train\Banh duc\222.jpg,2794,cross_label_duplicate,drop
+Train,Banh cuon,Train\Banh cuon\357.jpg,2808,cross_label_duplicate,drop
+Test,Banh duc,Test\Banh duc\236.jpg,2808,cross_label_duplicate,drop
+Train,Banh cuon,Train\Banh cuon\458.jpg,2884,within_split_duplicate,optional
+Train,Banh duc,Train\Banh duc\12.jpg,3318,leak_copy_of_Test,drop
+Train,Banh duc,Train\Banh duc\189.jpg,3369,cross_label_duplicate,drop
+Train,Banh gio,Train\Banh gio\104.jpg,3369,cross_label_duplicate,drop
+Train,Banh duc,Train\Banh duc\27.jpg,3415,within_split_duplicate,optional
+Train,Banh duc,Train\Banh duc\33.jpg,3477,leak_copy_of_Validate,drop
+Train,Banh duc,Train\Banh duc\46.jpg,3574,cross_label_duplicate,drop
+Train,Banh gio,Train\Banh gio\46.jpg,3574,cross_label_duplicate,drop
+Train,Banh gio,Train\Banh gio\187.jpg,3835,cross_label_duplicate,drop
+Test,Banh duc,Test\Banh duc\261.jpg,3835,cross_label_duplicate,drop
+Train,Banh gio,Train\Banh gio\310.jpg,3934,cross_label_duplicate,drop
+Validate,Banh duc,Validate\Banh duc\102.jpg,3934,cross_label_duplicate,drop
+Train,Banh gio,Train\Banh gio\50.jpg,4079,leak_copy_of_Test,drop
+Train,Banh khot,Train\Banh khot\6.jpg,4374,within_split_duplicate,optional
+Train,Banh khot,Train\Banh khot\431.jpg,4481,leak_copy_of_Test,drop
+Train,Banh khot,Train\Banh khot\587.jpg,4603,cross_label_duplicate,drop
+Validate,Banh can,Validate\Banh can\554.jpg,4603,cross_label_duplicate,drop
+Train,Banh khot,Train\Banh khot\672.jpg,4659,cross_label_duplicate,drop
+Test,Banh bot loc,Test\Banh bot loc\372.jpg,4659,cross_label_duplicate,drop
+Train,Banh khot,Train\Banh khot\74.jpg,4714,cross_label_duplicate,drop
+Train,Banh xeo,Train\Banh xeo\263.jpg,4714,cross_label_duplicate,drop
+Train,Banh khot,Train\Banh khot\818.jpg,4772,leak_copy_of_Test,drop
+Train,Banh khot,Train\Banh khot\835.jpg,4783,leak_copy_of_Test,drop
+Train,Banh mi,Train\Banh mi\1174.jpg,4933,cross_label_duplicate,drop
+Test,Goi cuon,Test\Goi cuon\770.jpg,4933,cross_label_duplicate,drop
+Test,Goi cuon,Test\Goi cuon\839.jpg,4933,cross_label_duplicate,drop
+Train,Banh mi,Train\Banh mi\173.jpg,5083,leak_copy_of_Validate,drop
+Train,Banh mi,Train\Banh mi\649.jpg,5088,within_split_duplicate,optional
+Train,Banh mi,Train\Banh mi\246.jpg,5091,within_split_duplicate,optional
+Train,Banh mi,Train\Banh mi\434.jpg,5109,within_split_duplicate,optional
+Train,Banh mi,Train\Banh mi\53.jpg,5111,within_split_duplicate,optional
+Train,Banh mi,Train\Banh mi\322.jpg,5117,within_split_duplicate,optional
+Train,Banh mi,Train\Banh mi\288.jpg,5120,within_split_duplicate,optional
+Train,Banh mi,Train\Banh mi\274.jpg,5158,leak_copy_of_Test,drop
+Train,Banh mi,Train\Banh mi\276.jpg,5158,leak_copy_of_Test,drop
+Train,Banh mi,Train\Banh mi\571.jpg,5178,within_split_duplicate,optional
+Train,Banh mi,Train\Banh mi\417.jpg,5235,within_split_duplicate,optional
+Train,Banh mi,Train\Banh mi\444.jpg,5294,leak_copy_of_Validate,drop
+Train,Banh mi,Train\Banh mi\471.jpg,5314,leak_copy_of_Test,drop
+Train,Banh mi,Train\Banh mi\97.jpg,5332,within_split_duplicate,optional
+Train,Banh mi,Train\Banh mi\524.jpg,5354,within_split_duplicate,optional
+Train,Banh mi,Train\Banh mi\994.jpg,5406,within_split_duplicate,optional
+Train,Banh pia,Train\Banh pia\15.jpg,5768,leak_copy_of_Test,drop
+Train,Banh pia,Train\Banh pia\39.jpg,5952,leak_copy_of_Test,drop
+Train,Banh pia,Train\Banh pia\61.jpg,6011,leak_copy_of_Test,drop
+Train,Banh pia,Train\Banh pia\89.jpg,6027,within_split_duplicate,optional
+Train,Banh tet,Train\Banh tet\119.jpg,6056,leak_copy_of_Test,drop
+Train,Banh tet,Train\Banh tet\13.jpg,6066,leak_copy_of_Validate,drop
+Train,Banh tet,Train\Banh tet\191.jpg,6108,within_split_duplicate,optional
+Train,Banh tet,Train\Banh tet\669.jpg,6145,within_split_duplicate,optional
+Train,Banh tet,Train\Banh tet\284.jpg,6175,cross_label_duplicate,drop
+Test,Banh chung,Test\Banh chung\112.jpg,6175,cross_label_duplicate,drop
+Train,Banh tet,Train\Banh tet\309.jpg,6197,leak_copy_of_Test,drop
+Train,Banh tet,Train\Banh tet\675.jpg,6285,within_split_duplicate,optional
+Train,Banh tet,Train\Banh tet\651.jpg,6467,leak_copy_of_Test,drop
+Train,Banh trang nuong,Train\Banh trang nuong\14.jpg,6527,within_split_duplicate,optional
+Train,Banh trang nuong,Train\Banh trang nuong\121.jpg,6534,leak_copy_of_Test,drop
+Train,Banh trang nuong,Train\Banh trang nuong\19.jpg,6541,within_split_duplicate,optional
+Train,Banh trang nuong,Train\Banh trang nuong\394.jpg,6556,within_split_duplicate,optional
+Train,Banh trang nuong,Train\Banh trang nuong\156.jpg,6562,within_split_duplicate,optional
+Train,Banh trang nuong,Train\Banh trang nuong\27.jpg,6650,leak_copy_of_Test,drop
+Train,Banh trang nuong,Train\Banh trang nuong\90.jpg,6650,leak_copy_of_Test,drop
+Train,Banh trang nuong,Train\Banh trang nuong\42.jpg,6737,within_split_duplicate,optional
+Train,Banh trang nuong,Train\Banh trang nuong\420.jpg,6769,within_split_duplicate,optional
+Train,Banh xeo,Train\Banh xeo\37.jpg,7315,within_split_duplicate,optional
+Train,Banh xeo,Train\Banh xeo\249.jpg,7320,leak_copy_of_Validate,drop
+Train,Banh xeo,Train\Banh xeo\303.jpg,7365,leak_copy_of_Test,drop
+Train,Banh xeo,Train\Banh xeo\524.jpg,7539,leak_copy_of_Validate,drop
+Train,Banh xeo,Train\Banh xeo\570.jpg,7568,leak_copy_of_Validate,drop
+Train,Banh xeo,Train\Banh xeo\81.jpg,7735,within_split_duplicate,optional
+Train,Bun bo Hue,Train\Bun bo Hue\1173.jpg,8031,cross_label_duplicate,drop
+Test,Mi quang,Test\Mi quang\627.jpg,8031,cross_label_duplicate,drop
+Train,Bun bo Hue,Train\Bun bo Hue\1204.jpg,8057,cross_label_duplicate,drop
+Train,Pho,Train\Pho\722.jpg,8057,cross_label_duplicate,drop
+Train,Bun bo Hue,Train\Bun bo Hue\1262.jpg,8101,cross_label_duplicate,drop
+Test,Banh cuon,Test\Banh cuon\162.jpg,8101,cross_label_duplicate,drop
+Train,Bun bo Hue,Train\Bun bo Hue\1292.jpg,8119,cross_label_duplicate,drop
+Train,Bun rieu,Train\Bun rieu\179.jpg,8119,cross_label_duplicate,drop
+Train,Bun bo Hue,Train\Bun bo Hue\1526.jpg,8297,leak_copy_of_Test,drop
+Train,Bun bo Hue,Train\Bun bo Hue\1528.jpg,8299,leak_copy_of_Test,drop
+Train,Bun bo Hue,Train\Bun bo Hue\532.jpg,8300,within_split_duplicate,optional
+Train,Bun bo Hue,Train\Bun bo Hue\206.jpg,8346,leak_copy_of_Test,drop
+Train,Bun bo Hue,Train\Bun bo Hue\260.jpg,8386,within_split_duplicate,optional
+Train,Bun bo Hue,Train\Bun bo Hue\356.jpg,8469,within_split_duplicate,optional
+Train,Bun bo Hue,Train\Bun bo Hue\40.jpg,8506,cross_label_duplicate,drop
+Train,Pho,Train\Pho\441.jpg,8506,cross_label_duplicate,drop
+Train,Bun bo Hue,Train\Bun bo Hue\410.jpg,8514,within_split_duplicate,optional
+Train,Bun bo Hue,Train\Bun bo Hue\424.jpg,8526,within_split_duplicate,optional
+Train,Bun bo Hue,Train\Bun bo Hue\64.jpg,8694,cross_label_duplicate,drop
+Test,Bun rieu,Test\Bun rieu\786.jpg,8694,cross_label_duplicate,drop
+Train,Bun bo Hue,Train\Bun bo Hue\663.jpg,8712,cross_label_duplicate,drop
+Train,Bun rieu,Train\Bun rieu\625.jpg,8712,cross_label_duplicate,drop
+Validate,Banh xeo,Validate\Banh xeo\520.jpg,8712,cross_label_duplicate,drop
+Train,Bun bo Hue,Train\Bun bo Hue\69.jpg,8732,leak_copy_of_Test,drop
+Train,Bun bo Hue,Train\Bun bo Hue\811.jpg,8826,cross_label_duplicate,drop
+Train,Bun rieu,Train\Bun rieu\600.jpg,8826,cross_label_duplicate,drop
+Train,Bun bo Hue,Train\Bun bo Hue\812.jpg,8827,cross_label_duplicate,drop
+Test,Bun rieu,Test\Bun rieu\725.jpg,8827,cross_label_duplicate,drop
+Train,Bun bo Hue,Train\Bun bo Hue\96.jpg,8909,within_split_duplicate,optional
+Train,Bun dau mam tom,Train\Bun dau mam tom\91.jpg,9550,within_split_duplicate,optional
+Train,Bun mam,Train\Bun mam\439.jpg,9875,cross_label_duplicate,drop
+Train,Bun rieu,Train\Bun rieu\884.jpg,9875,cross_label_duplicate,drop
+Train,Bun mam,Train\Bun mam\5.jpg,9921,cross_label_duplicate,drop
+Train,Pho,Train\Pho\401.jpg,9921,cross_label_duplicate,drop
+Train,Bun rieu,Train\Bun rieu\55.jpg,10188,within_split_duplicate,optional
+Train,Bun rieu,Train\Bun rieu\265.jpg,10389,leak_copy_of_Validate,drop
+Train,Bun rieu,Train\Bun rieu\519.jpg,10590,cross_label_duplicate,drop
+Test,Bun mam,Test\Bun mam\432.jpg,10590,cross_label_duplicate,drop
+Train,Bun rieu,Train\Bun rieu\72.jpg,10713,within_split_duplicate,optional
+Train,Bun thit nuong,Train\Bun thit nuong\155.jpg,10967,within_split_duplicate,optional
+Train,Bun thit nuong,Train\Bun thit nuong\45.jpg,11087,within_split_duplicate,optional
+Train,Bun thit nuong,Train\Bun thit nuong\472.jpg,11180,within_split_duplicate,optional
+Train,Ca kho to,Train\Ca kho to\120.jpg,11489,leak_copy_of_Test,drop
+Train,Ca kho to,Train\Ca kho to\139.jpg,11501,within_split_duplicate,optional
+Train,Ca kho to,Train\Ca kho to\171.jpg,11528,within_split_duplicate,optional
+Train,Ca kho to,Train\Ca kho to\202.jpg,11550,leak_copy_of_Validate,drop
+Train,Ca kho to,Train\Ca kho to\259.jpg,11592,within_split_duplicate,optional
+Train,Ca kho to,Train\Ca kho to\416.jpg,11718,within_split_duplicate,optional
+Train,Ca kho to,Train\Ca kho to\42.jpg,11721,leak_copy_of_Test,drop
+Train,Ca kho to,Train\Ca kho to\7.jpg,11918,leak_copy_of_Test,drop
+Train,Ca kho to,Train\Ca kho to\89.jpg,11935,within_split_duplicate,optional
+Train,Canh chua,Train\Canh chua\150.jpg,11988,leak_copy_of_Test,drop
+Train,Canh chua,Train\Canh chua\183.jpg,12013,leak_copy_of_Test,drop
+Train,Canh chua,Train\Canh chua\27.jpg,12036,within_split_duplicate,optional
+Train,Canh chua,Train\Canh chua\51.jpg,12057,within_split_duplicate,optional
+Train,Canh chua,Train\Canh chua\26.jpg,12077,leak_copy_of_Test,drop
+Train,Canh chua,Train\Canh chua\278.jpg,12089,within_split_duplicate,optional
+Train,Canh chua,Train\Canh chua\363.jpg,12160,leak_copy_of_Validate,drop
+Train,Canh chua,Train\Canh chua\48.jpg,12243,leak_copy_of_Validate,drop
+Train,Canh chua,Train\Canh chua\529.jpg,12280,within_split_duplicate,optional
+Train,Canh chua,Train\Canh chua\574.jpg,12314,cross_label_duplicate,drop
+Validate,Ca kho to,Validate\Ca kho to\391.jpg,12314,cross_label_duplicate,drop
+Train,Cao lau,Train\Cao lau\275.jpg,12661,leak_copy_of_Test,drop
+Train,Cao lau,Train\Cao lau\618.jpg,12682,within_split_duplicate,optional
+Train,Cao lau,Train\Cao lau\36.jpg,12721,cross_label_duplicate,drop
+Test,Mi quang,Test\Mi quang\446.jpg,12721,cross_label_duplicate,drop
+Train,Cao lau,Train\Cao lau\401.jpg,12756,cross_label_duplicate,drop
+Test,Mi quang,Test\Mi quang\633.jpg,12756,cross_label_duplicate,drop
+Train,Cao lau,Train\Cao lau\44.jpg,12790,leak_copy_of_Test,drop
+Train,Cao lau,Train\Cao lau\53.jpg,12863,leak_copy_of_Validate,drop
+Train,Chao long,Train\Chao long\543.jpg,13012,within_split_duplicate,optional
+Train,Chao long,Train\Chao long\262.jpg,13033,within_split_duplicate,optional
+Train,Chao long,Train\Chao long\423.jpg,13039,within_split_duplicate,optional
+Train,Chao long,Train\Chao long\32.jpg,13179,leak_copy_of_Test,drop
+Train,Chao long,Train\Chao long\86.jpg,13599,leak_copy_of_Validate,drop
+Train,Chao long,Train\Chao long\89.jpg,13626,leak_copy_of_Test,drop
+Train,Chao long,Train\Chao long\92.jpg,13651,cross_label_duplicate,drop
+Train,Hu tieu,Train\Hu tieu\499.jpg,13651,cross_label_duplicate,drop
+Validate,Chao long,Validate\Chao long\87.jpg,13651,cross_label_duplicate,drop
+Train,Com tam,Train\Com tam\120.jpg,13716,within_split_duplicate,optional
+Train,Com tam,Train\Com tam\139.jpg,13737,within_split_duplicate,optional
+Train,Com tam,Train\Com tam\137.jpg,13738,within_split_duplicate,optional
+Train,Com tam,Train\Com tam\19.jpg,13777,leak_copy_of_Validate,drop
+Train,Com tam,Train\Com tam\67.jpg,13777,leak_copy_of_Validate,drop
+Train,Com tam,Train\Com tam\204.jpg,13789,within_split_duplicate,optional
+Train,Com tam,Train\Com tam\261.jpg,13834,within_split_duplicate,optional
+Train,Com tam,Train\Com tam\288.jpg,13857,leak_copy_of_Validate,drop
+Train,Com tam,Train\Com tam\32.jpg,13884,leak_copy_of_Test,drop
+Train,Com tam,Train\Com tam\461.jpg,13992,within_split_duplicate,optional
+Train,Com tam,Train\Com tam\465.jpg,13999,leak_copy_of_Validate,drop
+Train,Com tam,Train\Com tam\72.jpg,14192,leak_copy_of_Validate,drop
+Train,Goi cuon,Train\Goi cuon\187.jpg,14435,leak_copy_of_Validate,drop
+Train,Goi cuon,Train\Goi cuon\188.jpg,14435,leak_copy_of_Validate,drop
+Train,Goi cuon,Train\Goi cuon\227.jpg,14464,within_split_duplicate,optional
+Train,Goi cuon,Train\Goi cuon\355.jpg,14564,leak_copy_of_Test,drop
+Train,Goi cuon,Train\Goi cuon\43.jpg,14589,within_split_duplicate,optional
+Train,Goi cuon,Train\Goi cuon\47.jpg,14660,leak_copy_of_Validate,drop
+Train,Goi cuon,Train\Goi cuon\75.jpg,14770,within_split_duplicate,optional
+Train,Goi cuon,Train\Goi cuon\834.jpg,14940,leak_copy_of_Test,drop
+Train,Hu tieu,Train\Hu tieu\171.jpg,15020,leak_copy_of_Validate,drop
+Train,Hu tieu,Train\Hu tieu\210.jpg,15052,leak_copy_of_Test,drop
+Train,Hu tieu,Train\Hu tieu\215.jpg,15054,within_split_duplicate,optional
+Train,Hu tieu,Train\Hu tieu\91.jpg,15085,within_split_duplicate,optional
+Train,Hu tieu,Train\Hu tieu\44.jpg,15149,within_split_duplicate,optional
+Train,Hu tieu,Train\Hu tieu\375.jpg,15172,within_split_duplicate,optional
+Train,Hu tieu,Train\Hu tieu\390.jpg,15196,cross_label_duplicate,drop
+Test,Mi quang,Test\Mi quang\216.jpg,15196,cross_label_duplicate,drop
+Train,Hu tieu,Train\Hu tieu\514.jpg,15285,leak_copy_of_Test,drop
+Train,Hu tieu,Train\Hu tieu\557.jpg,15314,cross_label_duplicate,drop
+Test,Banh canh,Test\Banh canh\338.jpg,15314,cross_label_duplicate,drop
+Test,Bun rieu,Test\Bun rieu\396.jpg,15314,cross_label_duplicate,drop
+Train,Hu tieu,Train\Hu tieu\598.jpg,15346,within_split_duplicate,optional
+Train,Hu tieu,Train\Hu tieu\614.jpg,15360,within_split_duplicate,optional
+Train,Hu tieu,Train\Hu tieu\751.jpg,15476,leak_copy_of_Test,drop
+Train,Mi quang,Train\Mi quang\874.jpg,15661,within_split_duplicate,optional
+Train,Mi quang,Train\Mi quang\108.jpg,15663,leak_copy_of_Test,drop
+Train,Mi quang,Train\Mi quang\833.jpg,15667,within_split_duplicate,optional
+Train,Mi quang,Train\Mi quang\113.jpg,15668,leak_copy_of_Test,drop
+Train,Mi quang,Train\Mi quang\136.jpg,15685,leak_copy_of_Test,drop
+Train,Mi quang,Train\Mi quang\15.jpg,15699,leak_copy_of_Test,drop
+Train,Mi quang,Train\Mi quang\872.jpg,15701,within_split_duplicate,optional
+Train,Mi quang,Train\Mi quang\237.jpg,15707,within_split_duplicate,optional
+Train,Mi quang,Train\Mi quang\169.jpg,15717,leak_copy_of_Validate,drop
+Train,Mi quang,Train\Mi quang\880.jpg,15727,within_split_duplicate,optional
+Train,Mi quang,Train\Mi quang\258.jpg,15729,within_split_duplicate,optional
+Train,Mi quang,Train\Mi quang\191.jpg,15736,leak_copy_of_Test,drop
+Train,Mi quang,Train\Mi quang\32.jpg,15790,within_split_duplicate,optional
+Train,Mi quang,Train\Mi quang\34.jpg,15844,leak_copy_of_Validate,drop
+Train,Mi quang,Train\Mi quang\356.jpg,15858,leak_copy_of_Test,drop
+Test,Mi quang,Test\Mi quang\835.jpg,15858,within_split_duplicate,optional
+Train,Mi quang,Train\Mi quang\384.jpg,15880,leak_copy_of_Validate,drop
+Train,Mi quang,Train\Mi quang\410.jpg,15900,leak_copy_of_Validate,drop
+Train,Mi quang,Train\Mi quang\878.jpg,15946,within_split_duplicate,optional
+Train,Mi quang,Train\Mi quang\879.jpg,15965,within_split_duplicate,optional
+Train,Mi quang,Train\Mi quang\861.jpg,15969,within_split_duplicate,optional
+Train,Mi quang,Train\Mi quang\510.jpg,15983,leak_copy_of_Test,drop
+Train,Mi quang,Train\Mi quang\852.jpg,16197,within_split_duplicate,optional
+Train,Mi quang,Train\Mi quang\817.jpg,16216,leak_copy_of_Validate,drop
+Validate,Mi quang,Validate\Mi quang\855.jpg,16216,within_split_duplicate,optional
+Train,Mi quang,Train\Mi quang\829.jpg,16220,leak_copy_of_Test,drop
+Train,Mi quang,Train\Mi quang\846.jpg,16230,leak_copy_of_Validate,drop
+Train,Mi quang,Train\Mi quang\853.jpg,16237,leak_copy_of_Test,drop
+Train,Mi quang,Train\Mi quang\864.jpg,16247,leak_copy_of_Test,drop
+Train,Mi quang,Train\Mi quang\869.jpg,16251,leak_copy_of_Validate,drop
+Train,Mi quang,Train\Mi quang\875.jpg,16257,leak_copy_of_Test,drop
+Train,Mi quang,Train\Mi quang\882.jpg,16263,leak_copy_of_Validate,drop
+Train,Nem chua,Train\Nem chua\134.jpg,16301,leak_copy_of_Test,drop
+Train,Nem chua,Train\Nem chua\288.jpg,16416,within_split_duplicate,optional
+Train,Nem chua,Train\Nem chua\454.jpg,16545,cross_label_duplicate,drop
+Test,Banh cuon,Test\Banh cuon\535.jpg,16545,cross_label_duplicate,drop
+Train,Nem chua,Train\Nem chua\53.jpg,16590,within_split_duplicate,optional
+Train,Nem chua,Train\Nem chua\59.jpg,16619,within_split_duplicate,optional
+Train,Pho,Train\Pho\159.jpg,16684,within_split_duplicate,optional
+Train,Pho,Train\Pho\158.jpg,16695,within_split_duplicate,optional
+Train,Pho,Train\Pho\778.jpg,16745,within_split_duplicate,optional
+Train,Pho,Train\Pho\795.jpg,16760,within_split_duplicate,optional
+Train,Pho,Train\Pho\406.jpg,16894,cross_label_duplicate,drop
+Test,Bun bo Hue,Test\Bun bo Hue\884.jpg,16894,cross_label_duplicate,drop
+Train,Pho,Train\Pho\429.jpg,16909,within_split_duplicate,optional
+Train,Pho,Train\Pho\617.jpg,17055,leak_copy_of_Test,drop
+Train,Pho,Train\Pho\671.jpg,17095,leak_copy_of_Test,drop
+Train,Pho,Train\Pho\794.jpg,17131,within_split_duplicate,optional
+Train,Pho,Train\Pho\737.jpg,17142,leak_copy_of_Validate,drop
+Train,Xoi xeo,Train\Xoi xeo\194.jpg,17278,within_split_duplicate,optional
+Validate,Banh can,Validate\Banh can\261.jpg,17742,within_split_duplicate,optional
+Validate,Banh chung,Validate\Banh chung\497.jpg,17910,within_split_duplicate,optional
+Validate,Banh chung,Validate\Banh chung\495.jpg,17933,leak_copy_of_Test,drop
+Validate,Banh cuon,Validate\Banh cuon\289.jpg,17972,leak_copy_of_Test,drop
+Validate,Banh gio,Validate\Banh gio\362.jpg,18149,cross_label_duplicate,drop
+Test,Banh duc,Test\Banh duc\64.jpg,18149,cross_label_duplicate,drop
+Validate,Banh khot,Validate\Banh khot\184.jpg,18192,leak_copy_of_Test,drop
+Validate,Banh mi,Validate\Banh mi\202.jpg,18316,leak_copy_of_Test,drop
+Validate,Banh pia,Validate\Banh pia\7.jpg,18442,leak_copy_of_Test,drop
+Validate,Bun bo Hue,Validate\Bun bo Hue\1516.jpg,18773,leak_copy_of_Test,drop
+Validate,Bun bo Hue,Validate\Bun bo Hue\237.jpg,18778,leak_copy_of_Test,drop
+Validate,Bun thit nuong,Validate\Bun thit nuong\89.jpg,19223,leak_copy_of_Test,drop
+Validate,Ca kho to,Validate\Ca kho to\201.jpg,19235,leak_copy_of_Test,drop
+Validate,Ca kho to,Validate\Ca kho to\39.jpg,19251,within_split_duplicate,optional
+Validate,Goi cuon,Validate\Goi cuon\103.jpg,19637,cross_label_duplicate,drop
+Test,Nem chua,Test\Nem chua\353.jpg,19637,cross_label_duplicate,drop
+Validate,Hu tieu,Validate\Hu tieu\249.jpg,19739,cross_label_duplicate,drop
+Test,Banh canh,Test\Banh canh\608.jpg,19739,cross_label_duplicate,drop
+Validate,Hu tieu,Validate\Hu tieu\978.jpg,19818,leak_copy_of_Test,drop
+Validate,Xoi xeo,Validate\Xoi xeo\121.jpg,20047,leak_copy_of_Test,drop
+Test,Banh beo,Test\Banh beo\92.jpg,20173,within_split_duplicate,optional
+Test,Banh beo,Test\Banh beo\83.jpg,20220,cross_label_duplicate,drop
+Test,Banh bot loc,Test\Banh bot loc\311.jpg,20220,cross_label_duplicate,drop
+Test,Banh can,Test\Banh can\227.jpg,20389,within_split_duplicate,optional
+Test,Banh chung,Test\Banh chung\257.jpg,20750,cross_label_duplicate,drop
+Test,Banh tet,Test\Banh tet\421.jpg,20750,cross_label_duplicate,drop
+Test,Banh chung,Test\Banh chung\333.jpg,20762,cross_label_duplicate,drop
+Test,Banh tet,Test\Banh tet\445.jpg,20762,cross_label_duplicate,drop
+Test,Banh xeo,Test\Banh xeo\478.jpg,22199,within_split_duplicate,optional
+Test,Bun bo Hue,Test\Bun bo Hue\471.jpg,22547,cross_label_duplicate,drop
+Test,Bun rieu,Test\Bun rieu\275.jpg,22547,cross_label_duplicate,drop
+Test,Bun bo Hue,Test\Bun bo Hue\90.jpg,22551,within_split_duplicate,optional
+Test,Cao lau,Test\Cao lau\615.jpg,23687,within_split_duplicate,optional
+Test,Chao long,Test\Chao long\339.jpg,23845,within_split_duplicate,optional
+Test,Chao long,Test\Chao long\36.jpg,23857,within_split_duplicate,optional
+Test,Mi quang,Test\Mi quang\822.jpg,24592,within_split_duplicate,optional
+Test,Mi quang,Test\Mi quang\827.jpg,24632,within_split_duplicate,optional

@@ -1,0 +1,188 @@
+{
+  "generated_at": "2026-10-07 20:22:04 +0700",
+  "root": "D:\\course_hcmut\\hk261\\Deep Learning and Its Applications\\Assignment\\data\\30VNFoods\\Images",
+  "args": {
+    "root": "data\\30VNFoods\\Images",
+    "out": "results\\a2\\eda",
+    "splits": "None",
+    "threshold": "4",
+    "sens_thresholds": "[0, 2, 4, 6, 8, 10]",
+    "workers": "15",
+    "max_images": "0"
+  },
+  "environment": {
+    "python": "3.10.21",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "pillow": "12.3.0",
+    "imagehash": "4.3.2",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "fingerprint_sha256": "fa49ef9e176949df8d42b14ee1e870501f4dd31765be27bf15828591e1ff0a41",
+  "image_files": 25136,
+  "readable": 25136,
+  "corrupted": 0,
+  "non_image_files_ignored": 0,
+  "num_classes": 30,
+  "splits": [
+    {
+      "split": "Train",
+      "role": "train",
+      "images": 17581,
+      "classes": 30,
+      "min/class": 310,
+      "min class": "Banh pia",
+      "max/class": 1071,
+      "max class": "Bun bo Hue",
+      "mean/class": 586.0,
+      "imbalance (max/min)": 3.45
+    },
+    {
+      "split": "Validate",
+      "role": "val",
+      "images": 2515,
+      "classes": 30,
+      "min/class": 45,
+      "min class": "Banh pia",
+      "max/class": 153,
+      "max class": "Bun bo Hue",
+      "mean/class": 83.8,
+      "imbalance (max/min)": 3.4
+    },
+    {
+      "split": "Test",
+      "role": "test",
+      "images": 5040,
+      "classes": 30,
+      "min/class": 89,
+      "min class": "Banh pia",
+      "max/class": 306,
+      "max class": "Bun bo Hue",
+      "mean/class": 168.0,
+      "imbalance (max/min)": 3.44
+    }
+  ],
+  "image_size": {
+    "width_min": 100,
+    "width_median": 1000,
+    "width_max": 7360,
+    "height_min": 83,
+    "height_median": 720,
+    "height_max": 5616,
+    "short_side_median": 700,
+    "pct_short_side_lt_224": 1.38,
+    "pct_short_side_lt_128": 0.04,
+    "aspect_ratio_median": 1.333,
+    "pct_aspect_outside_0.5_2": 1.11,
+    "total_size_MB": 4296.5,
+    "file_size_median_KB": 123.7
+  },
+  "formats": {
+    "JPEG": 25007,
+    "PNG": 120,
+    "BMP": 2,
+    "MPO": 7
+  },
+  "modes": {
+    "RGB": 25136
+  },
+  "exact_duplicate_groups_md5": 63,
+  "near_duplicate_sensitivity": [
+    {
+      "threshold": 0,
+      "pairs": 229,
+      "same split+label": 84,
+      "cross-split": 121,
+      "cross-label": 60
+    },
+    {
+      "threshold": 2,
+      "pairs": 283,
+      "same split+label": 108,
+      "cross-split": 149,
+      "cross-label": 62
+    },
+    {
+      "threshold": 4,
+      "pairs": 337,
+      "same split+label": 140,
+      "cross-split": 171,
+      "cross-label": 64
+    },
+    {
+      "threshold": 6,
+      "pairs": 403,
+      "same split+label": 173,
+      "cross-split": 203,
+      "cross-label": 65
+    },
+    {
+      "threshold": 8,
+      "pairs": 490,
+      "same split+label": 208,
+      "cross-split": 249,
+      "cross-label": 83
+    },
+    {
+      "threshold": 10,
+      "pairs": 757,
+      "same split+label": 245,
+      "cross-split": 374,
+      "cross-label": 272
+    }
+  ],
+  "threshold_used": 4,
+  "clusters_at_threshold": {
+    "clusters": 309,
+    "images_in_clusters": 632,
+    "largest_cluster": 3,
+    "cross_split_clusters": 159,
+    "cross_label_clusters": 55
+  },
+  "proposed_removals": [
+    {
+      "reason": "cross_label_duplicate",
+      "action": "drop",
+      "images": 116
+    },
+    {
+      "reason": "leak_copy_of_Test",
+      "action": "drop",
+      "images": 92
+    },
+    {
+      "reason": "leak_copy_of_Validate",
+      "action": "drop",
+      "images": 38
+    },
+    {
+      "reason": "within_split_duplicate",
+      "action": "optional",
+      "images": 132
+    }
+  ],
+  "split_sizes_after_removal": [
+    {
+      "split": "Train",
+      "files": 17581,
+      "drop (required)": 188,
+      "after drop": 17393,
+      "optional dedup": 118
+    },
+    {
+      "split": "Validate",
+      "files": 2515,
+      "drop (required)": 23,
+      "after drop": 2492,
+      "optional dedup": 4
+    },
+    {
+      "split": "Test",
+      "files": 5040,
+      "drop (required)": 35,
+      "after drop": 5005,
+      "optional dedup": 10
+    }
+  ],
+  "runtime_sec": 32.6
+}

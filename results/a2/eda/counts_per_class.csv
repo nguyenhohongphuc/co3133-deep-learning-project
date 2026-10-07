@@ -1,0 +1,31 @@
+class,Train,Validate,Test,total
+Bun bo Hue,1071,153,306,1530
+Banh mi,935,133,268,1336
+Banh xeo,821,117,235,1173
+Bun rieu,805,115,231,1151
+Banh cuon,798,114,228,1140
+Chao long,751,107,215,1073
+Hu tieu,688,98,197,983
+Banh canh,674,97,193,964
+Com tam,659,94,189,942
+Bun dau mam tom,640,92,184,916
+Mi quang,618,89,177,884
+Goi cuon,598,85,172,855
+Banh khot,584,84,167,835
+Canh chua,577,83,165,825
+Pho,564,81,162,807
+Banh trang nuong,556,80,159,795
+Bun mam,541,77,155,773
+Bun thit nuong,522,75,150,747
+Banh can,520,75,149,744
+Banh bot loc,503,73,144,720
+Banh tet,480,68,138,686
+Ca kho to,473,67,136,676
+Banh duc,463,66,133,662
+Banh beo,451,65,129,645
+Banh gio,448,64,129,641
+Cao lau,432,62,124,618
+Nem chua,379,54,109,542
+Xoi xeo,366,52,105,523
+Banh chung,354,50,102,506
+Banh pia,310,45,89,444

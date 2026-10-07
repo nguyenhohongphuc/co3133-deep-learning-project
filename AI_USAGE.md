@@ -128,7 +128,21 @@ Copy the template below for every distinct use. Group the entries by assignment.
 
 ### Assignment 2
 
-_(no entries yet)_
+- **Tool:** Claude (Claude Code, model Opus 5.5)
+- **Used by:** Hồ Hồng Phúc Nguyên (2352824)
+- **Time / stage:** 07/10/2026; A2-M1 Dataset Proposal
+- **Purpose:** concept explanation (handbook requirements for the proposal), result analysis, report writing
+- **Affected assignment section(s) and files:** `reports/a2/proposal.md` (all sections), `reports/a2/approval.md`;
+  ran `scripts/a2_eda.py` and `scripts/a2_benchmark.py` to produce `results/a2/eda/` and `results/a2/compute/`
+- **Representative prompt (or prompt-log link):** "Read the handbook carefully and tell me what the proposal will contain
+  (image classification, Kaggle quandang/vietnamese-foods); run the two EDA files and write the proposal in English"
+- **How the output was edited and verified:** every number in the proposal was copied from the generated
+  `summary.json`/CSV/JSON files; near-duplicate pairs were inspected visually (all distance-0 examples and 8 random
+  distance-4 pairs); the licence (MIT) was checked by the member on the Kaggle page; GPU timings were re-checked with a
+  synthetic batch. The paper title was not confirmed, so only the IEEE link is cited.
+- **Sources used for verification:** course handbook §§3, 7.5, 17–23; Kaggle dataset page; IEEE Xplore document 9530774;
+  the repository's own EDA and benchmark outputs
+- **Member responsible for final verification:** Hồ Hồng Phúc Nguyên (2352824)
 
 ### Assignment 3
 
