@@ -4,8 +4,8 @@ Task A2-05 · Owner: TV 1 · handbook §18, §4.1
 
 | Field | Value |
 |---|---|
-| Submitted on | TODO |
-| Status | TODO — Approved / Approved with conditions / Rejected |
+| Submitted on | 07/10/2026 (proposal: [`proposal.md`](proposal.md)) |
+| Status | Submitted — awaiting decision (Approved / Approved with conditions / Rejected) |
 | Date of decision | TODO |
 | Conditions (if any) | TODO |
 | Where it was recorded | TODO — LMS / email / class |

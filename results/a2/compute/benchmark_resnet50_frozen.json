@@ -1,0 +1,33 @@
+{
+  "model": "resnet50",
+  "mode": "frozen",
+  "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "amp": true,
+  "img_size": 224,
+  "batch_size": 64,
+  "workers": 6,
+  "train_images": 17581,
+  "num_classes": 30,
+  "params_total": 23569502,
+  "params_trainable": 61470,
+  "train_throughput_img_s": 145.1,
+  "data_wait_fraction": 0.0,
+  "peak_gpu_mem_GB": 0.67,
+  "infer_latency_bs1_ms": 8.48,
+  "infer_latency_bs64_ms": 55.76,
+  "infer_throughput_img_s": 1147.8,
+  "est_epoch_train_min": 2.02,
+  "est_epoch_eval_min": 0.04,
+  "planned_epochs": 15,
+  "planned_runs": 3,
+  "est_hours_per_run": 0.51,
+  "est_total_gpu_hours": 1.54,
+  "versions": {
+    "torch": "2.14.1+cu126",
+    "torchvision": "0.29.1+cu126",
+    "python": "3.10.21",
+    "cuda": "12.6"
+  },
+  "timed_iters": 60,
+  "generated_at": "2026-10-07 20:45:58 +0700"
+}

@@ -47,13 +47,13 @@
           <dt>Instructor</dt><dd>L&ecirc; Th&agrave;nh S&aacute;ch</dd>
           <dt>Group</dt><dd>NNs</dd>
           <dt>Members</dt><dd>Nguy&#7877;n Nh&#7853;t Nam (2352778), H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n (2352824), Phan Qu&#7889;c &#272;&#7841;i S&#417;n (2353053)</dd>
-          <dt>Task track</dt><dd><span class="fill">[image classification | text classification / sequence labeling | object detection | semantic or instance segmentation | person/vehicle re-ID | monocular depth estimation | other approved task]</span></dd>
+          <dt>Task track</dt><dd>Image classification</dd>
         </dl>
       </div>
       <div class="card">
         <h3 style="margin-top:0">Milestones</h3>
         <dl class="kv">
-          <dt>M1 Proposal</dt><dd>07 Oct 2026 &middot; 15% of A2 &middot; <span class="badge todo">Not started</span></dd>
+          <dt>M1 Proposal</dt><dd>07 Oct 2026 &middot; 15% of A2 &middot; <span class="badge wip">Submitted</span></dd>
           <dt>M2 Draft</dt><dd>28 Oct 2026 &middot; 25% of A2 &middot; <span class="badge todo">Not started</span></dd>
           <dt>M3 Final</dt><dd>11 Nov 2026 &middot; 60% of A2 &middot; <span class="badge todo">Not started</span></dd>
         </dl>
@@ -68,7 +68,7 @@
       <table>
         <thead><tr><th>Item</th><th>Link</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>Dataset proposal</td><td><span class="fill">[document URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>Dataset proposal</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/reports/a2/proposal.md">reports/a2/proposal.md</a></td><td><span class="badge wip">Submitted</span></td></tr>
           <tr><td>Source code</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project">github.com/nguyenhohongphuc/co3133-deep-learning-project</a></td><td><span class="badge wip">In progress</span></td></tr>
           <tr><td>Checkpoints (or reconstruction instructions)</td><td><span class="fill">[URL or README section]</span></td><td><span class="badge todo">TODO</span></td></tr>
           <tr><td>Report</td><td><span class="fill">[PDF URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
@@ -82,23 +82,22 @@
   <!-- ============ PROPOSAL ============ -->
   <section id="proposal">
     <h2>Dataset proposal and approval</h2>
-    <p>Approval status: <span class="badge todo">Not submitted</span>
-       <span class="fill">[Approved | Approved with conditions | Rejected + date + conditions]</span></p>
+    <p>Approval status: <span class="badge wip">Submitted 07 Oct 2026 &mdash; awaiting decision</span></p>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Proposal field</th><th>Content</th></tr></thead>
         <tbody>
-          <tr><td>Dataset name, source, version, license</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Task, input, output definitions</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Number of samples and annotation types</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Preliminary distribution analysis</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Data-splitting plan</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Split unit preventing leakage</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Evaluation metrics</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Baseline plan</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Planned pretrained models</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Compute estimate</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Subset selection rules (if any)</td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Dataset name, source, version, license</td><td>30VNFoods &mdash; <a href="https://www.kaggle.com/datasets/quandang/vietnamese-foods">Kaggle quandang/vietnamese-foods</a>; version 11 (downloaded 07 Oct 2026); MIT license</td></tr>
+          <tr><td>Task, input, output definitions</td><td>30-class single-label image classification; input: RGB image 3&times;224&times;224; output: 30 class logits</td></tr>
+          <tr><td>Number of samples and annotation types</td><td>25,136 images, one class label per image; official split Train 17,581 / Validate 2,515 / Test 5,040</td></tr>
+          <tr><td>Preliminary distribution analysis</td><td>Train per class: 310&ndash;1,071 (imbalance 3.45&times;); median image 1000&times;720 px; 159 duplicate clusters cross splits, 55 carry two labels</td></tr>
+          <tr><td>Data-splitting plan</td><td>Official split minus duplicates: Train 17,275 / Validate 2,488 / Test 4,995; seed 42</td></tr>
+          <tr><td>Split unit preventing leakage</td><td>Near-duplicate cluster (pHash distance &le; 4); a cluster stays in one split</td></tr>
+          <tr><td>Evaluation metrics</td><td>Accuracy and macro-F1; checkpoint = best validation macro-F1</td></tr>
+          <tr><td>Baseline plan</td><td>Small CNN from scratch (1.18 M parameters), 30 epochs</td></tr>
+          <tr><td>Planned pretrained models</td><td>ResNet-50 (ImageNet); frozen backbone vs. full fine-tuning</td></tr>
+          <tr><td>Compute estimate</td><td>&asymp; 17 GPU-hours on RTX 4060 Laptop (8 GB); peak memory 3.1 GB; storage &asymp; 5.4 GB data + 1 GB checkpoints</td></tr>
+          <tr><td>Subset selection rules (if any)</td><td>Full dataset; remove 378 duplicate images (1.5%): 116 cross-label, 130 cross-split, 132 within-split</td></tr>
         </tbody>
       </table>
     </div>
@@ -263,6 +262,15 @@
             <td><code>docs/assignments/assignment-2.html</code></td>
             <td>Every section checked against the handbook requirements; the page was opened and its links
                 verified. No experimental content was generated.</td>
+            <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
+          </tr>
+          <tr>
+            <td>Claude (Claude Code, Opus 5.5)</td>
+            <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
+            <td>07 Oct 2026 &mdash; M1 dataset proposal</td>
+            <td>Explain handbook &sect;18 requirements; run the group's EDA and benchmark scripts; draft the proposal</td>
+            <td><code>reports/a2/proposal.md</code>, <code>results/a2/eda/</code>, <code>results/a2/compute/</code></td>
+            <td>Every number copied from the generated EDA/benchmark files; duplicate pairs inspected visually; license checked on Kaggle by the member</td>
             <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
           </tr>
           <tr><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>

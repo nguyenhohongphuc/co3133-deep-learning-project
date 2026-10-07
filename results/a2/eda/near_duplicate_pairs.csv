@@ -1,0 +1,758 @@
+distance,split_a,class_a,split_b,class_b,cross_split,cross_label,relpath_a,relpath_b
+0,Test,Mi quang,Test,Mi quang,False,False,Test\Mi quang\158.jpg,Test\Mi quang\822.jpg
+0,Train,Banh beo,Test,Banh beo,True,False,Train\Banh beo\50.jpg,Test\Banh beo\58.jpg
+0,Train,Banh beo,Test,Banh beo,True,False,Train\Banh beo\45.jpg,Test\Banh beo\43.jpg
+0,Train,Banh beo,Validate,Banh beo,True,False,Train\Banh beo\34.jpg,Validate\Banh beo\41.jpg
+0,Train,Cao lau,Test,Cao lau,True,False,Train\Cao lau\44.jpg,Test\Cao lau\17.jpg
+0,Train,Cao lau,Test,Mi quang,True,True,Train\Cao lau\401.jpg,Test\Mi quang\633.jpg
+0,Train,Cao lau,Test,Mi quang,True,True,Train\Cao lau\36.jpg,Test\Mi quang\446.jpg
+0,Train,Cao lau,Train,Cao lau,False,False,Train\Cao lau\310.jpg,Train\Cao lau\618.jpg
+0,Train,Hu tieu,Test,Banh canh,True,True,Train\Hu tieu\557.jpg,Test\Banh canh\338.jpg
+0,Train,Banh can,Validate,Banh can,True,False,Train\Banh can\176.jpg,Validate\Banh can\177.jpg
+0,Train,Banh can,Test,Banh can,True,False,Train\Banh can\114.jpg,Test\Banh can\112.jpg
+0,Train,Banh can,Validate,Banh can,True,False,Train\Banh can\101.jpg,Validate\Banh can\100.jpg
+0,Train,Banh bot loc,Test,Banh bot loc,True,False,Train\Banh bot loc\81.jpg,Test\Banh bot loc\84.jpg
+0,Train,Banh beo,Test,Banh beo,True,False,Train\Banh beo\152.jpg,Test\Banh beo\154.jpg
+0,Test,Mi quang,Test,Mi quang,False,False,Test\Mi quang\358.jpg,Test\Mi quang\835.jpg
+0,Train,Banh bot loc,Test,Banh beo,True,True,Train\Banh bot loc\635.jpg,Test\Banh beo\270.jpg
+0,Train,Banh beo,Train,Banh bot loc,False,True,Train\Banh beo\539.jpg,Train\Banh bot loc\565.jpg
+0,Test,Banh can,Test,Banh can,False,False,Test\Banh can\226.jpg,Test\Banh can\227.jpg
+0,Test,Banh beo,Test,Banh bot loc,False,True,Test\Banh beo\83.jpg,Test\Banh bot loc\311.jpg
+0,Test,Banh beo,Test,Banh beo,False,False,Test\Banh beo\5.jpg,Test\Banh beo\92.jpg
+0,Train,Banh bot loc,Train,Banh bot loc,False,False,Train\Banh bot loc\40.jpg,Train\Banh bot loc\43.jpg
+0,Train,Banh bot loc,Train,Goi cuon,False,True,Train\Banh bot loc\399.jpg,Train\Goi cuon\815.jpg
+0,Train,Banh bot loc,Validate,Banh bot loc,True,False,Train\Banh bot loc\29.jpg,Validate\Banh bot loc\30.jpg
+0,Train,Banh bot loc,Train,Banh bot loc,False,False,Train\Banh bot loc\274.jpg,Train\Banh bot loc\275.jpg
+0,Train,Banh bot loc,Train,Banh bot loc,False,False,Train\Banh bot loc\251.jpg,Train\Banh bot loc\706.jpg
+0,Train,Hu tieu,Validate,Chao long,True,True,Train\Hu tieu\499.jpg,Validate\Chao long\87.jpg
+0,Train,Bun rieu,Test,Bun mam,True,True,Train\Bun rieu\519.jpg,Test\Bun mam\432.jpg
+0,Train,Hu tieu,Test,Mi quang,True,True,Train\Hu tieu\390.jpg,Test\Mi quang\216.jpg
+0,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\33.jpg,Train\Hu tieu\44.jpg
+0,Train,Bun mam,Train,Pho,False,True,Train\Bun mam\5.jpg,Train\Pho\401.jpg
+0,Train,Banh xeo,Validate,Banh xeo,True,False,Train\Banh xeo\524.jpg,Validate\Banh xeo\523.jpg
+0,Train,Banh xeo,Test,Banh xeo,True,False,Train\Banh xeo\303.jpg,Test\Banh xeo\1170.jpg
+0,Validate,Hu tieu,Test,Hu tieu,True,False,Validate\Hu tieu\978.jpg,Test\Hu tieu\231.jpg
+0,Validate,Hu tieu,Test,Banh canh,True,True,Validate\Hu tieu\249.jpg,Test\Banh canh\608.jpg
+0,Validate,Goi cuon,Test,Nem chua,True,True,Validate\Goi cuon\103.jpg,Test\Nem chua\353.jpg
+0,Train,Banh can,Validate,Banh can,True,False,Train\Banh can\744.jpg,Validate\Banh can\7.jpg
+0,Train,Banh can,Test,Banh can,True,False,Train\Banh can\368.jpg,Test\Banh can\369.jpg
+0,Train,Banh can,Validate,Banh khot,True,True,Train\Banh can\338.jpg,Validate\Banh khot\316.jpg
+0,Train,Banh can,Test,Banh can,True,False,Train\Banh can\317.jpg,Test\Banh can\318.jpg
+0,Train,Banh can,Train,Banh khot,False,True,Train\Banh can\286.jpg,Train\Banh khot\274.jpg
+0,Train,Banh xeo,Train,Banh xeo,False,False,Train\Banh xeo\240.jpg,Train\Banh xeo\37.jpg
+0,Train,Banh can,Test,Banh khot,True,True,Train\Banh can\233.jpg,Test\Banh khot\215.jpg
+0,Train,Banh bot loc,Train,Banh bot loc,False,False,Train\Banh bot loc\117.jpg,Train\Banh bot loc\711.jpg
+0,Train,Banh bot loc,Test,Banh bot loc,True,False,Train\Banh bot loc\11.jpg,Test\Banh bot loc\15.jpg
+0,Train,Banh beo,Train,Banh gio,False,True,Train\Banh beo\77.jpg,Train\Banh gio\72.jpg
+0,Train,Banh beo,Test,Banh beo,True,False,Train\Banh beo\65.jpg,Test\Banh beo\62.jpg
+0,Train,Banh beo,Test,Banh beo,True,False,Train\Banh beo\642.jpg,Test\Banh beo\23.jpg
+0,Test,Banh chung,Test,Banh tet,False,True,Test\Banh chung\257.jpg,Test\Banh tet\421.jpg
+0,Train,Banh trang nuong,Train,Banh trang nuong,False,False,Train\Banh trang nuong\419.jpg,Train\Banh trang nuong\420.jpg
+0,Validate,Banh khot,Test,Banh khot,True,False,Validate\Banh khot\184.jpg,Test\Banh khot\834.jpg
+0,Validate,Banh gio,Test,Banh duc,True,True,Validate\Banh gio\362.jpg,Test\Banh duc\64.jpg
+0,Train,Banh canh,Train,Banh canh,False,False,Train\Banh canh\80.jpg,Train\Banh canh\82.jpg
+0,Train,Banh canh,Test,Hu tieu,True,True,Train\Banh canh\624.jpg,Test\Hu tieu\402.jpg
+0,Train,Banh canh,Train,Banh canh,False,False,Train\Banh canh\579.jpg,Train\Banh canh\580.jpg
+0,Train,Bun bo Hue,Test,Mi quang,True,True,Train\Bun bo Hue\1173.jpg,Test\Mi quang\627.jpg
+0,Train,Banh canh,Train,Bun bo Hue,False,True,Train\Banh canh\332.jpg,Train\Bun bo Hue\344.jpg
+0,Train,Banh canh,Train,Bun bo Hue,False,True,Train\Banh canh\328.jpg,Train\Bun bo Hue\344.jpg
+0,Train,Banh canh,Train,Banh canh,False,False,Train\Banh canh\328.jpg,Train\Banh canh\332.jpg
+0,Train,Banh canh,Train,Banh canh,False,False,Train\Banh canh\325.jpg,Train\Banh canh\326.jpg
+0,Train,Goi cuon,Validate,Goi cuon,True,False,Train\Goi cuon\188.jpg,Validate\Goi cuon\190.jpg
+0,Train,Banh canh,Train,Banh canh,False,False,Train\Banh canh\209.jpg,Train\Banh canh\214.jpg
+0,Train,Banh canh,Test,Banh canh,True,False,Train\Banh canh\115.jpg,Test\Banh canh\117.jpg
+0,Train,Goi cuon,Validate,Goi cuon,True,False,Train\Goi cuon\187.jpg,Validate\Goi cuon\190.jpg
+0,Validate,Mi quang,Validate,Mi quang,False,False,Validate\Mi quang\58.jpg,Validate\Mi quang\855.jpg
+0,Train,Banh chung,Validate,Banh chung,True,False,Train\Banh chung\166.jpg,Validate\Banh chung\480.jpg
+0,Train,Banh chung,Test,Banh chung,True,False,Train\Banh chung\164.jpg,Test\Banh chung\483.jpg
+0,Train,Banh chung,Train,Banh chung,False,False,Train\Banh chung\162.jpg,Train\Banh chung\500.jpg
+0,Train,Banh chung,Train,Banh chung,False,False,Train\Banh chung\157.jpg,Train\Banh chung\446.jpg
+0,Train,Banh chung,Train,Banh chung,False,False,Train\Banh chung\116.jpg,Train\Banh chung\448.jpg
+0,Train,Banh chung,Train,Banh chung,False,False,Train\Banh chung\115.jpg,Train\Banh chung\477.jpg
+0,Train,Banh chung,Train,Banh chung,False,False,Train\Banh chung\108.jpg,Train\Banh chung\502.jpg
+0,Train,Banh chung,Test,Banh chung,True,False,Train\Banh chung\100.jpg,Test\Banh chung\471.jpg
+0,Train,Goi cuon,Train,Goi cuon,False,False,Train\Goi cuon\187.jpg,Train\Goi cuon\188.jpg
+0,Train,Banh canh,Validate,Bun rieu,True,True,Train\Banh canh\861.jpg,Validate\Bun rieu\764.jpg
+0,Validate,Ca kho to,Validate,Ca kho to,False,False,Validate\Ca kho to\31.jpg,Validate\Ca kho to\39.jpg
+0,Validate,Ca kho to,Test,Ca kho to,True,False,Validate\Ca kho to\201.jpg,Test\Ca kho to\198.jpg
+0,Train,Bun bo Hue,Train,Bun rieu,False,True,Train\Bun bo Hue\663.jpg,Train\Bun rieu\625.jpg
+0,Train,Bun bo Hue,Test,Bun rieu,True,True,Train\Bun bo Hue\64.jpg,Test\Bun rieu\786.jpg
+0,Validate,Bun bo Hue,Test,Bun bo Hue,True,False,Validate\Bun bo Hue\1516.jpg,Test\Bun bo Hue\1072.jpg
+0,Validate,Banh pia,Test,Banh pia,True,False,Validate\Banh pia\7.jpg,Test\Banh pia\11.jpg
+0,Train,Banh chung,Test,Banh tet,True,True,Train\Banh chung\79.jpg,Test\Banh tet\463.jpg
+0,Train,Bun bo Hue,Train,Bun bo Hue,False,False,Train\Bun bo Hue\409.jpg,Train\Bun bo Hue\410.jpg
+0,Train,Banh chung,Test,Banh chung,True,False,Train\Banh chung\482.jpg,Test\Banh chung\25.jpg
+0,Train,Banh chung,Test,Banh chung,True,False,Train\Banh chung\468.jpg,Test\Banh chung\277.jpg
+0,Train,Banh chung,Test,Banh chung,True,False,Train\Banh chung\458.jpg,Test\Banh chung\104.jpg
+0,Train,Bun bo Hue,Train,Pho,False,True,Train\Bun bo Hue\40.jpg,Train\Pho\441.jpg
+0,Train,Banh chung,Test,Banh chung,True,False,Train\Banh chung\451.jpg,Test\Banh chung\53.jpg
+0,Train,Banh chung,Train,Banh chung,False,False,Train\Banh chung\444.jpg,Train\Banh chung\59.jpg
+0,Train,Banh chung,Test,Banh chung,True,False,Train\Banh chung\441.jpg,Test\Banh chung\113.jpg
+0,Train,Banh chung,Train,Banh chung,False,False,Train\Banh chung\413.jpg,Train\Banh chung\476.jpg
+0,Train,Banh chung,Train,Banh chung,False,False,Train\Banh chung\407.jpg,Train\Banh chung\447.jpg
+0,Train,Banh chung,Validate,Banh tet,True,True,Train\Banh chung\234.jpg,Validate\Banh tet\462.jpg
+0,Train,Banh chung,Test,Banh chung,True,False,Train\Banh chung\217.jpg,Test\Banh chung\475.jpg
+0,Train,Banh chung,Train,Banh chung,False,False,Train\Banh chung\204.jpg,Train\Banh chung\481.jpg
+0,Train,Banh chung,Train,Banh chung,False,False,Train\Banh chung\19.jpg,Train\Banh chung\499.jpg
+0,Train,Bun bo Hue,Train,Bun bo Hue,False,False,Train\Bun bo Hue\355.jpg,Train\Bun bo Hue\356.jpg
+0,Train,Bun bo Hue,Train,Bun bo Hue,False,False,Train\Bun bo Hue\257.jpg,Train\Bun bo Hue\260.jpg
+0,Train,Canh chua,Train,Canh chua,False,False,Train\Canh chua\233.jpg,Train\Canh chua\51.jpg
+0,Train,Canh chua,Train,Canh chua,False,False,Train\Canh chua\21.jpg,Train\Canh chua\27.jpg
+0,Train,Canh chua,Test,Canh chua,True,False,Train\Canh chua\183.jpg,Test\Canh chua\435.jpg
+0,Train,Bun bo Hue,Train,Bun bo Hue,False,False,Train\Bun bo Hue\1529.jpg,Train\Bun bo Hue\532.jpg
+0,Train,Banh bot loc,Train,Banh duc,False,True,Train\Banh bot loc\635.jpg,Train\Banh duc\398.jpg
+0,Validate,Banh cuon,Test,Banh cuon,True,False,Validate\Banh cuon\289.jpg,Test\Banh cuon\288.jpg
+0,Test,Bun bo Hue,Test,Bun rieu,False,True,Test\Bun bo Hue\471.jpg,Test\Bun rieu\275.jpg
+0,Train,Banh bot loc,Test,Banh bot loc,True,False,Train\Banh bot loc\14.jpg,Test\Banh bot loc\17.jpg
+0,Validate,Banh can,Validate,Banh can,False,False,Validate\Banh can\259.jpg,Validate\Banh can\261.jpg
+0,Train,Banh beo,Train,Banh bot loc,False,True,Train\Banh beo\157.jpg,Train\Banh bot loc\381.jpg
+0,Train,Banh cuon,Train,Banh cuon,False,False,Train\Banh cuon\155.jpg,Train\Banh cuon\156.jpg
+0,Train,Banh cuon,Train,Banh cuon,False,False,Train\Banh cuon\124.jpg,Train\Banh cuon\126.jpg
+0,Train,Banh cuon,Test,Banh cuon,True,False,Train\Banh cuon\1137.jpg,Test\Banh cuon\17.jpg
+0,Train,Banh cuon,Train,Banh cuon,False,False,Train\Banh cuon\1132.jpg,Train\Banh cuon\223.jpg
+0,Train,Banh cuon,Train,Banh cuon,False,False,Train\Banh cuon\100.jpg,Train\Banh cuon\98.jpg
+0,Train,Pho,Test,Pho,True,False,Train\Pho\671.jpg,Test\Pho\796.jpg
+0,Train,Bun bo Hue,Test,Bun bo Hue,True,False,Train\Bun bo Hue\1526.jpg,Test\Bun bo Hue\529.jpg
+0,Train,Pho,Train,Pho,False,False,Train\Pho\427.jpg,Train\Pho\429.jpg
+0,Train,Pho,Test,Bun bo Hue,True,True,Train\Pho\406.jpg,Test\Bun bo Hue\884.jpg
+0,Train,Pho,Train,Pho,False,False,Train\Pho\232.jpg,Train\Pho\795.jpg
+0,Train,Pho,Train,Pho,False,False,Train\Pho\212.jpg,Train\Pho\778.jpg
+0,Train,Banh cuon,Train,Banh cuon,False,False,Train\Banh cuon\457.jpg,Train\Banh cuon\458.jpg
+0,Train,Banh cuon,Test,Banh duc,True,True,Train\Banh cuon\357.jpg,Test\Banh duc\236.jpg
+0,Train,Banh cuon,Train,Banh duc,False,True,Train\Banh cuon\341.jpg,Train\Banh duc\222.jpg
+0,Train,Banh cuon,Train,Banh cuon,False,False,Train\Banh cuon\319.jpg,Train\Banh cuon\323.jpg
+0,Train,Banh cuon,Train,Banh gio,False,True,Train\Banh cuon\266.jpg,Train\Banh gio\376.jpg
+0,Train,Canh chua,Validate,Ca kho to,True,True,Train\Canh chua\574.jpg,Validate\Ca kho to\391.jpg
+0,Train,Canh chua,Train,Canh chua,False,False,Train\Canh chua\527.jpg,Train\Canh chua\529.jpg
+0,Train,Bun bo Hue,Train,Bun rieu,False,True,Train\Bun bo Hue\1292.jpg,Train\Bun rieu\179.jpg
+0,Train,Canh chua,Validate,Canh chua,True,False,Train\Canh chua\363.jpg,Validate\Canh chua\360.jpg
+0,Train,Canh chua,Train,Canh chua,False,False,Train\Canh chua\275.jpg,Train\Canh chua\278.jpg
+0,Train,Bun mam,Train,Bun rieu,False,True,Train\Bun mam\439.jpg,Train\Bun rieu\884.jpg
+0,Train,Hu tieu,Test,Hu tieu,True,False,Train\Hu tieu\210.jpg,Test\Hu tieu\207.jpg
+0,Train,Goi cuon,Test,Goi cuon,True,False,Train\Goi cuon\834.jpg,Test\Goi cuon\73.jpg
+0,Train,Bun bo Hue,Test,Banh cuon,True,True,Train\Bun bo Hue\1262.jpg,Test\Banh cuon\162.jpg
+0,Train,Bun bo Hue,Train,Pho,False,True,Train\Bun bo Hue\1204.jpg,Train\Pho\722.jpg
+0,Train,Com tam,Train,Com tam,False,False,Train\Com tam\459.jpg,Train\Com tam\461.jpg
+0,Test,Banh canh,Test,Bun rieu,False,True,Test\Banh canh\338.jpg,Test\Bun rieu\396.jpg
+0,Train,Com tam,Validate,Com tam,True,False,Train\Com tam\288.jpg,Validate\Com tam\289.jpg
+0,Train,Com tam,Train,Com tam,False,False,Train\Com tam\259.jpg,Train\Com tam\261.jpg
+0,Test,Goi cuon,Test,Goi cuon,False,False,Test\Goi cuon\770.jpg,Test\Goi cuon\839.jpg
+0,Train,Bun bo Hue,Test,Bun rieu,True,True,Train\Bun bo Hue\812.jpg,Test\Bun rieu\725.jpg
+0,Test,Cao lau,Test,Cao lau,False,False,Test\Cao lau\103.jpg,Test\Cao lau\615.jpg
+0,Train,Bun bo Hue,Test,Bun bo Hue,True,False,Train\Bun bo Hue\69.jpg,Test\Bun bo Hue\67.jpg
+0,Train,Bun bo Hue,Validate,Banh xeo,True,True,Train\Bun bo Hue\663.jpg,Validate\Banh xeo\520.jpg
+0,Train,Pho,Validate,Pho,True,False,Train\Pho\737.jpg,Validate\Pho\797.jpg
+0,Train,Banh bot loc,Train,Banh bot loc,False,False,Train\Banh bot loc\128.jpg,Train\Banh bot loc\130.jpg
+0,Test,Banh chung,Test,Banh tet,False,True,Test\Banh chung\333.jpg,Test\Banh tet\445.jpg
+0,Train,Nem chua,Train,Nem chua,False,False,Train\Nem chua\51.jpg,Train\Nem chua\53.jpg
+0,Train,Nem chua,Test,Banh cuon,True,True,Train\Nem chua\454.jpg,Test\Banh cuon\535.jpg
+0,Train,Nem chua,Train,Nem chua,False,False,Train\Nem chua\286.jpg,Train\Nem chua\288.jpg
+0,Train,Banh bot loc,Test,Banh bot loc,True,False,Train\Banh bot loc\719.jpg,Test\Banh bot loc\6.jpg
+0,Train,Mi quang,Validate,Mi quang,True,False,Train\Mi quang\882.jpg,Validate\Mi quang\63.jpg
+0,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\875.jpg,Test\Mi quang\131.jpg
+0,Train,Banh bot loc,Test,Banh bot loc,True,False,Train\Banh bot loc\715.jpg,Test\Banh bot loc\261.jpg
+0,Train,Banh gio,Validate,Banh duc,True,True,Train\Banh gio\310.jpg,Validate\Banh duc\102.jpg
+0,Train,Banh gio,Test,Banh duc,True,True,Train\Banh gio\187.jpg,Test\Banh duc\261.jpg
+0,Train,Banh duc,Train,Banh gio,False,True,Train\Banh duc\46.jpg,Train\Banh gio\46.jpg
+0,Train,Banh duc,Test,Banh beo,True,True,Train\Banh duc\398.jpg,Test\Banh beo\270.jpg
+0,Train,Banh duc,Validate,Banh duc,True,False,Train\Banh duc\33.jpg,Validate\Banh duc\21.jpg
+0,Train,Banh bot loc,Test,Banh bot loc,True,False,Train\Banh bot loc\713.jpg,Test\Banh bot loc\6.jpg
+0,Train,Banh duc,Train,Banh gio,False,True,Train\Banh duc\189.jpg,Train\Banh gio\104.jpg
+0,Train,Banh bot loc,Train,Banh bot loc,False,False,Train\Banh bot loc\713.jpg,Train\Banh bot loc\719.jpg
+0,Train,Banh khot,Validate,Banh can,True,True,Train\Banh khot\587.jpg,Validate\Banh can\554.jpg
+0,Train,Banh khot,Test,Banh khot,True,False,Train\Banh khot\431.jpg,Test\Banh khot\808.jpg
+0,Train,Banh khot,Train,Banh khot,False,False,Train\Banh khot\3.jpg,Train\Banh khot\6.jpg
+0,Train,Banh bot loc,Test,Banh bot loc,True,False,Train\Banh bot loc\66.jpg,Test\Banh bot loc\68.jpg
+0,Train,Banh bot loc,Test,Banh gio,True,True,Train\Banh bot loc\655.jpg,Test\Banh gio\528.jpg
+0,Train,Banh beo,Train,Banh beo,False,False,Train\Banh beo\625.jpg,Train\Banh beo\69.jpg
+0,Train,Banh beo,Train,Banh beo,False,False,Train\Banh beo\102.jpg,Train\Banh beo\98.jpg
+0,Train,Ca kho to,Train,Ca kho to,False,False,Train\Ca kho to\86.jpg,Train\Ca kho to\89.jpg
+0,Train,Ca kho to,Test,Ca kho to,True,False,Train\Ca kho to\7.jpg,Test\Ca kho to\5.jpg
+0,Train,Ca kho to,Test,Ca kho to,True,False,Train\Ca kho to\42.jpg,Test\Ca kho to\44.jpg
+0,Train,Ca kho to,Validate,Ca kho to,True,False,Train\Ca kho to\202.jpg,Validate\Ca kho to\199.jpg
+0,Train,Mi quang,Validate,Mi quang,True,False,Train\Mi quang\846.jpg,Validate\Mi quang\31.jpg
+0,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\829.jpg,Test\Mi quang\23.jpg
+0,Train,Mi quang,Validate,Mi quang,True,False,Train\Mi quang\817.jpg,Validate\Mi quang\855.jpg
+0,Train,Mi quang,Validate,Mi quang,True,False,Train\Mi quang\817.jpg,Validate\Mi quang\58.jpg
+0,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\788.jpg,Train\Mi quang\852.jpg
+0,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\487.jpg,Train\Mi quang\879.jpg
+0,Train,Mi quang,Validate,Mi quang,True,False,Train\Mi quang\410.jpg,Validate\Mi quang\826.jpg
+0,Train,Banh mi,Test,Goi cuon,True,True,Train\Banh mi\1174.jpg,Test\Goi cuon\839.jpg
+0,Train,Banh mi,Test,Goi cuon,True,True,Train\Banh mi\1174.jpg,Test\Goi cuon\770.jpg
+0,Train,Banh khot,Test,Banh khot,True,False,Train\Banh khot\835.jpg,Test\Banh khot\715.jpg
+0,Train,Banh khot,Test,Banh bot loc,True,True,Train\Banh khot\672.jpg,Test\Banh bot loc\372.jpg
+0,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\274.jpg,Train\Banh mi\276.jpg
+0,Train,Banh mi,Validate,Banh mi,True,False,Train\Banh mi\173.jpg,Validate\Banh mi\176.jpg
+0,Train,Mi quang,Validate,Mi quang,True,False,Train\Mi quang\869.jpg,Validate\Mi quang\160.jpg
+0,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\864.jpg,Test\Mi quang\406.jpg
+0,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\853.jpg,Test\Mi quang\512.jpg
+0,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\356.jpg,Test\Mi quang\835.jpg
+0,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\356.jpg,Test\Mi quang\358.jpg
+0,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\26.jpg,Train\Mi quang\32.jpg
+0,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\181.jpg,Train\Mi quang\880.jpg
+0,Train,Banh tet,Test,Banh tet,True,False,Train\Banh tet\119.jpg,Test\Banh tet\661.jpg
+0,Train,Banh pia,Train,Banh pia,False,False,Train\Banh pia\87.jpg,Train\Banh pia\89.jpg
+0,Train,Banh pia,Test,Banh pia,True,False,Train\Banh pia\61.jpg,Test\Banh pia\58.jpg
+0,Train,Banh pia,Test,Banh pia,True,False,Train\Banh pia\39.jpg,Test\Banh pia\43.jpg
+0,Train,Banh pia,Test,Banh pia,True,False,Train\Banh pia\15.jpg,Test\Banh pia\18.jpg
+0,Train,Goi cuon,Train,Goi cuon,False,False,Train\Goi cuon\62.jpg,Train\Goi cuon\75.jpg
+0,Train,Goi cuon,Validate,Goi cuon,True,False,Train\Goi cuon\47.jpg,Validate\Goi cuon\849.jpg
+0,Train,Goi cuon,Train,Goi cuon,False,False,Train\Goi cuon\39.jpg,Train\Goi cuon\43.jpg
+0,Train,Com tam,Train,Com tam,False,False,Train\Com tam\202.jpg,Train\Com tam\204.jpg
+0,Train,Com tam,Validate,Com tam,True,False,Train\Com tam\19.jpg,Validate\Com tam\16.jpg
+0,Train,Com tam,Train,Com tam,False,False,Train\Com tam\133.jpg,Train\Com tam\139.jpg
+0,Train,Com tam,Train,Com tam,False,False,Train\Com tam\11.jpg,Train\Com tam\120.jpg
+0,Train,Bun rieu,Train,Bun rieu,False,False,Train\Bun rieu\67.jpg,Train\Bun rieu\72.jpg
+0,Train,Bun rieu,Validate,Banh xeo,True,True,Train\Bun rieu\625.jpg,Validate\Banh xeo\520.jpg
+0,Train,Goi cuon,Test,Goi cuon,True,False,Train\Goi cuon\355.jpg,Test\Goi cuon\846.jpg
+0,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\113.jpg,Test\Mi quang\840.jpg
+0,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\106.jpg,Train\Mi quang\874.jpg
+0,Train,Banh trang nuong,Train,Banh trang nuong,False,False,Train\Banh trang nuong\27.jpg,Train\Banh trang nuong\90.jpg
+0,Train,Banh trang nuong,Train,Banh trang nuong,False,False,Train\Banh trang nuong\154.jpg,Train\Banh trang nuong\156.jpg
+0,Train,Banh trang nuong,Train,Banh trang nuong,False,False,Train\Banh trang nuong\13.jpg,Train\Banh trang nuong\19.jpg
+0,Train,Banh trang nuong,Test,Banh trang nuong,True,False,Train\Banh trang nuong\121.jpg,Test\Banh trang nuong\115.jpg
+0,Train,Banh trang nuong,Train,Banh trang nuong,False,False,Train\Banh trang nuong\11.jpg,Train\Banh trang nuong\14.jpg
+0,Train,Banh tet,Test,Banh tet,True,False,Train\Banh tet\651.jpg,Test\Banh tet\342.jpg
+0,Train,Banh tet,Train,Banh tet,False,False,Train\Banh tet\416.jpg,Train\Banh tet\675.jpg
+0,Train,Banh tet,Test,Banh tet,True,False,Train\Banh tet\309.jpg,Test\Banh tet\308.jpg
+0,Train,Banh tet,Test,Banh chung,True,True,Train\Banh tet\284.jpg,Test\Banh chung\112.jpg
+0,Train,Banh tet,Train,Banh tet,False,False,Train\Banh tet\240.jpg,Train\Banh tet\669.jpg
+0,Train,Banh trang nuong,Train,Banh trang nuong,False,False,Train\Banh trang nuong\38.jpg,Train\Banh trang nuong\42.jpg
+0,Train,Mi quang,Validate,Mi quang,True,False,Train\Mi quang\169.jpg,Validate\Mi quang\858.jpg
+0,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\151.jpg,Train\Mi quang\872.jpg
+0,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\136.jpg,Test\Mi quang\832.jpg
+0,Train,Chao long,Validate,Chao long,True,False,Train\Chao long\92.jpg,Validate\Chao long\87.jpg
+0,Train,Chao long,Train,Hu tieu,False,True,Train\Chao long\92.jpg,Train\Hu tieu\499.jpg
+0,Train,Ca kho to,Train,Ca kho to,False,False,Train\Ca kho to\133.jpg,Train\Ca kho to\139.jpg
+0,Train,Ca kho to,Test,Ca kho to,True,False,Train\Ca kho to\120.jpg,Test\Ca kho to\117.jpg
+0,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\613.jpg,Train\Hu tieu\614.jpg
+0,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\597.jpg,Train\Hu tieu\598.jpg
+0,Train,Hu tieu,Test,Bun rieu,True,True,Train\Hu tieu\557.jpg,Test\Bun rieu\396.jpg
+2,Validate,Bun bo Hue,Test,Bun bo Hue,True,False,Validate\Bun bo Hue\237.jpg,Test\Bun bo Hue\315.jpg
+2,Train,Canh chua,Validate,Canh chua,True,False,Train\Canh chua\48.jpg,Validate\Canh chua\49.jpg
+2,Train,Bun rieu,Validate,Bun rieu,True,False,Train\Bun rieu\265.jpg,Validate\Bun rieu\1145.jpg
+2,Train,Banh gio,Test,Banh gio,True,False,Train\Banh gio\50.jpg,Test\Banh gio\53.jpg
+2,Train,Banh beo,Train,Banh beo,False,False,Train\Banh beo\626.jpg,Train\Banh beo\99.jpg
+2,Train,Banh duc,Train,Banh duc,False,False,Train\Banh duc\25.jpg,Train\Banh duc\27.jpg
+2,Train,Banh can,Test,Banh can,True,False,Train\Banh can\25.jpg,Test\Banh can\131.jpg
+2,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\185.jpg,Train\Banh mi\246.jpg
+2,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\494.jpg,Train\Mi quang\861.jpg
+2,Train,Banh canh,Train,Banh canh,False,False,Train\Banh canh\286.jpg,Train\Banh canh\288.jpg
+2,Train,Banh xeo,Validate,Banh xeo,True,False,Train\Banh xeo\570.jpg,Validate\Banh xeo\143.jpg
+2,Train,Bun bo Hue,Train,Bun bo Hue,False,False,Train\Bun bo Hue\92.jpg,Train\Bun bo Hue\96.jpg
+2,Validate,Bun thit nuong,Test,Bun thit nuong,True,False,Validate\Bun thit nuong\89.jpg,Test\Bun thit nuong\97.jpg
+2,Train,Bun thit nuong,Train,Bun thit nuong,False,False,Train\Bun thit nuong\12.jpg,Train\Bun thit nuong\155.jpg
+2,Train,Bun bo Hue,Train,Bun rieu,False,True,Train\Bun bo Hue\811.jpg,Train\Bun rieu\600.jpg
+2,Train,Banh chung,Test,Banh chung,True,False,Train\Banh chung\453.jpg,Test\Banh chung\111.jpg
+2,Train,Banh chung,Train,Banh chung,False,False,Train\Banh chung\183.jpg,Train\Banh chung\485.jpg
+2,Train,Pho,Train,Pho,False,False,Train\Pho\72.jpg,Train\Pho\794.jpg
+2,Train,Canh chua,Test,Canh chua,True,False,Train\Canh chua\150.jpg,Test\Canh chua\148.jpg
+2,Train,Banh cuon,Validate,Banh cuon,True,False,Train\Banh cuon\249.jpg,Validate\Banh cuon\247.jpg
+2,Validate,Banh chung,Test,Banh chung,True,False,Validate\Banh chung\495.jpg,Test\Banh chung\64.jpg
+2,Validate,Banh chung,Validate,Banh chung,False,False,Validate\Banh chung\31.jpg,Validate\Banh chung\497.jpg
+2,Train,Chao long,Train,Chao long,False,False,Train\Chao long\107.jpg,Train\Chao long\543.jpg
+2,Train,Cao lau,Validate,Cao lau,True,False,Train\Cao lau\53.jpg,Validate\Cao lau\160.jpg
+2,Train,Banh xeo,Validate,Banh xeo,True,False,Train\Banh xeo\249.jpg,Validate\Banh xeo\146.jpg
+2,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\179.jpg,Train\Banh mi\649.jpg
+2,Train,Banh trang nuong,Test,Banh trang nuong,True,False,Train\Banh trang nuong\90.jpg,Test\Banh trang nuong\29.jpg
+2,Train,Ca kho to,Train,Ca kho to,False,False,Train\Ca kho to\257.jpg,Train\Ca kho to\259.jpg
+2,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\461.jpg,Train\Mi quang\878.jpg
+2,Train,Goi cuon,Train,Goi cuon,False,False,Train\Goi cuon\225.jpg,Train\Goi cuon\227.jpg
+2,Train,Banh tet,Validate,Banh tet,True,False,Train\Banh tet\13.jpg,Validate\Banh tet\230.jpg
+2,Train,Mi quang,Validate,Mi quang,True,False,Train\Mi quang\384.jpg,Validate\Mi quang\830.jpg
+2,Train,Ca kho to,Train,Ca kho to,False,False,Train\Ca kho to\415.jpg,Train\Ca kho to\416.jpg
+2,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\112.jpg,Train\Mi quang\833.jpg
+2,Train,Bun bo Hue,Train,Bun bo Hue,False,False,Train\Bun bo Hue\422.jpg,Train\Bun bo Hue\424.jpg
+2,Train,Hu tieu,Test,Hu tieu,True,False,Train\Hu tieu\751.jpg,Test\Hu tieu\983.jpg
+2,Train,Pho,Train,Pho,False,False,Train\Pho\144.jpg,Train\Pho\159.jpg
+2,Train,Bun bo Hue,Test,Bun bo Hue,True,False,Train\Bun bo Hue\206.jpg,Test\Bun bo Hue\370.jpg
+2,Train,Bun bo Hue,Test,Bun bo Hue,True,False,Train\Bun bo Hue\1528.jpg,Test\Bun bo Hue\18.jpg
+2,Train,Banh xeo,Train,Banh xeo,False,False,Train\Banh xeo\79.jpg,Train\Banh xeo\81.jpg
+2,Train,Mi quang,Validate,Mi quang,True,False,Train\Mi quang\34.jpg,Validate\Mi quang\828.jpg
+2,Train,Banh khot,Test,Banh khot,True,False,Train\Banh khot\818.jpg,Test\Banh khot\10.jpg
+2,Train,Banh bot loc,Train,Banh bot loc,False,False,Train\Banh bot loc\246.jpg,Train\Banh bot loc\716.jpg
+2,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\191.jpg,Test\Mi quang\819.jpg
+2,Train,Bun thit nuong,Train,Bun thit nuong,False,False,Train\Bun thit nuong\375.jpg,Train\Bun thit nuong\472.jpg
+2,Train,Banh khot,Train,Banh xeo,False,True,Train\Banh khot\74.jpg,Train\Banh xeo\263.jpg
+2,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\510.jpg,Test\Mi quang\870.jpg
+2,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\213.jpg,Train\Hu tieu\215.jpg
+2,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\373.jpg,Train\Banh mi\417.jpg
+2,Train,Banh trang nuong,Test,Banh trang nuong,True,False,Train\Banh trang nuong\27.jpg,Test\Banh trang nuong\29.jpg
+2,Train,Banh bot loc,Test,Banh bot loc,True,False,Train\Banh bot loc\12.jpg,Test\Banh bot loc\18.jpg
+2,Train,Banh mi,Test,Banh mi,True,False,Train\Banh mi\471.jpg,Test\Banh mi\40.jpg
+2,Train,Chao long,Validate,Chao long,True,False,Train\Chao long\86.jpg,Validate\Chao long\84.jpg
+2,Train,Chao long,Test,Chao long,True,False,Train\Chao long\32.jpg,Test\Chao long\41.jpg
+4,Train,Cao lau,Test,Cao lau,True,False,Train\Cao lau\275.jpg,Test\Cao lau\278.jpg
+4,Train,Banh bot loc,Train,Banh bot loc,False,False,Train\Banh bot loc\249.jpg,Train\Banh bot loc\706.jpg
+4,Train,Bun rieu,Train,Bun rieu,False,False,Train\Bun rieu\105.jpg,Train\Bun rieu\55.jpg
+4,Test,Mi quang,Test,Mi quang,False,False,Test\Mi quang\322.jpg,Test\Mi quang\827.jpg
+4,Validate,Banh mi,Test,Banh mi,True,False,Validate\Banh mi\202.jpg,Test\Banh mi\170.jpg
+4,Train,Banh canh,Validate,Pho,True,True,Train\Banh canh\347.jpg,Validate\Pho\112.jpg
+4,Validate,Xoi xeo,Test,Xoi xeo,True,False,Validate\Xoi xeo\121.jpg,Test\Xoi xeo\122.jpg
+4,Train,Banh canh,Test,Chao long,True,True,Train\Banh canh\90.jpg,Test\Chao long\43.jpg
+4,Train,Banh chung,Test,Banh chung,True,False,Train\Banh chung\5.jpg,Test\Banh chung\462.jpg
+4,Train,Canh chua,Test,Canh chua,True,False,Train\Canh chua\26.jpg,Test\Canh chua\30.jpg
+4,Train,Xoi xeo,Train,Xoi xeo,False,False,Train\Xoi xeo\192.jpg,Train\Xoi xeo\194.jpg
+4,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\108.jpg,Test\Mi quang\310.jpg
+4,Train,Pho,Test,Pho,True,False,Train\Pho\617.jpg,Test\Pho\618.jpg
+4,Train,Ca kho to,Train,Ca kho to,False,False,Train\Ca kho to\169.jpg,Train\Ca kho to\171.jpg
+4,Train,Bun dau mam tom,Train,Bun dau mam tom,False,False,Train\Bun dau mam tom\86.jpg,Train\Bun dau mam tom\91.jpg
+4,Train,Pho,Train,Pho,False,False,Train\Pho\156.jpg,Train\Pho\158.jpg
+4,Train,Com tam,Validate,Com tam,True,False,Train\Com tam\72.jpg,Validate\Com tam\50.jpg
+4,Train,Com tam,Validate,Com tam,True,False,Train\Com tam\67.jpg,Validate\Com tam\16.jpg
+4,Train,Banh trang nuong,Train,Banh trang nuong,False,False,Train\Banh trang nuong\145.jpg,Train\Banh trang nuong\394.jpg
+4,Train,Com tam,Validate,Com tam,True,False,Train\Com tam\465.jpg,Validate\Com tam\4.jpg
+4,Train,Com tam,Test,Com tam,True,False,Train\Com tam\32.jpg,Test\Com tam\35.jpg
+4,Train,Nem chua,Train,Nem chua,False,False,Train\Nem chua\57.jpg,Train\Nem chua\59.jpg
+4,Test,Bun bo Hue,Test,Bun bo Hue,False,False,Test\Bun bo Hue\492.jpg,Test\Bun bo Hue\90.jpg
+4,Train,Nem chua,Test,Nem chua,True,False,Train\Nem chua\134.jpg,Test\Nem chua\80.jpg
+4,Train,Banh bot loc,Train,Banh bot loc,False,False,Train\Banh bot loc\249.jpg,Train\Banh bot loc\251.jpg
+4,Train,Banh duc,Test,Banh duc,True,False,Train\Banh duc\12.jpg,Test\Banh duc\18.jpg
+4,Train,Chao long,Train,Chao long,False,False,Train\Chao long\135.jpg,Train\Chao long\423.jpg
+4,Train,Chao long,Train,Chao long,False,False,Train\Chao long\129.jpg,Train\Chao long\262.jpg
+4,Train,Bun thit nuong,Train,Bun thit nuong,False,False,Train\Bun thit nuong\260.jpg,Train\Bun thit nuong\45.jpg
+4,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\218.jpg,Train\Banh mi\288.jpg
+4,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\253.jpg,Train\Hu tieu\91.jpg
+4,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\215.jpg,Train\Banh mi\322.jpg
+4,Train,Banh mi,Validate,Banh mi,True,False,Train\Banh mi\444.jpg,Validate\Banh mi\440.jpg
+4,Train,Hu tieu,Validate,Hu tieu,True,False,Train\Hu tieu\171.jpg,Validate\Hu tieu\173.jpg
+4,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\209.jpg,Train\Banh mi\53.jpg
+4,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\298.jpg,Train\Banh mi\571.jpg
+4,Train,Hu tieu,Test,Hu tieu,True,False,Train\Hu tieu\514.jpg,Test\Hu tieu\512.jpg
+4,Train,Banh mi,Test,Banh mi,True,False,Train\Banh mi\276.jpg,Test\Banh mi\271.jpg
+4,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\159.jpg,Train\Mi quang\237.jpg
+4,Test,Chao long,Test,Chao long,False,False,Test\Chao long\212.jpg,Test\Chao long\36.jpg
+4,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\183.jpg,Train\Mi quang\258.jpg
+4,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\587.jpg,Train\Banh mi\994.jpg
+4,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\15.jpg,Test\Mi quang\11.jpg
+4,Train,Com tam,Train,Com tam,False,False,Train\Com tam\19.jpg,Train\Com tam\67.jpg
+4,Test,Banh xeo,Test,Banh xeo,False,False,Test\Banh xeo\320.jpg,Test\Banh xeo\478.jpg
+4,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\520.jpg,Train\Banh mi\524.jpg
+4,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\495.jpg,Train\Banh mi\97.jpg
+4,Train,Com tam,Train,Com tam,False,False,Train\Com tam\134.jpg,Train\Com tam\137.jpg
+4,Train,Chao long,Test,Chao long,True,False,Train\Chao long\89.jpg,Test\Chao long\463.jpg
+4,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\365.jpg,Train\Hu tieu\375.jpg
+4,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\207.jpg,Train\Banh mi\434.jpg
+4,Train,Banh tet,Train,Banh tet,False,False,Train\Banh tet\190.jpg,Train\Banh tet\191.jpg
+4,Train,Banh mi,Test,Banh mi,True,False,Train\Banh mi\274.jpg,Test\Banh mi\271.jpg
+4,Test,Chao long,Test,Chao long,False,False,Test\Chao long\158.jpg,Test\Chao long\339.jpg
+6,Test,Hu tieu,Test,Hu tieu,False,False,Test\Hu tieu\485.jpg,Test\Hu tieu\95.jpg
+6,Test,Goi cuon,Test,Goi cuon,False,False,Test\Goi cuon\195.jpg,Test\Goi cuon\360.jpg
+6,Test,Chao long,Test,Chao long,False,False,Test\Chao long\91.jpg,Test\Chao long\97.jpg
+6,Test,Chao long,Test,Chao long,False,False,Test\Chao long\311.jpg,Test\Chao long\491.jpg
+6,Test,Chao long,Test,Chao long,False,False,Test\Chao long\191.jpg,Test\Chao long\326.jpg
+6,Test,Banh duc,Test,Banh gio,False,True,Test\Banh duc\227.jpg,Test\Banh gio\68.jpg
+6,Train,Banh bot loc,Test,Banh bot loc,True,False,Train\Banh bot loc\144.jpg,Test\Banh bot loc\101.jpg
+6,Train,Banh beo,Train,Banh beo,False,False,Train\Banh beo\170.jpg,Train\Banh beo\256.jpg
+6,Train,Hu tieu,Validate,Hu tieu,True,False,Train\Hu tieu\220.jpg,Validate\Hu tieu\221.jpg
+6,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\179.jpg,Train\Hu tieu\359.jpg
+6,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\148.jpg,Train\Hu tieu\150.jpg
+6,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\135.jpg,Train\Hu tieu\147.jpg
+6,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\120.jpg,Train\Hu tieu\438.jpg
+6,Train,Bun bo Hue,Train,Bun bo Hue,False,False,Train\Bun bo Hue\1184.jpg,Train\Bun bo Hue\755.jpg
+6,Train,Bun bo Hue,Test,Bun bo Hue,True,False,Train\Bun bo Hue\266.jpg,Test\Bun bo Hue\156.jpg
+6,Train,Bun bo Hue,Train,Bun bo Hue,False,False,Train\Bun bo Hue\166.jpg,Train\Bun bo Hue\228.jpg
+6,Train,Hu tieu,Validate,Hu tieu,True,False,Train\Hu tieu\69.jpg,Validate\Hu tieu\211.jpg
+6,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\274.jpg,Train\Hu tieu\276.jpg
+6,Train,Banh xeo,Train,Banh xeo,False,False,Train\Banh xeo\558.jpg,Train\Banh xeo\560.jpg
+6,Train,Banh xeo,Test,Banh xeo,True,False,Train\Banh xeo\365.jpg,Test\Banh xeo\450.jpg
+6,Train,Banh xeo,Train,Banh xeo,False,False,Train\Banh xeo\229.jpg,Train\Banh xeo\488.jpg
+6,Train,Banh xeo,Train,Banh xeo,False,False,Train\Banh xeo\100.jpg,Train\Banh xeo\50.jpg
+6,Train,Com tam,Train,Com tam,False,False,Train\Com tam\106.jpg,Train\Com tam\227.jpg
+6,Train,Chao long,Train,Chao long,False,False,Train\Chao long\644.jpg,Train\Chao long\645.jpg
+6,Train,Chao long,Test,Chao long,True,False,Train\Chao long\317.jpg,Test\Chao long\491.jpg
+6,Train,Bun thit nuong,Test,Bun thit nuong,True,False,Train\Bun thit nuong\150.jpg,Test\Bun thit nuong\354.jpg
+6,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\123.jpg,Train\Mi quang\865.jpg
+6,Train,Banh trang nuong,Train,Banh trang nuong,False,False,Train\Banh trang nuong\159.jpg,Train\Banh trang nuong\18.jpg
+6,Train,Banh trang nuong,Validate,Banh trang nuong,True,False,Train\Banh trang nuong\158.jpg,Validate\Banh trang nuong\223.jpg
+6,Train,Banh tet,Test,Banh tet,True,False,Train\Banh tet\368.jpg,Test\Banh tet\369.jpg
+6,Train,Com tam,Test,Com tam,True,False,Train\Com tam\196.jpg,Test\Com tam\328.jpg
+6,Train,Com tam,Train,Com tam,False,False,Train\Com tam\137.jpg,Train\Com tam\240.jpg
+6,Train,Bun thit nuong,Train,Bun thit nuong,False,False,Train\Bun thit nuong\100.jpg,Train\Bun thit nuong\71.jpg
+6,Train,Banh tet,Train,Banh tet,False,False,Train\Banh tet\187.jpg,Train\Banh tet\31.jpg
+6,Train,Mi quang,Validate,Mi quang,True,False,Train\Mi quang\193.jpg,Validate\Mi quang\66.jpg
+6,Train,Banh mi,Validate,Banh mi,True,False,Train\Banh mi\948.jpg,Validate\Banh mi\115.jpg
+6,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\646.jpg,Train\Banh mi\91.jpg
+6,Train,Banh mi,Test,Banh mi,True,False,Train\Banh mi\39.jpg,Test\Banh mi\473.jpg
+6,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\244.jpg,Train\Banh mi\543.jpg
+6,Train,Banh mi,Validate,Banh mi,True,False,Train\Banh mi\179.jpg,Validate\Banh mi\309.jpg
+6,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\839.jpg,Test\Mi quang\175.jpg
+6,Train,Banh mi,Validate,Banh mi,True,False,Train\Banh mi\106.jpg,Validate\Banh mi\245.jpg
+6,Train,Banh khot,Test,Banh khot,True,False,Train\Banh khot\36.jpg,Test\Banh khot\256.jpg
+6,Train,Chao long,Validate,Chao long,True,False,Train\Chao long\102.jpg,Validate\Chao long\95.jpg
+6,Train,Nem chua,Train,Nem chua,False,False,Train\Nem chua\274.jpg,Train\Nem chua\91.jpg
+6,Train,Nem chua,Train,Nem chua,False,False,Train\Nem chua\117.jpg,Train\Nem chua\119.jpg
+6,Train,Banh khot,Test,Banh khot,True,False,Train\Banh khot\208.jpg,Test\Banh khot\108.jpg
+6,Train,Com tam,Test,Com tam,True,False,Train\Com tam\249.jpg,Test\Com tam\247.jpg
+6,Train,Bun dau mam tom,Test,Bun dau mam tom,True,False,Train\Bun dau mam tom\267.jpg,Test\Bun dau mam tom\266.jpg
+6,Train,Banh cuon,Test,Banh cuon,True,False,Train\Banh cuon\89.jpg,Test\Banh cuon\87.jpg
+6,Train,Pho,Test,Pho,True,False,Train\Pho\196.jpg,Test\Pho\382.jpg
+6,Train,Banh cuon,Train,Banh cuon,False,False,Train\Banh cuon\376.jpg,Train\Banh cuon\431.jpg
+6,Train,Canh chua,Test,Canh chua,True,False,Train\Canh chua\72.jpg,Test\Canh chua\74.jpg
+6,Train,Canh chua,Train,Canh chua,False,False,Train\Canh chua\10.jpg,Train\Canh chua\9.jpg
+6,Train,Banh cuon,Test,Banh cuon,True,False,Train\Banh cuon\223.jpg,Test\Banh cuon\222.jpg
+6,Train,Banh cuon,Test,Banh cuon,True,False,Train\Banh cuon\1132.jpg,Test\Banh cuon\222.jpg
+6,Train,Banh chung,Test,Banh chung,True,False,Train\Banh chung\56.jpg,Test\Banh chung\491.jpg
+6,Train,Banh chung,Train,Banh chung,False,False,Train\Banh chung\34.jpg,Train\Banh chung\492.jpg
+6,Train,Banh chung,Train,Banh chung,False,False,Train\Banh chung\120.jpg,Train\Banh chung\278.jpg
+6,Train,Banh canh,Validate,Banh canh,True,False,Train\Banh canh\95.jpg,Validate\Banh canh\99.jpg
+6,Train,Banh canh,Test,Banh canh,True,False,Train\Banh canh\59.jpg,Test\Banh canh\61.jpg
+6,Train,Banh canh,Train,Banh canh,False,False,Train\Banh canh\361.jpg,Train\Banh canh\582.jpg
+6,Validate,Com tam,Test,Com tam,True,False,Validate\Com tam\104.jpg,Test\Com tam\108.jpg
+6,Validate,Canh chua,Test,Canh chua,True,False,Validate\Canh chua\244.jpg,Test\Canh chua\245.jpg
+6,Train,Banh bot loc,Test,Banh bot loc,True,False,Train\Banh bot loc\335.jpg,Test\Banh bot loc\621.jpg
+6,Train,Banh can,Train,Banh can,False,False,Train\Banh can\103.jpg,Train\Banh can\105.jpg
+8,Test,Mi quang,Test,Mi quang,False,False,Test\Mi quang\33.jpg,Test\Mi quang\813.jpg
+8,Test,Hu tieu,Test,Hu tieu,False,False,Test\Hu tieu\123.jpg,Test\Hu tieu\200.jpg
+8,Test,Cao lau,Test,Cao lau,False,False,Test\Cao lau\27.jpg,Test\Cao lau\35.jpg
+8,Test,Banh canh,Test,Banh trang nuong,False,True,Test\Banh canh\350.jpg,Test\Banh trang nuong\257.jpg
+8,Train,Bun rieu,Test,Bun rieu,True,False,Train\Bun rieu\525.jpg,Test\Bun rieu\192.jpg
+8,Train,Bun rieu,Train,Ca kho to,False,True,Train\Bun rieu\444.jpg,Train\Ca kho to\525.jpg
+8,Train,Bun mam,Validate,Bun mam,True,False,Train\Bun mam\373.jpg,Validate\Bun mam\374.jpg
+8,Train,Bun mam,Train,Bun mam,False,False,Train\Bun mam\247.jpg,Train\Bun mam\76.jpg
+8,Train,Bun dau mam tom,Test,Bun dau mam tom,True,False,Train\Bun dau mam tom\913.jpg,Test\Bun dau mam tom\207.jpg
+8,Train,Com tam,Validate,Com tam,True,False,Train\Com tam\447.jpg,Validate\Com tam\158.jpg
+8,Train,Com tam,Train,Com tam,False,False,Train\Com tam\333.jpg,Train\Com tam\351.jpg
+8,Train,Bun dau mam tom,Test,Bun dau mam tom,True,False,Train\Bun dau mam tom\255.jpg,Test\Bun dau mam tom\205.jpg
+8,Train,Bun bo Hue,Validate,Bun bo Hue,True,False,Train\Bun bo Hue\794.jpg,Validate\Bun bo Hue\113.jpg
+8,Train,Com tam,Test,Com tam,True,False,Train\Com tam\245.jpg,Test\Com tam\322.jpg
+8,Train,Com tam,Train,Com tam,False,False,Train\Com tam\134.jpg,Train\Com tam\240.jpg
+8,Train,Com tam,Test,Com tam,True,False,Train\Com tam\121.jpg,Test\Com tam\10.jpg
+8,Train,Bun rieu,Validate,Banh canh,True,True,Train\Bun rieu\905.jpg,Validate\Banh canh\675.jpg
+8,Train,Goi cuon,Train,Goi cuon,False,False,Train\Goi cuon\215.jpg,Train\Goi cuon\217.jpg
+8,Train,Goi cuon,Test,Goi cuon,True,False,Train\Goi cuon\100.jpg,Test\Goi cuon\128.jpg
+8,Train,Bun bo Hue,Test,Bun bo Hue,True,False,Train\Bun bo Hue\596.jpg,Test\Bun bo Hue\611.jpg
+8,Train,Bun bo Hue,Train,Bun bo Hue,False,False,Train\Bun bo Hue\54.jpg,Train\Bun bo Hue\570.jpg
+8,Train,Bun bo Hue,Train,Bun bo Hue,False,False,Train\Bun bo Hue\328.jpg,Train\Bun bo Hue\930.jpg
+8,Train,Bun bo Hue,Test,Bun bo Hue,True,False,Train\Bun bo Hue\227.jpg,Test\Bun bo Hue\234.jpg
+8,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\119.jpg,Train\Hu tieu\569.jpg
+8,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\116.jpg,Train\Hu tieu\71.jpg
+8,Train,Banh xeo,Test,Banh xeo,True,False,Train\Banh xeo\736.jpg,Test\Banh xeo\516.jpg
+8,Train,Hu tieu,Test,Hu tieu,True,False,Train\Hu tieu\46.jpg,Test\Hu tieu\49.jpg
+8,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\267.jpg,Train\Hu tieu\270.jpg
+8,Train,Banh xeo,Train,Banh xeo,False,False,Train\Banh xeo\190.jpg,Train\Banh xeo\538.jpg
+8,Train,Banh xeo,Train,Banh xeo,False,False,Train\Banh xeo\180.jpg,Train\Banh xeo\93.jpg
+8,Train,Banh xeo,Train,Banh xeo,False,False,Train\Banh xeo\1172.jpg,Train\Banh xeo\469.jpg
+8,Train,Banh xeo,Train,Com tam,False,True,Train\Banh xeo\1046.jpg,Train\Com tam\821.jpg
+8,Train,Banh xeo,Validate,Banh xeo,True,False,Train\Banh xeo\103.jpg,Validate\Banh xeo\105.jpg
+8,Train,Banh trang nuong,Test,Ca kho to,True,True,Train\Banh trang nuong\74.jpg,Test\Ca kho to\406.jpg
+8,Train,Chao long,Test,Chao long,True,False,Train\Chao long\584.jpg,Test\Chao long\447.jpg
+8,Train,Bun thit nuong,Train,Bun thit nuong,False,False,Train\Bun thit nuong\164.jpg,Train\Bun thit nuong\328.jpg
+8,Train,Bun thit nuong,Train,Bun thit nuong,False,False,Train\Bun thit nuong\151.jpg,Train\Bun thit nuong\154.jpg
+8,Train,Banh trang nuong,Test,Banh trang nuong,True,False,Train\Banh trang nuong\248.jpg,Test\Banh trang nuong\102.jpg
+8,Train,Banh trang nuong,Validate,Banh trang nuong,True,False,Train\Banh trang nuong\158.jpg,Validate\Banh trang nuong\131.jpg
+8,Train,Banh trang nuong,Train,Banh trang nuong,False,False,Train\Banh trang nuong\15.jpg,Train\Banh trang nuong\253.jpg
+8,Train,Banh tet,Validate,Banh xeo,True,True,Train\Banh tet\204.jpg,Validate\Banh xeo\235.jpg
+8,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\329.jpg,Train\Mi quang\859.jpg
+8,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\304.jpg,Train\Mi quang\877.jpg
+8,Train,Banh mi,Test,Banh mi,True,False,Train\Banh mi\94.jpg,Test\Banh mi\75.jpg
+8,Train,Banh mi,Validate,Banh mi,True,False,Train\Banh mi\649.jpg,Validate\Banh mi\309.jpg
+8,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\607.jpg,Train\Banh mi\97.jpg
+8,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\495.jpg,Train\Banh mi\607.jpg
+8,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\242.jpg,Train\Banh mi\246.jpg
+8,Train,Mi quang,Validate,Mi quang,True,False,Train\Mi quang\397.jpg,Validate\Mi quang\208.jpg
+8,Train,Chao long,Test,Chao long,True,False,Train\Chao long\109.jpg,Test\Chao long\105.jpg
+8,Train,Chao long,Train,Chao long,False,False,Train\Chao long\106.jpg,Train\Chao long\148.jpg
+8,Train,Ca kho to,Validate,Ca kho to,True,False,Train\Ca kho to\97.jpg,Validate\Ca kho to\256.jpg
+8,Train,Ca kho to,Train,Ca kho to,False,False,Train\Ca kho to\239.jpg,Train\Ca kho to\244.jpg
+8,Train,Banh gio,Train,Bun rieu,False,True,Train\Banh gio\633.jpg,Train\Bun rieu\118.jpg
+8,Train,Banh gio,Train,Banh gio,False,False,Train\Banh gio\299.jpg,Train\Banh gio\316.jpg
+8,Train,Banh gio,Validate,Banh trang nuong,True,True,Train\Banh gio\194.jpg,Validate\Banh trang nuong\186.jpg
+8,Train,Banh duc,Test,Banh trang nuong,True,True,Train\Banh duc\29.jpg,Test\Banh trang nuong\257.jpg
+8,Train,Banh duc,Test,Banh duc,True,False,Train\Banh duc\209.jpg,Test\Banh duc\326.jpg
+8,Train,Pho,Train,Pho,False,False,Train\Pho\40.jpg,Train\Pho\403.jpg
+8,Train,Pho,Train,Pho,False,False,Train\Pho\393.jpg,Train\Pho\477.jpg
+8,Train,Pho,Test,Pho,True,False,Train\Pho\391.jpg,Test\Pho\460.jpg
+8,Train,Banh cuon,Test,Banh cuon,True,False,Train\Banh cuon\488.jpg,Test\Banh cuon\552.jpg
+8,Train,Banh cuon,Test,Banh cuon,True,False,Train\Banh cuon\431.jpg,Test\Banh cuon\428.jpg
+8,Train,Banh cuon,Test,Banh cuon,True,False,Train\Banh cuon\376.jpg,Test\Banh cuon\428.jpg
+8,Train,Canh chua,Train,Chao long,False,True,Train\Canh chua\514.jpg,Train\Chao long\185.jpg
+8,Train,Chao long,Test,Chao long,True,False,Train\Chao long\2.jpg,Test\Chao long\481.jpg
+8,Train,Chao long,Validate,Banh duc,True,True,Train\Chao long\177.jpg,Validate\Banh duc\22.jpg
+8,Train,Chao long,Test,Chao long,True,False,Train\Chao long\153.jpg,Test\Chao long\156.jpg
+8,Train,Xoi xeo,Train,Xoi xeo,False,False,Train\Xoi xeo\194.jpg,Train\Xoi xeo\37.jpg
+8,Train,Pho,Test,Pho,True,False,Train\Pho\793.jpg,Test\Pho\41.jpg
+8,Train,Pho,Test,Banh canh,True,True,Train\Pho\793.jpg,Test\Banh canh\340.jpg
+8,Train,Banh cuon,Train,Banh xeo,False,True,Train\Banh cuon\103.jpg,Train\Banh xeo\205.jpg
+8,Validate,Bun rieu,Test,Bun rieu,True,False,Validate\Bun rieu\146.jpg,Test\Bun rieu\46.jpg
+8,Validate,Bun mam,Test,Hu tieu,True,True,Validate\Bun mam\374.jpg,Test\Hu tieu\332.jpg
+8,Validate,Bun bo Hue,Validate,Bun bo Hue,False,False,Validate\Bun bo Hue\187.jpg,Validate\Bun bo Hue\86.jpg
+8,Validate,Banh trang nuong,Validate,Banh trang nuong,False,False,Validate\Banh trang nuong\131.jpg,Validate\Banh trang nuong\223.jpg
+8,Validate,Banh tet,Test,Banh tet,True,False,Validate\Banh tet\660.jpg,Test\Banh tet\44.jpg
+8,Train,Banh canh,Test,Banh bot loc,True,True,Train\Banh canh\6.jpg,Test\Banh bot loc\242.jpg
+8,Train,Banh canh,Validate,Chao long,True,True,Train\Banh canh\475.jpg,Validate\Chao long\52.jpg
+8,Train,Banh canh,Test,Banh canh,True,False,Train\Banh canh\427.jpg,Test\Banh canh\424.jpg
+8,Train,Banh canh,Train,Banh canh,False,False,Train\Banh canh\212.jpg,Train\Banh canh\214.jpg
+8,Train,Banh canh,Train,Banh canh,False,False,Train\Banh canh\209.jpg,Train\Banh canh\212.jpg
+8,Validate,Com tam,Test,Com tam,True,False,Validate\Com tam\940.jpg,Test\Com tam\186.jpg
+8,Validate,Chao long,Test,Canh chua,True,True,Validate\Chao long\52.jpg,Test\Canh chua\77.jpg
+8,Train,Banh can,Validate,Banh khot,True,True,Train\Banh can\46.jpg,Validate\Banh khot\50.jpg
+8,Test,Bun bo Hue,Test,Bun bo Hue,False,False,Test\Bun bo Hue\336.jpg,Test\Bun bo Hue\370.jpg
+8,Train,Banh beo,Train,Banh beo,False,False,Train\Banh beo\136.jpg,Train\Banh beo\637.jpg
+10,Test,Chao long,Test,Chao long,False,False,Test\Chao long\152.jpg,Test\Chao long\43.jpg
+10,Train,Banh beo,Test,Ca kho to,True,True,Train\Banh beo\506.jpg,Test\Ca kho to\144.jpg
+10,Train,Banh beo,Test,Banh bot loc,True,True,Train\Banh beo\376.jpg,Test\Banh bot loc\344.jpg
+10,Train,Banh beo,Test,Bun bo Hue,True,True,Train\Banh beo\264.jpg,Test\Bun bo Hue\231.jpg
+10,Train,Cao lau,Test,Nem chua,True,True,Train\Cao lau\33.jpg,Test\Nem chua\120.jpg
+10,Train,Cao lau,Test,Bun rieu,True,True,Train\Cao lau\240.jpg,Test\Bun rieu\660.jpg
+10,Train,Canh chua,Test,Nem chua,True,True,Train\Canh chua\99.jpg,Test\Nem chua\60.jpg
+10,Train,Canh chua,Test,Banh mi,True,True,Train\Canh chua\684.jpg,Test\Banh mi\305.jpg
+10,Train,Canh chua,Validate,Banh xeo,True,True,Train\Canh chua\595.jpg,Validate\Banh xeo\390.jpg
+10,Train,Canh chua,Validate,Chao long,True,True,Train\Canh chua\540.jpg,Validate\Chao long\52.jpg
+10,Train,Canh chua,Train,Canh chua,False,False,Train\Canh chua\540.jpg,Train\Canh chua\684.jpg
+10,Train,Canh chua,Train,Com tam,False,True,Train\Canh chua\437.jpg,Train\Com tam\20.jpg
+10,Train,Canh chua,Train,Canh chua,False,False,Train\Canh chua\252.jpg,Train\Canh chua\407.jpg
+10,Train,Canh chua,Train,Pho,False,True,Train\Canh chua\236.jpg,Train\Pho\168.jpg
+10,Train,Canh chua,Train,Chao long,False,True,Train\Canh chua\226.jpg,Train\Chao long\240.jpg
+10,Train,Canh chua,Train,Cao lau,False,True,Train\Canh chua\219.jpg,Train\Cao lau\119.jpg
+10,Train,Canh chua,Train,Canh chua,False,False,Train\Canh chua\127.jpg,Train\Canh chua\134.jpg
+10,Train,Canh chua,Test,Canh chua,True,False,Train\Canh chua\108.jpg,Test\Canh chua\44.jpg
+10,Train,Chao long,Test,Chao long,True,False,Train\Chao long\130.jpg,Test\Chao long\426.jpg
+10,Train,Chao long,Test,Chao long,True,False,Train\Chao long\119.jpg,Test\Chao long\152.jpg
+10,Train,Chao long,Validate,Banh xeo,True,True,Train\Chao long\1002.jpg,Validate\Banh xeo\72.jpg
+10,Train,Chao long,Train,Chao long,False,False,Train\Chao long\100.jpg,Train\Chao long\108.jpg
+10,Train,Cao lau,Train,Mi quang,False,True,Train\Cao lau\8.jpg,Train\Mi quang\218.jpg
+10,Train,Cao lau,Train,Pho,False,True,Train\Cao lau\518.jpg,Train\Pho\168.jpg
+10,Train,Ca kho to,Train,Cao lau,False,True,Train\Ca kho to\87.jpg,Train\Cao lau\4.jpg
+10,Train,Ca kho to,Train,Hu tieu,False,True,Train\Ca kho to\79.jpg,Train\Hu tieu\358.jpg
+10,Train,Ca kho to,Test,Banh cuon,True,True,Train\Ca kho to\554.jpg,Test\Banh cuon\200.jpg
+10,Train,Ca kho to,Test,Banh chung,True,True,Train\Ca kho to\173.jpg,Test\Banh chung\82.jpg
+10,Train,Ca kho to,Train,Ca kho to,False,False,Train\Ca kho to\158.jpg,Train\Ca kho to\194.jpg
+10,Train,Ca kho to,Train,Chao long,False,True,Train\Ca kho to\148.jpg,Train\Chao long\62.jpg
+10,Train,Ca kho to,Test,Ca kho to,True,False,Train\Ca kho to\139.jpg,Test\Ca kho to\129.jpg
+10,Train,Com tam,Test,Com tam,True,False,Train\Com tam\107.jpg,Test\Com tam\105.jpg
+10,Train,Chao long,Train,Mi quang,False,True,Train\Chao long\612.jpg,Train\Mi quang\144.jpg
+10,Train,Chao long,Validate,Chao long,True,False,Train\Chao long\516.jpg,Validate\Chao long\514.jpg
+10,Train,Chao long,Test,Chao long,True,False,Train\Chao long\362.jpg,Test\Chao long\360.jpg
+10,Train,Chao long,Validate,Hu tieu,True,True,Train\Chao long\333.jpg,Validate\Hu tieu\245.jpg
+10,Train,Chao long,Test,Cao lau,True,True,Train\Chao long\323.jpg,Test\Cao lau\559.jpg
+10,Train,Chao long,Train,Goi cuon,False,True,Train\Chao long\216.jpg,Train\Goi cuon\146.jpg
+10,Train,Ca kho to,Test,Ca kho to,True,False,Train\Ca kho to\133.jpg,Test\Ca kho to\129.jpg
+10,Train,Ca kho to,Train,Hu tieu,False,True,Train\Ca kho to\125.jpg,Train\Hu tieu\342.jpg
+10,Train,Bun thit nuong,Train,Hu tieu,False,True,Train\Bun thit nuong\91.jpg,Train\Hu tieu\136.jpg
+10,Train,Bun thit nuong,Train,Ca kho to,False,True,Train\Bun thit nuong\80.jpg,Train\Ca kho to\13.jpg
+10,Train,Bun thit nuong,Test,Banh duc,True,True,Train\Bun thit nuong\699.jpg,Test\Banh duc\451.jpg
+10,Train,Bun thit nuong,Validate,Bun thit nuong,True,False,Train\Bun thit nuong\460.jpg,Validate\Bun thit nuong\208.jpg
+10,Train,Bun thit nuong,Test,Banh canh,True,True,Train\Bun thit nuong\15.jpg,Test\Banh canh\196.jpg
+10,Train,Bun thit nuong,Test,Com tam,True,True,Train\Bun thit nuong\124.jpg,Test\Com tam\357.jpg
+10,Train,Bun thit nuong,Test,Chao long,True,True,Train\Bun thit nuong\124.jpg,Test\Chao long\614.jpg
+10,Train,Com tam,Test,Com tam,True,False,Train\Com tam\219.jpg,Test\Com tam\637.jpg
+10,Train,Com tam,Train,Com tam,False,False,Train\Com tam\209.jpg,Train\Com tam\452.jpg
+10,Train,Com tam,Train,Mi quang,False,True,Train\Com tam\132.jpg,Train\Mi quang\439.jpg
+10,Train,Com tam,Test,Hu tieu,True,True,Train\Com tam\121.jpg,Test\Hu tieu\935.jpg
+10,Train,Com tam,Test,Chao long,True,True,Train\Com tam\110.jpg,Test\Chao long\152.jpg
+10,Train,Bun rieu,Validate,Banh can,True,True,Train\Bun rieu\892.jpg,Validate\Banh can\209.jpg
+10,Train,Bun rieu,Validate,Chao long,True,True,Train\Bun rieu\712.jpg,Validate\Chao long\898.jpg
+10,Train,Bun rieu,Train,Hu tieu,False,True,Train\Bun rieu\5.jpg,Train\Hu tieu\240.jpg
+10,Train,Bun rieu,Train,Ca kho to,False,True,Train\Bun rieu\443.jpg,Train\Ca kho to\525.jpg
+10,Train,Bun rieu,Train,Com tam,False,True,Train\Bun rieu\297.jpg,Train\Com tam\135.jpg
+10,Train,Bun rieu,Test,Cao lau,True,True,Train\Bun rieu\245.jpg,Test\Cao lau\88.jpg
+10,Train,Bun rieu,Train,Com tam,False,True,Train\Bun rieu\214.jpg,Train\Com tam\49.jpg
+10,Train,Bun rieu,Validate,Banh bot loc,True,True,Train\Bun rieu\161.jpg,Validate\Banh bot loc\413.jpg
+10,Train,Bun rieu,Test,Banh xeo,True,True,Train\Bun rieu\16.jpg,Test\Banh xeo\208.jpg
+10,Train,Bun mam,Validate,Chao long,True,True,Train\Bun mam\633.jpg,Validate\Chao long\478.jpg
+10,Train,Bun mam,Test,Ca kho to,True,True,Train\Bun mam\60.jpg,Test\Ca kho to\368.jpg
+10,Train,Bun mam,Train,Pho,False,True,Train\Bun mam\378.jpg,Train\Pho\383.jpg
+10,Train,Bun mam,Train,Canh chua,False,True,Train\Bun mam\373.jpg,Train\Canh chua\434.jpg
+10,Train,Bun mam,Test,Chao long,True,True,Train\Bun mam\3.jpg,Test\Chao long\157.jpg
+10,Train,Bun mam,Train,Com tam,False,True,Train\Bun mam\132.jpg,Train\Com tam\37.jpg
+10,Train,Bun dau mam tom,Test,Pho,True,True,Train\Bun dau mam tom\450.jpg,Test\Pho\141.jpg
+10,Train,Com tam,Train,Pho,False,True,Train\Com tam\772.jpg,Train\Pho\555.jpg
+10,Train,Com tam,Train,Pho,False,True,Train\Com tam\519.jpg,Train\Pho\374.jpg
+10,Train,Com tam,Train,Com tam,False,False,Train\Com tam\463.jpg,Train\Com tam\465.jpg
+10,Train,Com tam,Validate,Banh duc,True,True,Train\Com tam\40.jpg,Validate\Banh duc\642.jpg
+10,Train,Com tam,Train,Com tam,False,False,Train\Com tam\378.jpg,Train\Com tam\425.jpg
+10,Train,Com tam,Validate,Bun rieu,True,True,Train\Com tam\32.jpg,Validate\Bun rieu\79.jpg
+10,Train,Bun dau mam tom,Train,Bun dau mam tom,False,False,Train\Bun dau mam tom\3.jpg,Train\Bun dau mam tom\77.jpg
+10,Train,Bun dau mam tom,Train,Com tam,False,True,Train\Bun dau mam tom\11.jpg,Train\Com tam\83.jpg
+10,Train,Bun bo Hue,Train,Hu tieu,False,True,Train\Bun bo Hue\88.jpg,Train\Hu tieu\288.jpg
+10,Train,Bun bo Hue,Train,Bun rieu,False,True,Train\Bun bo Hue\809.jpg,Train\Bun rieu\250.jpg
+10,Train,Bun bo Hue,Validate,Bun mam,True,True,Train\Bun bo Hue\723.jpg,Validate\Bun mam\374.jpg
+10,Train,Bun bo Hue,Train,Bun mam,False,True,Train\Bun bo Hue\704.jpg,Train\Bun mam\403.jpg
+10,Train,Bun bo Hue,Train,Nem chua,False,True,Train\Bun bo Hue\679.jpg,Train\Nem chua\249.jpg
+10,Train,Bun bo Hue,Validate,Banh canh,True,True,Train\Bun bo Hue\665.jpg,Validate\Banh canh\85.jpg
+10,Train,Goi cuon,Test,Banh bot loc,True,True,Train\Goi cuon\42.jpg,Test\Banh bot loc\386.jpg
+10,Train,Goi cuon,Train,Goi cuon,False,False,Train\Goi cuon\3.jpg,Train\Goi cuon\80.jpg
+10,Train,Goi cuon,Train,Goi cuon,False,False,Train\Goi cuon\28.jpg,Train\Goi cuon\44.jpg
+10,Train,Goi cuon,Train,Goi cuon,False,False,Train\Goi cuon\177.jpg,Train\Goi cuon\319.jpg
+10,Train,Goi cuon,Test,Cao lau,True,True,Train\Goi cuon\125.jpg,Test\Cao lau\328.jpg
+10,Train,Goi cuon,Train,Hu tieu,False,True,Train\Goi cuon\125.jpg,Train\Hu tieu\977.jpg
+10,Train,Bun bo Hue,Train,Nem chua,False,True,Train\Bun bo Hue\650.jpg,Train\Nem chua\78.jpg
+10,Train,Bun bo Hue,Test,Banh canh,True,True,Train\Bun bo Hue\463.jpg,Test\Banh canh\356.jpg
+10,Train,Bun bo Hue,Test,Banh duc,True,True,Train\Bun bo Hue\39.jpg,Test\Banh duc\82.jpg
+10,Train,Bun bo Hue,Train,Bun rieu,False,True,Train\Bun bo Hue\343.jpg,Train\Bun rieu\952.jpg
+10,Train,Bun bo Hue,Train,Com tam,False,True,Train\Bun bo Hue\317.jpg,Train\Com tam\92.jpg
+10,Train,Bun bo Hue,Train,Goi cuon,False,True,Train\Bun bo Hue\291.jpg,Train\Goi cuon\598.jpg
+10,Train,Bun bo Hue,Train,Bun bo Hue,False,False,Train\Bun bo Hue\29.jpg,Train\Bun bo Hue\31.jpg
+10,Train,Bun bo Hue,Train,Com tam,False,True,Train\Bun bo Hue\222.jpg,Train\Com tam\368.jpg
+10,Train,Bun bo Hue,Test,Bun bo Hue,True,False,Train\Bun bo Hue\206.jpg,Test\Bun bo Hue\336.jpg
+10,Train,Bun bo Hue,Test,Banh khot,True,True,Train\Bun bo Hue\1434.jpg,Test\Banh khot\2.jpg
+10,Train,Bun bo Hue,Train,Pho,False,True,Train\Bun bo Hue\1381.jpg,Train\Pho\162.jpg
+10,Train,Bun bo Hue,Test,Banh trang nuong,True,True,Train\Bun bo Hue\1337.jpg,Test\Banh trang nuong\665.jpg
+10,Train,Bun bo Hue,Train,Pho,False,True,Train\Bun bo Hue\1263.jpg,Train\Pho\401.jpg
+10,Train,Bun bo Hue,Train,Bun mam,False,True,Train\Bun bo Hue\1263.jpg,Train\Bun mam\5.jpg
+10,Train,Hu tieu,Test,Bun mam,True,True,Train\Hu tieu\238.jpg,Test\Bun mam\413.jpg
+10,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\230.jpg,Train\Hu tieu\232.jpg
+10,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\122.jpg,Train\Hu tieu\125.jpg
+10,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\109.jpg,Train\Hu tieu\91.jpg
+10,Train,Bun bo Hue,Train,Bun bo Hue,False,False,Train\Bun bo Hue\12.jpg,Train\Bun bo Hue\869.jpg
+10,Train,Bun bo Hue,Train,Com tam,False,True,Train\Bun bo Hue\117.jpg,Train\Com tam\474.jpg
+10,Train,Bun bo Hue,Train,Com tam,False,True,Train\Bun bo Hue\1029.jpg,Train\Com tam\934.jpg
+10,Train,Banh xeo,Validate,Banh xeo,True,False,Train\Banh xeo\986.jpg,Validate\Banh xeo\615.jpg
+10,Train,Banh xeo,Train,Bun mam,False,True,Train\Banh xeo\916.jpg,Train\Bun mam\673.jpg
+10,Train,Banh xeo,Train,Banh xeo,False,False,Train\Banh xeo\85.jpg,Train\Banh xeo\92.jpg
+10,Train,Banh xeo,Test,Ca kho to,True,True,Train\Banh xeo\692.jpg,Test\Ca kho to\144.jpg
+10,Train,Banh xeo,Test,Bun bo Hue,True,True,Train\Banh xeo\675.jpg,Test\Bun bo Hue\121.jpg
+10,Train,Banh xeo,Validate,Canh chua,True,True,Train\Banh xeo\653.jpg,Validate\Canh chua\504.jpg
+10,Train,Banh xeo,Validate,Banh duc,True,True,Train\Banh xeo\591.jpg,Validate\Banh duc\369.jpg
+10,Train,Hu tieu,Train,Hu tieu,False,False,Train\Hu tieu\67.jpg,Train\Hu tieu\76.jpg
+10,Train,Hu tieu,Validate,Bun mam,True,True,Train\Hu tieu\538.jpg,Validate\Bun mam\80.jpg
+10,Train,Hu tieu,Train,Mi quang,False,True,Train\Hu tieu\390.jpg,Train\Mi quang\213.jpg
+10,Train,Banh xeo,Test,Bun rieu,True,True,Train\Banh xeo\49.jpg,Test\Bun rieu\491.jpg
+10,Train,Banh xeo,Train,Bun rieu,False,True,Train\Banh xeo\36.jpg,Train\Bun rieu\527.jpg
+10,Train,Banh xeo,Test,Banh xeo,True,False,Train\Banh xeo\303.jpg,Test\Banh xeo\18.jpg
+10,Train,Banh xeo,Train,Nem chua,False,True,Train\Banh xeo\152.jpg,Train\Nem chua\177.jpg
+10,Train,Banh xeo,Test,Banh xeo,True,False,Train\Banh xeo\103.jpg,Test\Banh xeo\80.jpg
+10,Train,Banh trang nuong,Test,Banh trang nuong,True,False,Train\Banh trang nuong\85.jpg,Test\Banh trang nuong\218.jpg
+10,Train,Banh trang nuong,Train,Com tam,False,True,Train\Banh trang nuong\642.jpg,Train\Com tam\79.jpg
+10,Train,Banh trang nuong,Train,Pho,False,True,Train\Banh trang nuong\548.jpg,Train\Pho\795.jpg
+10,Train,Banh trang nuong,Train,Pho,False,True,Train\Banh trang nuong\548.jpg,Train\Pho\232.jpg
+10,Train,Banh trang nuong,Train,Bun rieu,False,True,Train\Banh trang nuong\54.jpg,Train\Bun rieu\177.jpg
+10,Train,Banh trang nuong,Train,Hu tieu,False,True,Train\Banh trang nuong\441.jpg,Train\Hu tieu\340.jpg
+10,Train,Banh trang nuong,Validate,Xoi xeo,True,True,Train\Banh trang nuong\365.jpg,Validate\Xoi xeo\178.jpg
+10,Train,Banh trang nuong,Validate,Banh trang nuong,True,False,Train\Banh trang nuong\331.jpg,Validate\Banh trang nuong\223.jpg
+10,Train,Mi quang,Validate,Mi quang,True,False,Train\Mi quang\104.jpg,Validate\Mi quang\828.jpg
+10,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\104.jpg,Train\Mi quang\34.jpg
+10,Train,Hu tieu,Test,Banh trang nuong,True,True,Train\Hu tieu\977.jpg,Test\Banh trang nuong\218.jpg
+10,Train,Hu tieu,Validate,Banh mi,True,True,Train\Hu tieu\977.jpg,Validate\Banh mi\586.jpg
+10,Train,Hu tieu,Test,Ca kho to,True,True,Train\Hu tieu\919.jpg,Test\Ca kho to\367.jpg
+10,Train,Banh trang nuong,Test,Banh trang nuong,True,False,Train\Banh trang nuong\254.jpg,Test\Banh trang nuong\218.jpg
+10,Train,Banh trang nuong,Test,Hu tieu,True,True,Train\Banh trang nuong\243.jpg,Test\Hu tieu\783.jpg
+10,Train,Banh trang nuong,Train,Bun bo Hue,False,True,Train\Banh trang nuong\210.jpg,Train\Bun bo Hue\515.jpg
+10,Train,Banh trang nuong,Train,Banh trang nuong,False,False,Train\Banh trang nuong\164.jpg,Train\Banh trang nuong\18.jpg
+10,Train,Banh trang nuong,Train,Banh trang nuong,False,False,Train\Banh trang nuong\158.jpg,Train\Banh trang nuong\331.jpg
+10,Train,Banh trang nuong,Train,Hu tieu,False,True,Train\Banh trang nuong\10.jpg,Train\Hu tieu\152.jpg
+10,Train,Banh tet,Test,Banh tet,True,False,Train\Banh tet\379.jpg,Test\Banh tet\380.jpg
+10,Train,Banh tet,Train,Pho,False,True,Train\Banh tet\366.jpg,Train\Pho\318.jpg
+10,Train,Banh tet,Test,Hu tieu,True,True,Train\Banh tet\237.jpg,Test\Hu tieu\347.jpg
+10,Train,Banh tet,Test,Xoi xeo,True,True,Train\Banh tet\218.jpg,Test\Xoi xeo\415.jpg
+10,Train,Banh tet,Test,Banh bot loc,True,True,Train\Banh tet\19.jpg,Test\Banh bot loc\69.jpg
+10,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\371.jpg,Train\Mi quang\77.jpg
+10,Train,Mi quang,Train,Mi quang,False,False,Train\Mi quang\261.jpg,Train\Mi quang\286.jpg
+10,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\213.jpg,Test\Mi quang\216.jpg
+10,Train,Mi quang,Test,Chao long,True,True,Train\Mi quang\199.jpg,Test\Chao long\473.jpg
+10,Train,Mi quang,Train,Xoi xeo,False,True,Train\Mi quang\199.jpg,Train\Xoi xeo\270.jpg
+10,Train,Banh pia,Test,Banh pia,True,False,Train\Banh pia\89.jpg,Test\Banh pia\13.jpg
+10,Train,Banh pia,Test,Banh pia,True,False,Train\Banh pia\87.jpg,Test\Banh pia\13.jpg
+10,Train,Banh pia,Validate,Banh pia,True,False,Train\Banh pia\6.jpg,Validate\Banh pia\130.jpg
+10,Train,Banh pia,Test,Com tam,True,True,Train\Banh pia\42.jpg,Test\Com tam\734.jpg
+10,Train,Banh pia,Train,Bun bo Hue,False,True,Train\Banh pia\377.jpg,Train\Bun bo Hue\723.jpg
+10,Train,Banh pia,Test,Banh pia,True,False,Train\Banh pia\27.jpg,Test\Banh pia\198.jpg
+10,Train,Banh pia,Train,Ca kho to,False,True,Train\Banh pia\246.jpg,Train\Ca kho to\111.jpg
+10,Train,Banh pia,Test,Banh xeo,True,True,Train\Banh pia\114.jpg,Test\Banh xeo\189.jpg
+10,Train,Banh mi,Train,Goi cuon,False,True,Train\Banh mi\827.jpg,Train\Goi cuon\170.jpg
+10,Train,Banh mi,Validate,Chao long,True,True,Train\Banh mi\61.jpg,Validate\Chao long\52.jpg
+10,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\329.jpg,Train\Banh mi\332.jpg
+10,Train,Banh mi,Test,Banh mi,True,False,Train\Banh mi\304.jpg,Test\Banh mi\214.jpg
+10,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\185.jpg,Train\Banh mi\242.jpg
+10,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\151.jpg,Train\Banh mi\381.jpg
+10,Train,Banh mi,Test,Xoi xeo,True,True,Train\Banh mi\1332.jpg,Test\Xoi xeo\188.jpg
+10,Train,Banh mi,Train,Banh mi,False,False,Train\Banh mi\121.jpg,Train\Banh mi\126.jpg
+10,Train,Mi quang,Test,Mi quang,True,False,Train\Mi quang\49.jpg,Test\Mi quang\843.jpg
+10,Train,Banh mi,Test,Banh mi,True,False,Train\Banh mi\106.jpg,Test\Banh mi\314.jpg
+10,Train,Banh mi,Train,Nem chua,False,True,Train\Banh mi\1023.jpg,Train\Nem chua\224.jpg
+10,Train,Banh khot,Test,Bun rieu,True,True,Train\Banh khot\473.jpg,Test\Bun rieu\244.jpg
+10,Train,Banh khot,Train,Hu tieu,False,True,Train\Banh khot\348.jpg,Train\Hu tieu\42.jpg
+10,Train,Banh khot,Train,Bun mam,False,True,Train\Banh khot\301.jpg,Train\Bun mam\129.jpg
+10,Train,Pho,Train,Pho,False,False,Train\Pho\157.jpg,Train\Pho\251.jpg
+10,Train,Pho,Train,Pho,False,False,Train\Pho\12.jpg,Train\Pho\222.jpg
+10,Train,Nem chua,Test,Banh chung,True,True,Train\Nem chua\220.jpg,Test\Banh chung\232.jpg
+10,Train,Nem chua,Test,Banh trang nuong,True,True,Train\Nem chua\170.jpg,Test\Banh trang nuong\102.jpg
+10,Train,Nem chua,Train,Pho,False,True,Train\Nem chua\117.jpg,Train\Pho\542.jpg
+10,Train,Banh khot,Train,Banh khot,False,False,Train\Banh khot\226.jpg,Train\Banh khot\330.jpg
+10,Train,Banh gio,Train,Bun mam,False,True,Train\Banh gio\379.jpg,Train\Bun mam\88.jpg
+10,Train,Banh gio,Train,Banh khot,False,True,Train\Banh gio\23.jpg,Train\Banh khot\623.jpg
+10,Train,Banh gio,Train,Bun bo Hue,False,True,Train\Banh gio\216.jpg,Train\Bun bo Hue\180.jpg
+10,Train,Banh gio,Train,Mi quang,False,True,Train\Banh gio\177.jpg,Train\Mi quang\232.jpg
+10,Train,Banh gio,Test,Ca kho to,True,True,Train\Banh gio\176.jpg,Test\Ca kho to\65.jpg
+10,Train,Banh gio,Train,Bun rieu,False,True,Train\Banh gio\122.jpg,Train\Bun rieu\444.jpg
+10,Train,Banh duc,Train,Banh trang nuong,False,True,Train\Banh duc\646.jpg,Train\Banh trang nuong\410.jpg
+10,Train,Banh duc,Train,Banh pia,False,True,Train\Banh duc\63.jpg,Train\Banh pia\82.jpg
+10,Train,Banh duc,Train,Bun bo Hue,False,True,Train\Banh duc\535.jpg,Train\Bun bo Hue\518.jpg
+10,Train,Banh duc,Train,Bun rieu,False,True,Train\Banh duc\30.jpg,Train\Bun rieu\444.jpg
+10,Train,Banh duc,Validate,Bun bo Hue,True,True,Train\Banh duc\29.jpg,Validate\Bun bo Hue\1424.jpg
+10,Train,Banh duc,Test,Banh gio,True,True,Train\Banh duc\110.jpg,Test\Banh gio\60.jpg
+10,Train,Banh duc,Test,Banh gio,True,True,Train\Banh duc\100.jpg,Test\Banh gio\43.jpg
+10,Train,Banh cuon,Train,Chao long,False,True,Train\Banh cuon\97.jpg,Train\Chao long\588.jpg
+10,Train,Banh cuon,Train,Bun rieu,False,True,Train\Banh cuon\862.jpg,Train\Bun rieu\200.jpg
+10,Train,Pho,Validate,Pho,True,False,Train\Pho\711.jpg,Validate\Pho\184.jpg
+10,Train,Pho,Test,Banh mi,True,True,Train\Pho\542.jpg,Test\Banh mi\1073.jpg
+10,Train,Pho,Test,Pho,True,False,Train\Pho\446.jpg,Test\Pho\76.jpg
+10,Train,Pho,Validate,Com tam,True,True,Train\Pho\370.jpg,Validate\Com tam\15.jpg
+10,Train,Banh cuon,Train,Cao lau,False,True,Train\Banh cuon\81.jpg,Train\Cao lau\49.jpg
+10,Train,Banh cuon,Train,Chao long,False,True,Train\Banh cuon\782.jpg,Train\Chao long\588.jpg
+10,Train,Banh cuon,Train,Bun bo Hue,False,True,Train\Banh cuon\531.jpg,Train\Bun bo Hue\1064.jpg
+10,Train,Banh cuon,Train,Bun rieu,False,True,Train\Banh cuon\271.jpg,Train\Bun rieu\290.jpg
+10,Train,Banh cuon,Train,Banh cuon,False,False,Train\Banh cuon\268.jpg,Train\Banh cuon\347.jpg
+10,Validate,Banh bot loc,Validate,Banh chung,False,True,Validate\Banh bot loc\30.jpg,Validate\Banh chung\185.jpg
+10,Validate,Banh bot loc,Test,Banh bot loc,True,False,Validate\Banh bot loc\104.jpg,Test\Banh bot loc\105.jpg
+10,Validate,Banh beo,Test,Banh beo,True,False,Validate\Banh beo\11.jpg,Test\Banh beo\92.jpg
+10,Validate,Banh beo,Test,Banh beo,True,False,Validate\Banh beo\11.jpg,Test\Banh beo\5.jpg
+10,Train,Xoi xeo,Test,Canh chua,True,True,Train\Xoi xeo\460.jpg,Test\Canh chua\740.jpg
+10,Train,Xoi xeo,Test,Xoi xeo,True,False,Train\Xoi xeo\32.jpg,Test\Xoi xeo\35.jpg
+10,Train,Xoi xeo,Train,Xoi xeo,False,False,Train\Xoi xeo\192.jpg,Train\Xoi xeo\37.jpg
+10,Train,Xoi xeo,Test,Ca kho to,True,True,Train\Xoi xeo\114.jpg,Test\Ca kho to\231.jpg
+10,Train,Banh cuon,Train,Goi cuon,False,True,Train\Banh cuon\218.jpg,Train\Goi cuon\42.jpg
+10,Train,Banh cuon,Test,Banh chung,True,True,Train\Banh cuon\187.jpg,Test\Banh chung\87.jpg
+10,Train,Banh cuon,Train,Banh gio,False,True,Train\Banh cuon\172.jpg,Train\Banh gio\152.jpg
+10,Train,Banh cuon,Test,Bun thit nuong,True,True,Train\Banh cuon\103.jpg,Test\Bun thit nuong\96.jpg
+10,Train,Banh chung,Validate,Banh cuon,True,True,Train\Banh chung\97.jpg,Validate\Banh cuon\844.jpg
+10,Train,Banh chung,Train,Bun bo Hue,False,True,Train\Banh chung\501.jpg,Train\Bun bo Hue\320.jpg
+10,Train,Banh chung,Test,Banh beo,True,True,Train\Banh chung\210.jpg,Test\Banh beo\270.jpg
+10,Train,Banh chung,Train,Banh duc,False,True,Train\Banh chung\210.jpg,Train\Banh duc\398.jpg
+10,Train,Banh chung,Train,Xoi xeo,False,True,Train\Banh chung\205.jpg,Train\Xoi xeo\36.jpg
+10,Train,Banh canh,Test,Banh canh,True,False,Train\Banh canh\81.jpg,Test\Banh canh\175.jpg
+10,Train,Banh canh,Train,Chao long,False,True,Train\Banh canh\81.jpg,Train\Chao long\66.jpg
+10,Validate,Banh mi,Test,Banh mi,True,False,Validate\Banh mi\206.jpg,Test\Banh mi\348.jpg
+10,Validate,Banh cuon,Test,Com tam,True,True,Validate\Banh cuon\61.jpg,Test\Com tam\707.jpg
+10,Train,Banh canh,Train,Chao long,False,True,Train\Banh canh\81.jpg,Train\Chao long\155.jpg
+10,Train,Banh canh,Train,Pho,False,True,Train\Banh canh\785.jpg,Train\Pho\172.jpg
+10,Train,Banh canh,Test,Banh cuon,True,True,Train\Banh canh\743.jpg,Test\Banh cuon\530.jpg
+10,Train,Banh canh,Test,Ca kho to,True,True,Train\Banh canh\6.jpg,Test\Ca kho to\144.jpg
+10,Train,Banh canh,Train,Nem chua,False,True,Train\Banh canh\53.jpg,Train\Nem chua\177.jpg
+10,Train,Banh canh,Train,Banh mi,False,True,Train\Banh canh\499.jpg,Train\Banh mi\557.jpg
+10,Train,Banh canh,Train,Bun dau mam tom,False,True,Train\Banh canh\483.jpg,Train\Bun dau mam tom\839.jpg
+10,Train,Banh canh,Train,Banh xeo,False,True,Train\Banh canh\475.jpg,Train\Banh xeo\117.jpg
+10,Train,Banh canh,Train,Banh duc,False,True,Train\Banh canh\429.jpg,Train\Banh duc\32.jpg
+10,Train,Banh canh,Train,Banh canh,False,False,Train\Banh canh\375.jpg,Train\Banh canh\465.jpg
+10,Train,Banh canh,Train,Banh pia,False,True,Train\Banh canh\261.jpg,Train\Banh pia\88.jpg
+10,Train,Banh canh,Validate,Banh canh,True,False,Train\Banh canh\141.jpg,Validate\Banh canh\457.jpg
+10,Train,Banh canh,Train,Cao lau,False,True,Train\Banh canh\13.jpg,Train\Cao lau\188.jpg
+10,Train,Banh canh,Train,Pho,False,True,Train\Banh canh\121.jpg,Train\Pho\143.jpg
+10,Validate,Xoi xeo,Test,Xoi xeo,True,False,Validate\Xoi xeo\79.jpg,Test\Xoi xeo\81.jpg
+10,Validate,Mi quang,Test,Mi quang,True,False,Validate\Mi quang\224.jpg,Test\Mi quang\84.jpg
+10,Validate,Goi cuon,Test,Com tam,True,True,Validate\Goi cuon\564.jpg,Test\Com tam\35.jpg
+10,Validate,Com tam,Test,Chao long,True,True,Validate\Com tam\223.jpg,Test\Chao long\152.jpg
+10,Validate,Chao long,Test,Chao long,True,False,Validate\Chao long\52.jpg,Test\Chao long\152.jpg
+10,Validate,Chao long,Validate,Xoi xeo,False,True,Validate\Chao long\52.jpg,Validate\Xoi xeo\98.jpg
+10,Validate,Cao lau,Test,Hu tieu,True,True,Validate\Cao lau\160.jpg,Test\Hu tieu\783.jpg
+10,Train,Banh canh,Test,Com tam,True,True,Train\Banh canh\109.jpg,Test\Com tam\357.jpg
+10,Train,Banh can,Train,Bun dau mam tom,False,True,Train\Banh can\689.jpg,Train\Bun dau mam tom\894.jpg
+10,Train,Banh can,Train,Bun bo Hue,False,True,Train\Banh can\657.jpg,Train\Bun bo Hue\1212.jpg
+10,Train,Banh can,Train,Banh can,False,False,Train\Banh can\65.jpg,Train\Banh can\67.jpg
+10,Train,Banh can,Train,Chao long,False,True,Train\Banh can\444.jpg,Train\Chao long\797.jpg
+10,Train,Banh can,Train,Ca kho to,False,True,Train\Banh can\392.jpg,Train\Ca kho to\218.jpg
+10,Train,Banh can,Test,Com tam,True,True,Train\Banh can\342.jpg,Test\Com tam\784.jpg
+10,Train,Banh can,Train,Banh cuon,False,True,Train\Banh can\287.jpg,Train\Banh cuon\224.jpg
+10,Train,Banh can,Validate,Banh can,True,False,Train\Banh can\224.jpg,Validate\Banh can\98.jpg
+10,Train,Banh bot loc,Train,Banh chung,False,True,Train\Banh bot loc\635.jpg,Train\Banh chung\210.jpg
+10,Train,Banh bot loc,Test,Banh bot loc,True,False,Train\Banh bot loc\581.jpg,Test\Banh bot loc\580.jpg
+10,Test,Canh chua,Test,Chao long,False,True,Test\Canh chua\77.jpg,Test\Chao long\152.jpg
+10,Test,Banh xeo,Test,Banh xeo,False,False,Test\Banh xeo\1170.jpg,Test\Banh xeo\18.jpg
+10,Test,Banh tet,Test,Chao long,False,True,Test\Banh tet\498.jpg,Test\Chao long\475.jpg
+10,Test,Banh tet,Test,Bun mam,False,True,Test\Banh tet\20.jpg,Test\Bun mam\237.jpg
+10,Train,Banh bot loc,Train,Goi cuon,False,True,Train\Banh bot loc\493.jpg,Train\Goi cuon\297.jpg
+10,Train,Banh bot loc,Train,Com tam,False,True,Train\Banh bot loc\48.jpg,Train\Com tam\40.jpg
+10,Train,Banh bot loc,Validate,Banh chung,True,True,Train\Banh bot loc\29.jpg,Validate\Banh chung\185.jpg
+10,Train,Banh bot loc,Train,Pho,False,True,Train\Banh bot loc\218.jpg,Train\Pho\686.jpg
+10,Train,Banh bot loc,Test,Banh duc,True,True,Train\Banh bot loc\138.jpg,Test\Banh duc\130.jpg
