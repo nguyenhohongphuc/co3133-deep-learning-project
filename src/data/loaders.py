@@ -10,8 +10,7 @@ from __future__ import annotations
 
 import torch
 from torch.utils.data import DataLoader
-
-from src.common.seed import worker_init_fn
+from src.utils.seed import worker_init_fn
 from src.data.fashion_mnist import FashionMNISTSubset
 from src.data.split import load_split
 from src.data.transforms import build_transforms

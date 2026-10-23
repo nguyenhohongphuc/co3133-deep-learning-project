@@ -8,10 +8,8 @@ from __future__ import annotations
 import torch
 import torch.nn as nn
 
-from src.common.registry import register
 
 
-@register("linear")
 class LinearClassifier(nn.Module):
     """[B, 1, 28, 28] -> [B, num_classes] logits."""
 

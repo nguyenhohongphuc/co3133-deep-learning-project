@@ -8,10 +8,8 @@ from __future__ import annotations
 import torch
 import torch.nn as nn
 
-from src.common.registry import register
 
 
-@register("transformer")
 class PatchTransformer(nn.Module):
     def __init__(self, num_classes: int = 10, sequence: str = "patches", patch_size: int = 7,
                  d_model: int = 128, nhead: int = 4, num_layers: int = 4,
