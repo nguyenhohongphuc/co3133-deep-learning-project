@@ -7,10 +7,8 @@ from __future__ import annotations
 import torch
 import torch.nn as nn
 
-from src.common.registry import register
 
 
-@register("mlp")
 class MLP(nn.Module):
     def __init__(self, num_classes: int = 10, in_features: int = 28 * 28,
                  hidden_sizes: list[int] | None = None, activation: str = "relu",

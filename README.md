@@ -22,26 +22,61 @@ Repository: **<https://github.com/nguyenhohongphuc/co3133-deep-learning-project>
 
 > Do not invent GitHub profile links. Leave the cell blank if a member has no profile.
 
+---
+
+## Quick start (A1, from a fresh clone)
+
+If you only want the commands, this is the whole pipeline. Every step is explained in the sections below.
+
+```powershell
+# 1. Environment (once)
+conda create -n co3133 python=3.10 -y
+conda activate co3133
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126   # GPU build; see "Installation"
+pip install -r requirements.txt
+
+# 2. Data (once)
+python scripts/prepare_data.py --dataset fashion-mnist --out data/
+
+# 3. Train one model  ->  results/a1/runs/<run_id>/
+python -m src.train --model linear
+
+# 4. Evaluate that run on the test set  ->  test_metrics.json + figures/
+python -m src.evaluate --run_dir results/a1/runs/<run_id>
+```
+
+All commands are run from the **repository root** (the folder that contains `src/`), with the
+`co3133` environment activated.
+
+---
+
 ## Repository layout
 
 ```
-configs/a1|a2/            One YAML per reported run (base.yaml holds the shared settings)
+configs/
+  a1.yaml                 ALL A1 settings: seed, data, training, and one block per model
+  a2/                     A2 configs
 src/
-  common/                 seed, run ids + git hash, model registry          (TV 2)
   data/                   split, transforms, Dataset, DataLoader            (TV 1)
-  engine/                 trainer, metrics, plots, profiler                 (TV 2)
+  engine/
+    trainer.py            training loop, validation, early stopping, checkpointing
+    plots.py              curves, confusion matrix, correct/wrong example grids
   models/                 linear, mlp (TV 1) · cnn (TV 2) · rnn, transformer (TV 3)
-  train.py evaluate.py    Entry points: python -m src.train --config ...
-scripts/                  prepare_data.py, run_a1_all.ps1, make_tables.py
+    __init__.py           MODELS dict: maps a name ("cnn") to its class
+  utils/
+    seed.py               set_seed, worker_init_fn
+    run_dir.py            creates results/a1/runs/<run_id>/
+    git_commit.py         current commit hash (+ "-dirty" if src/ or configs/ have changes)
+    env.py                Python / PyTorch / CUDA / CPU / GPU info for metrics.json
+  train.py                Entry point: python -m src.train --model <name>
+  evaluate.py             Entry point: python -m src.evaluate --run_dir <folder>
+scripts/                  prepare_data.py, run scripts, make_tables.py, A2 helpers
 notebooks/                EDA and error analysis only (never the pipeline)
 results/a1|a2/            COMMITTED: splits/, runs/<run_id>/, figures/, tables/
 reports/a1|a2/            Report sources, slides, A2 proposal + approval status
 docs/                     GitHub Pages site (published from /docs on main)
-  index.html              Shared landing page
-  assignments/            One page per assignment
-  assets/css/style.css    Site stylesheet
 planning/                 Team task sheet + task guidelines (not a deliverable)
-data/ checkpoints/ runs/  Ignored by git; see "Dataset preparation" below
+data/                     Datasets - ignored by git, created by scripts/prepare_data.py
 AI_USAGE.md               Detailed AI usage log (mandatory)
 ```
 
@@ -50,13 +85,322 @@ AI_USAGE.md               Detailed AI usage log (mandatory)
 | Area | Owner | Files |
 |---|---|---|
 | Data pipeline, Linear + MLP | TV 1 | `src/data/**`, `src/models/linear.py`, `src/models/mlp.py` |
-| Training engine, metrics, plots, CNN | TV 2 | `src/engine/**`, `src/common/**`, `src/train.py`, `src/evaluate.py`, `src/models/cnn.py` |
+| Training engine, evaluation, plots, CNN | TV 2 | `src/engine/**`, `src/utils/**`, `src/train.py`, `src/evaluate.py`, `src/models/cnn.py` |
 | LSTM/GRU, Transformer | TV 3 | `src/models/rnn.py`, `src/models/transformer.py` |
 
-Two interfaces are fixed so the three areas stay independent:
-`build_loaders(config) -> (train, val, test)` yielding `(images [B,1,28,28], labels [B])`,
-and every model is an `nn.Module` with `forward(x) -> logits [B, num_classes]`.
-Each model registers itself with `@register("name")` from `src/common/registry.py`.
+### The two fixed interfaces
+
+These two contracts let the three areas be developed independently. Do not change them without telling the
+whole group.
+
+1. **Data:** `build_loaders(config) -> (train_loader, val_loader, test_loader)`. Every batch is
+   `(images, labels)` with `images` of shape `[B, 1, 28, 28]` (float, normalized) and `labels` of shape `[B]` (long).
+2. **Models:** every model is an `nn.Module` whose `forward(x)` returns **logits** of shape `[B, 10]`.
+   No softmax at the end — `nn.CrossEntropyLoss` applies it internally (handbook §11.1).
+
+---
+
+## Installation
+
+### 1. Create the environment
+
+We use conda with Python 3.10 (any Python 3.10 virtual environment also works).
+
+```powershell
+conda create -n co3133 python=3.10 -y
+conda activate co3133
+```
+
+### 2. Install PyTorch
+
+PyTorch must be installed **before** `requirements.txt`, because the right build depends on your machine.
+
+**With an NVIDIA GPU (recommended).** Check your driver with `nvidia-smi`. The top-right corner shows the highest
+CUDA version the driver supports. Driver 566.x supports CUDA 12.6:
+
+```powershell
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+```
+
+For other drivers, pick the matching command on <https://pytorch.org/get-started/locally/>.
+
+**CPU only:**
+
+```powershell
+pip install torch torchvision
+```
+
+**Check that the GPU is visible:**
+
+```powershell
+python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
+```
+
+`2.14.1+cu126 True` means the GPU build is installed. If you see `+cpu` or `False`, the code still runs but on
+the CPU — see [Troubleshooting](#troubleshooting).
+
+### 3. Install the rest
+
+```powershell
+pip install -r requirements.txt
+```
+
+The exact versions used for the reported results are frozen in `requirements.lock.txt`
+(regenerate it with `pip freeze > requirements.lock.txt` after changing the environment).
+
+---
+
+## Dataset preparation
+
+### 1. Download Fashion-MNIST
+
+```powershell
+python scripts/prepare_data.py --dataset fashion-mnist --out data/   # primary dataset
+python scripts/prepare_data.py --dataset mnist --out data/           # debugging only (handbook §10)
+```
+
+This creates `data/FashionMNIST/raw/`. The `data/` folder is ignored by git, so every member downloads it once.
+
+### 2. The fixed train / validation / test split
+
+**You do not need to run this** — the split is already committed at `results/a1/splits/split_seed42.json`.
+
+| Split | Images | Source |
+|---|---|---|
+| train | 54,000 | official training set, stratified by class |
+| val | 6,000 | official training set, stratified by class |
+| test | 10,000 | official test set, untouched |
+
+All models use this same file, which is required for a fair comparison (handbook §12.2).
+Rebuild it only if the group agrees to change the split:
+
+```powershell
+python -m src.data.split --config configs/a1.yaml
+```
+
+---
+
+## Configuration: `configs/a1.yaml`
+
+Every A1 setting lives in this one file. `train.py` reads it and saves a copy into the run folder, so each run
+remembers exactly how it was trained.
+
+| Block | Keys | Read by |
+|---|---|---|
+| top level | `seed`, `data_dir`, `split_file` | `train.py`, `loaders.py` |
+| `data` | `val_size`, `stratified` (split) · `normalize`, `mean`, `std`, `augmentation` (transforms) | `split.py`, `transforms.py`, `evaluate.py` |
+| `training` | `batch_size`, `num_workers`, `epochs`, `loss`, `optimizer`, `lr`, `weight_decay`, `device`, `monitor`, `patience` | `loaders.py`, `trainer.py` |
+| `models.<name>` | constructor arguments of that model | `train.py`, `evaluate.py` |
+
+Things that are easy to get wrong:
+
+- **`models.<name>` keys must match the model's `__init__` arguments exactly.** They are passed as
+  `MODELS[name](**config["models"][name])`, so an unknown key raises `TypeError: unexpected keyword argument`.
+- **`device`**: `auto` (GPU if available, otherwise CPU), `cpu`, or `cuda`. Never leave it empty.
+- **`monitor`** is the validation metric used to pick the best checkpoint (`val_macro_f1`). The trainer keeps
+  the epoch with the **highest** value, so the metric must be "higher is better".
+- **`patience`**: training stops early after this many epochs without improvement of `monitor`.
+- **`num_workers`**: if loading hangs on Windows, set it to `0`.
+- For a quick test, set `epochs: 1`, but delete those runs afterwards and set it back before an official run.
+
+---
+
+## Train
+
+```powershell
+python -m src.train --model linear
+python -m src.train --model mlp
+python -m src.train --model cnn
+python -m src.train --model rnn
+python -m src.train --model transformer
+```
+
+`--model` chooses which block of `models:` in `configs/a1.yaml` is used. Everything else comes from the config.
+
+What happens:
+
+1. Seeds are fixed (`seed` in the config).
+2. A new folder `results/a1/runs/<run_id>/` is created, with `run_id = a1_<model>_s<seed>_<MMDD-HHMM>`
+   (for example `a1_cnn_s42_1023-1430`), and the config is copied into it as `config.yaml`.
+3. The model is trained on **train** and validated on **val** after every epoch. The test set is never read.
+4. Whenever `monitor` improves, the weights are saved to `best.pt`.
+5. At the end, `history.csv` and `metrics.json` are written.
+
+The terminal prints one line per epoch:
+
+```
+Epoch 000: train_loss=0.5754, val_loss=0.4384, val_accuracy=0.8487, val_macro_f1=0.8468
+```
+
+Epochs are numbered from **0** in the log, in `history.csv`, and in `best_epoch`.
+
+### Output of one training run
+
+| File | Content | In git? |
+|---|---|---|
+| `config.yaml` | the exact config used for this run | yes |
+| `best.pt` | model weights at the best validation epoch | **no** (`*.pt` is ignored, see [Checkpoints](#checkpoints)) |
+| `history.csv` | one row per epoch: `train_loss`, `val_loss`, `val_accuracy`, `val_macro_f1` | yes |
+| `metrics.json` | `run_id`, `model`, `seed`, `commit`, `device`, `env` (Python/PyTorch/CUDA/CPU/GPU), `param` (number of parameters), `epochs_run`, `train_time` (seconds), `best_epoch`, `best_value`, `monitor` | yes |
+
+---
+
+## Evaluate
+
+```powershell
+python -m src.evaluate --run_dir results/a1/runs/a1_cnn_s42_1023-1430
+```
+
+Tip: type the start of the folder name and press **Tab** to auto-complete it.
+
+`--run_dir` is required on purpose: the command must name the exact run, so that every reported number can be
+traced back to it (handbook §4.2). `evaluate.py` reads `config.yaml` **from the run folder**, not
+`configs/a1.yaml`, because the shared config may have changed since that run was trained.
+
+What happens:
+
+1. The model is rebuilt with that run's config, and `best.pt` is loaded.
+2. The model predicts the whole **test** set (10,000 images).
+3. Metrics are written to `test_metrics.json`, and figures to `figures/`.
+
+> **Run evaluation on the test set once per final model, at the end.** If you look at test results and then go
+> back and change hyperparameters, the test set becomes a second validation set and the comparison is no longer fair.
+
+### Output of one evaluation
+
+Added to the same run folder:
+
+| File | Content |
+|---|---|
+| `test_metrics.json` | `accuracy`, `macro_f1`, `confusion` (10×10, rows = true class, columns = predicted class), `inference_time` (seconds for the whole test set, data loading included), `device`, `model` |
+| `figures/curves.png` | training/validation loss and validation accuracy / macro-F1 per epoch |
+| `figures/confusion_test.png` | confusion matrix |
+| `figures/correct_test.png` | 16 correctly classified test images with their labels |
+| `figures/wrong_test.png` | 16 misclassified test images with true and predicted labels |
+
+These cover the mandatory comparison outputs of handbook §12.1: accuracy, macro-F1, number of parameters
+(`metrics.json`), training time (`metrics.json`), inference time, curves, confusion matrix, and correct/incorrect
+examples.
+
+---
+
+## Recommended workflow for an official run
+
+The `commit` field in `metrics.json` ends with `-dirty` if `src/` or `configs/` had uncommitted changes when the run
+started. A dirty run cannot be traced back to a commit, so follow this order:
+
+1. **Smoke test.** Set `epochs: 1`, then train and evaluate once to check that everything works.
+   Delete that run folder and set `epochs` back.
+2. **Commit the code and config first:**
+   ```powershell
+   git add -A src configs
+   git commit -m "..."
+   ```
+3. **Train and evaluate:**
+   ```powershell
+   python -m src.train --model cnn
+   python -m src.evaluate --run_dir results/a1/runs/<run_id>
+   ```
+4. **Check the run:** `commit` has no `-dirty`, and `figures/curves.png` looks sensible.
+5. **Commit the results:**
+   ```powershell
+   git add results/a1/runs/<run_id>
+   git commit -m "Add A1 run: cnn seed 42"
+   ```
+
+If you change code after step 2, go back to step 2 and train again.
+
+---
+
+## Adding or changing a model
+
+1. Write the class in `src/models/<name>.py`: an `nn.Module` that takes `[B, 1, 28, 28]` and returns logits `[B, 10]`.
+2. Register it in `src/models/__init__.py`:
+   ```python
+   from .rnn import SequenceRNN
+   MODELS = {..., "rnn": SequenceRNN}
+   ```
+3. Put its constructor arguments under `models.<name>` in `configs/a1.yaml`.
+4. Add the name to the `choices` list of `--model` in `src/train.py`.
+5. Run `python -m src.train --model <name>` with `epochs: 1` to check it.
+
+**GPU note.** Any tensor created inside the model (positional encoding, CLS token, masks…) must be an
+`nn.Parameter`, a `register_buffer`, or created with `device=x.device`. Otherwise training on the GPU fails with
+`Expected all tensors to be on the same device`.
+
+---
+
+## Checkpoints
+
+`best.pt` files are not stored in git (they are large and `*.pt` is in `.gitignore`).
+
+- **Download:** TODO — link to the shared folder with the `best.pt` of every reported run.
+  Put each file back at `results/a1/runs/<run_id>/best.pt`.
+- **Reconstruct:** check out the commit recorded in that run's `metrics.json`, copy the run's `config.yaml` to
+  `configs/a1.yaml`, and run `python -m src.train --model <model>`. The committed split and the fixed seed give
+  the same data order; small numerical differences on the GPU are possible.
+
+---
+
+## Reproducibility
+
+Every reported number must be traceable to its configuration, dataset split, checkpoint, experiment ID, and commit
+(handbook §4.2). Each run folder records all of them:
+
+| Requirement | Where |
+|---|---|
+| Configuration | `results/a1/runs/<run_id>/config.yaml` |
+| Dataset split | `split_file` in that config → `results/a1/splits/split_seed42.json` |
+| Checkpoint | `best.pt` (see [Checkpoints](#checkpoints)), selected by `monitor` on the validation set |
+| Experiment ID | `run_id` (the folder name) |
+| Commit | `commit` in `metrics.json` |
+| Seed | `seed` in `metrics.json` and `config.yaml` |
+| Hardware and software | `device` and `env` in `metrics.json` |
+
+| Item | Value |
+|---|---|
+| Seed(s) | 42 for the main comparison |
+| Hardware | AMD Ryzen 7 7735HS, 15.2 GB RAM, NVIDIA GeForce RTX 4060 Laptop GPU (8 GB), Windows 11. The device of each run is recorded in its `metrics.json` |
+| Software | Python 3.10, PyTorch 2.14.1+cu126, torchvision 0.29.1+cu126, CUDA 12.6. Exact versions: `requirements.lock.txt` |
+| Checkpoint selection | highest validation macro-F1, early stopping with patience 5 |
+| Experiment tracking | run folders under `results/a1/runs/`; no external tracking service |
+
+All models in the main comparison must be trained and evaluated on the **same device**, since training and inference
+times are not comparable between CPU and GPU.
+
+---
+
+## Troubleshooting
+
+| Symptom | Cause and fix |
+|---|---|
+| `ModuleNotFoundError: No module named 'src'` | Run from the repository root, and use `python -m src.train`, not `python src/train.py`. |
+| `ModuleNotFoundError: No module named 'src.common'` | Old code. `src/common/` was replaced by `src/utils/` and the `@register` decorator by the `MODELS` dict; remove the old import. |
+| `UnicodeDecodeError: 'charmap' codec can't decode ...` | A file containing non-ASCII text (e.g. Vietnamese comments) was opened without `encoding="utf-8"`. Add it to the `open(...)` call. |
+| `torch.cuda.is_available()` is `False` but the machine has an NVIDIA GPU | The CPU build of PyTorch is installed (`torch.__version__` ends with `+cpu`). Reinstall it: `pip install --force-reinstall --no-deps torch torchvision --index-url https://download.pytorch.org/whl/cu126` |
+| `WinError 32 ... being used by another process` during `pip install` | Another program holds a file of the environment (VS Code, a Jupyter kernel, another terminal, antivirus). Close them, then repeat the command. Delete leftover folders starting with `~` in `site-packages`. |
+| `WARNING: Ignoring invalid distribution -orch` | Leftover `~...` folders from an interrupted install, in `...\envs\co3133\Lib\site-packages`. Delete only the folders whose names start with `~`. |
+| `TypeError: __init__() got an unexpected keyword argument` | A key under `models.<name>` in `configs/a1.yaml` is not an argument of that model. |
+| `RuntimeError: Error(s) in loading state_dict ... size mismatch` | The model was rebuilt with different arguments from the ones used in training. Make sure you evaluate with the run's own `config.yaml` (which `evaluate.py` does by default). |
+| `NotImplementedError` when training `rnn` or `transformer` | The model is not implemented yet (TV 3). |
+| `FileExistsError` when starting a run | Two runs of the same model and seed in the same minute share a `run_id`. Wait a minute and run again. |
+| Training hangs at the start on Windows | Set `num_workers: 0` in `configs/a1.yaml`. |
+
+---
+
+## Current status (A1)
+
+| Item | Status |
+|---|---|
+| Data pipeline, fixed split | done |
+| Linear, MLP, CNN | implemented |
+| LSTM/GRU, Transformer | not implemented yet (TV 3) |
+| `src/train.py`, `src/evaluate.py`, `src/engine/plots.py` | done |
+| CNN `dropout` argument | accepted but not used yet: `SmallCNN` contains no `nn.Dropout` layer |
+| `scripts/run_a1_all.ps1`, `run_a1_seeds.ps1` | still use the old `--config` interface; to be updated (multi-seed runs also need a `--seed` option in `train.py`) |
+| `scripts/make_tables.py` | not implemented yet |
+
+---
 
 ## Publishing the site (one-time setup)
 
@@ -64,75 +408,12 @@ Each model registers itself with `@register("name")` from `src/common/registry.p
 2. **Settings → Pages → Build and deployment**: source *Deploy from a branch*, branch `main`, folder `/docs`.
 3. Wait for the first deployment, open the published URL, and paste it into the table above and into the LMS submission.
 
-## Installation
+## Git workflow
 
-```bash
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# Linux / macOS
-source .venv/bin/activate
-
-pip install -r requirements.txt
-```
-
-Pinned dependency versions live in `requirements.txt` (TODO: create it once the environment is fixed).
-
-## Dataset preparation
-
-```bash
-python scripts/prepare_data.py --dataset fashion-mnist --out data/   # primary dataset
-python scripts/prepare_data.py --dataset mnist --out data/           # debugging only
-```
-
-The fixed split is built once and then reused by every model:
-
-```bash
-python -m src.data.split --config configs/a1/base.yaml   # writes results/a1/splits/split_seed42.json
-```
-
-## Train
-
-```bash
-python -m src.train --config configs/a1/linear.yaml
-python -m src.train --config configs/a1/cnn.yaml --seed 1
-
-./scripts/run_a1_all.ps1      # all five models, one split, one seed
-./scripts/run_a1_seeds.ps1    # the same comparison over 3 seeds (mean ± std)
-```
-
-## Evaluate
-
-```bash
-python -m src.evaluate --config configs/a1/cnn.yaml \
-    --checkpoint results/a1/runs/<run_id>/best.pt --split test
-python scripts/make_tables.py --assignment a1   # results/a1/tables/comparison.csv
-```
-
-Each run writes `results/a1/runs/<run_id>/` containing `config.yaml` (the *resolved* config,
-with any `--seed` / `--epochs` override applied), `history.csv`, `metrics.json` and `best.pt`,
-where `run_id = <run_name>_s<seed>_<MMDD-HHMM>`.
-
-`src/train.py` never touches the test set: it trains on the train split and selects the
-checkpoint on validation macro-F1. `src/evaluate.py --split test` is the only code that reads
-the test set, and it is meant to be run once per model, at the end. It writes
-`metrics_test.json`, folds accuracy, macro-F1 and inference time back into `metrics.json`, and
-saves the handbook §12.1 figures to `results/a1/figures/`.
-
-## Reproducibility
-
-Every reported number must be traceable to its configuration, dataset split, checkpoint, log / experiment ID, and
-the corresponding commit or tag.
-
-| Item | Value |
-|---|---|
-| Seed(s) | 42 for the main comparison; 42, 1, 2 for the seed study (`scripts/run_a1_seeds.ps1`) |
-| Hardware | AMD Ryzen 7 7735HS, 15.2 GB RAM, Windows 11. An RTX 4060 Laptop GPU is present but unused — PyTorch is a CPU-only build, so every reported run is CPU |
-| Software | Python 3.10.21, PyTorch 2.14.0+cpu, torchvision 0.29.0, CUDA not used. Exact versions: `requirements.lock.txt` |
-| Checkpoint access | Each run writes `results/a1/runs/<run_id>/best.pt` (git-ignored). Reconstruct with the train command below plus that run's `config.yaml` and the committed split |
-| Experiment tracking | Run folders under `results/a1/runs/`; no external tracking service |
-
-A pre-run notebook without reproduction instructions is not an acceptable submission.
+- Work on your own branch (e.g. `pnguyen`), never directly on `main`.
+- Commit code before official runs (see [Recommended workflow](#recommended-workflow-for-an-official-run)).
+- Push your branch and open a Pull Request into `main`. In the description, mention anything that changes the two
+  [fixed interfaces](#the-two-fixed-interfaces) or `configs/a1.yaml`.
 
 ## Milestones (23:59 GMT+7)
 
