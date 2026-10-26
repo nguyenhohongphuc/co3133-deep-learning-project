@@ -11,7 +11,20 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
+import torch
+def plot_examples(dataset, y_true, y_pred, mean, std, class_names, fig_dir, split):
+    """16 ảnh đoán đúng + 16 ảnh đoán sai -> correct_<split>.png, wrong_<split>.png."""
+    groups = {
+        "correct": np.flatnonzero(y_true == y_pred)[:16],
+        "wrong": np.flatnonzero(y_true != y_pred)[:16],
+    }
+    for kind, idx in groups.items():
+        if len(idx) == 0:                       # vd model đúng 100% thì không có ảnh sai
+            continue
+        images = torch.stack([dataset[int(i)][0] for i in idx])
+        images = (images * std + mean).clamp(0, 1).numpy()   # bỏ Normalize để ảnh không bị xám
+        plot_predictions(images, y_true[idx], y_pred[idx], class_names,
+                         fig_dir / f"{kind}_{split}.png")
 def plot_curves(history_csv, out_png):
     df = pd.read_csv(history_csv)
     fig, ax = plt.subplots(1, 2, figsize=(10, 4))

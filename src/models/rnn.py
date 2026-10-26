@@ -8,7 +8,6 @@ from __future__ import annotations
 import torch
 import torch.nn as nn
 
-from src.common.registry import register
 
 
 def to_sequence(x: torch.Tensor, mode: str, patch_size: int = 7) -> torch.Tensor:
@@ -43,7 +42,6 @@ def to_sequence(x: torch.Tensor, mode: str, patch_size: int = 7) -> torch.Tensor
         raise ValueError(f"Unsupported sequence mode: {mode}")
 
 
-@register("rnn")
 class SequenceRNN(nn.Module):
     def __init__(self, 
                  num_classes: int = 10, 

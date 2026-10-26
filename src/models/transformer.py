@@ -8,11 +8,11 @@ from __future__ import annotations
 import torch
 import torch.nn as nn
 
-from src.common.registry import register
 
 def to_sequence(x: torch.Tensor, mode: str, patch_size: int = 7) -> torch.Tensor:
     """[B, 1, 28, 28] -> [B, T, F] for rows, cols, patches."""
 
+<<<<<<< HEAD
     if not isinstance(x, torch.Tensor):
         raise TypeError(f"Expected x to be a torch.Tensor, got {type(x)}")
 
@@ -41,6 +41,8 @@ def to_sequence(x: torch.Tensor, mode: str, patch_size: int = 7) -> torch.Tensor
     else:
         raise ValueError(f"Unsupported sequence mode: {mode}")
 @register("transformer")
+=======
+>>>>>>> origin/main
 class PatchTransformer(nn.Module):
     def __init__(self, num_classes: int = 10, sequence: str = "patches", patch_size: int = 7,
                  d_model: int = 128, nhead: int = 4, num_layers: int = 4,

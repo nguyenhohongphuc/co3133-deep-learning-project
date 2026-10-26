@@ -1,2 +1,15 @@
-"""Importing this package registers every model in src.common.registry."""
-from . import linear, mlp, cnn, rnn, transformer  # noqa: F401
+from .linear import LinearClassifier
+from .mlp import MLP
+from .cnn import SmallCNN
+from .rnn import SequenceRNN
+from .transformer import PatchTransformer
+
+
+
+MODELS = {
+    "linear": LinearClassifier,
+    "mlp": MLP,
+    "cnn": SmallCNN,
+    "rnn": SequenceRNN,
+    "transformer": PatchTransformer,
+}
