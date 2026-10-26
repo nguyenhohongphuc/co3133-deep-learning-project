@@ -5,44 +5,14 @@ the report must explain what goes into and comes out of attention.
 """
 from __future__ import annotations
 
+import math
+
 import torch
 import torch.nn as nn
 
+from .rnn import to_sequence
 
-def to_sequence(x: torch.Tensor, mode: str, patch_size: int = 7) -> torch.Tensor:
-    """[B, 1, 28, 28] -> [B, T, F] for rows, cols, patches."""
 
-<<<<<<< HEAD
-    if not isinstance(x, torch.Tensor):
-        raise TypeError(f"Expected x to be a torch.Tensor, got {type(x)}")
-
-    if x.ndim != 4 or x.shape[1] != 1 or x.shape[2] != 28 or x.shape[3] != 28:
-        raise ValueError(f"Expected x to have shape [B, 1, 28, 28], got {x.shape}")
-
-    x = x.squeeze(1)  # [B, 28, 28]
-
-    if mode == "rows":
-        return x.contiguous()
-
-    elif mode == "cols":
-        return x.transpose(1, 2).contiguous()
-
-    elif mode == "patches":
-        if patch_size <= 0 or 28 % patch_size != 0:
-            raise ValueError("patch_size must divide 28")
-
-        patches = x.unfold(1, patch_size, patch_size) \
-                   .unfold(2, patch_size, patch_size)
-
-        return patches.contiguous().view(
-            x.size(0), -1, patch_size * patch_size
-        )
-
-    else:
-        raise ValueError(f"Unsupported sequence mode: {mode}")
-@register("transformer")
-=======
->>>>>>> origin/main
 class PatchTransformer(nn.Module):
     def __init__(self, num_classes: int = 10, sequence: str = "patches", patch_size: int = 7,
                  d_model: int = 128, nhead: int = 4, num_layers: int = 4,

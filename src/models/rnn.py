@@ -109,4 +109,3 @@ class SequenceRNN(nn.Module):
         logits = self.classifier(features)
 
         return logits
-        raise NotImplementedError
