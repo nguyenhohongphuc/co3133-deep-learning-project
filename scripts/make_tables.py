@@ -5,6 +5,7 @@ import json
 import pathlib
 
 import pandas as pd
+import yaml
 
 MODEL_ORDER = ["linear", "mlp", "cnn", "rnn", "transformer"]
 
@@ -21,9 +22,13 @@ def load_runs(runs_dir: pathlib.Path) -> pd.DataFrame:
             metrics = json.load(f)
         with open(test_path, encoding="utf-8") as f:
             test = json.load(f)
+        with open(run_dir / "config.yaml", encoding="utf-8") as f:
+            config = yaml.safe_load(f)
         rows.append({
             "run_id": metrics["run_id"],
             "model": metrics["model"],
+            # rows / cols / patches for rnn and transformer (A1-15 ablation), "-" otherwise
+            "sequence": config["models"][metrics["model"]].get("sequence", "-"),
             "seed": metrics["seed"],
             "test_accuracy": test["accuracy"],
             "test_macro_f1": test["macro_f1"],
@@ -50,11 +55,12 @@ def check_fairness(df: pd.DataFrame) -> None:
 def summarize(df: pd.DataFrame) -> pd.DataFrame:
     """mean +/- std over seeds; std is NaN when a model has only one seed."""
     cols = ["test_accuracy", "test_macro_f1", "train_time_s", "inference_time_s"]
-    summary = df.groupby("model")[cols].agg(["mean", "std"])
+    groups = df.groupby(["model", "sequence"])
+    summary = groups[cols].agg(["mean", "std"])
     summary.columns = [f"{c}_{stat}" for c, stat in summary.columns]
-    summary["params"] = df.groupby("model")["params"].first()
-    summary["n_seeds"] = df.groupby("model")["seed"].nunique()
-    order = [m for m in MODEL_ORDER if m in summary.index]
+    summary["params"] = groups["params"].first()
+    summary["n_seeds"] = groups["seed"].nunique()
+    order = sorted(summary.index, key=lambda k: (MODEL_ORDER.index(k[0]), k[1]))
     return summary.loc[order]
 
 
@@ -68,8 +74,8 @@ def main() -> None:
     if df.empty:
         raise SystemExit("no evaluated runs found")
 
-    # If a model+seed was run more than once, keep the latest run (run_id ends with MMDD-HHMM).
-    df = df.sort_values("run_id").drop_duplicates(["model", "seed"], keep="last")
+    # If a model+sequence+seed was run more than once, keep the latest run (run_id ends with MMDD-HHMM).
+    df = df.sort_values("run_id").drop_duplicates(["model", "sequence", "seed"], keep="last")
     check_fairness(df)
 
     out_dir = root / "tables"

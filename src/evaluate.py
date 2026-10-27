@@ -26,6 +26,41 @@ def parse_args():
     return args
 
 
+def measure_inference(model, loader, device, batch_size=128, warmup=3, repeats=5):
+    """Forward-only time over the whole test set (handbook 12.1).
+
+    Data is moved to the device once beforehand, so loading, normalization and
+    host-to-device copies are not timed. Returns the median over `repeats` passes.
+    """
+    images = torch.cat([x for x, _ in loader]).to(device)
+    batches = images.split(batch_size)
+
+    def sync():
+        if str(device).startswith("cuda"):
+            torch.cuda.synchronize()
+
+    model.eval()
+    times = []
+    with torch.no_grad():
+        for _ in range(warmup):
+            model(batches[0])
+        sync()
+        for _ in range(repeats):
+            start = time.perf_counter()
+            for batch in batches:
+                model(batch)
+            sync()
+            times.append(time.perf_counter() - start)
+
+    total = float(np.median(times))
+    return {
+        "inference_time": total,
+        "inference_ms_per_image": total / len(images) * 1000,
+        "inference_batch_size": batch_size,
+        "inference_repeats": repeats,
+    }
+
+
 
 def main():
     args = parse_args()
@@ -43,14 +78,13 @@ def main():
     
     train_loader, val_loader, test_loader = build_loaders(config)
     loss_fn = build_loss(config)
-    start_time = time.time()
     _, y_true, y_pred = evaluate(model, test_loader, loss_fn, device)
-    inference_time = time.time() - start_time
     results = {
         "accuracy": accuracy(y_true, y_pred),
         "macro_f1": macro_f1(y_true, y_pred),
         "confusion": confusion_matrix(y_true, y_pred, labels=range(10)).tolist(),
-        "inference_time": inference_time,
+        **measure_inference(model, test_loader, device,
+                            batch_size=config["training"]["batch_size"]),
         "device": str(device),
         "model": metrics["model"],
     } 
