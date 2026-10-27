@@ -1,0 +1,54 @@
+seed: 42
+dataset: fashion_mnist
+data_dir: data/
+split_file: results/a1/splits/split_seed42.json
+data:
+  val_size: 6000
+  stratified: true
+  normalize: true
+  mean:
+  - 0.286209
+  std:
+  - 0.35316
+  augmentation: none
+training:
+  batch_size: 128
+  num_workers: 2
+  epochs: 50
+  loss: cross_entropy
+  optimizer: adam
+  lr: 0.001
+  weight_decay: 0.0
+  device: cuda
+  monitor: val_macro_f1
+  patience: 5
+models:
+  linear: {}
+  mlp:
+    hidden_sizes:
+    - 256
+    - 128
+    activation: relu
+    dropout: 0.2
+  cnn:
+    channels:
+    - 32
+    - 64
+    kernel_size: 3
+    dropout: 0.25
+  rnn:
+    cell: lstm
+    sequence: patches
+    patch_size: 7
+    hidden_size: 128
+    num_layers: 1
+    bidirectional: false
+  transformer:
+    sequence: patches
+    patch_size: 7
+    d_model: 128
+    nhead: 4
+    num_layers: 4
+    dim_feedforward: 256
+    dropout: 0.1
+    positional_encoding: learned

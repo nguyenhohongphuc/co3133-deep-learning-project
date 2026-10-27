@@ -1,0 +1,20 @@
+{
+  "run_id": "a1_linear_s42_1027-0134",
+  "model": "linear",
+  "seed": 42,
+  "commit": "c1747a1",
+  "device": "cuda",
+  "env": {
+    "python": "3.10.21",
+    "torch": "2.14.1+cu126",
+    "cuda": "12.6",
+    "cpu": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "param": 7850,
+  "epochs_run": 17,
+  "train_time": 508.1826114654541,
+  "best_epoch": 11,
+  "best_value": 0.8657907776173019,
+  "monitor": "val_macro_f1"
+}
