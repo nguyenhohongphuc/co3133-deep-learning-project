@@ -14,7 +14,7 @@ data:
 training:
   batch_size: 128                # loaders.py
   num_workers: 2                 # loaders.py
-  epochs: 20                     # trainer.py
+  epochs: 50                     # trainer.py
   loss: cross_entropy            # trainer.build_loss
   optimizer: adam                # trainer.build_optimizer: adam | sgd
   lr: 0.001
@@ -36,6 +36,7 @@ models:
   rnn:
     cell: lstm
     sequence: rows
+    patch_size: 7
     hidden_size: 128
     num_layers: 1
     bidirectional: false

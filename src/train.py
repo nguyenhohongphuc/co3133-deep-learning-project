@@ -27,7 +27,11 @@ def main():
     with open(f"configs/a1.yaml", "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
     set_seed(config["seed"])
-    run_id, run_dir = make_run_dir("a1", args.model, config["seed"])
+    model_cfg = config["models"][args.model]
+    run_name = args.model
+    if "sequence" in model_cfg:
+        run_name += f"_{model_cfg['sequence']}"
+    run_id, run_dir = make_run_dir("a1", run_name, config["seed"])
     with open (run_dir / "config.yaml", "w", encoding = "utf-8") as f:
         yaml.safe_dump(config, f, sort_keys=False)
     model = MODELS[args.model](**config["models"][args.model])

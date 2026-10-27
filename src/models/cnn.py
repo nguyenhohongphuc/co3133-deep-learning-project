@@ -30,6 +30,7 @@ class SmallCNN(nn.Module):
         
         self.classifier = nn.Sequential(
             nn.Flatten(),
+            nn.Dropout(dropout),
             nn.Linear(prev_channel * size * size ,num_classes),
         )
         
