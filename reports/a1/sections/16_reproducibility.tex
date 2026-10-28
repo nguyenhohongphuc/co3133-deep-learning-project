@@ -1,0 +1,79 @@
+% !TeX root = ../main.tex
+\section{Reproducibility}
+\label{sec:reproducibility}
+
+Two reproduction tasks are distinguished: recomputing tables/plots from archived artifacts, which does not require weights, and training/evaluating a new model, which does. The report-generation additions accompany this working copy; the remote source snapshot alone does not contain these uncommitted report additions until they are published by the group.
+
+\subsection{Repository and Commit Reference}
+
+The repository is \url{https://github.com/nguyenhohongphuc/co3133-deep-learning-project}. The inspected core-code checkout is \texttt{a39863859c1f8676ee85687eb230b54fd617cd75}. Five main runs record training commit \texttt{c1747a1260a9745d8da341b6fab3d64546538488}; the column and patch LSTMs append \texttt{-dirty} to its short form.
+
+A source comparison between these revisions shows that only \path{src/evaluate.py} differs within \path{src/} and \path{configs/}. Model, data, seed, training-loop, and configuration sources in the inspected checkout therefore match the committed training version. This does not recover the two uncommitted training states. Evaluation metadata also omit their own source revision, so the current evaluator is fingerprinted separately rather than assigned an undocumented historical commit.
+
+\subsection{Environment and Dependencies}
+
+The recorded experiments use Python 3.10.21, PyTorch \texttt{2.14.1+cu126}, CUDA 12.6, and an RTX 4060 Laptop GPU. Section~\ref{sec:training-and-evaluation} separates these captured fields from README hardware descriptions. Recreating a training environment requires a compatible PyTorch/CUDA build and the repository dependencies: torchvision, NumPy, pandas, matplotlib, scikit-learn, PyYAML, and tqdm.
+
+\path{requirements.txt} is an unpinned dependency list. \path{requirements.lock.txt} is evidence of one exported environment, not a portable exact installer: it contains local file URLs and lists torch 2.14.0 rather than the recorded build. Reconcile these differences before claiming an exact environment recreation. A basic environment check is:
+\begin{verbatim}
+python -c "import sys, torch; print(sys.version); \
+print(torch.__version__, torch.version.cuda); \
+print(torch.cuda.is_available())"
+\end{verbatim}
+
+The seed helper seeds Python, NumPy, PyTorch, CUDA, and workers; it enables deterministic cuDNN behavior and disables cuDNN benchmarking. It does not establish identical numerical results across arbitrary devices or dependency versions. Report rendering additionally uses matplotlib/Pillow and Tesseract 5.5.1 to audit existing annotation text, not to infer fashion labels.
+
+\subsection{Dataset Preparation and Split Reconstruction}
+
+From the repository root, the dataset downloader is:
+\begin{verbatim}
+python scripts/prepare_data.py \
+  --dataset fashion-mnist --out data/
+\end{verbatim}
+It obtains both official partitions. Reuse \path{results/a1/splits/split_seed42.json}: it contains exact training/validation indices and class counts. The official test sequence remains unchanged. If rebuilding in an isolated reproduction copy, the supported split command is:
+\begin{verbatim}
+python -m src.data.split --config configs/a1.yaml
+python scripts/compute_a1_stats.py
+\end{verbatim}
+The first command overwrites the configured split file, so verify the regenerated indices against the archived file before replacing evidence. Normalization must be computed from the 54,000 training images only; the expected rounded values are 0.286209 and 0.353160. The input manifest records the archived split's SHA-256 and source-file hashes.
+
+\subsection{Training and Evaluation Commands}
+
+The current trainer supports \texttt{--model}; it reads \path{configs/a1.yaml} and does not accept \texttt{--config} or \texttt{--seed}. For a direct run, the supported commands are:
+\begin{verbatim}
+python -m src.train --model linear
+python -m src.train --model mlp
+python -m src.train --model cnn
+python -m src.train --model rnn
+python -m src.train --model transformer
+\end{verbatim}
+Each uses the active central configuration, so these five commands alone do not select archived variants. For an archived setting, the supplied helper loads that run's saved configuration and prints a read-only plan by default:
+\begin{verbatim}
+python scripts/a1_report/reproduce_a1.py \
+  --run-id a1_cnn_s42_1027-0157
+\end{verbatim}
+In an isolated copy with the intended environment and data prepared, explicit execution is:
+\begin{verbatim}
+python scripts/a1_report/reproduce_a1.py \
+  --run-id a1_cnn_s42_1027-0157 --execute
+\end{verbatim}
+The helper temporarily applies the snapshot, trains into a new run directory, identifies that directory, evaluates it through \texttt{src.evaluate --run\_dir}, and restores the central configuration in a \texttt{finally} block. It never substitutes new weights or metrics into the archived run. Copying a different configuration can legitimately produce a dirty new-run identifier; the new snapshot and actual source revision must remain recorded. Use the other IDs in Table~\ref{tab:a1-run-traceability} to select their settings. The helper's plans were checked during report preparation; its training/evaluation execution path was not run for this manuscript.
+
+\subsection{Checkpoint Access}
+
+No \path{best.pt} file is present in the inspected A1 run folders, and no verified checkpoint-download location is supplied in the repository. The \texttt{*.pt} ignore rule explains their absence from version control but does not provide the weights. A supplied original checkpoint would belong at \path{results/a1/runs/<run_id>/best.pt}; otherwise use the reconstruction procedure above and retain the newly generated run ID.
+
+Historical confusion matrices and example grids can be audited without weights. They cannot recreate full logits, predictions, activations, or the original model state. Reconstructed models may differ numerically, and exact reconstruction of dirty variants remains limited by missing working-tree changes. These limits are disclosed rather than replaced by an unverified download link.
+
+\subsection{Experiment Traceability}
+
+\begin{table}[H]
+    \centering
+    \caption{Archived experiment identities. All seeds are 42; best indices are zero-based. SHA-256 prefixes identify the saved configuration bytes; full hashes appear in the input manifest.}
+    \label{tab:a1-run-traceability}
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \input{\reportroot assets/final/run_traceability.tex}
+\end{table}
+
+Full source hashes and weight availability are recorded in \path{results/a1/tables/a1_reproducibility_manifest.json}. The report README documents figure regeneration and export as \path{NNs_A1_Report.pdf}.

@@ -1,0 +1,28 @@
+% !TeX root = ../main.tex
+\subsection{Convolutional Neural Network}
+\label{sec:model-cnn}
+
+\subsubsection{Architecture Design}
+
+\texttt{SmallCNN}, defined in \path{src/models/cnn.py}, preserves the image's spatial layout. The configured feature extractor contains two blocks, with 32 and 64 output channels. Each block applies a $3\times3$ convolution with stride 1 and padding 1, BatchNorm, ReLU, and $2\times2$ max pooling with stride 2. The convolution preserves the spatial dimensions, while pooling halves them. Figure~\ref{fig:a1-cnn-architecture} shows the blocks and resulting feature dimensions.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/architectures/a1_cnn.png}
+    \caption{CNN feature extraction and classification. Feature-map stacks are schematic; the annotated dimensions are taken from the configured model. BN denotes BatchNorm.}
+    \label{fig:a1-cnn-architecture}
+\end{figure}
+
+\subsubsection{Convolution Pooling and Feature Maps}
+
+A convolution applies shared local filters across the image. Each output channel forms a feature map describing the responses of one learned filter at different positions. This encourages reuse of local patterns such as boundaries and shapes. ReLU introduces nonlinearity, and max pooling summarizes the strongest response in each $2\times2$ neighborhood while reducing spatial resolution. BatchNorm has learned scale and shift parameters and maintains running statistics for evaluation.
+
+These operations introduce a spatial inductive bias that is absent from the flattened linear and MLP inputs. Pooling reduces the size of the representation, but it also discards some positional detail. The architecture does not guarantee complete translation invariance.
+
+\subsubsection{Classification Head and Parameter Count}
+
+The final feature tensor contains $64\times7\times7=3{,}136$ values per image. The classification head flattens this tensor, applies dropout with probability 0.25, and uses a linear layer to produce ten logits. The feature extractor contributes 19,008 parameters: 18,816 convolutional weights and biases, plus 192 BatchNorm scale and shift parameters. The head contributes $3136\times10+10=31{,}370$, for a total of \textbf{50,378 parameters}. Dropout is present in the head in the implementation used for the saved run.
+
+\subsubsection{Strengths and Limitations}
+
+Local connectivity and parameter sharing allow this CNN to learn spatial features with fewer parameters than the configured MLP. Its two pooling stages also reduce the representation before classification. The shallow convolutional stack and downsampling may limit the detail that reaches the head, particularly for visually similar garments. These are architectural considerations, rather than claims that every class benefits equally; the confusion matrices and examples are used to examine the observed behavior.

@@ -1,0 +1,23 @@
+% !TeX root = ../main.tex
+\section{Limitations}
+\label{sec:limitations}
+
+\subsection{Data Limitations}
+
+Fashion-MNIST contains isolated grayscale fashion items at $28\times28$, with ten balanced classes. It supplies neither color nor fine product detail, and the official split is image-based rather than a verified product-, source-, or subject-disjoint split. We checked index separation and training-only normalization, but did not perform a full near-duplicate or provenance audit. Index disjointness alone does not establish independence of every underlying item.
+
+Balanced support prevents class frequency from explaining the observed difficulty differences, but the label categories can still overlap visually. Selected examples do not establish annotation noise, intrinsic class ambiguity rates, or an irreducible error bound. The first-16 correct/incorrect grids also cover only a small, ordered subset of the test outcomes; they are illustrative, not representative samples of all failure attributes.
+
+\subsection{Method and Experimental Limitations}
+
+Each configuration has one training seed. No seed-level confidence interval, significance test, or estimate of run-to-run variance is available. The architectures differ in capacity, normalization, dropout, and representation; shared optimizer settings do not establish equally good tuning. The recorded experiment includes no learning-rate search, scheduler, warm-up, augmentation study, mixed-precision comparison, or matched-capacity architecture control.
+
+Training and validation losses are measured in different modes and at different stages of an epoch, so their difference is not a controlled generalization gap. Early stopping changes total training work. Saved inference time is a batched, forward-only median on the recorded CUDA environment; it excludes preprocessing and transfers, and the individual timing samples are not retained. Parameter count and analytical MACs do not measure peak memory or application latency.
+
+Reproduction has material limits: original checkpoints are absent from this checkout; two LSTM variants record dirty source states; evaluation revision was not independently stored; and the dependency snapshot differs from run metadata and contains machine-local paths. Saved configurations, split indices, histories, metrics, and source fingerprints remain auditable, but they do not recover missing weights or working-tree changes. Section~\ref{sec:reproducibility} distinguishes artifact re-analysis from new training.
+
+\subsection{Generalization}
+
+The conclusions apply to the reported Fashion-MNIST configurations and protocol. No external dataset, real catalog photograph, distribution-shift benchmark, adversarial evaluation, or calibrated deployment threshold was tested. A model leading macro-F1 here may not lead a different workload, class-cost objective, image resolution, or hardware platform. In particular, the CNN's overall lead does not imply higher recall for every class or correctness on every image.
+
+The test set has been inspected for reporting and error analysis. Future hypotheses derived from those observations require validation-based selection and, for a stronger independent confirmation, an appropriate new held-out evaluation. The report provides evidence for recorded outcomes and structural explanations, while controlled reruns are needed for stronger causal and deployment claims.

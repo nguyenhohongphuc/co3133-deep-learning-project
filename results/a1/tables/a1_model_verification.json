@@ -1,0 +1,267 @@
+{
+  "purpose": "Architecture and forward-shape verification only; no training or checkpoint evaluation",
+  "batch_shape": [
+    2,
+    1,
+    28,
+    28
+  ],
+  "torch_version": "2.8.0",
+  "models": [
+    {
+      "run_id": "a1_cnn_s42_1027-0157",
+      "model": "cnn",
+      "model_config": {
+        "channels": [
+          32,
+          64
+        ],
+        "kernel_size": 3,
+        "dropout": 0.25
+      },
+      "parameter_count": 50378,
+      "output_shape": [
+        2,
+        10
+      ],
+      "trainable_parameters": 50378,
+      "submodule_parameters": {
+        "feature": 19008,
+        "classifier": 31370
+      },
+      "feature_stages": [
+        {
+          "layer": "Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))",
+          "output_shape": [
+            2,
+            32,
+            28,
+            28
+          ],
+          "params": 320
+        },
+        {
+          "layer": "BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+          "output_shape": [
+            2,
+            32,
+            28,
+            28
+          ],
+          "params": 64
+        },
+        {
+          "layer": "ReLU()",
+          "output_shape": [
+            2,
+            32,
+            28,
+            28
+          ],
+          "params": 0
+        },
+        {
+          "layer": "MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)",
+          "output_shape": [
+            2,
+            32,
+            14,
+            14
+          ],
+          "params": 0
+        },
+        {
+          "layer": "Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))",
+          "output_shape": [
+            2,
+            64,
+            14,
+            14
+          ],
+          "params": 18496
+        },
+        {
+          "layer": "BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)",
+          "output_shape": [
+            2,
+            64,
+            14,
+            14
+          ],
+          "params": 128
+        },
+        {
+          "layer": "ReLU()",
+          "output_shape": [
+            2,
+            64,
+            14,
+            14
+          ],
+          "params": 0
+        },
+        {
+          "layer": "MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)",
+          "output_shape": [
+            2,
+            64,
+            7,
+            7
+          ],
+          "params": 0
+        }
+      ]
+    },
+    {
+      "run_id": "a1_linear_s42_1027-0134",
+      "model": "linear",
+      "model_config": {},
+      "parameter_count": 7850,
+      "output_shape": [
+        2,
+        10
+      ],
+      "trainable_parameters": 7850,
+      "submodule_parameters": {
+        "flatten": 0,
+        "classifier": 7850
+      }
+    },
+    {
+      "run_id": "a1_mlp_s42_1027-0143",
+      "model": "mlp",
+      "model_config": {
+        "hidden_sizes": [
+          256,
+          128
+        ],
+        "activation": "relu",
+        "dropout": 0.2
+      },
+      "parameter_count": 235146,
+      "output_shape": [
+        2,
+        10
+      ],
+      "trainable_parameters": 235146,
+      "submodule_parameters": {
+        "flatten": 0,
+        "network": 235146
+      }
+    },
+    {
+      "run_id": "a1_rnn_cols_s42_1027-0217",
+      "model": "rnn",
+      "model_config": {
+        "cell": "lstm",
+        "sequence": "cols",
+        "patch_size": 7,
+        "hidden_size": 128,
+        "num_layers": 1,
+        "bidirectional": false
+      },
+      "parameter_count": 82186,
+      "output_shape": [
+        2,
+        10
+      ],
+      "trainable_parameters": 82186,
+      "submodule_parameters": {
+        "rnn": 80896,
+        "classifier": 1290
+      },
+      "sequence_shape": [
+        2,
+        28,
+        28
+      ]
+    },
+    {
+      "run_id": "a1_rnn_patches_s42_1027-0229",
+      "model": "rnn",
+      "model_config": {
+        "cell": "lstm",
+        "sequence": "patches",
+        "patch_size": 7,
+        "hidden_size": 128,
+        "num_layers": 1,
+        "bidirectional": false
+      },
+      "parameter_count": 92938,
+      "output_shape": [
+        2,
+        10
+      ],
+      "trainable_parameters": 92938,
+      "submodule_parameters": {
+        "rnn": 91648,
+        "classifier": 1290
+      },
+      "sequence_shape": [
+        2,
+        16,
+        49
+      ]
+    },
+    {
+      "run_id": "a1_rnn_rows_s42_1027-0204",
+      "model": "rnn",
+      "model_config": {
+        "cell": "lstm",
+        "sequence": "rows",
+        "patch_size": 7,
+        "hidden_size": 128,
+        "num_layers": 1,
+        "bidirectional": false
+      },
+      "parameter_count": 82186,
+      "output_shape": [
+        2,
+        10
+      ],
+      "trainable_parameters": 82186,
+      "submodule_parameters": {
+        "rnn": 80896,
+        "classifier": 1290
+      },
+      "sequence_shape": [
+        2,
+        28,
+        28
+      ]
+    },
+    {
+      "run_id": "a1_transformer_patches_s42_1027-0242",
+      "model": "transformer",
+      "model_config": {
+        "sequence": "patches",
+        "patch_size": 7,
+        "d_model": 128,
+        "nhead": 4,
+        "num_layers": 4,
+        "dim_feedforward": 256,
+        "dropout": 0.1,
+        "positional_encoding": "learned"
+      },
+      "parameter_count": 540170,
+      "output_shape": [
+        2,
+        10
+      ],
+      "trainable_parameters": 540170,
+      "submodule_parameters": {
+        "patch_embed": 6400,
+        "dropout": 0,
+        "encoder": 529920,
+        "norm": 256,
+        "classifier": 1290
+      },
+      "encoder_layer_parameters": 132480,
+      "token_shape": [
+        2,
+        16,
+        49
+      ]
+    }
+  ]
+}

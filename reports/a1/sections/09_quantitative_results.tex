@@ -1,0 +1,64 @@
+% !TeX root = ../main.tex
+\section{Quantitative Results}
+\label{sec:quantitative-results}
+
+The results below use the 10,000-image official test set and the checkpoints selected by validation macro-F1. We recomputed accuracy, macro-F1, and classwise metrics from the saved test confusion matrices and checked agreement with the recorded comparison table. This is an analysis of existing evaluation artifacts; no new predictions were generated.
+
+\subsection{Main Model Comparison}
+
+Table~\ref{tab:a1-test-comparison} reports predictive performance and computational cost together. The first five rows form the main architecture comparison; the final two provide the additional LSTM representations. Accuracy and macro-F1 are percentages, and all rows use seed 42.
+
+\begin{table}[H]
+    \centering
+    \caption{Test results and recorded computational cost. Bold values identify the highest accuracy and macro-F1 among these runs. Training time includes validation and checkpointing; inference is amortized forward-pass time per image at batch size 128.}
+    \label{tab:a1-test-comparison}
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \input{\reportroot assets/quantitative/model_comparison.tex}
+    \par\smallskip
+    \begin{minipage}{\textwidth}
+        \small \textdagger{} The column and patch LSTM runs record \texttt{c1747a1-dirty}; their exact working-tree changes are not recoverable from the commit identifier alone. Timing follows the protocol and limits in Section~\ref{sec:training-and-evaluation}.
+    \end{minipage}
+\end{table}
+
+The CNN has the highest recorded test accuracy, 91.82\%, and macro-F1, 91.76\%. It correctly classifies 9,182 images, leaving 818 errors. Its accuracy exceeds the linear baseline by 7.79 percentage points, the MLP by 2.44 points, and the row LSTM by 1.90 points. These differences describe the saved runs, without a claim of statistical significance across training seeds.
+
+The linear model uses the fewest parameters and has the lowest recorded inference time. The CNN has fewer parameters than the MLP and the shortest total training run, but completes only 13 epochs compared with the MLP's 28. Total training duration therefore cannot be read as an equal-budget speed comparison. The Transformer has the most parameters and the highest forward-pass time among these configurations; its test accuracy is below the MLP, CNN, and row LSTM results.
+
+Rows give the highest test scores among the recurrent representations. Rows and columns share the same parameter count, whereas patches increase it. Further interpretation of these trade-offs is reserved for the model discussion.
+
+\subsection{Classwise Performance}
+
+Table~\ref{tab:a1-classwise-f1} gives test F1 for each of the ten classes, computed from the saved matrices using the definitions in Section~\ref{sec:training-and-evaluation}. Each true class has exactly 1,000 test images. The final macro-F1 is the arithmetic mean of the ten unrounded class scores; rounding the displayed cells can introduce a small difference in a manually recomputed average.
+
+\begin{table}[H]
+    \centering
+    \caption{Classwise test F1 (\%) for the five main configurations. Bold marks the largest unrounded value in each row. Every class has support 1,000.}
+    \label{tab:a1-classwise-f1}
+    \small
+    \setlength{\tabcolsep}{6pt}
+    \input{\reportroot assets/quantitative/classwise_f1.tex}
+\end{table}
+
+Shirt is the lowest-F1 class for every main model: 58.94\% for linear, 73.33\% for the MLP, 75.54\% for the CNN, 71.47\% for the row LSTM, and 69.59\% for the Transformer. Even the best aggregate result therefore leaves a substantial weakness on this class. For the CNN, Shirt precision is 80.07\% and recall is 71.50\%, so 285 of the 1,000 true Shirt images are missed.
+
+The CNN has the largest classwise F1 in all ten rows of this recorded comparison. Its Trouser, Sandal, Bag, and Ankle boot F1 scores exceed 97\%, while T-shirt/top, Pullover, Coat, and Shirt remain below 90\%. The aggregate score consequently hides considerable class-level variation. Complete precision, recall, F1, and support values for all seven configurations are exported to \path{results/a1/tables/a1_classwise_metrics.csv}.
+
+\subsection{Confusion Matrices}
+
+Figure~\ref{fig:a1-test-confusions} compares the five main models using a common color scale. Rows are true classes and columns are predictions. Each row is divided by its 1,000 true examples, allowing the same cells to be compared directly across configurations.
+
+The CNN's largest directed confusion is Shirt $\rightarrow$ T-shirt/top: 112 cases, or 11.2\% of all true Shirts. Other frequent Shirt errors are Coat (82 cases) and Pullover (61 cases). Together, these three destinations account for 255 of its 285 missed Shirts. The reverse T-shirt/top $\rightarrow$ Shirt direction contains 59 cases, so the confusion is not symmetric. Pullover $\rightarrow$ Coat adds 54 cases. These counts locate the remaining errors; visual explanations require the image-level analysis in the following sections.
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=\textwidth,height=0.82\textheight,keepaspectratio]{\reportroot assets/quantitative/main_model_confusions.png}
+    \caption{Row-normalized test confusion matrices for the five main configurations. Class IDs follow the key. Cell labels show percentages rounded to integers, restricted to diagonal cells and off-diagonal rates of at least 2\%; unlabeled cells may still contain errors. Colors use the unrounded rates on the shared 0--100\% scale.}
+    \label{fig:a1-test-confusions}
+\end{figure}
+
+\clearpage
+
+\subsection{Variation Across Random Seeds}
+
+Only one training seed, 42, is available for each configuration. The \texttt{n\_seeds} field in the saved summary is one, and sample standard deviations are absent. We therefore report individual-run values without a mean $\pm$ standard deviation, confidence interval, or error bars across seeds. The two extra LSTM representations are distinct configurations, not repeated seeds of the row model. Likewise, five timing repetitions measure repeated forward passes and do not estimate variation caused by training initialization. Multi-seed stability remains unmeasured.

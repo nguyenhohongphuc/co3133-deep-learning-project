@@ -1,0 +1,48 @@
+% !TeX root = ../main.tex
+\subsection{Transformer}
+\label{sec:model-transformer}
+
+\subsubsection{Tokenization and Input Representation}
+
+The model in \path{src/models/transformer.py} uses a Transformer encoder to classify image patches. The saved configuration divides each image into 16 non-overlapping $7\times7$ patches, using the same patch-conversion helper as the LSTM. Flattening each patch gives a tensor of shape $[B,16,49]$. The model is trained from scratch and does not use a pretrained vision backbone. Figure~\ref{fig:a1-transformer-architecture} summarizes the tokenization, encoder stack, and classification head.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/architectures/a1_transformer.png}
+    \caption{Patch Transformer: sixteen image patches become seventeen embedded tokens after adding CLS. Four encoder blocks process the tokens; the final CLS representation is normalized and classified.}
+    \label{fig:a1-transformer-architecture}
+\end{figure}
+
+\subsubsection{Token Embedding and Positional Encoding}
+
+A learned linear projection maps each 49-dimensional patch to an embedding of width $d=128$. A learned classification token, denoted CLS, is prepended to the 16 patch embeddings. The resulting sequence has 17 tokens. Learned positional embeddings specify their order, including the position of CLS:
+\begin{equation}
+    E^{(0)}=D_{0.1}\!\left([e_{\mathrm{CLS}};e_1;\ldots;e_{16}]+P\right),
+    \qquad P\in\mathbb{R}^{17\times128}.
+\end{equation}
+Here $e_i=W_ep_i+b_e$ is the projection of flattened patch $p_i$, and $D_{0.1}$ is dropout with probability 0.1. The encoder input therefore has shape $[B,17,128]$. Although sinusoidal positions are supported in the implementation, the reported Transformer run uses learned positions.
+
+\subsubsection{Attention Inputs and Outputs}
+
+The encoder uses four attention heads. Within a head, learned projections of the current token representations provide queries $Q$, keys $K$, and values $V$. Scaled dot-product attention computes~\cite{vaswani2017attention}
+\begin{equation}
+    \operatorname{Attention}(Q,K,V)
+    =\operatorname{softmax}\!\left(\frac{QK^{\top}}{\sqrt{d_k}}\right)V,
+    \qquad d_k=128/4=32.
+\end{equation}
+For one image, each head uses $Q,K,V\in\mathbb{R}^{17\times32}$ and produces an output of shape $[17,32]$. Concatenating the four head outputs and applying the output projection restores the token width to 128. Each token can therefore aggregate information from the full 17-token sequence. No causal or padding mask is passed: the task uses complete images with a fixed number of patches.
+
+\subsubsection{Encoder and Classification Head}
+
+The architecture stacks four \texttt{TransformerEncoderLayer} blocks. Each block contains multi-head self-attention and a positionwise feed-forward network with dimensions $128\to256\to128$ and a GELU activation. Residual connections, dropout with probability 0.1, and two LayerNorm modules are used in each block. The implementation retains PyTorch's post-normalization order, with normalization after the residual additions~\cite{pytorch-transformer-layer}.
+
+After the fourth block, the model selects the CLS output, applies a further LayerNorm, and maps its 128 features to ten logits. It does not average the patch-token outputs. The output shape is $[B,10]$, matching the common interface.
+
+\subsubsection{Parameter Count, Strengths, and Limitations}
+
+The patch projection contributes 6,400 parameters, CLS contributes 128, and the learned positions contribute 2,176. Each encoder block contains 132,480 parameters, giving 529,920 across four blocks. The final LayerNorm and classifier contribute 256 and 1,290, respectively. The total is
+\begin{equation}
+    6{,}400+128+2{,}176+529{,}920+256+1{,}290=540{,}170.
+\end{equation}
+
+Self-attention combines distant patches without a recurrent scan. Patch projections and positional embeddings encode content and order without a convolutional feature extractor. As the largest configured model, its 540,170 parameters must be considered alongside predictive quality and runtime; global attention does not itself establish a performance advantage.

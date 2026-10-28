@@ -1,0 +1,56 @@
+% !TeX root = ../main.tex
+\section{Data Preparation}
+\label{sec:data-preparation}
+
+This section describes how the official Fashion-MNIST records become the image tensors used by all five model families. The preparation procedure is shared across models; architecture-specific flattening or conversion to sequences takes place inside the models.
+
+\subsection{Train, Validation, and Test Split}
+
+We apply a \emph{Stratified Split} to the official 60,000-image training partition using \texttt{Stratified\-Shuffle\-Split} in \path{src/data/split.py}. The splitter uses one split, a validation size of 6,000, and random seed 42. It assigns 90\% of each class to training and 10\% to validation, giving 54,000 training images and 6,000 validation images. The official 10,000-image test partition is retained separately.
+
+The unit of splitting is one image index. The selected indices are stored in \path{results/a1/splits/split_seed42.json}, together with the seed, partition sizes, and class counts. Every main model reads this same file rather than drawing a new split at the start of training. Consequently, the models are compared on identical examples, and differences in random partition selection do not enter the main comparison.
+
+\subsection{Leakage Prevention}
+
+The training and validation index sets are disjoint and together cover all 60,000 official training images. We verified these properties directly from the saved indices. The dataset wrapper uses the official training partition for both subsets and the separate official test partition for testing.
+
+Normalization statistics are computed from the 54,000 training images only and then reused for validation and testing. The training entry point passes only the training and validation loaders to the fitting routine, and the best checkpoint is selected using validation macro-F1. Test predictions are produced by the separate evaluation entry point after loading that checkpoint. This separates the implemented fitting and checkpoint-selection steps from test evaluation.
+
+These checks establish separation at the image-index level. They do not establish that visually similar or near-duplicate products are absent across partitions; duplicate-aware grouping is not implemented in the current pipeline.
+
+\subsection{Preprocessing}
+
+The pipeline retains the official images and labels without filtering or relabeling records. Since every image already has one grayscale channel and a resolution of $28\times28$, no resizing or padding is applied. Preprocessing consists of tensor conversion followed by channelwise normalization:
+\begin{enumerate}
+    \item \textbf{Tensor conversion.} \texttt{ToTensor()} converts an image from unsigned 8-bit pixels to a floating-point tensor of shape $[1,28,28]$. A raw pixel value $p\in\{0,\ldots,255\}$ becomes $u=p/255$.
+    \item \textbf{Normalization.} \texttt{Normalize} applies the same training-derived constants to every image:
+    \begin{equation}
+        x=\frac{u-\mu_{\mathrm{train}}}{\sigma_{\mathrm{train}}},
+        \qquad
+        \mu_{\mathrm{train}}=0.286209,
+        \quad
+        \sigma_{\mathrm{train}}=0.353160.
+    \end{equation}
+\end{enumerate}
+
+The statistics script computes the mean and population standard deviation across all pixels in the fixed training subset, rather than separately for each image. A local recomputation matched the configured constants to six decimal places. Normalized values are not constrained to $[0,1]$: the theoretical interval is approximately $[-0.8104,2.0212]$. Labels retain their integer class IDs from 0 to 9.
+
+\subsection{Data Augmentation}
+
+The reported main configuration sets \texttt{augmentation: none}. No random crops, flips, rotations, or other synthetic image transformations are applied. Training, validation, and testing therefore share the same deterministic preprocessing. The current transform builder rejects unsupported training-augmentation settings instead of silently ignoring them. This provides a common input pipeline for the architecture comparison; the effect of augmentation has not been evaluated in the committed main experiments.
+
+\subsection{Dataset and DataLoader}
+
+\texttt{FashionMNISTSubset} wraps the official dataset and maps each subset index to its saved original image index. Its \texttt{\_\_getitem\_\_} method applies preprocessing and returns an image tensor and an integer label. The loader factory returns separate training, validation, and test loaders with a configured batch size of 128 and two worker processes. Training samples are shuffled, while validation and test samples retain their stored order. The final incomplete batch is retained.
+
+The loaders use seeded PyTorch generators: 42 for training, 43 for validation, and 44 for testing. The worker initialization function seeds NumPy and Python's random module from each worker's PyTorch seed. Pinned host memory is enabled when CUDA is available. These settings support reproducible sample loading, although identical seeds alone do not guarantee identical numerical results across all devices and library versions.
+
+For a concrete example, we inspected the first validation batch using the repository's dataset wrapper and transform builder. The resulting tensors were:
+\begin{verbatim}
+images: shape [128, 1, 28, 28], dtype torch.float32
+labels: shape [128],            dtype torch.int64
+pixel range: [-0.810423, 2.021155]
+first 8 labels: [3, 1, 9, 8, 2, 1, 2, 9]
+\end{verbatim}
+
+This local inspection used zero worker processes while preserving the configured batch size and validation order; the experiment configuration remains at two workers. The batch was checked against direct pixel scaling and normalization. Its metadata are saved in \path{results/a1/tables/a1_preprocessing_example.json}. The inspection verifies data preparation only and does not constitute a new training run.

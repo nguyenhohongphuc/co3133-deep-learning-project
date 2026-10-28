@@ -1,0 +1,20 @@
+% !TeX root = ../main.tex
+\section{Models}
+\label{sec:models}
+
+The comparison uses five architecture families: a linear classifier, an MLP, a CNN, an LSTM, and a Transformer encoder. All receive the normalized image tensor defined in Section~\ref{sec:data-preparation} and produce ten logits for cross-entropy training. The architectures are constructed from standard PyTorch components and trained without pretrained weights.
+
+The descriptions below follow the configurations saved with the reported runs, rather than relying only on constructor defaults. We instantiated all seven saved configurations, including the three LSTM input representations, checked their output shape on a two-image batch, and matched their parameter counts to the recorded run metadata. This inspection did not load trained checkpoints or produce new predictive results. The checks are recorded in \path{results/a1/tables/a1_model_verification.json}. Parameter counts include trainable weights and biases; non-trainable buffers such as BatchNorm running statistics are excluded.
+
+The architecture illustrations show the configured layer dimensions. Image thumbnails use one example from the official training partition; neuron nodes and feature-map grids are schematic and do not depict measured activations.
+
+\input{\reportroot models/linear.tex}
+\par\penalty0\relax
+\input{\reportroot models/mlp.tex}
+\par\penalty0\relax
+\input{\reportroot models/cnn.tex}
+\par\penalty0\relax
+\input{\reportroot models/rnn.tex}
+\par\penalty0\relax
+\input{\reportroot models/transformer.tex}
+\par\penalty0\relax

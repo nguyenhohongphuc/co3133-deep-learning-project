@@ -1,0 +1,56 @@
+% !TeX root = ../main.tex
+\section{Loss Function and Optimization}
+\label{sec:loss-and-optimization}
+
+All seven saved configurations use the same classification objective and optimizer settings. This section distinguishes these shared settings from the regularization built into each architecture. The description follows \path{src/engine/trainer.py} and the configuration snapshots stored with the reported runs.
+
+\subsection{Cross-Entropy Loss}
+
+For a batch of $B$ images, every model returns logits $z\in\mathbb{R}^{B\times10}$ and receives integer targets $y_i\in\{0,\ldots,9\}$. The training objective is the mean multiclass cross-entropy:
+\begin{equation}
+    \mathcal{L}_{\mathrm{CE}}
+    =-\frac{1}{B}\sum_{i=1}^{B}
+    \log\frac{\exp(z_{i,y_i})}{\sum_{k=0}^{9}\exp(z_{i,k})}.
+    \label{eq:a1-cross-entropy}
+\end{equation}
+The loss encourages the correct class to receive a larger logit relative to the competing classes. In the implementation, \texttt{build\_loss} constructs \texttt{nn.CrossEntropyLoss()} with its default mean reduction, no class weights, and no label smoothing~\cite{pytorch-cross-entropy}. The model output is passed directly to this loss; an explicit softmax is not applied beforehand. Class weighting is not used because the training classes have equal sample counts.
+
+For epoch-level reporting, each batch's mean loss is multiplied by its actual batch size before accumulation. Dividing the accumulated sum by the total number of processed images gives a sample-weighted average, including the final incomplete batch. The same aggregation is used during validation. Cross-entropy supplies the differentiable training objective, while validation macro-F1 supplies the checkpoint-selection criterion; the code does not directly optimize macro-F1 through backpropagation.
+
+\subsection{Optimizer and Learning Rate Schedule}
+
+The main runs use \texttt{torch.optim.Adam} with a base learning rate $\alpha=0.001$ and zero weight decay. The optimizer factory leaves Adam's remaining arguments at their defaults: $\beta_1=0.9$, $\beta_2=0.999$, $\epsilon=10^{-8}$, and AMSGrad disabled~\cite{pytorch-adam}. Adam maintains exponential moving averages of the gradient and its elementwise square, then uses their bias-corrected estimates $\widehat{m}_t$ and $\widehat{v}_t$ to update the parameters:
+\begin{equation}
+    \theta_t=\theta_{t-1}
+    -\alpha\frac{\widehat{m}_t}{\sqrt{\widehat{v}_t}+\epsilon}.
+\end{equation}
+The operations in this update are elementwise. The adaptive scaling changes the update applied to each parameter, while the configured base learning rate remains fixed.
+
+No learning-rate scheduler, warm-up phase, or scheduled decay is implemented in the fitting routine. The batch update consists of clearing gradients, a forward pass, loss computation, \texttt{backward()}, and \texttt{optimizer.step()}. Gradient clipping is not applied. The run limit is 50 epochs, subject to early stopping after five consecutive epochs without a strict improvement in validation macro-F1. Early stopping limits the number of epochs; it does not lower the learning rate. Test evaluation uses the checkpoint with the best recorded validation macro-F1.
+
+Sharing Adam and the same base learning rate provides a common optimization setup for the architecture comparison. It does not establish that this setting is individually optimal for every model. Differences in parameter count, input representation, and architectural regularization must also be considered when interpreting the results.
+
+\subsection{Regularization}
+
+With weight decay set to zero, the optimizer applies no weight-decay penalty. The models instead differ in their use of dropout and normalization, as summarized in Table~\ref{tab:a1-regularization}. The normalization column refers to layers inside the model, rather than the common pixel normalization applied to every input image.
+
+\begin{table}[H]
+    \centering
+    \caption{Dropout and internal normalization in the reported model configurations.}
+    \label{tab:a1-regularization}
+    \begin{tabularx}{\textwidth}{@{}lYY@{}}
+        \toprule
+        Model & Dropout & Normalization inside the model \\
+        \midrule
+        Linear & None & None \\
+        MLP & $p=0.2$ after each hidden ReLU & None \\
+        CNN & $p=0.25$ before the final linear layer & BatchNorm after each convolution \\
+        LSTM & None in the saved configurations & None \\
+        Transformer & $p=0.1$ after token preparation and within encoder blocks & LayerNorm in encoder blocks and before the classifier \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Dropout randomly removes activations during training and is disabled in evaluation mode. BatchNorm uses batch statistics during training and its accumulated running statistics during evaluation. LayerNorm uses each token's feature statistics in both modes. Normalization is part of the model computation and should not be treated as an explicit weight penalty.
+
+Early stopping and validation-based checkpoint selection are shared across the architectures. Data augmentation is disabled in the main configuration, as described in Section~\ref{sec:data-preparation}. No ablation in the main comparison isolates the effect of dropout or normalization. Consequently, differences between architectures cannot be attributed to architectural family alone while ignoring their different regularization settings.
