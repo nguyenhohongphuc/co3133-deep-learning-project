@@ -1,0 +1,24 @@
+{
+  "run_id": "a2_cnn_s42_1028-1546",
+  "model": "cnn",
+  "seed": 42,
+  "commit": "a1246bc",
+  "device": "cuda",
+  "env": {
+    "python": "3.10.21",
+    "torch": "2.14.1+cu126",
+    "cuda": "12.6",
+    "cpu": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "param": 397086,
+  "param_trainable": 397086,
+  "epochs_planned": 20,
+  "epochs_run": 20,
+  "train_time": 1251.1695170402527,
+  "best_epoch": 17,
+  "best_value": 0.5559907897530959,
+  "monitor": "val_macro_f1",
+  "val_accuracy": 0.5578395808141878,
+  "val_macro_f1": 0.5559907897530959
+}

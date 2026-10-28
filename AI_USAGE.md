@@ -144,6 +144,25 @@ Copy the template below for every distinct use. Group the entries by assignment.
   the repository's own EDA and benchmark outputs
 - **Member responsible for final verification:** Hồ Hồng Phúc Nguyên (2352824)
 
+- **Tool:** Claude (Claude Code, model Opus 5.5)
+- **Used by:** Hồ Hồng Phúc Nguyên (2352824)
+- **Time / stage:** 27–28/10/2026; EDA redo, proposal revision 2, A2-M2 Draft
+- **Purpose:** concept explanation (handbook §§7.5, 18–21), result analysis, coding assistance, report writing
+- **Affected assignment section(s) and files:** review of `notebooks/a2_eda.ipynb` (the EDA itself was written and run
+  by the member on Google Colab, then re-run locally); `reports/a2/proposal.md` (revision 2); `configs/a2.yaml`;
+  `src/a2/data.py`, `src/a2/models.py`, `src/a2/train.py`; `docs/assignments/assignment-2.html`; `README.md`
+- **Representative prompt (or prompt-log link):** "check my EDA for remaining problems"; "update the data proposal to
+  match the handbook and what we did"; "write the A2 training code and fill in the Pages requirements"
+- **How the output was edited and verified:** `split_v2.json` was checked against every local image (path exists, MD5
+  matches, label matches the folder, no image in two splits, counts match the drop list). The data loader was checked
+  on one batch (`results/a2/figures/a2_example_batch.png`: shape [16, 3, 224, 224], labels 0–29), and both models
+  with a forward pass and their parameter counts. Every number on the page and in the proposal comes from the notebook
+  outputs, `split_v2.json`, the 07/10 benchmark JSONs, or the `metrics.json`/`history.csv` of a run in
+  `results/a2/runs/`. Sections without results yet (controlled experiment, error analysis, test metrics) are marked TODO.
+- **Sources used for verification:** course handbook; torchvision documentation (ResNet-50 weights, transforms);
+  the repository's own run outputs
+- **Member responsible for final verification:** Hồ Hồng Phúc Nguyên (2352824)
+
 ### Assignment 3
 
 _(no entries yet)_
