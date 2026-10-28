@@ -1,6 +1,6 @@
 {
   "purpose": "Input fingerprint and availability audit for the completed A1 report; no training/evaluation.",
-  "report_source_checkout": "b8d8ba288d4c0923cb4b8892c352055b6a049108",
+  "report_source_checkout": "4169283c657f27d5d3084166e8fc218b0322efd4",
   "main_training_commit": "c1747a1260a9745d8da341b6fab3d64546538488",
   "changes_in_src_or_configs_since_training_commit": [
     "configs/a2.yaml",
@@ -210,7 +210,7 @@
     "reports/a1/assets/final/top_confusions.tex": "54d3287c5b2614daa4ae05305f22e314929c26da6dab5577cf7f212f575c1ac7",
     "reports/a1/assets/quantitative/classwise_f1.tex": "f1cfee474ca041cc7bc357365bc08e8cf2c063f5a332dfeecb3bd06e5a48156b",
     "reports/a1/assets/quantitative/model_comparison.tex": "4d207a1a8484c5f53d881e5ab6d52cdff0eb03ddff89a0d4dc95f2704f307ef9",
-    "reports/a1/backmatter/ai_usage.tex": "1ec052d26105e03de4085b7a10ed1412ec69a0bf20bf29898aceec44898d9642",
+    "reports/a1/backmatter/ai_usage.tex": "491dc00852cc2ad267e274df463226654ac0a0d6aeb472cd1ca9a414c95ca191",
     "reports/a1/backmatter/appendices.tex": "4fea55d84af33575223f9c81ab56785fd78d03ba3c404fe5b0b3d2d30c78aa74",
     "reports/a1/backmatter/references.tex": "c74e0ed89b888b0efe77d161b6ebc4cfd1313165becf2ef37ed5c7b395e071d8",
     "reports/a1/frontmatter/abstract.tex": "fc9d4249ffd900f7f6b6242de5f1189a893bb4be83c6f89d4b7c397660991b74",
@@ -238,7 +238,7 @@
     "reports/a1/sections/14_limitations.tex": "f1c0c85a5b4d64b8ca1ee812faa483a6aa8b301b0c66b9a8ba747d9ec67d56d0",
     "reports/a1/sections/15_conclusion.tex": "194797d523c70a59a3a645714a8569e9bfb09293d4559ceaf227d2370bf34ec7",
     "reports/a1/sections/16_reproducibility.tex": "01a75d6ca6b0bb9400eeabd9196dccca87652f0f3c76f489e8046abbde1dfbcb",
-    "AI_USAGE.md": "1f47e0008f2e5fac935d04ee945a8760c377fb968ae7d5daca1b27e3302bcf3b",
+    "AI_USAGE.md": "d3970909bc782805300c19b16bad9e87beb1833a322b77dd2d849cb00c28588f",
     "reports/a1/README.md": "f21997714326686b872025ffde363c048217325f855ef43297d475cb7d32846e",
     "scripts/a1_report/README.md": "b4b84658cc0e6ed37b948b2d494301f7a9a3dbaabb6095328e4efc2d48b6bff6"
   },
