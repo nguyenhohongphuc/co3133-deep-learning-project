@@ -91,6 +91,9 @@ Copy the template below for every distinct use. Group the entries by assignment.
   AI-suggested code were found this way and fixed: a missing `pandas` import that killed `fit()` *after* training,
   three missing imports in `plots.py`, a `ZeroDivisionError` in `inference_time` on short loaders, and a
   `UnicodeEncodeError` from printing Vietnamese to the cp1252 Windows console.
+- **Later revision (23–27 Oct 2026):** Nguyên removed `metrics.py` and `profiler.py` and rewrote `src/train.py`
+  and `src/evaluate.py` by hand (commits `0e2d047`, `e9b49af`, `6984a3e`). `src/engine/trainer.py` and
+  `src/engine/plots.py` remain largely the AI-assisted September version, edited by hand.
 - **Sources used for verification:** scikit-learn and PyTorch documentation; the course handbook §§3.2, 3.3, 4.2,
   12.1, 12.2; live training and evaluation runs committed as `results/a1/runs/<run_id>/`
 - **Member responsible for final verification:** Hồ Hồng Phúc Nguyên (2352824)

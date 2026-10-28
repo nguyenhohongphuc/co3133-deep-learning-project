@@ -646,7 +646,12 @@
             <td><code>src/engine/metrics.py</code>, <code>src/engine/trainer.py</code>,
                 <code>src/engine/plots.py</code>, <code>src/engine/profiler.py</code>, <code>src/train.py</code>,
                 <code>src/evaluate.py</code>, <code>configs/a1/base.yaml</code>; this page; <code>README.md</code></td>
-            <td><span class="fill">[how the output was edited and checked, and against what sources]</span></td>
+            <td>Metrics cross-checked against <code>sklearn.metrics</code>; the loop run end to end (checkpoint on
+                validation macro-F1, early stopping), and the same seed run twice gave identical per-epoch numbers.
+                Defects found this way were fixed by hand. Later (23&ndash;27 Oct) Nguy&ecirc;n removed
+                <code>metrics.py</code> and <code>profiler.py</code> and rewrote <code>src/train.py</code> and
+                <code>src/evaluate.py</code> by hand; <code>trainer.py</code> and <code>plots.py</code> remain largely
+                the AI-assisted September version, edited by hand.</td>
             <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
           </tr>
           <tr>
