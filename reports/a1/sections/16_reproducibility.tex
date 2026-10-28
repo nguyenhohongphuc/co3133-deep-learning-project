@@ -2,13 +2,13 @@
 \section{Reproducibility}
 \label{sec:reproducibility}
 
-Two reproduction tasks are distinguished: recomputing tables/plots from archived artifacts, which does not require weights, and training/evaluating a new model, which does. The report-generation additions accompany this working copy; the remote source snapshot alone does not contain these uncommitted report additions until they are published by the group.
+The repository supports re-analysis of saved tables/plots, evaluation of archived model weights, and training a new model. These tasks are distinct: re-analysis needs no checkpoint, checkpoint evaluation restores saved weights, and retraining produces a new run. Report sources and generation scripts are included in the repository.
 
 \subsection{Repository and Commit Reference}
 
-The repository is \url{https://github.com/nguyenhohongphuc/co3133-deep-learning-project}. The inspected core-code checkout is \texttt{a39863859c1f8676ee85687eb230b54fd617cd75}. Five main runs record training commit \texttt{c1747a1260a9745d8da341b6fab3d64546538488}; the column and patch LSTMs append \texttt{-dirty} to its short form.
+The repository is \url{https://github.com/nguyenhohongphuc/co3133-deep-learning-project}. The updated inspected checkout is \texttt{b8d8ba2}; checkpoint files were added in \texttt{44d4fd2} and are available on \texttt{main}. Five main runs record training commit \texttt{c1747a1}; the column and patch LSTMs append \texttt{-dirty}. Full commit identifiers are recorded in the input manifest.
 
-A source comparison between these revisions shows that only \path{src/evaluate.py} differs within \path{src/} and \path{configs/}. Model, data, seed, training-loop, and configuration sources in the inspected checkout therefore match the committed training version. This does not recover the two uncommitted training states. Evaluation metadata also omit their own source revision, so the current evaluator is fingerprinted separately rather than assigned an undocumented historical commit.
+A comparison of the A1 model, data, utility, engine, entry-point, and configuration sources against the training revision finds only \path{src/evaluate.py} changed; unrelated A2 sources are excluded from this comparison. This does not recover the two uncommitted training states. Evaluation metadata omit their own source revision, so the current evaluator is fingerprinted separately rather than assigned an undocumented historical commit.
 
 \subsection{Environment and Dependencies}
 
@@ -57,13 +57,18 @@ In an isolated copy with the intended environment and data prepared, explicit ex
 python scripts/a1_report/reproduce_a1.py \
   --run-id a1_cnn_s42_1027-0157 --execute
 \end{verbatim}
-The helper temporarily applies the snapshot, trains into a new run directory, identifies that directory, evaluates it through \texttt{src.evaluate --run\_dir}, and restores the central configuration in a \texttt{finally} block. It never substitutes new weights or metrics into the archived run. Copying a different configuration can legitimately produce a dirty new-run identifier; the new snapshot and actual source revision must remain recorded. Use the other IDs in Table~\ref{tab:a1-run-traceability} to select their settings. The helper's plans were checked during report preparation; its training/evaluation execution path was not run for this manuscript.
+The helper temporarily applies the archived configuration, trains and evaluates a new run, and restores the central configuration in a \texttt{finally} block. It preserves archived artifacts; retain the new run's actual source/configuration identity, including any dirty state. All seven read-only plans were checked; the training/evaluation execution path was not run.
 
 \subsection{Checkpoint Access}
 
-No \path{best.pt} file is present in the inspected A1 run folders, and no verified checkpoint-download location is supplied in the repository. The \texttt{*.pt} ignore rule explains their absence from version control but does not provide the weights. A supplied original checkpoint would belong at \path{results/a1/runs/<run_id>/best.pt}; otherwise use the reconstruction procedure above and retain the newly generated run ID.
+All seven checkpoints are tracked at \path{results/a1/runs/<run_id>/best.pt}. The trainer saves \texttt{model.state\_dict()}: parameters and buffers, without optimizer/RNG states. File presence, archive integrity, and SHA-256 hashes were checked; loading into models and numerical reproduction were not verified in this update.
 
-Historical confusion matrices and example grids can be audited without weights. They cannot recreate full logits, predictions, activations, or the original model state. Reconstructed models may differ numerically, and exact reconstruction of dirty variants remains limited by missing working-tree changes. These limits are disclosed rather than replaced by an unverified download link.
+To re-evaluate a saved model in a prepared environment, run from the repository root:
+\begin{verbatim}
+python -m src.evaluate \
+  --run_dir results/a1/runs/a1_cnn_s42_1027-0157
+\end{verbatim}
+Use the IDs in Table~\ref{tab:a1-run-traceability} to evaluate other models without retraining. Work on a disposable copy: evaluation overwrites \path{test_metrics.json} and test figures. This update did not rerun test evaluation; reported metrics remain archived values. Missing optimizer/RNG states and dirty-source changes still limit exact training continuation.
 
 \subsection{Experiment Traceability}
 

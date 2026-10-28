@@ -1,0 +1,73 @@
+{
+  "verification": "File presence, ZIP CRC, serialized tensor metadata, source save/load paths, SHA-256; no unpickling, forward pass, or test evaluation.",
+  "source_checkout": "b8d8ba288d4c0923cb4b8892c352055b6a049108",
+  "trainer_save": "torch.save(model.state_dict(), run_dir / best.pt)",
+  "test_evaluation_rerun": false,
+  "strict_model_load_verified": false,
+  "local_runtime_note": "PyTorch import did not complete promptly; no model-loading success is claimed.",
+  "checkpoints": [
+    {
+      "run_id": "a1_cnn_s42_1027-0157",
+      "checkpoint_path": "results/a1/runs/a1_cnn_s42_1027-0157/best.pt",
+      "checkpoint_bytes": 207473,
+      "checkpoint_sha256": "d04555010719d77a2c58274629a0b19f87d0c4ffc40a9d59b592c5646222bec4",
+      "archive_crc": "passed",
+      "tensor_rebuild_metadata_present": true,
+      "format_basis": "trainer saves model.state_dict(); tensor-mapping metadata inspected without unpickling"
+    },
+    {
+      "run_id": "a1_linear_s42_1027-0134",
+      "checkpoint_path": "results/a1/runs/a1_linear_s42_1027-0134/best.pt",
+      "checkpoint_bytes": 33229,
+      "checkpoint_sha256": "2f9910f8d3fbb488e565b88165673743a772cafd7a65071fe4b808940ab13dab",
+      "archive_crc": "passed",
+      "tensor_rebuild_metadata_present": true,
+      "format_basis": "trainer saves model.state_dict(); tensor-mapping metadata inspected without unpickling"
+    },
+    {
+      "run_id": "a1_mlp_s42_1027-0143",
+      "checkpoint_path": "results/a1/runs/a1_mlp_s42_1027-0143/best.pt",
+      "checkpoint_bytes": 943409,
+      "checkpoint_sha256": "c5e6464b0d0aefb893076026905b51983b5db28db011aade3a864cde4a44c5e5",
+      "archive_crc": "passed",
+      "tensor_rebuild_metadata_present": true,
+      "format_basis": "trainer saves model.state_dict(); tensor-mapping metadata inspected without unpickling"
+    },
+    {
+      "run_id": "a1_rnn_cols_s42_1027-0217",
+      "checkpoint_path": "results/a1/runs/a1_rnn_cols_s42_1027-0217/best.pt",
+      "checkpoint_bytes": 331078,
+      "checkpoint_sha256": "d0e092c4b4f3a65fcea0b3638e5c42a5b5b5d328349304556253b243a6789950",
+      "archive_crc": "passed",
+      "tensor_rebuild_metadata_present": true,
+      "format_basis": "trainer saves model.state_dict(); tensor-mapping metadata inspected without unpickling"
+    },
+    {
+      "run_id": "a1_rnn_patches_s42_1027-0229",
+      "checkpoint_path": "results/a1/runs/a1_rnn_patches_s42_1027-0229/best.pt",
+      "checkpoint_bytes": 374086,
+      "checkpoint_sha256": "24a9b4b247fd211e95b609b1252006d30db0c5572486b16352f60bf6362efd80",
+      "archive_crc": "passed",
+      "tensor_rebuild_metadata_present": true,
+      "format_basis": "trainer saves model.state_dict(); tensor-mapping metadata inspected without unpickling"
+    },
+    {
+      "run_id": "a1_rnn_rows_s42_1027-0204",
+      "checkpoint_path": "results/a1/runs/a1_rnn_rows_s42_1027-0204/best.pt",
+      "checkpoint_bytes": 331078,
+      "checkpoint_sha256": "30c7954a3977a734b8efdc97ee9868a7c58f44601a2c5ef8c2857a441bc72af0",
+      "archive_crc": "passed",
+      "tensor_rebuild_metadata_present": true,
+      "format_basis": "trainer saves model.state_dict(); tensor-mapping metadata inspected without unpickling"
+    },
+    {
+      "run_id": "a1_transformer_patches_s42_1027-0242",
+      "checkpoint_path": "results/a1/runs/a1_transformer_patches_s42_1027-0242/best.pt",
+      "checkpoint_bytes": 2177409,
+      "checkpoint_sha256": "c47c042e1bfff182e558087b645c9a9b58cd44660561d2b3050613c3c5350cc8",
+      "archive_crc": "passed",
+      "tensor_rebuild_metadata_present": true,
+      "format_basis": "trainer saves model.state_dict(); tensor-mapping metadata inspected without unpickling"
+    }
+  ]
+}
