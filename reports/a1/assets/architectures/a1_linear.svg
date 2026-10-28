@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="330" viewBox="0 0 1200 330">
+<title>Linear / softmax classifier</title>
+<rect width="1200" height="330" fill="white"/>
+<text x="25" y="28" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#182D45" text-anchor="start" dominant-baseline="central">Linear / softmax classifier</text>
+<text x="1175" y="28" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="end" dominant-baseline="central">7,850 parameters</text>
+<image x="45" y="105" width="130" height="130" style="image-rendering:pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAAAAABXZoBIAAACBUlEQVR4nF2QvWtTURjGn/c9515zE0lSLYSmQwU/oNAqmoJ0EMHJxUEQHHRzctAp4F8gCA4OTuKirg666eAoRTrYQbDa0sWEdDDF2KQ2956PV+69afpxhjOc33me930eQnpIAMw+f7uSmLmbG0972D8E4OKT9R/trojIz1W/+Wp+DIDym/M82DVeV3a8AIUo/Hx3DD/NbHltCWwYnI2Zur4K6JQ1ZrpaRfUiG+0osP22hbvXHCmbD7teuReddn2TTXj80oOuLutTyExwyyop2Jem8eFyVJvcfuZ04V/93Mj2QksdQxkfd2ab727orw1bcv7X4loG539bVtEW5uKpx2RoEZ1p74dXXmfwUTRw0dAunDwR1MwwrN6e2K1QuJDbLtXOlEvr7ov3Tmly3F8rKe6838s5cfb+1ValF6g0Iw8r3+5kzzq7/yzH1yQsKQ8iX0gKS3mvnHUYQvrKy8hHoQdFe1AMNv7qGELpnDjANlj2IBi7iVhFQsScaHIHbCHwToRJmIjFs4fsQwDTpISymWxIHVbCIQQRgXxgJTiiHCrLXpQXrR2qB5UAfFYIE4TERrkyLyH/JTlkscX8LYfpP4U0p4IQu0MLEZAQwZNLDcipIwulnTAT0qGpy6EoHdg4NkkcJwYyUo4Xqpb0JHMIWNUqngb7MSTByvdeAB4IWW+qy2ky4D8KOdUXoboqaAAAAABJRU5ErkJggg=="/>
+<text x="110" y="263" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">1 × 28 × 28</text>
+<polyline points="190,170 245,170" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="245,170 235.0,165.2 235.0,174.8" fill="#8092A4"/>
+<rect x="260" y="100" width="170" height="140" rx="13" fill="#F0F5FB" stroke="#CED9E3" stroke-width="1.4"/>
+<rect x="281" y="112" width="27" height="9" rx="2" fill="#D0DEEE" stroke="#CED9E3" stroke-width="1.4"/>
+<rect x="281" y="126" width="27" height="9" rx="2" fill="#D0DEEE" stroke="#CED9E3" stroke-width="1.4"/>
+<rect x="281" y="140" width="27" height="9" rx="2" fill="#D0DEEE" stroke="#CED9E3" stroke-width="1.4"/>
+<rect x="281" y="154" width="27" height="9" rx="2" fill="#D0DEEE" stroke="#CED9E3" stroke-width="1.4"/>
+<rect x="281" y="168" width="27" height="9" rx="2" fill="#D0DEEE" stroke="#CED9E3" stroke-width="1.4"/>
+<rect x="281" y="182" width="27" height="9" rx="2" fill="#D0DEEE" stroke="#CED9E3" stroke-width="1.4"/>
+<rect x="281" y="196" width="27" height="9" rx="2" fill="#D0DEEE" stroke="#CED9E3" stroke-width="1.4"/>
+<rect x="281" y="210" width="27" height="9" rx="2" fill="#D0DEEE" stroke="#CED9E3" stroke-width="1.4"/>
+<text x="365" y="145" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#254F80" text-anchor="middle" dominant-baseline="central">Flatten</text>
+<text x="365" y="184" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">784</text>
+<polyline points="442,170 500,170" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="500,170 490.0,165.2 490.0,174.8" fill="#8092A4"/>
+<rect x="515" y="86" width="310" height="170" rx="13" fill="#F0F5FB" stroke="#CED9E3" stroke-width="1.4"/>
+<text x="670" y="113" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#254F80" text-anchor="middle" dominant-baseline="central">Linear 784 → 10</text>
+<line x1="570" y1="145" x2="770" y2="145" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="570" y1="145" x2="770" y2="177" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="570" y1="145" x2="770" y2="209" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="570" y1="177" x2="770" y2="145" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="570" y1="177" x2="770" y2="177" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="570" y1="177" x2="770" y2="209" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="570" y1="209" x2="770" y2="145" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="570" y1="209" x2="770" y2="177" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="570" y1="209" x2="770" y2="209" stroke="#C7D4E1" stroke-width="1.2"/>
+<circle cx="570" cy="145" r="10" fill="white" stroke="#254F80" stroke-width="2"/>
+<circle cx="770" cy="145" r="10" fill="white" stroke="#08776F" stroke-width="2"/>
+<circle cx="570" cy="177" r="10" fill="white" stroke="#254F80" stroke-width="2"/>
+<circle cx="770" cy="177" r="10" fill="white" stroke="#08776F" stroke-width="2"/>
+<circle cx="570" cy="209" r="10" fill="white" stroke="#254F80" stroke-width="2"/>
+<circle cx="770" cy="209" r="10" fill="white" stroke="#08776F" stroke-width="2"/>
+<polyline points="840,170 905,170" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="905,170 895.0,165.2 895.0,174.8" fill="#8092A4"/>
+<rect x="920" y="100" width="245" height="140" rx="13" fill="#EFF8F6" stroke="#BCDCD7" stroke-width="1.4"/>
+<text x="1042" y="139" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#08776F" text-anchor="middle" dominant-baseline="central">10 class logits</text>
+<text x="1042" y="183" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">[B, 10]</text>
+<text x="600" y="309" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#526578" text-anchor="middle" dominant-baseline="central">One affine layer · no hidden activation · logits passed directly to cross-entropy</text>
+</svg>

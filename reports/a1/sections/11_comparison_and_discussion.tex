@@ -1,0 +1,123 @@
+% !TeX root = ../main.tex
+\section{Model Comparison and Discussion}
+\label{sec:comparison-and-discussion}
+
+The comparison combines three types of evidence: whole-test-set metrics and confusion counts, the saved learning curves, and identified examples from the result images. Architectural explanations are checked against the implemented operations. A measured difference establishes what happened in these seed-42 runs; agreement with an architectural mechanism makes an explanation plausible, but does not isolate its causal contribution. Shared preprocessing and optimizer settings control part of the experiment, while capacity, normalization, dropout, representation, and completed epochs still differ. The seed and commit-traceability limits in Section~\ref{sec:training-and-evaluation} apply throughout.
+
+\subsection{Performance Differences}
+
+\paragraph{Nonlinear models improve the recorded baseline.}
+The MLP improves accuracy over the linear classifier by 5.35 percentage points and macro-F1 by 5.30 points, reducing the error count from 1,597 to 1,062. This is a 33.5\% relative reduction in errors. The CNN reduces the linear baseline's errors further, to 818: 779 fewer errors, or a 48.8\% relative reduction. These are net count differences on the same 10,000 test images, not counts of individually identified corrections; an aggregate matrix does not reveal which images one model corrects while another loses.
+
+\paragraph{The CNN's advantage is concentrated, not uniform.}
+For descriptive analysis, define the five-class group $G$ as T-shirt/top, Pullover, Dress, Coat, and Shirt. This grouping is chosen from the observed garment-confusion pattern, rather than declared as a separate evaluation split. It contains 5,000 test images, exactly half the test set. Of the CNN's 818 errors, 678 (82.9\%) are confusions between two different classes within $G$. Counting all errors whose true class lies in $G$ gives 711: an error rate of 14.22\%, versus 2.14\% on the other 5,000 images. Equal class support therefore does not imply equal difficulty, and class-frequency imbalance cannot explain this concentration.
+
+Figure~\ref{fig:a1-error-differences} decomposes the CNN's net error advantage by true class. Against the MLP, Pullover contributes 99 fewer misses and Coat 39, while Shirt contributes only three. In total, the true classes in $G$ account for 178 of the 244 net fewer errors (73.0\%). The main aggregate improvement therefore comes from reducing mistakes on several overlapping garment classes, rather than eliminating the Shirt problem.
+
+\paragraph{Higher macro-F1 does not mean higher recall everywhere.}
+For Dress, the row LSTM has recall 92.40\%, compared with 88.40\% for the CNN: 76 versus 116 missed Dresses. However, the row LSTM also produces 142 false-positive Dress predictions, compared with 61 for the CNN. Their Dress precisions are consequently 86.68\% and 93.54\%, and F1 favors the CNN, 90.90\% versus 89.45\%. The CNN leads the classwise F1 table while the row LSTM retrieves more true Dresses. This is a concrete reason to examine precision and recall before declaring a model better for every class-level objective.
+
+The Shirt comparison also qualifies the aggregate gain. CNN recall is 71.50\%, only 0.30 points above the MLP's 71.20\%, whereas precision rises from 75.58\% to 80.07\%. Its higher Shirt F1 accompanies fewer false positives, while 285 true Shirts are still missed. The saved confusion matrices support improvement, but not a claim that this difficult category has been solved.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/comparison/class_error_differences.png}
+    \caption{Net difference in missed test images per true class: other-model misses minus CNN misses. Positive bars favor the CNN; negative bars favor the comparator. Each class has support 1,000. The bars sum to the overall difference in error counts, but do not identify paired corrections on individual images.}
+    \label{fig:a1-error-differences}
+\end{figure}
+
+\subsection{Accuracy, Speed, and Parameter Trade-offs}
+
+\paragraph{The useful choices depend on the cost being constrained.}
+Figure~\ref{fig:a1-quality-cost} plots all seven configurations. A point is \emph{non-dominated} if no recorded configuration has both at least as high a macro-F1 and no greater cost, with a strict improvement in one. For parameters versus macro-F1, only Linear and CNN are non-dominated. For batched inference time versus macro-F1, MLP also remains on the frontier: it is faster than the CNN, although less accurate. The CNN is better than each recorded LSTM and the Transformer on both macro-F1 and forward-pass time. The frontiers use saved point estimates; between-seed and timing-dispersion estimates are unavailable. They concern the measured configurations and two stated objectives, rather than a universal architecture ranking.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/comparison/quality_cost_frontiers.png}
+    \caption{Quality and cost for the seven saved runs. Diamonds mark non-dominated configurations for each pair of objectives; dashed segments connect those observations as visual guides. Rows, Cols, and Patches denote LSTM representations. Time is the saved median batched forward-pass duration divided by 10,000 images, converted to microseconds; it excludes loading and transfers. Logarithmic horizontal axes spread the different cost scales.}
+    \label{fig:a1-quality-cost}
+\end{figure}
+
+\paragraph{Parameter sharing reduces model size, not necessarily arithmetic.}
+The MLP has 4.67 times as many parameters as the CNN, but the CNN's recorded per-image forward time is 1.48 times larger. A filter's parameters are reused at many image locations, so fewer stored weights need not imply fewer operations. Table~\ref{tab:a1-arithmetic-cost} gives a reproducible structural estimate: the CNN performs approximately 3.87 million multiply-accumulates (MACs) per image, compared with 0.235 million for the MLP, a factor of 16.49. This explains how a compact convolutional model can require more arithmetic than a larger dense model. It is compatible with the timing direction, but does not predict the time ratio because parallel execution, kernels, and memory traffic are not profiled here.
+
+\begin{table}[H]
+    \centering
+    \caption{Analytical MAC counts per image from configured layer dimensions. One MAC denotes one multiplication accumulated into a sum. Counts include dense/convolutional products, LSTM gate matrix products, and Transformer attention products; they exclude biases, nonlinearities, normalization, pooling, softmax, and data movement. These are operation estimates, not measured hardware FLOPs or latency.}
+    \label{tab:a1-arithmetic-cost}
+    \small
+    \input{\reportroot assets/comparison/arithmetic_cost.tex}
+\end{table}
+
+For the Transformer, let $N=17$ tokens, embedding width $d=128$, and feed-forward width $m=256$. The matrix products in one encoder block require
+\begin{equation}
+    M_{\mathrm{block}}=4Nd^2+2N^2d+2Ndm.
+\end{equation}
+The query/key/value and output projections contribute 1,114,112 MACs, the feed-forward network another 1,114,112, and the two attention-mixing products 73,984. Thus, the quadratic token-mixing term is only 3.2\% of this block's counted MACs. With such a short sequence, blaming the measured runtime primarily on quadratic attention is not supported by the arithmetic. Four encoder blocks and their dense projections provide a more specific structural account; determining the actual runtime bottleneck would require profiling.
+
+\paragraph{Early stopping also changes the training-time comparison.}
+The CNN's 367.5-second fit is shorter than the MLP's 784.8 seconds, but the runs complete 13 and 28 epochs. Across all seven configurations, total fit time divided by completed epochs ranges from 28.0 to 29.9 seconds. This derived average includes training, validation, loading within the loops, and checkpoint work; it is not an isolated epoch-kernel benchmark. The saved times measure the cost of each architecture together with its stopping trajectory. They do not establish equal-budget training throughput, peak memory, or single-image request latency.
+
+\subsection{Effect of Input Representation}
+
+\paragraph{Flattening changes the model's assumptions, not the available pixels.}
+Flattening retains all 784 pixel values in a fixed order. The linear model and MLP therefore receive the same image information as the CNN, but their dense layers do not impose local weight sharing. The linear classifier can only form affine logit differences between classes; the MLP can combine pixels nonlinearly. The higher linear training loss and lower validation/test scores are consistent with a restrictive decision family under this setup. They do not establish the best achievable linear score under every optimizer or tuning budget.
+
+\paragraph{Row versus column scanning is the closest representation control.}
+Both LSTM scans contain 28 steps of width 28, use hidden size 128, and have 82,186 parameters. A row token presents horizontal pixel relations together and recurrence connects successive vertical positions; columns reverse these roles. Rows exceed columns by 1.31 accuracy points and 1.23 macro-F1 points in the recorded runs. This is evidence of sensitivity to scan orientation with matched capacity. It does not prove that vertical progression is intrinsically superior: only seed 42 is available, and the column run records a dirty working tree, limiting exact source reconstruction.
+
+\paragraph{Shorter patch sequences improve one cost while weakening this run's fit to held-out data.}
+The patch LSTM uses 16 steps of width 49. Like the row and column transforms, this is a rearrangement of all 784 pixels, with no downsampling or discarded raw pixels. It changes which pixels are processed together, the number of recurrent updates, and the gate input size. Its parameter count rises by 13.1\%, while the counted MACs fall by 35.1\% and measured inference time falls by 18.4\% relative to rows. The input-to-gate products still require $784\times4\times128=401{,}408$ MACs in both representations; fewer recurrent hidden-state updates account for the arithmetic saving. Test accuracy nevertheless drops by 1.59 points and macro-F1 by 1.51 points. The shorter sequence is therefore a computational trade-off in these results, rather than an unqualified improvement.
+
+The saved curves in Figure~\ref{fig:a1-lstm-training} strengthen that interpretation: patch LSTM final training loss is 0.1067, below the row model's 0.1373, but final validation loss is higher, 0.3516 versus 0.2955. This pattern is consistent with greater late overfitting, not a simple inability to reduce training loss. Differences in training/evaluation mode still apply, and representation, capacity, and update sequence change together. A patch-size or regularization ablation would be needed to isolate their contributions.
+
+\subsection{Effect of Inductive Bias}
+
+\paragraph{Linear and MLP: useful baselines with different expressive power.}
+The linear classifier directly scores fixed pixel positions, giving the smallest model and fastest recorded inference. Its 84.03\% accuracy shows that these normalized, isolated-item images contain useful class information even for an affine decision rule. The MLP improves the score while preserving the same flattened input. Hidden nonlinear layers can represent interactions between pixels, but the experiment also increases capacity and introduces dropout, so the 5.35-point improvement cannot be attributed to activation functions alone. The MLP's increasing late loss separation in Figure~\ref{fig:a1-training-losses} also shows that added flexibility does not remove the need for validation-based stopping.
+
+\paragraph{CNN: a spatial constraint that matches the observed error reductions.}
+Shared local filters reuse the same learned detector across positions; local connectivity and subsampling are established architectural principles for image recognition~\cite{lecun1998gradient}. Here, two convolution/pooling stages construct a $7\times7$ feature grid, and the flattened head integrates the entire grid. The model can therefore combine global shape information without self-attention. On small grayscale item images, this structure supplies reusable local feature processing while retaining spatial organization for the final decision. The observed Pullover and Coat improvements are consistent with this explanation, and the lower parameter count rules out ``more parameters'' as the explanation of its advantage over the MLP.
+
+However, the run also uses BatchNorm and head dropout, and no capacity-matched dense model or normalization ablation is recorded. Locality alone has not been isolated. Pooling can remove positional detail, and the remaining Shirt confusions show a clear limit of the configured system. Neither the code nor the displayed examples establish full translation invariance, texture robustness, or the exact cues learned by a filter.
+
+\paragraph{LSTM: effective sequence aggregation with an imposed scan.}
+The row model improves on the linear baseline and slightly exceeds the MLP in aggregate scores. Gates and a final hidden representation provide a mechanism for combining information across the image, but the scan orders a two-dimensional object and has sequential state dependencies. Its 128-dimensional final state summarizes the whole sequence. This design differs from the CNN's retained spatial feature grid and the Transformer's token interactions. These differences explain what information-processing constraints are imposed; the available results do not show that the LSTM forgets a particular image region or that recurrence alone causes its lower score than the CNN.
+
+\paragraph{Transformer: greater flexibility is not automatically useful under the shared recipe.}
+The 540,170-parameter model attends globally across 16 patches plus CLS, with learned positions and four encoder blocks. Unlike the CNN, it does not impose sliding local filters or convolutional translation equivariance. The original ViT study discusses weaker image-specific inductive biases and the effect of pretraining scale~\cite{dosovitskiy2021vit}; its architecture and training recipe differ from our four-block, post-normalized encoder. This provides a plausible reason to examine data efficiency when learning from scratch on 54,000 training images. Its ImageNet-scale findings do not specify a minimum dataset size for this smaller Fashion-MNIST model, nor prove that data quantity caused the observed deficit.
+
+The recorded curves give limited support for diagnosing the Transformer as the most overfit model. At its selected checkpoint, training and validation losses are 0.2858 and 0.2789; the final separation is only 0.0282, compared with 0.1097 for the MLP. These are differently regularized, differently measured losses, not equal-mode generalization gaps, but they do not support explaining the Transformer deficit through the largest visible loss gap. Constant learning rate, no warm-up, no augmentation, and no model-specific tuning are recorded. Optimization, regularization, patch granularity, and inductive bias remain competing explanations. Smaller/overlapping patches or a convolutional stem and separately tuned schedules are testable alternatives, not improvements demonstrated by this report.
+
+\paragraph{What the saved example images actually support.}
+The correct-example grids for Linear, MLP, row LSTM, and Transformer are pixel-identical and show the same first 16 successes. The CNN's grid includes test \#12 where those four grids include \#16. Consequently, the useful visual comparison is made on common image IDs in Figure~\ref{fig:a1-shared-comparison} and Table~\ref{tab:a1-shared-predictions}, rather than treating the success grids as different samples. All displayed predictions below are present explicitly in the corresponding saved correct/incorrect grids; no missing-panel prediction is inferred.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/comparison/shared_test_examples.png}
+    \caption{The same four original test images used for the cross-model comparison. The labels are official ground truth; the five sets of recorded predictions appear in Table~\ref{tab:a1-shared-predictions}. Images retain their original pixels and are enlarged with nearest-neighbor display.}
+    \label{fig:a1-shared-comparison}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Recorded predictions for the shared examples, recovered from each run's saved example annotations. Bold indicates agreement with ground truth. Cases are deliberately selected illustrations, not an estimate of error overlap across the full test set.}
+    \label{tab:a1-shared-predictions}
+    \small
+    \input{\reportroot assets/comparison/shared_predictions.tex}
+\end{table}
+
+Only the CNN recognizes Sneaker \#12 correctly; all four alternatives label it Sandal. All five recognize the checked Shirt \#7, while all five label Shirt \#40 as T-shirt/top. For Ankle boot \#23, every model is wrong, but the alternatives divide between Sneaker and Sandal. These cases demonstrate one CNN-specific success and shared failures without assigning their cause to an unobserved filter, attention map, or confidence score. They also show why a good aggregate model still needs class-level and image-level inspection. The selected panels cannot supply full paired error counts or a significance test.
+
+\subsection{Answers to Research Questions}
+
+\begin{enumerate}
+    % Keep each short answer together while allowing breaks between items.
+    \interlinepenalty=10000\relax
+    \item \textbf{How much does nonlinearity improve the baseline?} The configured MLP gains 5.35 accuracy points and 5.30 macro-F1 points over Linear; the CNN gains 7.79 and 7.69 points. These support the benefit of the configured nonlinear models as a whole. They do not isolate nonlinearity from their extra parameters and regularization.
+    \item \textbf{How do spatial and sequence processing relate to quality?} The CNN leads aggregate scores with fewer parameters than the MLP and sequence models. Class counts locate much of its gain in Pullover and Coat, while Dress recall favors the row LSTM. Local spatial processing is a code-consistent explanation, with normalization and optimization still confounded; no architecture dominates every recall objective or every image.
+    \item \textbf{What changes with LSTM representation?} Rows lead columns and patches in this seed-42 comparison. Rows versus columns holds size fixed, while patches shorten the sequence and reduce arithmetic/inference time at the cost of worse test scores and greater late loss separation. None of these reshapes removes raw pixel values, and only the recorded representations have been tested.
+    \item \textbf{What is the quality--cost trade-off?} CNN is the strongest recorded choice for macro-F1 together with parameter economy. Linear remains useful at the smallest size and lowest measured forward time; MLP provides an intermediate speed/quality option. The LSTM and Transformer configurations are dominated by CNN on the plotted quality/time objectives. These statements apply to batch-128 CUDA inference under the protocol, not unmeasured deployment workloads.
+\end{enumerate}
+
+Stronger causal conclusions require repeated seeds and matched comparisons: equal-capacity dense/spatial models with normalization and dropout controls; representation changes with explicit capacity controls; and architecture-specific learning-rate/regularization searches with comparable validation budgets. Full per-image predictions would also enable paired error analysis. The current evidence supports a precise ranking of recorded outcomes and several testable mechanisms, without claiming that the architecture families have reached their best attainable performance. Derived comparisons and operation counts are saved in \path{results/a1/tables/a1_comparison_analysis.json}.

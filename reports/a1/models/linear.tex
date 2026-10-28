@@ -1,0 +1,27 @@
+% !TeX root = ../main.tex
+\subsection{Linear Softmax Classifier}
+\label{sec:model-linear}
+
+\subsubsection{Input Representation}
+
+The linear baseline flattens each image from $[1,28,28]$ to a vector $x\in\mathbb{R}^{784}$. Pixel positions retain a fixed order, but the model receives no explicit two-dimensional neighborhood structure. Its purpose is to establish the performance of a classifier with a single affine mapping from pixels to classes. Figure~\ref{fig:a1-linear-architecture} illustrates this mapping.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/architectures/a1_linear.png}
+    \caption{Linear classifier: flatten 784 pixels and apply one affine layer to obtain ten logits. Only selected connections are drawn.}
+    \label{fig:a1-linear-architecture}
+\end{figure}
+
+\subsubsection{Architecture and Parameter Count}
+
+The implementation in \path{src/models/linear.py} consists of \texttt{Flatten} followed by one linear layer:
+\begin{equation}
+    z=Wx+b, \qquad
+    W\in\mathbb{R}^{10\times784},\quad b\in\mathbb{R}^{10}.
+\end{equation}
+It contains $784\times10+10=7{,}850$ trainable parameters. The term softmax classifier refers to the multiclass probabilistic interpretation of its logits. The forward method returns the logits directly, and \texttt{CrossEntropyLoss} handles the corresponding normalization during loss computation. No hidden activation or explicit softmax layer is appended.
+
+\subsubsection{Strengths and Limitations}
+
+The model is compact and provides a simple reference for the added capacity of the other architectures. Each class score is a weighted sum of the pixels, which makes the mapping straightforward to inspect. Its affine decision boundaries cannot directly express nonlinear combinations of image features, and its position-specific weights do not share information across translated local patterns. These restrictions motivate the nonlinear and spatial models below; their practical effects are assessed using the recorded experiments.

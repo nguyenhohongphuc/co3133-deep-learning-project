@@ -1,0 +1,36 @@
+% !TeX root = ../main.tex
+\section{Overall Pipeline}
+\label{sec:overall-pipeline}
+
+All five model families use a shared PyTorch training and evaluation pipeline. The selected model changes the mapping from an image batch to class logits; the saved data partitions, preprocessing, loss interface, checkpoint rule, and evaluation outputs remain common. This organization supports comparisons in which results can be traced to a specific configuration and run directory.
+
+\subsection{Pipeline Overview}
+
+Figure~\ref{fig:a1-overall-pipeline} summarizes the data flow. The preparation stage reads the official Fashion-MNIST files, applies the saved Stratified Split, and constructs the loaders described in Section~\ref{sec:data-preparation}. Each model receives images of shape $[B,1,28,28]$ and returns logits of shape $[B,10]$. Flattening, spatial feature extraction, or sequence construction is handled within the model, so the training engine does not need a different loop for each architecture.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/pipeline/a1_overall_pipeline.png}
+    \caption{Shared training and evaluation pipeline. The training and validation loop selects the best checkpoint, which is transferred to held-out test evaluation.}
+    \label{fig:a1-overall-pipeline}
+\end{figure}
+
+The training entry point, \path{src/train.py}, reads \path{configs/a1.yaml}, sets the random seeds, constructs the selected model through the model registry, and creates a run directory under \path{results/a1/runs/}. It saves a copy of the configuration before fitting. The run also records training history, parameter count, elapsed training time, environment information, and the source-code commit identifier.
+
+The evaluation entry point, \path{src/evaluate.py}, takes an explicit run directory. It reconstructs the model using that run's saved configuration and loads its selected weights. Evaluation therefore uses the configuration associated with the checkpoint, even if the shared configuration file has subsequently changed.
+
+\subsection{Training, Validation, and Test Loops}
+
+\textbf{Training.} At the start of each epoch, the engine calls \texttt{model.train()}. Each batch is transferred to the selected device, accumulated gradients are cleared, and a forward pass produces logits. Cross-entropy compares those logits with the integer labels. Backpropagation computes parameter gradients, and the configured optimizer performs an update. Adam is used in the main configuration. Training loss is accumulated as a sum weighted by batch size and divided by the number of processed images, so the final smaller batch is weighted according to its sample count.
+
+\textbf{Validation and checkpoint selection.} After each training epoch, the engine switches to \texttt{model.eval()} and evaluates the validation loader inside \texttt{torch.no\_grad()}. Model parameters are not updated. The loop aggregates sample-weighted loss and collects all predictions and labels before computing accuracy and macro-F1. Whenever validation macro-F1 strictly improves, the model state is saved as \path{best.pt}. Training stops after the configured patience is exhausted or the epoch limit is reached. The sequence of training loss and validation metrics is written to \path{history.csv}.
+
+\textbf{Testing and post-processing.} The test loop uses the same evaluation function after the selected checkpoint has been restored. The predicted label is the index of the largest logit; no additional thresholding or class-specific post-processing is applied. The script writes accuracy, macro-F1, a confusion matrix, and inference-timing metadata to \path{test_metrics.json}. It also produces training curves, a confusion-matrix plot, and grids of correct and incorrect predictions.
+
+The timing routine measures forward passes after loading the test tensors onto the target device. It excludes data loading, normalization, and host-to-device transfer, and reports the median duration over repeated passes. Consequently, this quantity describes model inference cost under the recorded protocol rather than complete application response time.
+
+\subsection{Implementation and Library Usage}
+
+\textbf{Project-specific implementation.} The repository defines the saved split procedure, dataset wrapper, transform configuration, model architectures, image-to-sequence conversion, training and validation loops, checkpoint-selection logic, run metadata, and reporting scripts. Model-specific settings are passed through the common registry in \path{src/models/__init__.py}. These components provide the experimental structure of the comparison.
+
+\textbf{Library components.} PyTorch supplies tensors, automatic differentiation, optimization, data loading, and standard neural-network layers, including the recurrent and Transformer encoder modules. Torchvision supplies the Fashion-MNIST reader and image transforms. Scikit-learn supplies \texttt{Stratified\-Shuffle\-Split}, macro-F1, and the confusion matrix. NumPy and pandas support aggregation and tabular outputs, Matplotlib generates the plots, and PyYAML reads and writes configurations. The group composes these building blocks and implements the surrounding pipeline; the report distinguishes that work from the library-provided operations.

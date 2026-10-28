@@ -1,0 +1,8 @@
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+This report compares five neural-network families on Fashion-MNIST: a linear classifier, multilayer perceptron, convolutional network, LSTM, and patch Transformer. A shared PyTorch pipeline uses a fixed Stratified Split of 54,000 training and 6,000 validation images, with 10,000 official test images. Models are trained from scratch with cross-entropy and Adam, and checkpoints are selected by validation macro-F1. Seven configurations, including three LSTM representations, are available at seed 42.
+
+The CNN achieves the highest recorded test accuracy and macro-F1, 91.82\% and 91.76\%, with 50,378 parameters. Relative to the MLP, it makes 244 fewer errors, although its batched forward time is larger. Classwise results expose remaining garment confusions and a Dress recall advantage for the row LSTM. Rows lead the recurrent variants; patches reduce inference cost while lowering predictive quality. Learning curves, full-set confusion counts, structural operation estimates, and common-image predictions support the discussion of representation and inductive bias.
+
+The results describe recorded configurations rather than causal architecture rankings. Single-seed evidence, unmatched regularization/capacity, absent original checkpoints, dirty-run traceability, and environment discrepancies limit stronger claims. Reproduction instructions and artifact fingerprints accompany the report.

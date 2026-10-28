@@ -1,0 +1,37 @@
+% !TeX root = ../main.tex
+\subsection{Multilayer Perceptron}
+\label{sec:model-mlp}
+
+\subsubsection{Input Representation}
+
+The MLP uses the same flattened 784-dimensional image vector as the linear baseline. This keeps the input representation fixed while adding hidden nonlinear transformations. The network is implemented in \path{src/models/mlp.py} and illustrated in Figure~\ref{fig:a1-mlp-architecture}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/architectures/a1_mlp.png}
+    \caption{MLP with 256- and 128-unit hidden layers, each followed by ReLU and dropout. The drawing shows selected neurons rather than the full layer widths.}
+    \label{fig:a1-mlp-architecture}
+\end{figure}
+
+\subsubsection{Architecture and Activation Functions}
+
+The saved configuration specifies two hidden layers with 256 and 128 units. Each hidden linear layer is followed by ReLU and dropout; the final layer maps 128 features to ten logits. The forward computation is
+\begin{align}
+    h_1 &= D_{0.2}\!\left(\operatorname{ReLU}(W_1x+b_1)\right),\\
+    h_2 &= D_{0.2}\!\left(\operatorname{ReLU}(W_2h_1+b_2)\right),\\
+    z &= W_3h_2+b_3,
+\end{align}
+where $D_{0.2}$ denotes dropout with probability 0.2 during training. ReLU applies $\max(0,a)$ elementwise, allowing the composition to represent nonlinear decision boundaries. The output layer has no activation because the shared loss expects logits.
+
+\subsubsection{Regularization and Parameter Count}
+
+Dropout is applied after both hidden activations and is disabled by \texttt{model.eval()} during validation and testing. It randomly removes hidden activations during training, providing regularization without adding trainable parameters. The three affine layers contribute
+\begin{equation}
+    (784\times256+256)+(256\times128+128)+(128\times10+10)
+    =235{,}146
+\end{equation}
+parameters. No BatchNorm layer is used in this MLP.
+
+\subsubsection{Strengths and Limitations}
+
+The hidden layers can learn combinations of pixels that the linear baseline cannot express. However, fully connected layers assign separate weights to each spatial position. The network therefore has no built-in local weight sharing and uses substantially more parameters than the configured CNN. Its performance also depends on hidden width and regularization, so an MLP--linear comparison reflects both nonlinear capacity and a change in parameter count.

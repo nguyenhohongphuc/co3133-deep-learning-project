@@ -1,0 +1,58 @@
+% !TeX root = ../main.tex
+\section{Error Analysis}
+\label{sec:error-analysis}
+
+The CNN has the strongest aggregate scores, but still makes 818 errors on 10,000 test images. We analyze these recorded errors using label-pair counts and identified examples. Frequency estimates come from the complete confusion matrix, while visual observations come from selected images; the latter do not estimate the prevalence of a visual cause.
+
+\subsection{Error Taxonomy}
+
+We use the garment group $G$ defined in Section~\ref{sec:comparison-and-discussion}: T-shirt/top, Pullover, Dress, Coat, and Shirt. Define footwear group $F$ as Sandal, Sneaker, and Ankle boot. Every incorrect prediction is assigned to exactly one bucket: both labels in $G$; both in $F$; or every other off-diagonal label pair. This operational taxonomy is disjoint and exhaustive. It describes where errors occur, rather than assigning unobserved causes such as low contrast or occlusion.
+
+\begin{table}[H]
+    \centering
+    \caption{Exhaustive CNN error groups. Error shares use denominator 818; test-set shares use 10,000. Percentages are rounded independently.}
+    \label{tab:a1-error-taxonomy}
+    \small
+    \input{\reportroot assets/final/error_taxonomy.tex}
+\end{table}
+
+Within-$G$ mistakes account for 82.89\% of errors, within-footwear mistakes for 9.66\%, and residual confusions for 7.46\%. The residual bucket includes cross-group mistakes and errors involving Trouser or Bag. It must be retained: reporting only visually similar tops and footwear would omit 61 measured failures.
+
+\subsection{Error Frequency and Common Class Confusions}
+
+Table~\ref{tab:a1-top-confusions} lists the eight largest directed CNN confusion cells. Each true class has support 1,000, so its conditional error rate is the count divided by 1,000. These eight cells contain 485 errors, 59.29\% of all errors, and all lie within $G$.
+
+\begin{table}[H]
+    \centering
+    \caption{Eight largest directed CNN confusions, ordered by count and then class ID for ties. A direction and its reverse are separate error cells.}
+    \label{tab:a1-top-confusions}
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \input{\reportroot assets/final/top_confusions.tex}
+\end{table}
+
+Shirt contributes 285 misses in total. Its predictions as T-shirt/top, Coat, and Pullover contribute 112, 82, and 61 cases: together 255, or 89.47\% of missed Shirts. The reciprocal T-shirt/top--Shirt pair contains 171 errors, while Coat--Shirt contains 119. Direction matters: Shirt-to-T-shirt/top has 112 cases, versus 59 in reverse. Improvement should therefore be evaluated using both Shirt recall and false-positive errors in its neighboring categories, rather than optimizing one directed cell in isolation.
+
+\subsection{Representative Failure Cases}
+
+Figure~\ref{fig:a1-error-groups} provides one recorded CNN case per taxonomy bucket. Test \#40 is Shirt predicted as T-shirt/top; test \#68 is Ankle boot predicted as Sneaker; test \#32 is Dress predicted as Trouser. The last case is a residual-group error, not a Shirt confusion. Its direction occurs four times in the complete CNN matrix, so this early example should not be mistaken for a dominant failure mode.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/final/error_group_examples.png}
+    \caption{One identified CNN failure per error bucket. The cases are recovered from the saved incorrect-example grid and rendered from original test pixels. Group definitions determine the count categories; visible attributes do not establish the model's causal decision process.}
+    \label{fig:a1-error-groups}
+\end{figure}
+
+The short-sleeved outline in \#40 resembles the predicted neighboring category. The boot in \#68 shares a closed footwear silhouette with sneakers, while the narrow view of \#32 leaves limited category cues. Other examples in Figure~\ref{fig:a1-incorrect-examples}, such as the checked Pullover \#248 predicted as Shirt, show texture-related ambiguity. These are visual hypotheses. No complete dataset of contrast, viewpoint, or texture tags was recorded, so their causal frequencies cannot be inferred from the class-based taxonomy.
+
+\subsection{Hypothesized Causes and Improvement Ideas}
+
+\begin{enumerate}
+    \item \textbf{Overlapping garment appearance.} Test whether modest, label-preserving translations and contrast variation improve validation Shirt recall and macro-F1 without reducing neighboring-class precision. The current transform code accepts no augmentation beyond \texttt{none}; this requires a new implementation and controlled experiment. Aggressive crops may remove sleeves or garment length, so an improvement is not assumed.
+    \item \textbf{Detail lost during downsampling.} Compare the CNN with a version retaining more spatial resolution, under a matched parameter or compute budget. Report validation garment F1 and inference cost together. The current images are only $28\times28$; retaining feature resolution cannot recover detail absent from the raw input.
+    \item \textbf{Footwear boundary cases.} Audit ankle/sole visibility and distinguishable silhouettes on training/validation examples, then test a controlled resolution or pooling change. Use the complete footwear confusion cells as the outcome, not the proportion of shoe images in a selected grid.
+    \item \textbf{Residual and uncertain cases.} Inspect the original pixels and official labels before alleging annotation errors. Save future full per-image predictions and logits to support paired comparisons, confidence/calibration analysis, and a larger reproducible failure sample. These artifacts are absent from the current evaluation outputs.
+\end{enumerate}
+
+Any new design should be selected on training/validation data with a stated search budget. Since the test errors have now informed these hypotheses, repeating model selection against this same test set would weaken its independence. The present report claims no measured gain for these proposed remedies.

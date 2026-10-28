@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="770" viewBox="0 0 1200 770">
+<title>Shared Fashion-MNIST training and evaluation pipeline</title>
+<desc>Shared preprocessing feeds training and validation on the left and held-out test evaluation on the right. The best validation checkpoint is transferred to test inference.</desc>
+<rect width="1200" height="770" fill="white"/>
+<text x="25" y="29" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#182D45" text-anchor="start" dominant-baseline="central">Shared data preparation</text>
+<text x="1175" y="29" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#526578" text-anchor="end" dominant-baseline="central">FIVE ARCHITECTURES  /  ONE PROTOCOL</text>
+<rect x="25" y="70" width="350" height="110" rx="13" fill="#F7F9FC" stroke="#CED9E3" stroke-width="1.4"/>
+<rect x="425" y="70" width="350" height="110" rx="13" fill="#F7F9FC" stroke="#CED9E3" stroke-width="1.4"/>
+<rect x="825" y="70" width="350" height="110" rx="13" fill="#F7F9FC" stroke="#CED9E3" stroke-width="1.4"/>
+<text x="43" y="98" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#182D45" text-anchor="start" dominant-baseline="central">Fashion-MNIST</text>
+<text x="43" y="132" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">70,000 grayscale images</text>
+<text x="43" y="158" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">10 classes · 28 × 28 pixels</text>
+<text x="443" y="98" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#182D45" text-anchor="start" dominant-baseline="central">Stratified Split</text>
+<text x="443" y="132" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">54,000 train · 6,000 validation</text>
+<text x="443" y="158" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">10,000 official test · seed 42</text>
+<text x="843" y="98" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#182D45" text-anchor="start" dominant-baseline="central">Shared preprocessing</text>
+<text x="843" y="132" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">ToTensor + Normalize</text>
+<text x="843" y="158" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">Train / validation / test loaders</text>
+<polyline points="380,125 415,125" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="415,125 405.0,120.2 405.0,129.8" fill="#8092A4"/>
+<polyline points="780,125 815,125" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="815,125 805.0,120.2 805.0,129.8" fill="#8092A4"/>
+<rect x="25" y="255" width="550" height="455" rx="20" fill="#F0F5FB" stroke="#D4E0ED" stroke-width="1.4"/>
+<rect x="625" y="255" width="550" height="455" rx="20" fill="#EFF8F6" stroke="#CEE5E0" stroke-width="1.4"/>
+<polyline points="1000,182 1000,213 300,213 300,250" fill="none" stroke="#254F80" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="300,250 304.8,240.0 295.2,240.0" fill="#254F80"/>
+<polyline points="1000,213 900,213 900,250" fill="none" stroke="#08776F" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="900,250 904.8,240.0 895.2,240.0" fill="#08776F"/>
+<text x="55" y="285" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#254F80" text-anchor="start" dominant-baseline="central">TRAIN &amp; VALIDATE</text>
+<text x="55" y="312" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">Training and validation loaders</text>
+<text x="655" y="285" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#08776F" text-anchor="start" dominant-baseline="central">FINAL TEST EVALUATION</text>
+<text x="655" y="312" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">Held-out test loader</text>
+<rect x="115" y="340" width="430" height="80" rx="13" fill="white" stroke="#C4D3E2" stroke-width="1.4"/>
+<text x="133" y="363" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#254F80" text-anchor="start" dominant-baseline="central">Train forward + loss</text>
+<text x="133" y="392" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">Model logits → cross-entropy</text>
+<rect x="115" y="450" width="430" height="80" rx="13" fill="white" stroke="#C4D3E2" stroke-width="1.4"/>
+<text x="133" y="473" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#254F80" text-anchor="start" dominant-baseline="central">Backpropagation + Adam</text>
+<text x="133" y="502" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">Update model parameters</text>
+<rect x="115" y="560" width="430" height="100" rx="13" fill="white" stroke="#C4D3E2" stroke-width="1.4"/>
+<text x="133" y="583" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#254F80" text-anchor="start" dominant-baseline="central">Validation + model selection</text>
+<text x="133" y="612" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">No gradients; monitor macro-F1</text>
+<text x="133" y="636" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">Save best.pt on improvement</text>
+<polyline points="330,423 330,446" fill="none" stroke="#254F80" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="330,446 334.8,436.0 325.2,436.0" fill="#254F80"/>
+<polyline points="330,533 330,556" fill="none" stroke="#254F80" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="330,556 334.8,546.0 325.2,546.0" fill="#254F80"/>
+<polyline points="112,610 72,610 72,380 111,380" fill="none" stroke="#254F80" stroke-width="2.1" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="111,380 101.0,375.2 101.0,384.8" fill="#254F80"/>
+<text x="50" y="493" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#254F80" text-anchor="middle" dominant-baseline="central" transform="rotate(-90 50 493)">next epoch</text>
+<text x="325" y="687" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#526578" text-anchor="middle" dominant-baseline="central">Repeat until patience or epoch limit</text>
+<rect x="655" y="340" width="490" height="80" rx="13" fill="white" stroke="#BCDCD7" stroke-width="1.4"/>
+<text x="673" y="363" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#08776F" text-anchor="start" dominant-baseline="central">Held-out test batches</text>
+<text x="673" y="392" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">Same normalization and tensor shape</text>
+<rect x="655" y="450" width="490" height="80" rx="13" fill="white" stroke="#BCDCD7" stroke-width="1.4"/>
+<text x="673" y="473" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#08776F" text-anchor="start" dominant-baseline="central">Restore checkpoint + infer</text>
+<text x="673" y="502" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">Saved config + best.pt → logits</text>
+<rect x="655" y="560" width="490" height="100" rx="13" fill="white" stroke="#BCDCD7" stroke-width="1.4"/>
+<text x="673" y="583" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#08776F" text-anchor="start" dominant-baseline="central">Predictions + evaluation</text>
+<text x="673" y="612" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">Argmax → accuracy / macro-F1</text>
+<text x="673" y="636" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">Timing, confusion matrix, examples</text>
+<polyline points="900,423 900,446" fill="none" stroke="#08776F" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="900,446 904.8,436.0 895.2,436.0" fill="#08776F"/>
+<polyline points="900,533 900,556" fill="none" stroke="#08776F" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="900,556 904.8,546.0 895.2,546.0" fill="#08776F"/>
+<polyline points="548,610 599,610 599,490 651,490" fill="none" stroke="#08776F" stroke-width="2.8" stroke-linejoin="round"/>
+<polygon points="651,490 641.0,485.2 641.0,494.8" fill="#08776F"/>
+<text x="585" y="551" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#08776F" text-anchor="middle" dominant-baseline="central" transform="rotate(-90 585 551)">best.pt</text>
+<text x="900" y="687" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#526578" text-anchor="middle" dominant-baseline="central">Evaluate after checkpoint selection</text>
+<text x="600" y="744" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">Shared model interface: images [B, 1, 28, 28] → logits [B, 10]</text>
+</svg>

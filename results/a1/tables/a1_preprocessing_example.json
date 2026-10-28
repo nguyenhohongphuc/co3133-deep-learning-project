@@ -1,0 +1,57 @@
+{
+  "purpose": "Inspection of preprocessing only; no model training or predictive evaluation",
+  "config": "configs/a1.yaml",
+  "split_file": "results/a1/splits/split_seed42.json",
+  "partition": "validation",
+  "method": "Repository FashionMNISTSubset and build_transforms with an ordered DataLoader",
+  "configured_num_workers": 2,
+  "inspection_num_workers": 0,
+  "note": "Zero workers used for this local inspection; batch order and preprocessing are unchanged.",
+  "torch": "2.8.0",
+  "torchvision": "0.23.0",
+  "image_shape": [
+    128,
+    1,
+    28,
+    28
+  ],
+  "image_dtype": "torch.float32",
+  "label_shape": [
+    128
+  ],
+  "label_dtype": "torch.int64",
+  "normalized_min": -0.8104230165481567,
+  "normalized_max": 2.0211548805236816,
+  "first_8_labels": [
+    3,
+    1,
+    9,
+    8,
+    2,
+    1,
+    2,
+    9
+  ],
+  "first_8_official_train_indices": [
+    7728,
+    8527,
+    23942,
+    161,
+    14162,
+    28373,
+    44646,
+    29052
+  ],
+  "normalization": {
+    "configured_mean": 0.286209,
+    "configured_std": 0.35316,
+    "measured_train_mean": 0.28620898723602295,
+    "measured_train_population_std": 0.35315975546836853
+  },
+  "split_checks": {
+    "disjoint": true,
+    "covers_official_training_set": true,
+    "train_size": 54000,
+    "val_size": 6000
+  }
+}

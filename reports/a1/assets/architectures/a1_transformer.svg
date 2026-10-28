@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="555" viewBox="0 0 1200 555">
+<title>Patch Transformer encoder</title>
+<rect width="1200" height="555" fill="white"/>
+<text x="25" y="28" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#182D45" text-anchor="start" dominant-baseline="central">Patch Transformer encoder</text>
+<text x="1175" y="28" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="end" dominant-baseline="central">540,170 parameters</text>
+<image x="25" y="97" width="120" height="120" style="image-rendering:pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAAAAABXZoBIAAACBUlEQVR4nF2QvWtTURjGn/c9515zE0lSLYSmQwU/oNAqmoJ0EMHJxUEQHHRzctAp4F8gCA4OTuKirg666eAoRTrYQbDa0sWEdDDF2KQ2956PV+69afpxhjOc33me930eQnpIAMw+f7uSmLmbG0972D8E4OKT9R/trojIz1W/+Wp+DIDym/M82DVeV3a8AIUo/Hx3DD/NbHltCWwYnI2Zur4K6JQ1ZrpaRfUiG+0osP22hbvXHCmbD7teuReddn2TTXj80oOuLutTyExwyyop2Jem8eFyVJvcfuZ04V/93Mj2QksdQxkfd2ab727orw1bcv7X4loG539bVtEW5uKpx2RoEZ1p74dXXmfwUTRw0dAunDwR1MwwrN6e2K1QuJDbLtXOlEvr7ov3Tmly3F8rKe6838s5cfb+1ValF6g0Iw8r3+5kzzq7/yzH1yQsKQ8iX0gKS3mvnHUYQvrKy8hHoQdFe1AMNv7qGELpnDjANlj2IBi7iVhFQsScaHIHbCHwToRJmIjFs4fsQwDTpISymWxIHVbCIQQRgXxgJTiiHCrLXpQXrR2qB5UAfFYIE4TERrkyLyH/JTlkscX8LYfpP4U0p4IQu0MLEZAQwZNLDcipIwulnTAT0qGpy6EoHdg4NkkcJwYyUo4Xqpb0JHMIWNUqngb7MSTByvdeAB4IWW+qy2ky4D8KOdUXoboqaAAAAABJRU5ErkJggg=="/>
+<line x1="55.0" y1="97" x2="55.0" y2="217" stroke="#66D7CC" stroke-width="1.6"/>
+<line x1="25" y1="127.0" x2="145" y2="127.0" stroke="#66D7CC" stroke-width="1.6"/>
+<line x1="85.0" y1="97" x2="85.0" y2="217" stroke="#66D7CC" stroke-width="1.6"/>
+<line x1="25" y1="157.0" x2="145" y2="157.0" stroke="#66D7CC" stroke-width="1.6"/>
+<line x1="115.0" y1="97" x2="115.0" y2="217" stroke="#66D7CC" stroke-width="1.6"/>
+<line x1="25" y1="187.0" x2="145" y2="187.0" stroke="#66D7CC" stroke-width="1.6"/>
+<text x="85" y="244" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#526578" text-anchor="middle" dominant-baseline="central">7×7 patches</text>
+<polyline points="158,156 205,156" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="205,156 195.0,151.2 195.0,160.8" fill="#8092A4"/>
+<rect x="220" y="100" width="225" height="110" rx="13" fill="#F0F5FB" stroke="#CED9E3" stroke-width="1.4"/>
+<text x="332" y="128" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#254F80" text-anchor="middle" dominant-baseline="central">16 patch tokens</text>
+<text x="332" y="168" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">[B, 16, 49]</text>
+<polyline points="457,156 497,156" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="497,156 487.0,151.2 487.0,160.8" fill="#8092A4"/>
+<rect x="510" y="100" width="250" height="110" rx="13" fill="#F0F5FB" stroke="#CED9E3" stroke-width="1.4"/>
+<text x="635" y="128" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#254F80" text-anchor="middle" dominant-baseline="central">Linear 49 → 128</text>
+<text x="635" y="168" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">[B, 16, 128]</text>
+<polyline points="774,156 814,156" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="814,156 804.0,151.2 804.0,160.8" fill="#8092A4"/>
+<rect x="827" y="100" width="348" height="110" rx="13" fill="#F5F1FA" stroke="#D8CEE7" stroke-width="1.4"/>
+<text x="1001" y="126" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#7356A4" text-anchor="middle" dominant-baseline="central">Add CLS + positions</text>
+<text x="1001" y="166" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">Dropout 0.1 · [B, 17, 128]</text>
+<polyline points="1001,214 1001,255 530,255 530,293" fill="none" stroke="#7356A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="530,293 534.8,283.0 525.2,283.0" fill="#7356A4"/>
+<rect x="160" y="300" width="630" height="213" rx="17" fill="#F0F5FB" stroke="#C4D3E2" stroke-width="1.4"/>
+<text x="190" y="328" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#254F80" text-anchor="start" dominant-baseline="central">Encoder block × 4</text>
+<rect x="183" y="354" width="583" height="57" rx="13" fill="white" stroke="#CED9E3" stroke-width="1.4"/>
+<text x="474" y="383" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">4-head self-attention → residual + LayerNorm</text>
+<polyline points="474,414 474,432" fill="none" stroke="#254F80" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="474,432 478.8,422.0 469.2,422.0" fill="#254F80"/>
+<rect x="183" y="436" width="583" height="57" rx="13" fill="white" stroke="#CED9E3" stroke-width="1.4"/>
+<text x="474" y="465" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">FFN 128→256→128 (GELU) → residual + LayerNorm</text>
+<polyline points="798,405 852,405" fill="none" stroke="#08776F" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="852,405 842.0,400.2 842.0,409.8" fill="#08776F"/>
+<rect x="864" y="309" width="311" height="198" rx="13" fill="#EFF8F6" stroke="#BCDCD7" stroke-width="1.4"/>
+<text x="1019" y="340" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#08776F" text-anchor="middle" dominant-baseline="central">CLS output</text>
+<text x="1019" y="380" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">LayerNorm (128)</text>
+<text x="1019" y="420" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">Linear 128 → 10</text>
+<text x="1019" y="466" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">[B, 10] logits</text>
+<text x="600" y="540" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="middle" dominant-baseline="central">4 heads · d_model = 128 · d_head = 32 · learned positional embeddings · dropout = 0.1</text>
+</svg>

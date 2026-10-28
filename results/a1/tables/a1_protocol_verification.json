@@ -1,0 +1,245 @@
+{
+  "purpose": "Audit of recorded protocol and metrics only; no training or new evaluation",
+  "runs": [
+    {
+      "run_id": "a1_cnn_s42_1027-0157",
+      "seed": 42,
+      "commit": "c1747a1",
+      "env": {
+        "python": "3.10.21",
+        "torch": "2.14.1+cu126",
+        "cuda": "12.6",
+        "cpu": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+        "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+      },
+      "training_config": {
+        "batch_size": 128,
+        "num_workers": 2,
+        "epochs": 50,
+        "loss": "cross_entropy",
+        "optimizer": "adam",
+        "lr": 0.001,
+        "weight_decay": 0.0,
+        "device": "cuda",
+        "monitor": "val_macro_f1",
+        "patience": 5
+      },
+      "best_epoch": 7,
+      "epochs_run": 13,
+      "checks": {
+        "checkpoint_matches_history": true,
+        "stopped_after_five_nonimproving_epochs": true,
+        "test_confusion_count": 10000,
+        "accuracy_and_macro_f1_match_confusion": true,
+        "inference_metadata_consistent": true
+      }
+    },
+    {
+      "run_id": "a1_linear_s42_1027-0134",
+      "seed": 42,
+      "commit": "c1747a1",
+      "env": {
+        "python": "3.10.21",
+        "torch": "2.14.1+cu126",
+        "cuda": "12.6",
+        "cpu": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+        "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+      },
+      "training_config": {
+        "batch_size": 128,
+        "num_workers": 2,
+        "epochs": 50,
+        "loss": "cross_entropy",
+        "optimizer": "adam",
+        "lr": 0.001,
+        "weight_decay": 0.0,
+        "device": "cuda",
+        "monitor": "val_macro_f1",
+        "patience": 5
+      },
+      "best_epoch": 11,
+      "epochs_run": 17,
+      "checks": {
+        "checkpoint_matches_history": true,
+        "stopped_after_five_nonimproving_epochs": true,
+        "test_confusion_count": 10000,
+        "accuracy_and_macro_f1_match_confusion": true,
+        "inference_metadata_consistent": true
+      }
+    },
+    {
+      "run_id": "a1_mlp_s42_1027-0143",
+      "seed": 42,
+      "commit": "c1747a1",
+      "env": {
+        "python": "3.10.21",
+        "torch": "2.14.1+cu126",
+        "cuda": "12.6",
+        "cpu": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+        "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+      },
+      "training_config": {
+        "batch_size": 128,
+        "num_workers": 2,
+        "epochs": 50,
+        "loss": "cross_entropy",
+        "optimizer": "adam",
+        "lr": 0.001,
+        "weight_decay": 0.0,
+        "device": "cuda",
+        "monitor": "val_macro_f1",
+        "patience": 5
+      },
+      "best_epoch": 22,
+      "epochs_run": 28,
+      "checks": {
+        "checkpoint_matches_history": true,
+        "stopped_after_five_nonimproving_epochs": true,
+        "test_confusion_count": 10000,
+        "accuracy_and_macro_f1_match_confusion": true,
+        "inference_metadata_consistent": true
+      }
+    },
+    {
+      "run_id": "a1_rnn_cols_s42_1027-0217",
+      "seed": 42,
+      "commit": "c1747a1-dirty",
+      "env": {
+        "python": "3.10.21",
+        "torch": "2.14.1+cu126",
+        "cuda": "12.6",
+        "cpu": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+        "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+      },
+      "training_config": {
+        "batch_size": 128,
+        "num_workers": 2,
+        "epochs": 50,
+        "loss": "cross_entropy",
+        "optimizer": "adam",
+        "lr": 0.001,
+        "weight_decay": 0.0,
+        "device": "cuda",
+        "monitor": "val_macro_f1",
+        "patience": 5
+      },
+      "best_epoch": 20,
+      "epochs_run": 26,
+      "checks": {
+        "checkpoint_matches_history": true,
+        "stopped_after_five_nonimproving_epochs": true,
+        "test_confusion_count": 10000,
+        "accuracy_and_macro_f1_match_confusion": true,
+        "inference_metadata_consistent": true
+      }
+    },
+    {
+      "run_id": "a1_rnn_patches_s42_1027-0229",
+      "seed": 42,
+      "commit": "c1747a1-dirty",
+      "env": {
+        "python": "3.10.21",
+        "torch": "2.14.1+cu126",
+        "cuda": "12.6",
+        "cpu": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+        "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+      },
+      "training_config": {
+        "batch_size": 128,
+        "num_workers": 2,
+        "epochs": 50,
+        "loss": "cross_entropy",
+        "optimizer": "adam",
+        "lr": 0.001,
+        "weight_decay": 0.0,
+        "device": "cuda",
+        "monitor": "val_macro_f1",
+        "patience": 5
+      },
+      "best_epoch": 20,
+      "epochs_run": 26,
+      "checks": {
+        "checkpoint_matches_history": true,
+        "stopped_after_five_nonimproving_epochs": true,
+        "test_confusion_count": 10000,
+        "accuracy_and_macro_f1_match_confusion": true,
+        "inference_metadata_consistent": true
+      }
+    },
+    {
+      "run_id": "a1_rnn_rows_s42_1027-0204",
+      "seed": 42,
+      "commit": "c1747a1",
+      "env": {
+        "python": "3.10.21",
+        "torch": "2.14.1+cu126",
+        "cuda": "12.6",
+        "cpu": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+        "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+      },
+      "training_config": {
+        "batch_size": 128,
+        "num_workers": 2,
+        "epochs": 50,
+        "loss": "cross_entropy",
+        "optimizer": "adam",
+        "lr": 0.001,
+        "weight_decay": 0.0,
+        "device": "cuda",
+        "monitor": "val_macro_f1",
+        "patience": 5
+      },
+      "best_epoch": 21,
+      "epochs_run": 27,
+      "checks": {
+        "checkpoint_matches_history": true,
+        "stopped_after_five_nonimproving_epochs": true,
+        "test_confusion_count": 10000,
+        "accuracy_and_macro_f1_match_confusion": true,
+        "inference_metadata_consistent": true
+      }
+    },
+    {
+      "run_id": "a1_transformer_patches_s42_1027-0242",
+      "seed": 42,
+      "commit": "c1747a1",
+      "env": {
+        "python": "3.10.21",
+        "torch": "2.14.1+cu126",
+        "cuda": "12.6",
+        "cpu": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+        "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+      },
+      "training_config": {
+        "batch_size": 128,
+        "num_workers": 2,
+        "epochs": 50,
+        "loss": "cross_entropy",
+        "optimizer": "adam",
+        "lr": 0.001,
+        "weight_decay": 0.0,
+        "device": "cuda",
+        "monitor": "val_macro_f1",
+        "patience": 5
+      },
+      "best_epoch": 11,
+      "epochs_run": 17,
+      "checks": {
+        "checkpoint_matches_history": true,
+        "stopped_after_five_nonimproving_epochs": true,
+        "test_confusion_count": 10000,
+        "accuracy_and_macro_f1_match_confusion": true,
+        "inference_metadata_consistent": true
+      }
+    }
+  ],
+  "limitations": {
+    "single_seed": true,
+    "dirty_runs": [
+      "a1_rnn_cols_s42_1027-0217",
+      "a1_rnn_patches_s42_1027-0229"
+    ],
+    "manifest_torch": "2.14.0",
+    "recorded_run_torch": "2.14.1+cu126"
+  }
+}
