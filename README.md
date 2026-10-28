@@ -50,13 +50,46 @@ All commands are run from the **repository root** (the folder that contains `src
 
 ---
 
+## Assignment 2 (30VNFoods, image classification)
+
+A2 code lives in its own package `src/a2/` and config `configs/a2.yaml`, so the A1 files are never touched.
+It imports the shared `src/engine/trainer.fit` and `src/utils/` without changing them.
+
+```powershell
+# 1. Data (once): Kaggle quandang/vietnamese-foods, version 11 -> data/30VNFoods/{Images,Urls,LICENSE}
+python -c "import kagglehub; print(kagglehub.dataset_download('quandang/vietnamese-foods/versions/11'))"
+#    then copy the printed folder to data/30VNFoods
+
+# 2. EDA + split (already committed; re-run only to reproduce): notebooks/a2_eda.ipynb
+#    -> results/a2/splits/split_v2.json, results/a2/tables/a2_drop_list.csv, results/a2/figures/
+
+# 3. Check one batch after preprocessing  ->  results/a2/figures/a2_example_batch.png
+python -m src.a2.data
+
+# 4. Train  ->  results/a2/runs/<run_id>/  (config.yaml, history.csv, metrics.json, figures/curves.png)
+python -m src.a2.train --model cnn               # baseline
+python -m src.a2.train --model resnet50_frozen   # pretrained, backbone frozen
+python -m src.a2.train --model resnet50_full     # pretrained, full fine-tuning
+```
+
+| Item | A2 |
+|---|---|
+| Split | `results/a2/splits/split_v2.json`: Train 17,164 / Validate 2,481 / Test 4,984; near-duplicate clusters (pHash) kept in one split; 507 removed images listed with reasons in `results/a2/tables/a2_drop_list.csv` |
+| Models (`src/a2/models.py`) | `cnn`: A1 CNN widened to 4 blocks + global average pooling (397 k params); `resnet50_frozen` / `resnet50_full`: torchvision ResNet-50 `IMAGENET1K_V2`, new 30-way head (23.6 M params) |
+| Preprocessing (`src/a2/data.py`) | train: `RandomResizedCrop(224)` + flip + `ColorJitter(0.1)`; eval: `Resize(256)` + `CenterCrop(224)`; CNN normalised with Train v2 stats, ResNet with ImageNet stats |
+| Checkpoint selection | best validation macro-F1, early stopping patience 5 (same trainer as A1) |
+| Proposal | `reports/a2/proposal.md` (revision 2) |
+
+---
+
 ## Repository layout
 
 ```
 configs/
   a1.yaml                 ALL A1 settings: seed, data, training, and one block per model
-  a2/                     A2 configs
+  a2.yaml                 ALL A2 settings (30VNFoods)
 src/
+  a2/                     A2 only: data.py (dataset + loaders), models.py (CNN, ResNet-50), train.py
   data/                   split, transforms, Dataset, DataLoader            (TV 1)
   engine/
     trainer.py            training loop, validation, early stopping, checkpointing
