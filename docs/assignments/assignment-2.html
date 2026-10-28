@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Assignment 2 &ndash; Deep Learning on Large-Scale Data and Specialized Tasks</title>
-<meta name="description" content="CO3133 Assignment 2: deep learning on large-scale data for a specialized computer vision or language task.">
+<meta name="description" content="CO3133 Assignment 2: 30-class Vietnamese food classification on 30VNFoods with a CNN baseline and a fine-tuned ResNet-50.">
 <link rel="icon" type="image/png" href="../assets/img/bk-logo.png">
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
@@ -26,15 +26,19 @@
 
 <div class="hero">
   <div class="wrap">
-    <p class="eyebrow">Assignment 2 &middot; 30% of the course project &middot; <span class="badge todo">Not started</span></p>
+    <p class="eyebrow">Assignment 2 &middot; 30% of the course project &middot; <span class="badge wip">M2 Draft</span></p>
     <h1>Deep Learning on Large-Scale Data and Specialized Tasks</h1>
-    <p class="lede">Deep learning on large-scale data for a specialized computer vision or language task:
-      one track, in depth.</p>
+    <p class="lede">Track: image classification. We classify photos of 30 Vietnamese dishes (30VNFoods) with a CNN
+      trained from scratch and a ResNet-50 pretrained on ImageNet.</p>
   </div>
 </div>
 
 <main class="wrap">
 
+  <div class="note"><strong>Draft status (M2, 28 Oct 2026).</strong> This page covers what the M2 Draft requires
+    (handbook &sect;7.5): EDA, the simple baseline, the pretrained model in progress, and preliminary metrics.
+    Every metric is on the <strong>validation</strong> set; the test set is kept for the final evaluation (M3).
+    Sections marked <span class="badge todo">TODO</span> belong to the M3 Final.</div>
 
   <!-- ============ AT A GLANCE ============ -->
   <section id="overview">
@@ -47,14 +51,15 @@
           <dt>Instructor</dt><dd>L&ecirc; Th&agrave;nh S&aacute;ch</dd>
           <dt>Group</dt><dd>NNs</dd>
           <dt>Members</dt><dd>Nguy&#7877;n Nh&#7853;t Nam (2352778), H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n (2352824), Phan Qu&#7889;c &#272;&#7841;i S&#417;n (2353053)</dd>
-          <dt>Task track</dt><dd>Image classification</dd>
+          <dt>Task track</dt><dd>Image classification (30 classes)</dd>
+          <dt>Dataset</dt><dd>30VNFoods &middot; 24,629 images after cleaning</dd>
         </dl>
       </div>
       <div class="card">
         <h3 style="margin-top:0">Milestones</h3>
         <dl class="kv">
-          <dt>M1 Proposal</dt><dd>07 Oct 2026 &middot; 15% of A2 &middot; <span class="badge wip">Submitted</span></dd>
-          <dt>M2 Draft</dt><dd>28 Oct 2026 &middot; 25% of A2 &middot; <span class="badge todo">Not started</span></dd>
+          <dt>M1 Proposal</dt><dd>07 Oct 2026 &middot; 15% of A2 &middot; <span class="badge wip">Submitted; revision 2 on 28 Oct</span></dd>
+          <dt>M2 Draft</dt><dd>28 Oct 2026 &middot; 25% of A2 &middot; <span class="badge wip">This page</span></dd>
           <dt>M3 Final</dt><dd>11 Nov 2026 &middot; 60% of A2 &middot; <span class="badge todo">Not started</span></dd>
         </dl>
       </div>
@@ -68,12 +73,13 @@
       <table>
         <thead><tr><th>Item</th><th>Link</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>Dataset proposal</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/reports/a2/proposal.md">reports/a2/proposal.md</a></td><td><span class="badge wip">Submitted</span></td></tr>
-          <tr><td>Source code</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project">github.com/nguyenhohongphuc/co3133-deep-learning-project</a></td><td><span class="badge wip">In progress</span></td></tr>
-          <tr><td>Checkpoints (or reconstruction instructions)</td><td><span class="fill">[URL or README section]</span></td><td><span class="badge todo">TODO</span></td></tr>
-          <tr><td>Report</td><td><span class="fill">[PDF URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
-          <tr><td>Slides</td><td><span class="fill">[slides URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
-          <tr><td>YouTube presentation</td><td><span class="fill">[video URL &ndash; title: CO3133-Semester-261 &ndash; Group NNs &ndash; Assignment 2]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>Dataset proposal</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/reports/a2/proposal.md">reports/a2/proposal.md</a></td><td><span class="badge wip">Revision 2 &middot; approval pending</span></td></tr>
+          <tr><td>EDA notebook</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/notebooks/a2_eda.ipynb">notebooks/a2_eda.ipynb</a></td><td><span class="badge done">Done</span></td></tr>
+          <tr><td>Source code</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/tree/main/src/a2">src/a2/</a> &middot; <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/configs/a2.yaml">configs/a2.yaml</a></td><td><span class="badge wip">In progress</span></td></tr>
+          <tr><td>Checkpoints (or reconstruction instructions)</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project#assignment-2-30vnfoods-image-classification">README &mdash; Assignment 2</a> (reconstruction commands)</td><td><span class="badge wip">Reconstruction only</span></td></tr>
+          <tr><td>Report</td><td><span class="fill">[PDF URL]</span></td><td><span class="badge todo">TODO (M3)</span></td></tr>
+          <tr><td>Slides</td><td><span class="fill">[slides URL]</span></td><td><span class="badge todo">TODO (M3)</span></td></tr>
+          <tr><td>YouTube presentation</td><td><span class="fill">[video URL &ndash; title: CO3133-Semester-261 &ndash; Group NNs &ndash; Assignment 2]</span></td><td><span class="badge todo">TODO (M3)</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -82,22 +88,24 @@
   <!-- ============ PROPOSAL ============ -->
   <section id="proposal">
     <h2>Dataset proposal and approval</h2>
-    <p>Approval status: <span class="badge wip">Submitted 07 Oct 2026 &mdash; awaiting decision</span></p>
+    <p>Approval status: <span class="badge wip">Submitted 07 Oct 2026; revision 2 on 28 Oct 2026 &mdash; decision not yet recorded</span></p>
+    <p>Revision 2 keeps the dataset, task, metrics and models. It replaces the split and leakage numbers with those of the
+      final EDA. Full text: <code>reports/a2/proposal.md</code>.</p>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Proposal field</th><th>Content</th></tr></thead>
         <tbody>
-          <tr><td>Dataset name, source, version, license</td><td>30VNFoods &mdash; <a href="https://www.kaggle.com/datasets/quandang/vietnamese-foods">Kaggle quandang/vietnamese-foods</a>; version 11 (downloaded 07 Oct 2026); MIT license</td></tr>
-          <tr><td>Task, input, output definitions</td><td>30-class single-label image classification; input: RGB image 3&times;224&times;224; output: 30 class logits</td></tr>
-          <tr><td>Number of samples and annotation types</td><td>25,136 images, one class label per image; official split Train 17,581 / Validate 2,515 / Test 5,040</td></tr>
-          <tr><td>Preliminary distribution analysis</td><td>Train per class: 310&ndash;1,071 (imbalance 3.45&times;); median image 1000&times;720 px; 159 duplicate clusters cross splits, 55 carry two labels</td></tr>
-          <tr><td>Data-splitting plan</td><td>Official split minus duplicates: Train 17,275 / Validate 2,488 / Test 4,995; seed 42</td></tr>
-          <tr><td>Split unit preventing leakage</td><td>Near-duplicate cluster (pHash distance &le; 4); a cluster stays in one split</td></tr>
-          <tr><td>Evaluation metrics</td><td>Accuracy and macro-F1; checkpoint = best validation macro-F1</td></tr>
-          <tr><td>Baseline plan</td><td>Small CNN from scratch (1.18 M parameters), 30 epochs</td></tr>
-          <tr><td>Planned pretrained models</td><td>ResNet-50 (ImageNet); frozen backbone vs. full fine-tuning</td></tr>
-          <tr><td>Compute estimate</td><td>&asymp; 17 GPU-hours on RTX 4060 Laptop (8 GB); peak memory 3.1 GB; storage &asymp; 5.4 GB data + 1 GB checkpoints</td></tr>
-          <tr><td>Subset selection rules (if any)</td><td>Full dataset; remove 378 duplicate images (1.5%): 116 cross-label, 130 cross-split, 132 within-split</td></tr>
+          <tr><td>Dataset name, source, version, license</td><td>30VNFoods &mdash; <a href="https://www.kaggle.com/datasets/quandang/vietnamese-foods">Kaggle quandang/vietnamese-foods</a>, version 11 (pinned); MIT license</td></tr>
+          <tr><td>Task, input, output definitions</td><td>30-class single-label image classification; input: RGB image, 3&times;224&times;224 after preprocessing; output: 30 class logits</td></tr>
+          <tr><td>Number of samples and annotation types</td><td>25,136 images, one class label per image (folder name); official split Train 17,581 / Validate 2,515 / Test 5,040</td></tr>
+          <tr><td>Preliminary distribution analysis</td><td>Train per class: 310&ndash;1,071 (imbalance 3.45&times;); median image 1000&times;720 px; 222 near-duplicate clusters span two splits, 56 carry two labels</td></tr>
+          <tr><td>Data-splitting plan</td><td>Official stratified split minus duplicates: Train 17,164 / Validate 2,481 / Test 4,984 (<code>results/a2/splits/split_v2.json</code>)</td></tr>
+          <tr><td>Split unit preventing leakage</td><td>Near-duplicate cluster: pHash distance &le; 6, or &le; 8 within one class; a cluster stays in one split</td></tr>
+          <tr><td>Evaluation metrics</td><td>Accuracy and macro-F1 (primary); per-class F1, confusion matrix; checkpoint = best validation macro-F1</td></tr>
+          <tr><td>Baseline plan</td><td>A1 CNN widened to 4 blocks with global average pooling, trained from scratch (397 k parameters)</td></tr>
+          <tr><td>Planned pretrained models</td><td>ResNet-50 (ImageNet); controlled experiment: frozen backbone vs. full fine-tuning</td></tr>
+          <tr><td>Compute estimate</td><td>&asymp; 11.4 GPU-hours on an RTX 4060 Laptop GPU (8 GB), including a 30% margin; peak memory 3.1 GB (benchmark of 07 Oct 2026)</td></tr>
+          <tr><td>Subset selection rules (if any)</td><td>Full dataset; remove 507 images (2.0%): 118 label conflicts, 196 cross-split and 193 within-split duplicates (<code>results/a2/tables/a2_drop_list.csv</code>)</td></tr>
         </tbody>
       </table>
     </div>
@@ -106,67 +114,172 @@
   <!-- ============ PROBLEM ============ -->
   <section id="problem">
     <h2>Problem statement</h2>
-    <p><span class="fill">[Real-world motivation; input; output; prediction unit; formulation; main difficulties at this scale.]</span></p>
+    <p>Given one photo of a Vietnamese dish, predict which of 30 dishes it shows. Such a classifier is the first step of
+      food-logging, menu-search and tourism apps. Input: one RGB photo of any size. Output: one of 30 labels. The
+      prediction unit is the image. We train with cross-entropy on the logits <em>f(x) &isin; &#8477;<sup>30</sup></em>
+      and predict <em>&#375; = argmax f(x)</em>.</p>
+    <p>Main difficulties:</p>
+    <ul>
+      <li><strong>Fine-grained classes.</strong> Several dishes share ingredients and differ only in shape or broth:
+        Banh chung (square) vs. Banh tet (round); Bun bo Hue vs. Bun rieu vs. Banh canh.</li>
+      <li><strong>Web-crawled photos.</strong> Sizes, framing and backgrounds vary widely, and duplicates and wrong
+        labels occur.</li>
+      <li><strong>Moderate imbalance</strong> (3.4&times; between the largest and smallest class).</li>
+    </ul>
     <h3>Research question</h3>
-    <p><span class="fill">[&hellip;]</span></p>
+    <p>How much does ImageNet pretraining help over a small CNN trained from scratch on about 17 k food photos? Within
+      fine-tuning, does updating the whole backbone beat training only a new head, and is the gain worth its compute
+      cost?</p>
   </section>
 
   <!-- ============ DATA ============ -->
   <section id="data">
     <h2>Dataset description and EDA</h2>
-    <p><span class="fill">[Source, version, license; collection/labeling process; sample counts and annotations; target distribution; storage size and formats; bias and limitations.]</span></p>
+    <p><strong>30VNFoods</strong> (<a href="https://www.kaggle.com/datasets/quandang/vietnamese-foods">Kaggle</a>,
+      version 11, MIT license; <a href="https://ieeexplore.ieee.org/abstract/document/9530774">paper</a>) has 25,136
+      JPEG photos of 30 dishes, crawled from the web, with one label per image given by its folder. The download is
+      4.3 GB. The source URL of each image is listed in <code>Urls/</code>, so copyright of each photo stays with its
+      source. All 25,136 files decode and are RGB.</p>
+    <p>EDA notebook: <code>notebooks/a2_eda.ipynb</code>. It runs end-to-end on the local copy and writes every figure
+      and table below.</p>
 
-    <h3>Track-specific EDA</h3>
+    <h3>Class distribution and imbalance</h3>
+    <figure>
+      <img src="../assets/img/a2/a2_class_distribution.png" alt="Stacked horizontal bar chart of images per class for Train, Validate and Test; Bun bo Hue is the largest class and Banh pia the smallest." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 1 &mdash; Images per class and split (official split). Every class is split about 70/10/20.</figcaption>
+    </figure>
     <ul>
-      <li>Classification: class distribution, input size/length, imbalance &mdash; <span class="fill">[&hellip;]</span></li>
-      <li>Detection: object counts, class distribution, bounding-box sizes &mdash; <span class="fill">[&hellip;]</span></li>
-      <li>Segmentation: pixel distribution, region size, mask quality &mdash; <span class="fill">[&hellip;]</span></li>
-      <li>Re-ID: identity distribution, images per identity, camera distribution &mdash; <span class="fill">[&hellip;]</span></li>
-      <li>Depth: depth distribution, invalid pixels, scene distribution &mdash; <span class="fill">[&hellip;]</span></li>
+      <li>Train per class: from 310 (Banh pia) to 1,071 (Bun bo Hue), mean 586; imbalance <strong>3.45&times;</strong>.
+        The counts fall off gradually and no class is rare, so we report macro-F1 and per-class F1. We keep plain
+        cross-entropy for now; weighted cross-entropy is a candidate ablation.</li>
+      <li>Smallest class after cleaning: 306 train / 44 validation / 89 test images.</li>
     </ul>
-    <!-- Ghi chu noi bo: giu lai dung dong ung voi track da chon, xoa cac dong con lai. -->
+
+    <h3>Input size and aspect ratio</h3>
+    <figure>
+      <img src="../assets/img/a2/a2_aspect_ratio.png" alt="Histogram of width/height ratio of training images with peaks at 1:1, 4:3, 3:2 and 16:9." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 2 &mdash; Aspect ratio of the training images. The peaks at 1:1, 3:4, 4:3, 3:2 and 16:9 show that the images come from many sources.</figcaption>
+    </figure>
+    <ul>
+      <li>Median size 1000&times;720 px (min 100&times;83, max 7360&times;5184). 24.6% are exactly square.</li>
+      <li>1.4% (251) have a short side below 224 px. They are spread over all classes (at most 2.8%, Canh chua), so we
+        keep them.</li>
+      <li>1.1% (193) have an extreme aspect ratio (&gt; 2 or &lt; 0.5). They are real dish photos, but a centre crop can
+        cut off the dish. We keep them and will check whether they fail more often (hypothesis H3 below).</li>
+    </ul>
+
+    <h3>Colour and brightness</h3>
+    <figure>
+      <img src="../assets/img/a2/a2_brightness_by_class.png" alt="Box plots of mean image brightness per class; medians between 0.41 and 0.57 with strongly overlapping boxes." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 3 &mdash; Mean brightness per image, by class (3,000 random training images).</figcaption>
+    </figure>
+    <ul>
+      <li>Train v2 mean RGB [0.582, 0.514, 0.400] and std [0.269, 0.265, 0.293]. The images are warmer and brighter
+        than ImageNet (mean [0.485, 0.456, 0.406]).</li>
+      <li>Class medians lie between 0.41 and 0.57 and the boxes overlap, so brightness alone does not separate dishes.
+        Banh pia is the brightest class, because many of its photos show packaging on white backgrounds. This is a
+        possible shortcut (H4).</li>
+    </ul>
+
+    <h3>Duplicates and label noise</h3>
+    <ul>
+      <li><strong>Exact copies (MD5):</strong> 63 groups covering 129 images. 40 groups span two splits; 38 carry
+        different labels.</li>
+      <li><strong>Near duplicates (pHash, 64-bit):</strong> 427 clusters of &ge; 2 images. 222 span two splits; 56
+        carry different labels. pHash catches 402 of the 507 removed images; MD5 alone would miss them.</li>
+      <li>The label conflicts concentrate on the pairs we expect to confuse: Bun bo Hue / Bun rieu, Banh chung /
+        Banh tet, Banh duc / Banh gio, Banh can / Banh khot. One is a clear error: a goi cuon photo labelled Banh mi.</li>
+    </ul>
 
     <h3>Splitting and preprocessing</h3>
-    <p>Split unit: <span class="fill">[unit]</span> &middot; Seed: <span class="fill">[seed]</span> &middot;
-       Stratification: <span class="fill">[policy]</span> &middot; Subset rules: <span class="fill">[if any]</span>.</p>
-    <p><span class="fill">[Cleaning; resize/normalization/tokenization/padding; augmentation; invalid annotation handling; input tensor shapes; one example batch after preprocessing.]</span></p>
+    <p>Split unit: <strong>near-duplicate cluster</strong> &middot; Seed: none needed for the split (it is deterministic);
+       seed 42 for training &middot; Stratification: the official split is already stratified (&asymp; 70/10/20 per
+       class) &middot; Subset rules: remove 507 images, nothing else.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Split</th><th>Official</th><th>After cleaning (v2)</th><th>Removed</th></tr></thead>
+        <tbody>
+          <tr><td>Train</td><td>17,581</td><td>17,164</td><td>417</td></tr>
+          <tr><td>Validate</td><td>2,515</td><td>2,481</td><td>34</td></tr>
+          <tr><td>Test</td><td>5,040</td><td>4,984</td><td>56</td></tr>
+          <tr><td><strong>Total</strong></td><td>25,136</td><td>24,629</td><td>507</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li><strong>Leakage rule.</strong> Two images are linked when their pHash distance is &le; 6, or &le; 8 within
+        one class. We picked the threshold by inspecting pairs at distances 2, 4, 6 and 8. At distance 8 the number
+        of cross-label pairs jumps to 18, mostly false matches. The largest cluster has 3 images, so there is no
+        chaining.</li>
+      <li><strong>Cleaning rules:</strong> drop every cluster with two labels (118 images); for a cluster across
+        splits, keep one copy in the priority order Test &gt; Validate &gt; Train (196 removed); for a cluster inside
+        one split, keep one copy (193 removed). Each removed image, its reason and the copy kept are listed in
+        <code>results/a2/tables/a2_drop_list.csv</code>.</li>
+      <li><strong>Training transforms:</strong> <code>RandomResizedCrop(224, scale=(0.08, 1))</code>, horizontal
+        flip, <code>ColorJitter(0.1, 0.1, 0.1)</code>. <strong>Evaluation:</strong> <code>Resize(256)</code> +
+        <code>CenterCrop(224)</code>. JPEGs are decoded at reduced size (PIL <code>draft</code>, &ge; 320 px) to
+        speed up loading.</li>
+      <li><strong>Normalisation:</strong> the CNN uses Train v2 statistics; ResNet-50 uses ImageNet statistics, which
+        its pretrained weights expect.</li>
+      <li><strong>Tensor shapes:</strong> images <code>[B, 3, 224, 224]</code> float32, labels <code>[B]</code> int64
+        in 0&ndash;29.</li>
+    </ul>
+    <figure>
+      <img src="../assets/img/a2/a2_example_batch.png" alt="Grid of 16 training images after random resized crop, flip and colour jitter, each titled with its class." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 4 &mdash; One training batch after preprocessing (normalisation undone for display), from <code>python -m src.a2.data</code>.</figcaption>
+    </figure>
   </section>
 
   <!-- ============ METHOD ============ -->
   <section id="methodology">
     <h2>Methodology</h2>
     <h3>Pipeline overview</h3>
-    <pre><code>raw data -&gt; preprocessing -&gt; data loader -&gt; model -&gt; loss
-         -&gt; optimization -&gt; prediction -&gt; post-processing -&gt; evaluation</code></pre>
-    <p><span class="fill">[Pipeline diagram and walkthrough, including large-scale data loading strategy.]</span></p>
+    <pre><code>30VNFoods JPEGs + split_v2.json -&gt; decode (PIL draft) -&gt; augment / resize-crop -&gt; normalise
+  -&gt; DataLoader (batch 64, 6 workers) -&gt; model -&gt; 30 logits -&gt; cross-entropy
+  -&gt; Adam -&gt; argmax -&gt; accuracy, macro-F1 on validation -&gt; keep best checkpoint</code></pre>
+    <p>The images (4.3 GB, median 1000&times;720 px) do not fit in memory, unlike Fashion-MNIST in A1. They are read
+      from disk by six worker processes. Each worker decodes a JPEG straight to about 320 px using PIL draft mode
+      before cropping, which keeps the GPU fed. The training loop is the A1 trainer (<code>src/engine/trainer.py</code>),
+      reused unchanged. All A2 code is in <code>src/a2/</code>, so the A1 results stay reproducible.</p>
 
     <h3>Models</h3>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Role</th><th>Model</th><th>Input representation / loss</th><th>Self-implemented vs. library</th><th>Params</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>Simple baseline</td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
-          <tr><td>Pretrained / modern model</td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
+          <tr><td>Simple baseline</td><td>CNN: 4 &times; (Conv3&times;3-BN-ReLU-MaxPool), channels 32-64-128-256, global average pooling, dropout 0.3, linear head</td><td>RGB 224&times;224, Train v2 normalisation / cross-entropy</td><td>Self-implemented (extends the A1 CNN); PyTorch layers</td><td>397,086</td><td><span class="badge wip">Trained (draft, 20 epochs)</span></td></tr>
+          <tr><td>Pretrained model</td><td>ResNet-50, torchvision <code>IMAGENET1K_V2</code>, 1000-way head replaced by a 30-way linear head</td><td>RGB 224&times;224, ImageNet normalisation / cross-entropy</td><td>Library backbone (torchvision); head, freezing and training loop ours</td><td>23,569,502 (61,470 trainable when frozen)</td><td><span class="badge wip">In progress (draft runs: frozen and full)</span></td></tr>
         </tbody>
       </table>
     </div>
+    <p>Why the A1 CNN had to change: at 224 px, the A1 design (2 blocks + flatten) would put about 6 M parameters into
+      the linear head (56&times;56&times;64&times;30), and each output would see only about a 10 px patch. Four blocks
+      and global average pooling give a larger receptive field and a 7.7 k-parameter head.</p>
 
     <h3>Fine-tuning procedure</h3>
-    <p><span class="fill">[Which layers are frozen/unfrozen and when; learning-rate schedule per group of layers; input resolution; how the pretrained weights were obtained.]</span></p>
+    <ul>
+      <li><strong>Frozen</strong> (<code>resnet50_frozen</code>): every backbone parameter has
+        <code>requires_grad = False</code>, and the backbone stays in eval mode so BatchNorm keeps its ImageNet
+        statistics. Only the new head (61,470 parameters) is trained, with Adam at lr 1e-3.</li>
+      <li><strong>Full</strong> (<code>resnet50_full</code>): all layers are trained with Adam at lr 1e-4 (10&times;
+        lower, to avoid destroying the pretrained features); batch 32 to fit in 8 GB without mixed precision.</li>
+      <li>Both use 224 px input, the same augmentation, weight decay 1e-4, early stopping on validation macro-F1
+        (patience 5). Weights are downloaded by torchvision on first use.</li>
+    </ul>
   </section>
 
   <!-- ============ SETUP ============ -->
   <section id="setup">
     <h2>Experimental setup</h2>
     <dl class="kv">
-      <dt>Optimizer / LR / scheduler</dt><dd><span class="fill">[&hellip;]</span></dd>
-      <dt>Batch size / epochs</dt><dd><span class="fill">[&hellip;]</span></dd>
-      <dt>Regularization / early stopping</dt><dd><span class="fill">[&hellip;]</span></dd>
-      <dt>Checkpoint criterion</dt><dd><span class="fill">[&hellip;]</span></dd>
-      <dt>Seeds / number of runs</dt><dd><span class="fill">[&hellip;]</span></dd>
-      <dt>Hardware</dt><dd><span class="fill">[&hellip;]</span></dd>
-      <dt>Software versions</dt><dd><span class="fill">[&hellip;]</span></dd>
-      <dt>Mixed precision</dt><dd><span class="fill">[yes/no]</span></dd>
+      <dt>Optimizer / LR / scheduler</dt><dd>Adam, weight decay 1e-4; lr 1e-3 (CNN, frozen ResNet), 1e-4 (full fine-tuning); no scheduler in the draft</dd>
+      <dt>Batch size / epochs</dt><dd>64 (32 for full fine-tuning); draft runs use fewer epochs than planned (see results)</dd>
+      <dt>Regularization / early stopping</dt><dd>Augmentation, dropout 0.3 (CNN), weight decay; early stopping with patience 5 on validation macro-F1</dd>
+      <dt>Checkpoint criterion</dt><dd>Highest validation macro-F1</dd>
+      <dt>Seeds / number of runs</dt><dd>Seed 42, one run per configuration in the draft; 3 seeds planned for M3</dd>
+      <dt>Hardware</dt><dd>NVIDIA GeForce RTX 4060 Laptop GPU (8 GB), AMD Ryzen 7 7735HS, Windows 11</dd>
+      <dt>Software versions</dt><dd>Python 3.10.21, PyTorch 2.14.1+cu126, torchvision 0.29.1+cu126, CUDA 12.6</dd>
+      <dt>Mixed precision</dt><dd>No (draft); planned for M3</dd>
     </dl>
 
     <h3>Controlled experiment (mandatory)</h3>
@@ -174,72 +287,146 @@
       <table>
         <thead><tr><th>Hypothesis</th><th>Changed factor</th><th>Fixed factors</th><th>Metrics</th><th>Decision criterion</th></tr></thead>
         <tbody>
-          <tr><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[freeze vs full fine-tune | with vs without augmentation | backbone A vs B | loss A vs B | resolution A vs B | other]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>Full fine-tuning beats a frozen backbone on 30VNFoods, because these photos differ from ImageNet in colour and content</td><td>Freeze vs. full fine-tune (with the learning rate that goes with each)</td><td>Data, split v2, augmentation, input size, epochs budget, seeds, metric</td><td>Validation/test macro-F1 and accuracy; training time and memory</td><td>The difference counts only if it exceeds the spread over 3 seeds; the gain is weighed against the extra GPU time</td></tr>
         </tbody>
       </table>
     </div>
+    <p><span class="badge todo">TODO (M3)</span> Run both arms with 3 seeds.</p>
   </section>
 
   <!-- ============ RESULTS ============ -->
   <section id="results">
-    <h2>Results</h2>
+    <h2>Results (preliminary)</h2>
     <h3>Quantitative results</h3>
+    <p>Validation set (2,481 images), seed 42, one run per configuration, best checkpoint by validation macro-F1.
+      These are <strong>draft</strong> runs: fewer epochs than planned, no learning-rate schedule, no mixed precision.</p>
     <div class="table-scroll">
       <table>
-        <thead><tr><th>Model / config</th><th>Primary metric</th><th>Secondary metric</th><th>Params</th><th>Training time</th><th>Inference cost</th></tr></thead>
+        <thead><tr><th>Model / config</th><th>Val macro-F1</th><th>Val accuracy</th><th>Params (trainable)</th><th>Epochs run (best)</th><th>Training time</th><th>Run ID</th></tr></thead>
         <tbody>
-          <tr><td>Simple baseline</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
-          <tr><td>Pretrained / modern model</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
-          <tr><td>Controlled experiment variant</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
+          <tr><td>CNN baseline (from scratch)</td><td>0.556</td><td>0.558</td><td>397,086 (all)</td><td>20 (18)</td><td>20.9 min</td><td><code>a2_cnn_s42_1028-1546</code></td></tr>
+          <tr><td>ResNet-50, frozen backbone</td><td>0.746</td><td>0.746</td><td>23,569,502 (61,470)</td><td>10 (8)</td><td>11.1 min</td><td><code>a2_resnet50_frozen_s42_1028-1607</code></td></tr>
+          <tr><td>ResNet-50, full fine-tuning</td><td><strong>0.874</strong></td><td><strong>0.878</strong></td><td>23,569,502 (all)</td><td>5 (4)</td><td>10.5 min</td><td><code>a2_resnet50_full_s42_1028-1619</code></td></tr>
         </tbody>
       </table>
     </div>
+    <p><span class="badge todo">TODO (M3)</span> Test-set metrics, per-class F1, confusion matrix, inference cost, 3 seeds.</p>
 
     <h3>Training behaviour</h3>
-    <p><span class="fill">[Loss and metric curves; selected checkpoint; over/underfitting; training time; implementation issues and fixes.]</span></p>
+    <figure>
+      <img src="../assets/img/a2/a2_cnn_curves.png" alt="CNN training curves over 20 epochs: training loss falls steadily from 3.0 to 1.77; validation loss and scores improve but oscillate." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 5 &mdash; CNN baseline: loss (left) and validation accuracy / macro-F1 (right) per epoch.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/img/a2/a2_resnet50_frozen_curves.png" alt="Frozen ResNet-50 training curves over 10 epochs: smooth, flattening near 0.75 validation macro-F1." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 6 &mdash; ResNet-50 with a frozen backbone.</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/img/a2/a2_resnet50_full_curves.png" alt="Fully fine-tuned ResNet-50 curves over 5 epochs: validation macro-F1 rises from 0.80 to 0.87." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 7 &mdash; ResNet-50 with full fine-tuning.</figcaption>
+    </figure>
+    <ul>
+      <li><strong>CNN: underfitting, not yet converged.</strong> Training loss is still falling at epoch 20 (1.77), and
+        the best checkpoint is at epoch 18, so 20 epochs are not enough. Training loss stays <em>above</em> validation
+        loss because training images are heavily augmented (random crops down to 8% of the image) and pass through
+        dropout. Validation scores swing by up to 0.09 between epochs (0.556 at epoch 18, 0.462 at epoch 20). A likely
+        cause is the constant learning rate of 1e-3 with no schedule; we will add one in M3.</li>
+      <li><strong>Frozen ResNet-50: smooth but flattening.</strong> Validation macro-F1 is 0.633 after one epoch and
+        0.746 at epoch 8, and changes by less than 0.002 over the last three epochs. Training only the linear head
+        limits what the model can learn.</li>
+      <li><strong>Full fine-tuning: fastest progress.</strong> Validation macro-F1 is 0.799 after one epoch and peaks
+        at 0.874 at epoch 4. Training loss (0.50) is still above validation loss (0.44), so there is no sign of
+        overfitting yet. The run ended at the 5-epoch draft budget, not by early stopping.</li>
+    </ul>
 
     <h3>Qualitative results</h3>
-    <p><span class="fill">[Correct predictions; difficult but correct cases; failures; predictions versus ground truth with task-appropriate visualizations.]</span></p>
+    <p><span class="badge todo">TODO (M3)</span> Correct, hard-but-correct and failure cases on the test set.</p>
 
     <h3>Compute-cost analysis</h3>
-    <p><span class="fill">[GPU hours, memory, throughput, cost of the accuracy gained.]</span></p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Configuration</th><th>Batch</th><th>Time per epoch (train + validation)</th><th>GPU memory</th></tr></thead>
+        <tbody>
+          <tr><td>CNN baseline</td><td>64</td><td>1.0 min</td><td>&mdash;</td></tr>
+          <tr><td>ResNet-50 frozen</td><td>64</td><td>1.1 min</td><td>&mdash;</td></tr>
+          <tr><td>ResNet-50 full fine-tuning</td><td>32</td><td>2.1 min</td><td>&asymp; 4.0 GB (read from <code>nvidia-smi</code> during training)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Times are <code>train_time / epochs_run</code> from each run's <code>metrics.json</code> (RTX 4060 Laptop GPU,
+      fp32, 6 data-loading workers). The three draft runs took 42.5 GPU-minutes in total. Full fine-tuning costs about
+      twice as much per epoch as the frozen backbone, yet in 5 epochs (10.5 min) it reached a higher macro-F1 than the
+      frozen model did in 10 epochs (11.1 min).</p>
+    <p><span class="badge todo">TODO (M3)</span> Peak memory from <code>torch.cuda.max_memory_allocated</code>,
+      inference latency and throughput, total GPU-hours over 3 seeds.</p>
   </section>
 
   <!-- ============ DISCUSSION ============ -->
   <section id="discussion">
     <h2>Comparison and discussion</h2>
-    <p><span class="fill">[Which method is better and by how much; where the differences appear; causes tied to data, architecture, loss, or training; accuracy-speed-parameter trade-offs; which hypotheses hold; what cannot yet be concluded.]</span></p>
+    <p>Preliminary, from one seed on the validation set:</p>
+    <ul>
+      <li><strong>Pretraining is the largest factor.</strong> Even with a frozen backbone, ResNet-50 beats the CNN by
+        0.19 macro-F1 (0.746 vs. 0.556), while training only 61 k parameters, about one sixth of the CNN's 397 k. With
+        about 570 training images per class, ImageNet features transfer far better than features learned from
+        scratch.</li>
+      <li><strong>Full fine-tuning adds 0.13 macro-F1</strong> over the frozen backbone (0.874 vs. 0.746). This is in
+        line with the controlled-experiment hypothesis that 30VNFoods differs enough from ImageNet for the backbone to
+        need adapting. It rests on one seed and unequal epochs (5 vs. 10), so it is not yet a conclusion; M3 uses 3
+        seeds and the same epoch budget for both arms.</li>
+      <li><strong>Not yet known:</strong> how far the CNN gets with a full training budget and a learning-rate
+        schedule; per-class behaviour (H1&ndash;H4); test-set performance.</li>
+    </ul>
   </section>
 
   <!-- ============ ERROR ANALYSIS ============ -->
   <section id="error-analysis">
     <h2>Error analysis</h2>
+    <p><span class="badge todo">TODO (M3)</span> We will test four hypotheses from the EDA on the test confusion matrix
+      and the misclassified images:</p>
     <div class="table-scroll">
       <table>
-        <thead><tr><th>Error group</th><th>Frequency / rate</th><th>Examples</th><th>Hypothesised cause</th><th>Improvement idea</th></tr></thead>
+        <thead><tr><th></th><th>Hypothesis</th><th>How it will be checked</th></tr></thead>
         <tbody>
-          <tr><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[x%]</span></td><td><span class="fill">[figure]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>H1</td><td>Banh chung and Banh tet are confused, since they differ mainly in shape</td><td>Confusion matrix, per-class F1</td></tr>
+          <tr><td>H2</td><td>Bun bo Hue / Bun rieu / Banh canh are confused; errors lean towards Bun bo Hue and concentrate on Banh canh photos with red broth and hidden noodles</td><td>The two off-diagonal cells; broth colour of the misclassified photos</td></tr>
+          <tr><td>H3</td><td>Images with aspect ratio &gt; 2 fail more often, because the centre crop cuts the dish</td><td>Accuracy on that group vs. overall</td></tr>
+          <tr><td>H4</td><td>Banh pia relies on white backgrounds or packaging</td><td>Grad-CAM</td></tr>
         </tbody>
       </table>
     </div>
     <h3>Ablation study (mandatory for A2)</h3>
-    <p><span class="fill">[Ablation or equivalent controlled factor study, with the conclusion criterion stated in advance.]</span></p>
+    <p><span class="badge todo">TODO (M3)</span> The controlled experiment above (frozen vs. full fine-tuning) is our
+      mandatory ablation. If time allows, we will add weighted vs. plain cross-entropy.</p>
   </section>
 
   <!-- ============ CONCLUSION ============ -->
   <section id="conclusion">
     <h2>Limitations and conclusion</h2>
-    <p><span class="fill">[Data, method, and experimental limits; generalization; future work; short answer to the research question.]</span></p>
+    <ul>
+      <li><strong>Draft numbers:</strong> one seed, fewer epochs than planned, validation set only. They show that the
+        pipeline works; they are not the final comparison.</li>
+      <li><strong>Source leakage not checked:</strong> photos from the same website may still sit in different splits.
+        <code>Urls/</code> might map images to domains, but we have not verified that mapping.</li>
+      <li><strong>Label noise remains</strong> beyond the conflicts revealed by duplicates.</li>
+    </ul>
+    <p><span class="badge todo">TODO (M3)</span> Conclusion and answer to the research question.</p>
   </section>
 
   <!-- ============ REPRODUCIBILITY ============ -->
   <section id="reproducibility">
     <h2>Reproducibility</h2>
+    <p>Each run folder <code>results/a2/runs/&lt;run_id&gt;/</code> stores <code>config.yaml</code> (resolved config),
+      <code>history.csv</code>, <code>metrics.json</code> (seed, commit, hardware, software) and the training curves.
+      <code>best.pt</code> is not committed; rebuild it by checking out the recorded commit and running the command in
+      the README.</p>
     <div class="table-scroll">
       <table>
-        <thead><tr><th>Result</th><th>Config</th><th>Split</th><th>Checkpoint</th><th>Log / run ID</th><th>Commit / tag</th></tr></thead>
+        <thead><tr><th>Result</th><th>Config</th><th>Split</th><th>Checkpoint</th><th>Log / run ID</th><th>Commit</th></tr></thead>
         <tbody>
-          <tr><td><span class="fill">[Table row]</span></td><td><span class="fill">[configs/&hellip;.yaml]</span></td><td><span class="fill">[split id]</span></td><td><span class="fill">[ckpt]</span></td><td><span class="fill">[run id]</span></td><td><span class="fill">[sha]</span></td></tr>
+          <tr><td>CNN baseline</td><td><code>configs/a2.yaml</code>, <code>--model cnn --epochs 20</code></td><td><code>split_v2.json</code></td><td>best val macro-F1 (epoch 18)</td><td><code>a2_cnn_s42_1028-1546</code></td><td><code>a1246bc</code></td></tr>
+          <tr><td>ResNet-50 frozen</td><td><code>configs/a2.yaml</code>, <code>--model resnet50_frozen --epochs 10</code></td><td><code>split_v2.json</code></td><td>best val macro-F1 (epoch 8)</td><td><code>a2_resnet50_frozen_s42_1028-1607</code></td><td><code>a1246bc</code></td></tr>
+          <tr><td>ResNet-50 full</td><td><code>configs/a2.yaml</code>, <code>--model resnet50_full --epochs 5</code></td><td><code>split_v2.json</code></td><td>best val macro-F1 (epoch 4)</td><td><code>a2_resnet50_full_s42_1028-1619</code></td><td><code>a1246bc</code></td></tr>
         </tbody>
       </table>
     </div>
@@ -269,11 +456,19 @@
             <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
             <td>07 Oct 2026 &mdash; M1 dataset proposal</td>
             <td>Explain handbook &sect;18 requirements; run the group's EDA and benchmark scripts; draft the proposal</td>
-            <td><code>reports/a2/proposal.md</code>, <code>results/a2/eda/</code>, <code>results/a2/compute/</code></td>
+            <td><code>reports/a2/proposal.md</code> (revision 1), <code>results/a2/compute/</code></td>
             <td>Every number copied from the generated EDA/benchmark files; duplicate pairs inspected visually; license checked on Kaggle by the member</td>
             <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
           </tr>
-          <tr><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr>
+            <td>Claude (Claude Code, Opus 5.5)</td>
+            <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
+            <td>27&ndash;28 Oct 2026 &mdash; EDA review, proposal revision 2, M2 draft</td>
+            <td>Review the member's EDA notebook; revise the proposal; write the A2 training code; fill this page</td>
+            <td><code>reports/a2/proposal.md</code>, <code>configs/a2.yaml</code>, <code>src/a2/</code>, this page, <code>README.md</code></td>
+            <td>Split checked against every local image (path, MD5, label, no cross-split copy); one batch and both models checked; every number comes from the notebook outputs or a run's <code>metrics.json</code>/<code>history.csv</code></td>
+            <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
+          </tr>
         </tbody>
       </table>
     </div>

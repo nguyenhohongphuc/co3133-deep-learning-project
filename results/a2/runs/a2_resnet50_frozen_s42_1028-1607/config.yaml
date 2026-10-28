@@ -1,0 +1,69 @@
+seed: 42
+dataset: 30vnfoods
+data_dir: data/30VNFoods/Images
+split_file: results/a2/splits/split_v2.json
+data:
+  image_size: 224
+  resize: 256
+  crop_scale:
+  - 0.08
+  - 1.0
+  hflip: true
+  color_jitter: 0.1
+  stats:
+    train:
+      mean:
+      - 0.5819
+      - 0.514
+      - 0.3997
+      std:
+      - 0.2693
+      - 0.2645
+      - 0.2933
+    imagenet:
+      mean:
+      - 0.485
+      - 0.456
+      - 0.406
+      std:
+      - 0.229
+      - 0.224
+      - 0.225
+training:
+  batch_size: 64
+  num_workers: 6
+  epochs: 10
+  loss: cross_entropy
+  optimizer: adam
+  lr: 0.001
+  weight_decay: 0.0001
+  device: cuda
+  monitor: val_macro_f1
+  patience: 5
+models:
+  cnn:
+    normalize: train
+    params:
+      channels:
+      - 32
+      - 64
+      - 128
+      - 256
+      kernel_size: 3
+      dropout: 0.3
+    training:
+      epochs: 30
+  resnet50_frozen:
+    normalize: imagenet
+    params:
+      freeze_backbone: true
+    training:
+      lr: 0.001
+  resnet50_full:
+    normalize: imagenet
+    params:
+      freeze_backbone: false
+    training:
+      lr: 0.0001
+      batch_size: 32
+model: resnet50_frozen

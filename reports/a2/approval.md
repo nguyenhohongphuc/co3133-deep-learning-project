@@ -1,14 +1,14 @@
-# A2 Dataset Proposal — approval status
+# A2 Dataset Proposal — approval record
 
-Task A2-05 · Owner: TV 1 · handbook §18, §4.1
+Handbook §18, §4.1: Assignments 2 and 3 require the Dataset Proposal record and its approval status.
 
 | Field | Value |
 |---|---|
-| Submitted on | 07/10/2026 (proposal: [`proposal.md`](proposal.md)) |
-| Status | Submitted — awaiting decision (Approved / Approved with conditions / Rejected) |
+| Revision 1 submitted | 07/10/2026 |
+| Revision 2 | 28/10/2026 ([`proposal.md`](proposal.md)): same dataset, task, metrics and models; split and leakage numbers from the final EDA |
+| Status | TODO: Approved / Approved with conditions / Rejected |
 | Date of decision | TODO |
 | Conditions (if any) | TODO |
-| Where it was recorded | TODO — LMS / email / class |
+| Where it was recorded | TODO: LMS / email / in class |
 
-No main A2 experiment starts before this table says Approved or Approved with conditions
-(§7.1, §7.5). Link this file from `docs/assignments/assignment-2.html` (§4.1).
+Main A2 experiments may start only once the status is Approved or Approved with conditions (§7.1, §7.5).
