@@ -1,0 +1,54 @@
+seed: 42                         # seed cho train; split v2 không phụ thuộc seed
+dataset: 30vnfoods               # quandang/vietnamese-foods, Kaggle version 11
+data_dir: data/30VNFoods/Images  # src/a2/data.py; đường dẫn trong split là tương đối so với thư mục này
+split_file: results/a2/splits/split_v2.json   # tạo bởi notebooks/a2_eda.ipynb
+
+data:
+  image_size: 224                # RandomResizedCrop(224) khi train, CenterCrop(224) khi đánh giá
+  resize: 256                    # Resize(256) trước CenterCrop khi đánh giá
+  crop_scale: [0.08, 1.0]        # scale của RandomResizedCrop (mặc định torchvision)
+  hflip: true
+  color_jitter: 0.1              # brightness = contrast = saturation; ảnh 30VNFoods ấm và sáng hơn ImageNet
+  # Mean/std: "train" = tính trên toàn bộ Train v2 (notebook cell 45), "imagenet" = cho model pretrained
+  stats:
+    train:
+      mean: [0.5819, 0.5140, 0.3997]
+      std: [0.2693, 0.2645, 0.2933]
+    imagenet:
+      mean: [0.485, 0.456, 0.406]
+      std: [0.229, 0.224, 0.225]
+
+training:                        # mặc định; models.<tên>.training ghi đè từng khoá
+  batch_size: 64
+  num_workers: 6                 # ảnh gốc ~1000x720, 2 worker không kịp giải mã
+  epochs: 15
+  loss: cross_entropy
+  optimizer: adam
+  lr: 0.001
+  weight_decay: 0.0001
+  device: cuda
+  monitor: val_macro_f1          # quy tắc chọn checkpoint (proposal mục 7)
+  patience: 5
+
+models:
+  cnn:                           # baseline: CNN của A1 mở rộng cho ảnh RGB 224 px
+    normalize: train
+    params:
+      channels: [32, 64, 128, 256]
+      kernel_size: 3
+      dropout: 0.3
+    training:
+      epochs: 30
+  resnet50_frozen:               # nhánh A của thí nghiệm có kiểm soát: chỉ train head
+    normalize: imagenet
+    params:
+      freeze_backbone: true
+    training:
+      lr: 0.001
+  resnet50_full:                 # nhánh B: train toàn bộ, lr nhỏ hơn
+    normalize: imagenet
+    params:
+      freeze_backbone: false
+    training:
+      lr: 0.0001
+      batch_size: 32             # chưa có mixed precision, batch 64 dễ vượt 8 GB

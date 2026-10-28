@@ -1,0 +1,508 @@
+split,class,file,md5,cluster,reason,match,kept_split,kept_class,kept_file
+Train,Banh beo,152.jpg,e19b97486ed03033c0f302a39eac99ab,42,cross_split_duplicate,near_phash,Test,Banh beo,154.jpg
+Train,Banh beo,34.jpg,3e0ce0d0d98dbb6ed81c6dcf42b18249,186,cross_split_duplicate,near_phash,Validate,Banh beo,41.jpg
+Train,Banh beo,45.jpg,da752fb1d5765a638b0d1dd14a28eb95,279,cross_split_duplicate,near_phash,Test,Banh beo,43.jpg
+Train,Banh beo,50.jpg,10d023cb6b781df505d7d98f93b505be,322,cross_split_duplicate,near_phash,Test,Banh beo,58.jpg
+Train,Banh beo,642.jpg,6b03f2fef363f0ef57faeaa194a220d0,420,cross_split_duplicate,near_phash,Test,Banh beo,23.jpg
+Train,Banh beo,65.jpg,1fc4c27d3920eb7e4bc0af3a59708cc4,422,cross_split_duplicate,near_phash,Test,Banh beo,62.jpg
+Train,Banh bot loc,11.jpg,81d1409b2f577f7def7bcba712a29a0f,453,cross_split_duplicate,near_phash,Test,Banh bot loc,15.jpg
+Train,Banh bot loc,12.jpg,2e98b1f69448552d04a881d6dede35e1,462,cross_split_duplicate,near_phash,Test,Banh bot loc,18.jpg
+Train,Banh bot loc,14.jpg,f74588b55bd04d564361ed9046793f9f,478,cross_split_duplicate,near_phash,Test,Banh bot loc,17.jpg
+Train,Banh bot loc,144.jpg,388be259419d97c4db014b8160035cc3,483,cross_split_duplicate,near_phash,Test,Banh bot loc,101.jpg
+Train,Banh bot loc,29.jpg,836fecf883fedfb43af4c5307087d232,589,cross_split_duplicate,near_phash,Validate,Banh bot loc,30.jpg
+Train,Banh bot loc,335.jpg,997409a5c7b84fc601c40d74199778cc,625,cross_split_duplicate,near_phash,Test,Banh bot loc,621.jpg
+Train,Banh bot loc,66.jpg,bb1a9d9e6b1c8861c08ef36b7e1fd8ad,873,cross_split_duplicate,near_phash,Test,Banh bot loc,68.jpg
+Train,Banh bot loc,713.jpg,7066fdb68b9fce0e7dbded3593699034,911,cross_split_duplicate,near_phash,Test,Banh bot loc,6.jpg
+Train,Banh bot loc,719.jpg,7e4eb767aaba9093631ce49e575581c0,911,cross_split_duplicate,near_phash,Test,Banh bot loc,6.jpg
+Train,Banh bot loc,715.jpg,3a7e31e0a1a438557f8b40cadc9851d4,913,cross_split_duplicate,near_phash,Test,Banh bot loc,261.jpg
+Train,Banh bot loc,81.jpg,324afb1a8cf92c107da08faf55426670,923,cross_split_duplicate,near_phash,Test,Banh bot loc,84.jpg
+Train,Banh can,101.jpg,668e2054d88f4623a902cbaa5d2d4198,941,cross_split_duplicate,near_phash,Validate,Banh can,100.jpg
+Train,Banh can,114.jpg,1e8a34c69742e3509fe2a81484c6ac57,950,cross_split_duplicate,exact_md5,Test,Banh can,112.jpg
+Train,Banh can,176.jpg,cc7c6d7246bd263d2d50d7de5d296001,1003,cross_split_duplicate,exact_md5,Validate,Banh can,177.jpg
+Train,Banh can,25.jpg,d6acb1d732d064a35e468373a255791a,1056,cross_split_duplicate,near_phash,Test,Banh can,131.jpg
+Train,Banh can,317.jpg,840e99690b200fc517c4061bc0a0b3c9,1110,cross_split_duplicate,near_phash,Test,Banh can,318.jpg
+Train,Banh can,368.jpg,bdbdd8a8020f4c6b894bc713b1d157b2,1152,cross_split_duplicate,exact_md5,Test,Banh can,369.jpg
+Train,Banh can,744.jpg,33151ca927aa82bc8d2dcfa200d0946f,1436,cross_split_duplicate,exact_md5,Validate,Banh can,7.jpg
+Train,Banh canh,115.jpg,b2ca4540cc3318e2e8a124b57d443c5d,1472,cross_split_duplicate,near_phash,Test,Banh canh,117.jpg
+Train,Banh canh,427.jpg,5a7a15c5c33c5f9ab62ea9c785449fb6,1708,cross_split_duplicate,near_phash,Test,Banh canh,424.jpg
+Train,Banh canh,59.jpg,ca345ca1d15d13c996e746e03ba0d31d,1829,cross_split_duplicate,near_phash,Test,Banh canh,61.jpg
+Train,Banh canh,95.jpg,46023f68fa288a5c2dc11c6a9a43f309,2110,cross_split_duplicate,near_phash,Validate,Banh canh,99.jpg
+Train,Banh chung,100.jpg,e39ffe870ca4ef20989895f1e5279c31,2126,cross_split_duplicate,near_phash,Test,Banh chung,471.jpg
+Train,Banh chung,164.jpg,ff5896265ccc2670fea158fe591c6e07,2176,cross_split_duplicate,near_phash,Test,Banh chung,483.jpg
+Train,Banh chung,166.jpg,86197ad5848d8679b40f528a0a09a587,2178,cross_split_duplicate,near_phash,Validate,Banh chung,480.jpg
+Train,Banh chung,217.jpg,0c62a2b056df1b1e4eb9966d1b8a74a7,2221,cross_split_duplicate,near_phash,Test,Banh chung,475.jpg
+Train,Banh chung,441.jpg,179564b16bf15b9803ee999fa9e05669,2390,cross_split_duplicate,exact_md5,Test,Banh chung,113.jpg
+Train,Banh chung,451.jpg,ace134ef0d1dc23fd9023079d006d07d,2397,cross_split_duplicate,near_phash,Test,Banh chung,53.jpg
+Train,Banh chung,453.jpg,e830d80a66c280718183d52f8ee0e642,2398,cross_split_duplicate,near_phash,Test,Banh chung,111.jpg
+Train,Banh chung,458.jpg,4a2d9a37ae3f525eee5b5befb1771857,2401,cross_split_duplicate,near_phash,Test,Banh chung,104.jpg
+Train,Banh chung,468.jpg,e04116a57c88880517d43d592ed3b0d8,2409,cross_split_duplicate,near_phash,Test,Banh chung,277.jpg
+Train,Banh chung,482.jpg,1ccf5226754f6d4748a3b24ba68fee7e,2417,cross_split_duplicate,near_phash,Test,Banh chung,25.jpg
+Train,Banh chung,5.jpg,82dd0715cd4dbd6aa6a27202c733fc71,2426,cross_split_duplicate,near_phash,Test,Banh chung,462.jpg
+Train,Banh chung,56.jpg,e88619f93775da3454b5c58488431e67,2436,cross_split_duplicate,near_phash,Test,Banh chung,491.jpg
+Train,Banh cuon,1132.jpg,40b7f2d30e98a4f819330ee8ba67a69b,2575,cross_split_duplicate,near_phash,Test,Banh cuon,222.jpg
+Train,Banh cuon,223.jpg,a73530ceaa3770a5c05d4ba327c0d445,2575,cross_split_duplicate,near_phash,Test,Banh cuon,222.jpg
+Train,Banh cuon,1137.jpg,068b4c234f866219d41455c522e0b524,2578,cross_split_duplicate,near_phash,Test,Banh cuon,17.jpg
+Train,Banh cuon,249.jpg,bb101fb22f0d511493184da724fb4ee3,2675,cross_split_duplicate,near_phash,Validate,Banh cuon,247.jpg
+Train,Banh cuon,376.jpg,d748f9e539bb82f42c83fa06a583d4ac,2782,cross_split_duplicate,near_phash,Test,Banh cuon,428.jpg
+Train,Banh cuon,431.jpg,2ea0e2d5add73d3fd0db9269cc5964cd,2782,cross_split_duplicate,near_phash,Test,Banh cuon,428.jpg
+Train,Banh cuon,488.jpg,99bbe184ff9bd67c27b01c18acebbf57,2862,cross_split_duplicate,near_phash,Test,Banh cuon,552.jpg
+Train,Banh cuon,89.jpg,9a81f7554a30ad85e44a060e6dbd84fa,3174,cross_split_duplicate,near_phash,Test,Banh cuon,87.jpg
+Train,Banh duc,12.jpg,7ef40bdc2cfe59547eeb7e6935338b13,3274,cross_split_duplicate,near_phash,Test,Banh duc,18.jpg
+Train,Banh duc,209.jpg,fd711abeb1e9dbe9530de1dac9c0eb4d,3343,cross_split_duplicate,near_phash,Test,Banh duc,326.jpg
+Train,Banh duc,33.jpg,682aaf6e5bf31718279c50de2fc6d6a3,3431,cross_split_duplicate,near_phash,Validate,Banh duc,21.jpg
+Train,Banh gio,50.jpg,efc437209212550aec1cda0b639e5b6a,4028,cross_split_duplicate,near_phash,Test,Banh gio,53.jpg
+Train,Banh khot,208.jpg,de66bd52acadcdbf9e5a93dbbf103960,4245,cross_split_duplicate,near_phash,Test,Banh khot,108.jpg
+Train,Banh khot,36.jpg,50ca81215d326ae115ad733d10f3866e,4370,cross_split_duplicate,near_phash,Test,Banh khot,256.jpg
+Train,Banh khot,431.jpg,c5d5bad5b943908aeda550748c090109,4428,cross_split_duplicate,near_phash,Test,Banh khot,808.jpg
+Train,Banh khot,818.jpg,8e4ffd06783e89e62dd91c9ae3dd7d4c,4718,cross_split_duplicate,near_phash,Test,Banh khot,10.jpg
+Train,Banh khot,835.jpg,ee923ab97c1c09faed943d46385e4e93,4729,cross_split_duplicate,exact_md5,Test,Banh khot,715.jpg
+Train,Banh mi,106.jpg,3115a57b0b36424b04113228edd163ee,4786,cross_split_duplicate,near_phash,Validate,Banh mi,245.jpg
+Train,Banh mi,173.jpg,82de7499e8c94de591f565284ec64bc1,5029,cross_split_duplicate,near_phash,Validate,Banh mi,176.jpg
+Train,Banh mi,179.jpg,087bd89f60ca7c7c62bb2de7efe47c37,5034,cross_split_duplicate,near_phash,Validate,Banh mi,309.jpg
+Train,Banh mi,649.jpg,b6b5d8d8a8ffbe6e2b82e7fd76c9704c,5034,cross_split_duplicate,near_phash,Validate,Banh mi,309.jpg
+Train,Banh mi,274.jpg,f6507e9e5408bb93604a1d740ae112f9,5103,cross_split_duplicate,near_phash,Test,Banh mi,271.jpg
+Train,Banh mi,276.jpg,77d8a318f351ff851432b1a23c3148a2,5103,cross_split_duplicate,near_phash,Test,Banh mi,271.jpg
+Train,Banh mi,39.jpg,b2a9670e46433e4235da370d173c13f3,5190,cross_split_duplicate,near_phash,Test,Banh mi,473.jpg
+Train,Banh mi,444.jpg,25ee2207760840cabff3dbc9ed975dfc,5234,cross_split_duplicate,near_phash,Validate,Banh mi,440.jpg
+Train,Banh mi,471.jpg,705b5ca1dcca9be4630d4255d1d1ef2e,5254,cross_split_duplicate,near_phash,Test,Banh mi,40.jpg
+Train,Banh mi,94.jpg,e243fe16dc5ac5101617d9f41926354f,5618,cross_split_duplicate,near_phash,Test,Banh mi,75.jpg
+Train,Banh mi,948.jpg,f1fef4c9fb0ab9dcdd3f55bf6a04af15,5625,cross_split_duplicate,near_phash,Validate,Banh mi,115.jpg
+Train,Banh pia,15.jpg,49e333fefc6d4aa9868489f608189caf,5699,cross_split_duplicate,near_phash,Test,Banh pia,18.jpg
+Train,Banh pia,39.jpg,cb0facd9470ebc0e43ba6e6009445cba,5883,cross_split_duplicate,exact_md5,Test,Banh pia,43.jpg
+Train,Banh pia,61.jpg,3c4bceee0c1f28f0f862abb674a4989d,5942,cross_split_duplicate,exact_md5,Test,Banh pia,58.jpg
+Train,Banh tet,119.jpg,cccc702d80460a5bc6fa45bc0e4cdffd,5986,cross_split_duplicate,near_phash,Test,Banh tet,661.jpg
+Train,Banh tet,13.jpg,f86ca1650ebeb93162af7f5f1a633d16,5996,cross_split_duplicate,near_phash,Validate,Banh tet,230.jpg
+Train,Banh tet,309.jpg,e4dda89390e86bb05aa143b118b74041,6126,cross_split_duplicate,near_phash,Test,Banh tet,308.jpg
+Train,Banh tet,368.jpg,3376ede851ba4f6d028f8a79ee0f8b98,6174,cross_split_duplicate,near_phash,Test,Banh tet,369.jpg
+Train,Banh tet,651.jpg,21d06283f5806f6caaad41ed60e96182,6395,cross_split_duplicate,near_phash,Test,Banh tet,342.jpg
+Train,Banh trang nuong,121.jpg,3a4ede34d82d44427cdb6ca05284e920,6460,cross_split_duplicate,near_phash,Test,Banh trang nuong,115.jpg
+Train,Banh trang nuong,158.jpg,9d0556a390e82ebcdf082cafe8e000a7,6488,cross_split_duplicate,near_phash,Validate,Banh trang nuong,131.jpg
+Train,Banh trang nuong,248.jpg,3c140749df3c875029914d21dce9fe37,6553,cross_split_duplicate,near_phash,Test,Banh trang nuong,102.jpg
+Train,Banh trang nuong,27.jpg,5143193fe2a580fa086a6d560b9bfb23,6571,cross_split_duplicate,near_phash,Test,Banh trang nuong,29.jpg
+Train,Banh trang nuong,90.jpg,98851b5ff748b1fee80f5d52525d694b,6571,cross_split_duplicate,near_phash,Test,Banh trang nuong,29.jpg
+Train,Banh xeo,103.jpg,fbdfa29b103e7fa35dc1b621cd7f93c3,7016,cross_split_duplicate,near_phash,Validate,Banh xeo,105.jpg
+Train,Banh xeo,249.jpg,350878af2a93b193b98f194a9424e737,7237,cross_split_duplicate,near_phash,Validate,Banh xeo,146.jpg
+Train,Banh xeo,303.jpg,991f7a508087605f3276970c77cbc44b,7281,cross_split_duplicate,near_phash,Test,Banh xeo,1170.jpg
+Train,Banh xeo,365.jpg,abc237bb4dad6c3ea7ae87740426faa1,7332,cross_split_duplicate,near_phash,Test,Banh xeo,450.jpg
+Train,Banh xeo,524.jpg,eba7673d556e16b9e62282e1b4abfbae,7451,cross_split_duplicate,near_phash,Validate,Banh xeo,523.jpg
+Train,Banh xeo,570.jpg,9095cb168e29c6b9413dff1d4c009ac7,7478,cross_split_duplicate,near_phash,Validate,Banh xeo,143.jpg
+Train,Banh xeo,736.jpg,dc6c1f8b797569e2d0be8f897f685112,7603,cross_split_duplicate,near_phash,Test,Banh xeo,516.jpg
+Train,Bun bo Hue,1526.jpg,c6879d2e6f572c0071b8d5e808db4767,8205,cross_split_duplicate,near_phash,Test,Bun bo Hue,529.jpg
+Train,Bun bo Hue,1528.jpg,828917c99cc11140e13eb0298b99f732,8207,cross_split_duplicate,near_phash,Test,Bun bo Hue,18.jpg
+Train,Bun bo Hue,206.jpg,140fac15324213f6ad88746a2560c40d,8254,cross_split_duplicate,near_phash,Test,Bun bo Hue,336.jpg
+Train,Bun bo Hue,227.jpg,253889d80417d33f6acd49c3f937b801,8271,cross_split_duplicate,near_phash,Test,Bun bo Hue,234.jpg
+Train,Bun bo Hue,266.jpg,c868cc9d32063f4ff73a2a1c9d01f62a,8300,cross_split_duplicate,near_phash,Test,Bun bo Hue,156.jpg
+Train,Bun bo Hue,596.jpg,f2e0a6fcfcaa8896d6e2dc9187a20d7e,8559,cross_split_duplicate,near_phash,Test,Bun bo Hue,611.jpg
+Train,Bun bo Hue,69.jpg,f8b5f04a1791feeee4f2d71f53ae77cd,8632,cross_split_duplicate,near_phash,Test,Bun bo Hue,67.jpg
+Train,Bun bo Hue,794.jpg,e1a9e7dd514710c1d78b81894aab5759,8712,cross_split_duplicate,near_phash,Validate,Bun bo Hue,113.jpg
+Train,Bun dau mam tom,255.jpg,1f0f12e35ebaf82ca85287c7e9c56336,8988,cross_split_duplicate,near_phash,Test,Bun dau mam tom,205.jpg
+Train,Bun dau mam tom,267.jpg,62e11018dcceb976f0e9c59f70d4b300,8996,cross_split_duplicate,near_phash,Test,Bun dau mam tom,266.jpg
+Train,Bun dau mam tom,913.jpg,6ed6c5d2b90ef7b4fedcd44f87915395,9495,cross_split_duplicate,near_phash,Test,Bun dau mam tom,207.jpg
+Train,Bun mam,373.jpg,a8f60c9f80b49342df29863dbf5f92e4,9719,cross_split_duplicate,near_phash,Validate,Bun mam,374.jpg
+Train,Bun rieu,265.jpg,0e0159f40b04749bd95108e5bf991d58,10283,cross_split_duplicate,near_phash,Validate,Bun rieu,1145.jpg
+Train,Bun rieu,525.jpg,8f6e80f89d504c9ec9d1b1afa4138973,10490,cross_split_duplicate,near_phash,Test,Bun rieu,192.jpg
+Train,Bun thit nuong,150.jpg,ffcfac7ee6ed048c391cdae1348904fe,10883,cross_split_duplicate,near_phash,Test,Bun thit nuong,354.jpg
+Train,Bun thit nuong,460.jpg,c5b1e6e4e3d7ae6cdab3f9fb27dedb79,11131,cross_split_duplicate,near_phash,Validate,Bun thit nuong,208.jpg
+Train,Ca kho to,120.jpg,56773cdeb8651f0bb51b8905b56b3ece,11372,cross_split_duplicate,near_phash,Test,Ca kho to,117.jpg
+Train,Ca kho to,202.jpg,67258feba2c1cfc810129e0b6841a15e,11431,cross_split_duplicate,near_phash,Validate,Ca kho to,199.jpg
+Train,Ca kho to,42.jpg,22a7afc800af15a29757578ca4909ae8,11599,cross_split_duplicate,near_phash,Test,Ca kho to,44.jpg
+Train,Ca kho to,7.jpg,89d11920460802db389e533a6bd4fb92,11796,cross_split_duplicate,near_phash,Test,Ca kho to,5.jpg
+Train,Ca kho to,97.jpg,5d1edba9536c1db7a0d783094e1f37ed,11823,cross_split_duplicate,near_phash,Validate,Ca kho to,256.jpg
+Train,Canh chua,150.jpg,1d6c1ae624f7ffbbb4259b1a9cee2620,11865,cross_split_duplicate,near_phash,Test,Canh chua,148.jpg
+Train,Canh chua,183.jpg,0130f40c639909d950483d9c5cbbf728,11890,cross_split_duplicate,near_phash,Test,Canh chua,435.jpg
+Train,Canh chua,26.jpg,37483938e49d0c429957e178cec041a6,11954,cross_split_duplicate,near_phash,Test,Canh chua,30.jpg
+Train,Canh chua,363.jpg,f989c1479dad2e61fc1b0aa25395f670,12035,cross_split_duplicate,near_phash,Validate,Canh chua,360.jpg
+Train,Canh chua,48.jpg,e928869af4417c8000cec47972b0d86f,12118,cross_split_duplicate,near_phash,Validate,Canh chua,49.jpg
+Train,Canh chua,72.jpg,df10154f73e3edb5593e4e8e88dbbb48,12302,cross_split_duplicate,near_phash,Test,Canh chua,74.jpg
+Train,Cao lau,275.jpg,3e60dc9f173adc6bb29ab178c00ff99b,12533,cross_split_duplicate,near_phash,Test,Cao lau,278.jpg
+Train,Cao lau,44.jpg,509202a0d60d35b2f9fa4f1c6d0b1c8f,12662,cross_split_duplicate,near_phash,Test,Cao lau,17.jpg
+Train,Cao lau,53.jpg,f566b0609f35c9d7de023ea2ab48e08e,12735,cross_split_duplicate,near_phash,Validate,Cao lau,160.jpg
+Train,Chao long,102.jpg,735a8a4f3ce37473aa3d9aa91886c4d7,12845,cross_split_duplicate,near_phash,Validate,Chao long,95.jpg
+Train,Chao long,109.jpg,16abb4b9453b6849673f03576bc019a6,12889,cross_split_duplicate,near_phash,Test,Chao long,105.jpg
+Train,Chao long,153.jpg,f88684425d2fb6d01a5da59fe07e5ef7,12921,cross_split_duplicate,near_phash,Test,Chao long,156.jpg
+Train,Chao long,2.jpg,80129d057e5e95bcdc3f58c9666e2318,12960,cross_split_duplicate,near_phash,Test,Chao long,481.jpg
+Train,Chao long,317.jpg,79eee83b026ea6c327f8b0b6fd47d67c,13046,cross_split_duplicate,near_phash,Test,Chao long,311.jpg
+Train,Chao long,32.jpg,ae6389531e2f65d0c41f47a51d866d5d,13048,cross_split_duplicate,near_phash,Test,Chao long,41.jpg
+Train,Chao long,584.jpg,7b38ef300212162972d3f9e58a6b3391,13239,cross_split_duplicate,near_phash,Test,Chao long,447.jpg
+Train,Chao long,86.jpg,aa64c4667239661b758b800bbad147ef,13465,cross_split_duplicate,near_phash,Validate,Chao long,84.jpg
+Train,Chao long,89.jpg,74069d4b134e607ae728b7936ea58898,13492,cross_split_duplicate,near_phash,Test,Chao long,463.jpg
+Train,Com tam,121.jpg,e02ef1feb58d11bcff9986b28837fd78,13590,cross_split_duplicate,near_phash,Test,Com tam,10.jpg
+Train,Com tam,19.jpg,2d6f2434426d7933eb965656327ec17d,13640,cross_split_duplicate,near_phash,Validate,Com tam,16.jpg
+Train,Com tam,67.jpg,0b49e006de5cf641e636f9b5f63b25c3,13640,cross_split_duplicate,near_phash,Validate,Com tam,16.jpg
+Train,Com tam,196.jpg,fc8ad04b9d74d88f8ddf677dc9432997,13645,cross_split_duplicate,near_phash,Test,Com tam,328.jpg
+Train,Com tam,245.jpg,b1ee59fe63f94a7c1e0b5dde6251f1ef,13683,cross_split_duplicate,near_phash,Test,Com tam,322.jpg
+Train,Com tam,249.jpg,298bfc39cc68e2803f54e619a8da5392,13686,cross_split_duplicate,near_phash,Test,Com tam,247.jpg
+Train,Com tam,288.jpg,1e5c49b4f5c61defd57ac086b8016903,13716,cross_split_duplicate,near_phash,Validate,Com tam,289.jpg
+Train,Com tam,32.jpg,85dd92d8980c88c039f64a8c3dd86280,13743,cross_split_duplicate,near_phash,Test,Com tam,35.jpg
+Train,Com tam,447.jpg,f2a0f13d4660b02e2b4c353c94a26257,13843,cross_split_duplicate,near_phash,Validate,Com tam,158.jpg
+Train,Com tam,465.jpg,df9033ebf8edc055ab3264eddb5ef2d9,13856,cross_split_duplicate,near_phash,Validate,Com tam,4.jpg
+Train,Com tam,72.jpg,f5613a20dcf2d9d12006d0be284fe942,14048,cross_split_duplicate,near_phash,Validate,Com tam,50.jpg
+Train,Goi cuon,100.jpg,a2b0f760bea62be49b4846620951995e,14225,cross_split_duplicate,near_phash,Test,Goi cuon,128.jpg
+Train,Goi cuon,187.jpg,ae45c0796d8f2d8039911b61851a8a6d,14291,cross_split_duplicate,near_phash,Validate,Goi cuon,190.jpg
+Train,Goi cuon,188.jpg,637ff071acae728b180d0d78c1956073,14291,cross_split_duplicate,near_phash,Validate,Goi cuon,190.jpg
+Train,Goi cuon,355.jpg,1a48bd9719cf65e712a68f6afa608b48,14417,cross_split_duplicate,near_phash,Test,Goi cuon,846.jpg
+Train,Goi cuon,47.jpg,44f806fcbeb50c95eabe6c3bc276ea43,14512,cross_split_duplicate,near_phash,Validate,Goi cuon,849.jpg
+Train,Goi cuon,834.jpg,6930a56204c3d8f11c624c08b1abd993,14790,cross_split_duplicate,near_phash,Test,Goi cuon,73.jpg
+Train,Hu tieu,171.jpg,1d81da6430784581f0c75dd63aebbcec,14868,cross_split_duplicate,near_phash,Validate,Hu tieu,173.jpg
+Train,Hu tieu,210.jpg,4a54385059a99424ebb21a640d0c4733,14900,cross_split_duplicate,near_phash,Test,Hu tieu,207.jpg
+Train,Hu tieu,220.jpg,1227632fcd14006cc5f464973109e9b0,14906,cross_split_duplicate,near_phash,Validate,Hu tieu,221.jpg
+Train,Hu tieu,46.jpg,ca77153e93f252d482aac4bf14cf58ac,15091,cross_split_duplicate,near_phash,Test,Hu tieu,49.jpg
+Train,Hu tieu,514.jpg,604502448073b17861d94ebe8b36d97b,15125,cross_split_duplicate,near_phash,Test,Hu tieu,512.jpg
+Train,Hu tieu,69.jpg,f96c2d1c8812d77ec013213884a10985,15261,cross_split_duplicate,near_phash,Validate,Hu tieu,211.jpg
+Train,Hu tieu,751.jpg,6c0f276207f38a10a98178f5c3d45dfa,15312,cross_split_duplicate,near_phash,Test,Hu tieu,983.jpg
+Train,Mi quang,108.jpg,6c73c069d96e6926879fed691a114683,15498,cross_split_duplicate,near_phash,Test,Mi quang,310.jpg
+Train,Mi quang,113.jpg,3898b137af64942da28ccdf0557e13c5,15503,cross_split_duplicate,exact_md5,Test,Mi quang,840.jpg
+Train,Mi quang,136.jpg,b404f74d8f2663e520cf1a069306403b,15520,cross_split_duplicate,near_phash,Test,Mi quang,832.jpg
+Train,Mi quang,15.jpg,7e0c33e35e73f2ed1aca33f97229d3b9,15534,cross_split_duplicate,near_phash,Test,Mi quang,11.jpg
+Train,Mi quang,169.jpg,18bbdcc99b121590f39860422c062b90,15552,cross_split_duplicate,near_phash,Validate,Mi quang,858.jpg
+Train,Mi quang,191.jpg,5f4f850f5ce522ae9fa7727e27f58eb4,15571,cross_split_duplicate,near_phash,Test,Mi quang,819.jpg
+Train,Mi quang,193.jpg,49c405b0c718d7e5ec139b807a3750c3,15573,cross_split_duplicate,near_phash,Validate,Mi quang,66.jpg
+Train,Mi quang,34.jpg,f853580cd0e8dc9acb711c4f7ec29b06,15676,cross_split_duplicate,near_phash,Validate,Mi quang,828.jpg
+Train,Mi quang,356.jpg,e2d94fce7e48e7e3a0a4e52a881799b2,15690,cross_split_duplicate,near_phash,Test,Mi quang,358.jpg
+Train,Mi quang,384.jpg,71243741718ea2d201da7ef2ab9e9412,15712,cross_split_duplicate,near_phash,Validate,Mi quang,830.jpg
+Train,Mi quang,397.jpg,bb74234c084686da1c0e1ec140d7bb20,15722,cross_split_duplicate,near_phash,Validate,Mi quang,208.jpg
+Train,Mi quang,410.jpg,7f3ac3932b791bb0151885973199ed35,15732,cross_split_duplicate,exact_md5,Validate,Mi quang,826.jpg
+Train,Mi quang,510.jpg,a079eed4b047859387c11e59ff171568,15815,cross_split_duplicate,near_phash,Test,Mi quang,870.jpg
+Train,Mi quang,817.jpg,1660e27912c129efe636bec6ceacbdd9,16048,cross_split_duplicate,near_phash,Validate,Mi quang,58.jpg
+Train,Mi quang,829.jpg,6936bc75cdf769f8058e7d7676dbb311,16052,cross_split_duplicate,near_phash,Test,Mi quang,23.jpg
+Train,Mi quang,839.jpg,2261aaa7990ec278f8d17a7ded557806,16057,cross_split_duplicate,near_phash,Test,Mi quang,175.jpg
+Train,Mi quang,846.jpg,55c2352019fb87961868465436402cd7,16061,cross_split_duplicate,near_phash,Validate,Mi quang,31.jpg
+Train,Mi quang,853.jpg,4142092aa4fac7706c0d86c289361754,16067,cross_split_duplicate,exact_md5,Test,Mi quang,512.jpg
+Train,Mi quang,864.jpg,0ab8dbca097899d58a5fe849e9279bd8,16075,cross_split_duplicate,near_phash,Test,Mi quang,406.jpg
+Train,Mi quang,869.jpg,a61bda6132e843ac6beeb0cf8e0eaf72,16078,cross_split_duplicate,near_phash,Validate,Mi quang,160.jpg
+Train,Mi quang,875.jpg,5bec15e8232ec1170758cda8563895ac,16082,cross_split_duplicate,near_phash,Test,Mi quang,131.jpg
+Train,Mi quang,882.jpg,2e119cc072939ad1c157b1df92469e3e,16084,cross_split_duplicate,near_phash,Validate,Mi quang,63.jpg
+Train,Nem chua,134.jpg,aa8da7cb6fd248b2f24ddd82b5c4ad62,16121,cross_split_duplicate,near_phash,Test,Nem chua,80.jpg
+Train,Pho,196.jpg,eb2def70ee1333ee8a7e04eb088f6fa1,16544,cross_split_duplicate,near_phash,Test,Pho,382.jpg
+Train,Pho,391.jpg,c4d459b327569eb1929a03b33d151f7c,16697,cross_split_duplicate,near_phash,Test,Pho,460.jpg
+Train,Pho,617.jpg,02266d04afc6ff67435a49e633fd9897,16864,cross_split_duplicate,near_phash,Test,Pho,618.jpg
+Train,Pho,671.jpg,fe65c02ca996af0bb3565016af4f65d4,16904,cross_split_duplicate,near_phash,Test,Pho,796.jpg
+Train,Pho,737.jpg,bbbdb6f0969a3c163d9f252466348648,16950,cross_split_duplicate,exact_md5,Validate,Pho,797.jpg
+Train,Pho,793.jpg,999ffa1199b415e075d3166699f117ae,16996,cross_split_duplicate,near_phash,Test,Pho,41.jpg
+Validate,Banh chung,495.jpg,24efe4110fdff43dfb38c14d5b197dbf,17727,cross_split_duplicate,near_phash,Test,Banh chung,64.jpg
+Validate,Banh cuon,289.jpg,f0424be79e51585ba06488bde48783b3,17764,cross_split_duplicate,near_phash,Test,Banh cuon,288.jpg
+Validate,Banh khot,184.jpg,1812dc669b23aaad0adf784532935785,17982,cross_split_duplicate,near_phash,Test,Banh khot,834.jpg
+Validate,Banh mi,202.jpg,eda1a44698665de9953c72991629c57b,18103,cross_split_duplicate,near_phash,Test,Banh mi,170.jpg
+Validate,Banh pia,7.jpg,e038b21c54343c376c77fcb54bfcd349,18226,cross_split_duplicate,exact_md5,Test,Banh pia,11.jpg
+Validate,Banh tet,660.jpg,3601b0f161e689df126ff77c4deb8eb3,18290,cross_split_duplicate,near_phash,Test,Banh tet,44.jpg
+Validate,Bun bo Hue,1516.jpg,cce137f87dd7591a9a9851f3f46dda67,18547,cross_split_duplicate,near_phash,Test,Bun bo Hue,1072.jpg
+Validate,Bun bo Hue,237.jpg,0dc6a4339d801a6a71b124db144707e4,18552,cross_split_duplicate,near_phash,Test,Bun bo Hue,315.jpg
+Validate,Bun rieu,146.jpg,1b1ca26ee39b7efef6b97a1e0b1bba87,18827,cross_split_duplicate,near_phash,Test,Bun rieu,46.jpg
+Validate,Bun thit nuong,89.jpg,d523bcc2a5015fda668c13cbb1e7dc0d,18992,cross_split_duplicate,near_phash,Test,Bun thit nuong,97.jpg
+Validate,Ca kho to,201.jpg,e5a244f8d153a84b3d8d172655fbe63d,19003,cross_split_duplicate,near_phash,Test,Ca kho to,198.jpg
+Validate,Canh chua,244.jpg,de73af898c10734a7ae0eaaf1614b7e5,19073,cross_split_duplicate,near_phash,Test,Canh chua,245.jpg
+Validate,Com tam,104.jpg,2a9e886e3886b1b085e9df685813fa0f,19302,cross_split_duplicate,near_phash,Test,Com tam,108.jpg
+Validate,Com tam,940.jpg,265b732919d77889259ad2805a889a32,19390,cross_split_duplicate,near_phash,Test,Com tam,186.jpg
+Validate,Hu tieu,978.jpg,3fdb87f4aacec73f4c0786d70c4f4971,19567,cross_split_duplicate,exact_md5,Test,Hu tieu,231.jpg
+Validate,Xoi xeo,121.jpg,402168d737a0b8435fa5e9095be96b39,19783,cross_split_duplicate,near_phash,Test,Xoi xeo,122.jpg
+Train,Banh beo,157.jpg,8a6f1e539273d4eecc0a65907149d595,44,label_conflict,exact_md5,,,
+Train,Banh bot loc,381.jpg,8a6f1e539273d4eecc0a65907149d595,44,label_conflict,exact_md5,,,
+Train,Banh beo,539.jpg,9ec34db61ff4920706ccf6a3ae159d02,346,label_conflict,exact_md5,,,
+Train,Banh bot loc,565.jpg,9ec34db61ff4920706ccf6a3ae159d02,346,label_conflict,exact_md5,,,
+Train,Banh beo,77.jpg,c5a8d75fc924bab07f4984db7cd58e5b,430,label_conflict,exact_md5,,,
+Train,Banh gio,72.jpg,c5a8d75fc924bab07f4984db7cd58e5b,430,label_conflict,exact_md5,,,
+Train,Banh bot loc,399.jpg,970baa80e71fb39f3ff1b59accc2f1d5,670,label_conflict,exact_md5,,,
+Train,Goi cuon,815.jpg,970baa80e71fb39f3ff1b59accc2f1d5,670,label_conflict,exact_md5,,,
+Train,Banh bot loc,635.jpg,82ce2584fb1ca028d7787467231999c4,852,label_conflict,exact_md5,,,
+Train,Banh duc,398.jpg,82ce2584fb1ca028d7787467231999c4,852,label_conflict,exact_md5,,,
+Test,Banh beo,270.jpg,82ce2584fb1ca028d7787467231999c4,852,label_conflict,exact_md5,,,
+Train,Banh bot loc,655.jpg,ddc327399d2ecf6455141b23c5269a66,868,label_conflict,exact_md5,,,
+Test,Banh gio,528.jpg,ddc327399d2ecf6455141b23c5269a66,868,label_conflict,exact_md5,,,
+Train,Banh can,233.jpg,b138537bf57ab46cf73eb34b544f40ad,1046,label_conflict,near_phash,,,
+Test,Banh khot,215.jpg,839527c3c5fe53e57cc35c600067351c,1046,label_conflict,near_phash,,,
+Train,Banh can,286.jpg,c72c077f449704e2eafe707bb817dd93,1080,label_conflict,exact_md5,,,
+Train,Banh khot,274.jpg,c72c077f449704e2eafe707bb817dd93,1080,label_conflict,exact_md5,,,
+Train,Banh can,338.jpg,fa635771f01499d923ebcaab1ab58f65,1126,label_conflict,exact_md5,,,
+Validate,Banh khot,316.jpg,fa635771f01499d923ebcaab1ab58f65,1126,label_conflict,exact_md5,,,
+Train,Banh canh,328.jpg,c1a6b805f28fa9fbc7d17ed1f24f1e17,1642,label_conflict,exact_md5,,,
+Train,Banh canh,332.jpg,c1a6b805f28fa9fbc7d17ed1f24f1e17,1642,label_conflict,exact_md5,,,
+Train,Bun bo Hue,344.jpg,40ed2cf6591353a789d0334bb80bf9ea,1642,label_conflict,near_phash,,,
+Train,Banh canh,347.jpg,316f0a3576652175bd3d7aa715b7a945,1654,label_conflict,near_phash,,,
+Validate,Pho,112.jpg,bf202b6ed93d93d5a9338968ef467ab6,1654,label_conflict,near_phash,,,
+Train,Banh canh,624.jpg,45dc3e261699ba3b30ec7f6539d5da11,1856,label_conflict,exact_md5,,,
+Test,Hu tieu,402.jpg,45dc3e261699ba3b30ec7f6539d5da11,1856,label_conflict,exact_md5,,,
+Train,Banh canh,861.jpg,70dbf74ffe78e4b758707544afff3b8a,2043,label_conflict,exact_md5,,,
+Validate,Bun rieu,764.jpg,70dbf74ffe78e4b758707544afff3b8a,2043,label_conflict,exact_md5,,,
+Train,Banh canh,90.jpg,f58d135c132370497c79887a9dbe2fe1,2073,label_conflict,near_phash,,,
+Test,Chao long,43.jpg,bf85b5e8aed961ccb8ad06063a6b11d5,2073,label_conflict,near_phash,,,
+Train,Banh chung,234.jpg,6acd5f24843bf85f96d4b4d951f54be8,2233,label_conflict,near_phash,,,
+Validate,Banh tet,462.jpg,c83015406fb18b1fdecab14f9297a76d,2233,label_conflict,near_phash,,,
+Train,Banh chung,79.jpg,2edafecbcbdb7a94d7dc1c599b6bcbd9,2452,label_conflict,exact_md5,,,
+Test,Banh tet,463.jpg,2edafecbcbdb7a94d7dc1c599b6bcbd9,2452,label_conflict,exact_md5,,,
+Train,Banh cuon,266.jpg,49c2f80e6523a4fd5b61f364f24e1519,2688,label_conflict,exact_md5,,,
+Train,Banh gio,376.jpg,49c2f80e6523a4fd5b61f364f24e1519,2688,label_conflict,exact_md5,,,
+Train,Banh cuon,341.jpg,8d5ff38c1af77bd4ff03731a2ea72737,2753,label_conflict,exact_md5,,,
+Train,Banh duc,222.jpg,8d5ff38c1af77bd4ff03731a2ea72737,2753,label_conflict,exact_md5,,,
+Train,Banh cuon,357.jpg,fe204ae8844dac6c8b49ca244c01aa7a,2767,label_conflict,exact_md5,,,
+Test,Banh duc,236.jpg,fe204ae8844dac6c8b49ca244c01aa7a,2767,label_conflict,exact_md5,,,
+Train,Banh duc,189.jpg,6bed3ee92cfe0a4779f4045e7aa7d2b4,3325,label_conflict,near_phash,,,
+Train,Banh gio,104.jpg,25cd7704910d98ee7e10b3747f5228ff,3325,label_conflict,near_phash,,,
+Train,Banh duc,46.jpg,300e149c9b79937ee3fa82e73393693a,3527,label_conflict,near_phash,,,
+Train,Banh gio,46.jpg,0f87894174be3a56c2c186ab5fd6f81f,3527,label_conflict,near_phash,,,
+Train,Banh gio,187.jpg,7613a494d75c6e9d9346194e30d69914,3787,label_conflict,exact_md5,,,
+Test,Banh duc,261.jpg,7613a494d75c6e9d9346194e30d69914,3787,label_conflict,exact_md5,,,
+Train,Banh gio,310.jpg,e4e6ccf1426ed68249b427894c0729d5,3886,label_conflict,exact_md5,,,
+Validate,Banh duc,102.jpg,e4e6ccf1426ed68249b427894c0729d5,3886,label_conflict,exact_md5,,,
+Train,Banh khot,587.jpg,e40faa046928b9e359f020be3c8e1138,4550,label_conflict,exact_md5,,,
+Validate,Banh can,554.jpg,e40faa046928b9e359f020be3c8e1138,4550,label_conflict,exact_md5,,,
+Train,Banh khot,672.jpg,17b9718f56ad5b3a695ec4127413c737,4605,label_conflict,exact_md5,,,
+Test,Banh bot loc,372.jpg,17b9718f56ad5b3a695ec4127413c737,4605,label_conflict,exact_md5,,,
+Train,Banh khot,74.jpg,0fd4b472f2411d1d62c618f746a4d09f,4660,label_conflict,near_phash,,,
+Train,Banh xeo,263.jpg,43b35c754d759d035b20d05f0b7b75b5,4660,label_conflict,near_phash,,,
+Train,Banh mi,1174.jpg,37ce8aed9c8b6d1bfce8362d4fe8e7e5,4879,label_conflict,exact_md5,,,
+Test,Goi cuon,770.jpg,37ce8aed9c8b6d1bfce8362d4fe8e7e5,4879,label_conflict,exact_md5,,,
+Test,Goi cuon,839.jpg,260b0f5c5ea806f5ad00e5d8aae3a852,4879,label_conflict,near_phash,,,
+Train,Banh tet,284.jpg,fd9cf049f520e58bffc8477897a7ce26,6104,label_conflict,near_phash,,,
+Test,Banh chung,112.jpg,9b1452cfa1592bdbe8dd5c740cbcd7af,6104,label_conflict,near_phash,,,
+Train,Bun bo Hue,1173.jpg,87b3c3e46f58407f935023b0ea4e5d26,7939,label_conflict,exact_md5,,,
+Test,Mi quang,627.jpg,87b3c3e46f58407f935023b0ea4e5d26,7939,label_conflict,exact_md5,,,
+Train,Bun bo Hue,1204.jpg,6a1ae094d481fb0faa1ba850302dac7c,7965,label_conflict,exact_md5,,,
+Train,Pho,722.jpg,6a1ae094d481fb0faa1ba850302dac7c,7965,label_conflict,exact_md5,,,
+Train,Bun bo Hue,1262.jpg,e15b6b4b202dbd83eb97b1e2ed4d2f9f,8009,label_conflict,exact_md5,,,
+Test,Banh cuon,162.jpg,e15b6b4b202dbd83eb97b1e2ed4d2f9f,8009,label_conflict,exact_md5,,,
+Train,Bun bo Hue,1292.jpg,69a41dcd162c76a967878188a03675bb,8027,label_conflict,exact_md5,,,
+Train,Bun rieu,179.jpg,69a41dcd162c76a967878188a03675bb,8027,label_conflict,exact_md5,,,
+Train,Bun bo Hue,40.jpg,6e35a5e7897544c58a5979fff4e52ccb,8410,label_conflict,near_phash,,,
+Train,Pho,441.jpg,23af3234b6857d76c0138ef938e9ac83,8410,label_conflict,near_phash,,,
+Train,Bun bo Hue,64.jpg,08edbf06b5796c5b48671c1c26fde8eb,8594,label_conflict,exact_md5,,,
+Test,Bun rieu,786.jpg,08edbf06b5796c5b48671c1c26fde8eb,8594,label_conflict,exact_md5,,,
+Train,Bun bo Hue,663.jpg,67fe4f530dd80186cbc74cebc6be4424,8612,label_conflict,exact_md5,,,
+Train,Bun rieu,625.jpg,67fe4f530dd80186cbc74cebc6be4424,8612,label_conflict,exact_md5,,,
+Validate,Banh xeo,520.jpg,67fe4f530dd80186cbc74cebc6be4424,8612,label_conflict,exact_md5,,,
+Train,Bun bo Hue,811.jpg,2cdf1d91f18054fa351c852706c8db1d,8725,label_conflict,near_phash,,,
+Train,Bun rieu,600.jpg,85ffa73d9965b5e6497d24211b2de909,8725,label_conflict,near_phash,,,
+Train,Bun bo Hue,812.jpg,e539f474d30652c54fbe60aa36fcbfc6,8726,label_conflict,exact_md5,,,
+Test,Bun rieu,725.jpg,e539f474d30652c54fbe60aa36fcbfc6,8726,label_conflict,exact_md5,,,
+Train,Bun mam,439.jpg,4e0d6846e853f3f6322292b44a2da506,9771,label_conflict,near_phash,,,
+Train,Bun rieu,884.jpg,8cef63dcbb9114d9b0ad0a09d92b4162,9771,label_conflict,near_phash,,,
+Train,Bun mam,5.jpg,eb1f2b3453155479cf782e4ac161140e,9817,label_conflict,near_phash,,,
+Train,Pho,401.jpg,7b78128ff5822e33362d57ae16a09531,9817,label_conflict,near_phash,,,
+Train,Bun rieu,519.jpg,8d7fa37f44117718a977b9d74d2633d8,10484,label_conflict,near_phash,,,
+Test,Bun mam,432.jpg,1913fc54690d8004daeb6791829b3c49,10484,label_conflict,near_phash,,,
+Train,Canh chua,574.jpg,909611c3737807b673ca0084fedb30db,12187,label_conflict,exact_md5,,,
+Validate,Ca kho to,391.jpg,909611c3737807b673ca0084fedb30db,12187,label_conflict,exact_md5,,,
+Train,Cao lau,36.jpg,e85f2c604fef112e2e7e74dd2a34249e,12593,label_conflict,exact_md5,,,
+Test,Mi quang,446.jpg,e85f2c604fef112e2e7e74dd2a34249e,12593,label_conflict,exact_md5,,,
+Train,Cao lau,401.jpg,f3fddc783066cf8147837b2b3bfa0cde,12628,label_conflict,exact_md5,,,
+Test,Mi quang,633.jpg,f3fddc783066cf8147837b2b3bfa0cde,12628,label_conflict,exact_md5,,,
+Train,Chao long,92.jpg,b8e77f8e303f7f19914acec1337aa7a1,13517,label_conflict,near_phash,,,
+Train,Hu tieu,499.jpg,efa76cb005a18e0b0bcbdd720a5cb14a,13517,label_conflict,exact_md5,,,
+Validate,Chao long,87.jpg,efa76cb005a18e0b0bcbdd720a5cb14a,13517,label_conflict,exact_md5,,,
+Train,Hu tieu,390.jpg,a19882b2b793da84527d870c40c10d56,15039,label_conflict,exact_md5,,,
+Test,Mi quang,216.jpg,a19882b2b793da84527d870c40c10d56,15039,label_conflict,exact_md5,,,
+Train,Hu tieu,557.jpg,5243b2abede7d95af819eb34424fe307,15154,label_conflict,exact_md5,,,
+Test,Banh canh,338.jpg,5243b2abede7d95af819eb34424fe307,15154,label_conflict,exact_md5,,,
+Test,Bun rieu,396.jpg,5243b2abede7d95af819eb34424fe307,15154,label_conflict,exact_md5,,,
+Train,Nem chua,454.jpg,4ed99e86505907e651d54cab9b672740,16364,label_conflict,exact_md5,,,
+Test,Banh cuon,535.jpg,4ed99e86505907e651d54cab9b672740,16364,label_conflict,exact_md5,,,
+Train,Pho,406.jpg,ec0ff33706ad601edb6c2592e326a6f4,16706,label_conflict,near_phash,,,
+Test,Bun bo Hue,884.jpg,7fd1b90699156ae28b6948d14f3a7133,16706,label_conflict,near_phash,,,
+Validate,Banh gio,362.jpg,272f898a86dd0405eaa396ba997e574e,17939,label_conflict,exact_md5,,,
+Test,Banh duc,64.jpg,272f898a86dd0405eaa396ba997e574e,17939,label_conflict,exact_md5,,,
+Validate,Goi cuon,103.jpg,31fb9dc0707279490b0b1fd7e39bb99a,19391,label_conflict,near_phash,,,
+Test,Nem chua,353.jpg,9945b355c7d7be398b6e8148656004f5,19391,label_conflict,near_phash,,,
+Validate,Hu tieu,249.jpg,c12515f470e7ebd108d893eaa112b734,19488,label_conflict,exact_md5,,,
+Test,Banh canh,608.jpg,c12515f470e7ebd108d893eaa112b734,19488,label_conflict,exact_md5,,,
+Test,Banh beo,83.jpg,8a5e485b007b70cf0d3405e506927f7d,19950,label_conflict,near_phash,,,
+Test,Banh bot loc,311.jpg,58eecb0beff4322dbceba23e1e800733,19950,label_conflict,near_phash,,,
+Test,Banh chung,257.jpg,ae86e28dafd4ba1d805ab3f50dbcfdfd,20453,label_conflict,exact_md5,,,
+Test,Banh tet,421.jpg,ae86e28dafd4ba1d805ab3f50dbcfdfd,20453,label_conflict,exact_md5,,,
+Test,Banh chung,333.jpg,f65be776767363dc9007dfac1d230614,20464,label_conflict,exact_md5,,,
+Test,Banh tet,445.jpg,f65be776767363dc9007dfac1d230614,20464,label_conflict,exact_md5,,,
+Test,Banh duc,227.jpg,2c16be5f77404c25980404022c7b23ae,20754,label_conflict,near_phash,,,
+Test,Banh gio,68.jpg,5d2826855e97a19429faa2c48c07aa9d,20754,label_conflict,near_phash,,,
+Test,Bun bo Hue,471.jpg,a605577b3d2cde27b2e8c9ad3df4152f,22188,label_conflict,exact_md5,,,
+Test,Bun rieu,275.jpg,a605577b3d2cde27b2e8c9ad3df4152f,22188,label_conflict,exact_md5,,,
+Train,Banh beo,98.jpg,dc5fafb64c5654e90c2c886c1ebf00c8,4,within_split_duplicate,near_phash,Train,Banh beo,102.jpg
+Train,Banh beo,637.jpg,eac499a574fa892aa9c8634dc5ab6328,28,within_split_duplicate,near_phash,Train,Banh beo,136.jpg
+Train,Banh beo,256.jpg,35e7b70752a636ce36ba7c4f2caf504e,58,within_split_duplicate,near_phash,Train,Banh beo,170.jpg
+Train,Banh beo,69.jpg,9f2999349844c7f681fba94bf5ee0f35,409,within_split_duplicate,near_phash,Train,Banh beo,625.jpg
+Train,Banh beo,99.jpg,f9e53406bc8e64d05c14a24f5d4a94cc,410,within_split_duplicate,near_phash,Train,Banh beo,626.jpg
+Train,Banh bot loc,711.jpg,c903f894b258de930ce73e640408c917,460,within_split_duplicate,near_phash,Train,Banh bot loc,117.jpg
+Train,Banh bot loc,130.jpg,bb83a98a2274c265a3112ca01dc04d3f,467,within_split_duplicate,near_phash,Train,Banh bot loc,128.jpg
+Train,Banh bot loc,716.jpg,07efc2166ba65f68fa0138a859dc1b48,558,within_split_duplicate,near_phash,Train,Banh bot loc,246.jpg
+Train,Banh bot loc,251.jpg,62793921fc3b402a85b95ff10404c503,561,within_split_duplicate,near_phash,Train,Banh bot loc,249.jpg
+Train,Banh bot loc,706.jpg,d889652b921fe84aef6a4c44a26d5b44,561,within_split_duplicate,near_phash,Train,Banh bot loc,249.jpg
+Train,Banh bot loc,275.jpg,5b00d36f7efe8cd44b925b52161b44c2,579,within_split_duplicate,near_phash,Train,Banh bot loc,274.jpg
+Train,Banh bot loc,43.jpg,d24bc34465fd182099b81f84337d3bb2,671,within_split_duplicate,near_phash,Train,Banh bot loc,40.jpg
+Train,Banh can,105.jpg,8b7610f6a9792334f04afd617e5fd761,943,within_split_duplicate,near_phash,Train,Banh can,103.jpg
+Train,Banh canh,212.jpg,58ea6dbd20307987feca4fd3dffd4537,1547,within_split_duplicate,near_phash,Train,Banh canh,209.jpg
+Train,Banh canh,214.jpg,696c4270afc2facb838737f1ab6b4eeb,1547,within_split_duplicate,near_phash,Train,Banh canh,209.jpg
+Train,Banh canh,288.jpg,60772a95131f48d19ec72fd42a6de12a,1611,within_split_duplicate,near_phash,Train,Banh canh,286.jpg
+Train,Banh canh,326.jpg,6baeb9f42e21f7a2f739ba7bdb9ee53e,1640,within_split_duplicate,near_phash,Train,Banh canh,325.jpg
+Train,Banh canh,582.jpg,6b9c704f5570cb56ee6f4995ec910392,1663,within_split_duplicate,near_phash,Train,Banh canh,361.jpg
+Train,Banh canh,580.jpg,10430fab94f3446823da4d8828edddff,1824,within_split_duplicate,exact_md5,Train,Banh canh,579.jpg
+Train,Banh canh,82.jpg,2db99d9071929422cd0d1642936fce7c,1996,within_split_duplicate,near_phash,Train,Banh canh,80.jpg
+Train,Banh chung,502.jpg,1713f52f7920022cee53ff87fab19f15,2133,within_split_duplicate,near_phash,Train,Banh chung,108.jpg
+Train,Banh chung,477.jpg,fa395d9612f89d7ddeeefd116a2866b0,2136,within_split_duplicate,near_phash,Train,Banh chung,115.jpg
+Train,Banh chung,448.jpg,92c639f8f739a127eca8437b4f13fade,2137,within_split_duplicate,near_phash,Train,Banh chung,116.jpg
+Train,Banh chung,278.jpg,59ce561e64a1d7214070141c5c2ffacb,2139,within_split_duplicate,near_phash,Train,Banh chung,120.jpg
+Train,Banh chung,446.jpg,bc6b0a30607e1f0396ba439598d5538b,2169,within_split_duplicate,near_phash,Train,Banh chung,157.jpg
+Train,Banh chung,500.jpg,480e3cc14319c74d61cea161fed6de6e,2174,within_split_duplicate,near_phash,Train,Banh chung,162.jpg
+Train,Banh chung,485.jpg,4f22cdce12731a6d3a4ec3042382b75f,2190,within_split_duplicate,near_phash,Train,Banh chung,183.jpg
+Train,Banh chung,499.jpg,dac05c47b8fa911a92ec143459b0e5e8,2196,within_split_duplicate,near_phash,Train,Banh chung,19.jpg
+Train,Banh chung,481.jpg,229026efbf646520c16ceb0613399690,2208,within_split_duplicate,near_phash,Train,Banh chung,204.jpg
+Train,Banh chung,492.jpg,04759b23599e0066c1cddb1f21af20cc,2312,within_split_duplicate,near_phash,Train,Banh chung,34.jpg
+Train,Banh chung,447.jpg,b8288a665689bb460f92a4cef6b79da4,2365,within_split_duplicate,near_phash,Train,Banh chung,407.jpg
+Train,Banh chung,476.jpg,f2ebc44e3296a10ea653ef7ffc085152,2369,within_split_duplicate,near_phash,Train,Banh chung,413.jpg
+Train,Banh chung,59.jpg,d339dc02a9fb3197bc0030cb07b7699d,2392,within_split_duplicate,near_phash,Train,Banh chung,444.jpg
+Train,Banh cuon,98.jpg,9366147189a2a236e784ccbd66623f44,2466,within_split_duplicate,near_phash,Train,Banh cuon,100.jpg
+Train,Banh cuon,126.jpg,fa3d62f2ac1d1bdfcf65437a26ebdda1,2587,within_split_duplicate,near_phash,Train,Banh cuon,124.jpg
+Train,Banh cuon,156.jpg,12d78dd6b2f871548e1abe41ae929d02,2611,within_split_duplicate,near_phash,Train,Banh cuon,155.jpg
+Train,Banh cuon,323.jpg,7a31cbd888afa943c09e7a69235ca44a,2735,within_split_duplicate,near_phash,Train,Banh cuon,319.jpg
+Train,Banh cuon,458.jpg,30c0bc68aad82838b5e0e7c285ab75ea,2842,within_split_duplicate,near_phash,Train,Banh cuon,457.jpg
+Train,Banh duc,27.jpg,708c1fbb96012cee29cfb1bd7de3c92b,3370,within_split_duplicate,near_phash,Train,Banh duc,25.jpg
+Train,Banh gio,316.jpg,955fb0c12bb6fc9cee2f313e483482c2,3874,within_split_duplicate,near_phash,Train,Banh gio,299.jpg
+Train,Banh khot,6.jpg,11a39a9b76b1984370494ebd706cc517,4321,within_split_duplicate,near_phash,Train,Banh khot,3.jpg
+Train,Banh mi,246.jpg,574d5b17f4f497250437eccf07c4360a,5037,within_split_duplicate,near_phash,Train,Banh mi,185.jpg
+Train,Banh mi,434.jpg,be6374ec5ea25ab6aa4d8efad55f0ed5,5055,within_split_duplicate,near_phash,Train,Banh mi,207.jpg
+Train,Banh mi,53.jpg,adab8b94630c4f503a417ee72f3054ec,5057,within_split_duplicate,near_phash,Train,Banh mi,209.jpg
+Train,Banh mi,322.jpg,4ea6c1c271eb50ac2c33a0f95c5c16da,5063,within_split_duplicate,near_phash,Train,Banh mi,215.jpg
+Train,Banh mi,288.jpg,4a3963f318bcab9487b59803743d1e52,5066,within_split_duplicate,near_phash,Train,Banh mi,218.jpg
+Train,Banh mi,543.jpg,8729207041c7d4d6f1bf43b8d78bf513,5083,within_split_duplicate,near_phash,Train,Banh mi,244.jpg
+Train,Banh mi,571.jpg,ae637018d7dd59389dc5ddac583b0ace,5121,within_split_duplicate,near_phash,Train,Banh mi,298.jpg
+Train,Banh mi,417.jpg,325a2951d07663f9b4d92758e59f5c95,5177,within_split_duplicate,near_phash,Train,Banh mi,373.jpg
+Train,Banh mi,607.jpg,dadef91cf20429de6e1dd697bdffadfc,5272,within_split_duplicate,near_phash,Train,Banh mi,495.jpg
+Train,Banh mi,97.jpg,ca5e96959f868848600ac8b1fd6d371e,5272,within_split_duplicate,near_phash,Train,Banh mi,495.jpg
+Train,Banh mi,524.jpg,4be478afb8df9ce605017d762f59af0e,5294,within_split_duplicate,near_phash,Train,Banh mi,520.jpg
+Train,Banh mi,994.jpg,437e93470ef416aeeef788209b31e52a,5342,within_split_duplicate,near_phash,Train,Banh mi,587.jpg
+Train,Banh mi,91.jpg,1711004a0dc02c1c9649f5b6d51c8bc1,5395,within_split_duplicate,near_phash,Train,Banh mi,646.jpg
+Train,Banh pia,89.jpg,d2b771c42e8a9778468f0215f6998551,5958,within_split_duplicate,near_phash,Train,Banh pia,87.jpg
+Train,Banh tet,31.jpg,2cd0f83961d39d0a86678be1c528590e,6036,within_split_duplicate,near_phash,Train,Banh tet,187.jpg
+Train,Banh tet,191.jpg,c6bdeb520374a0a6cba182392bc9a4dd,6038,within_split_duplicate,near_phash,Train,Banh tet,190.jpg
+Train,Banh tet,669.jpg,6f53983d7e04242a1f8f1c1102e1119b,6074,within_split_duplicate,near_phash,Train,Banh tet,240.jpg
+Train,Banh tet,675.jpg,283292531c2e566093902a1f02ebc10b,6213,within_split_duplicate,near_phash,Train,Banh tet,416.jpg
+Train,Banh trang nuong,14.jpg,b21b6fa6dd0de838387bc682c636ab67,6453,within_split_duplicate,near_phash,Train,Banh trang nuong,11.jpg
+Train,Banh trang nuong,19.jpg,4d5b67f4b40102089e77b2030a9e222d,6467,within_split_duplicate,near_phash,Train,Banh trang nuong,13.jpg
+Train,Banh trang nuong,394.jpg,4380429cfdb9606ed5c08cfb83e5876e,6481,within_split_duplicate,near_phash,Train,Banh trang nuong,145.jpg
+Train,Banh trang nuong,253.jpg,a674275802da035caebdc7263ceef624,6484,within_split_duplicate,near_phash,Train,Banh trang nuong,15.jpg
+Train,Banh trang nuong,156.jpg,d0361a85bb4352850b3a8366102eb29f,6487,within_split_duplicate,exact_md5,Train,Banh trang nuong,154.jpg
+Validate,Banh trang nuong,223.jpg,181df499f2f879920bddb5571b052a28,6488,within_split_duplicate,near_phash,Validate,Banh trang nuong,131.jpg
+Train,Banh trang nuong,18.jpg,2bdb10f396d2c89b60c0ce556c845417,6489,within_split_duplicate,near_phash,Train,Banh trang nuong,159.jpg
+Train,Banh trang nuong,42.jpg,c45e3ffd61543bb2a9e41d684e6b4ec8,6658,within_split_duplicate,near_phash,Train,Banh trang nuong,38.jpg
+Train,Banh trang nuong,420.jpg,1da37d9a40e11dcf02a747fd5a04c3fe,6689,within_split_duplicate,near_phash,Train,Banh trang nuong,419.jpg
+Train,Banh xeo,50.jpg,a12a3b682ebe16eaf26036745fc0ba3f,6995,within_split_duplicate,near_phash,Train,Banh xeo,100.jpg
+Train,Banh xeo,469.jpg,90c977c47f3bbda4e8e8b18d03c7ea2b,7136,within_split_duplicate,near_phash,Train,Banh xeo,1172.jpg
+Train,Banh xeo,93.jpg,51f01690922fb5a319edf6e57f02c3f3,7181,within_split_duplicate,near_phash,Train,Banh xeo,180.jpg
+Train,Banh xeo,538.jpg,59c10748b90d4d73c22970ac90ad11fb,7190,within_split_duplicate,near_phash,Train,Banh xeo,190.jpg
+Train,Banh xeo,488.jpg,a7b9fbdc384efa4cec8157535538c761,7224,within_split_duplicate,near_phash,Train,Banh xeo,229.jpg
+Train,Banh xeo,37.jpg,9bcdc6152196d5da0e8aadb3efceace7,7232,within_split_duplicate,near_phash,Train,Banh xeo,240.jpg
+Train,Banh xeo,560.jpg,5788e117a1747e5a93122dcbf1579c21,7473,within_split_duplicate,near_phash,Train,Banh xeo,558.jpg
+Train,Banh xeo,81.jpg,fa75ecd88068b0f7e4c57108f800f3ff,7645,within_split_duplicate,near_phash,Train,Banh xeo,79.jpg
+Train,Bun bo Hue,755.jpg,b9accbbf218b1f7321b3e654c4d2d9f1,7946,within_split_duplicate,near_phash,Train,Bun bo Hue,1184.jpg
+Train,Bun bo Hue,532.jpg,326bd8957417f8954caf679a055b5960,8208,within_split_duplicate,near_phash,Train,Bun bo Hue,1529.jpg
+Train,Bun bo Hue,228.jpg,d327f61d39640eafc73fd05d1b4f4deb,8219,within_split_duplicate,near_phash,Train,Bun bo Hue,166.jpg
+Test,Bun bo Hue,370.jpg,d59f7b9fc2d069a0edb492d3d2ba1fd3,8254,within_split_duplicate,near_phash,Test,Bun bo Hue,336.jpg
+Train,Bun bo Hue,260.jpg,d4ec389fd6234d7e19eca49215db6bb4,8293,within_split_duplicate,near_phash,Train,Bun bo Hue,257.jpg
+Train,Bun bo Hue,930.jpg,48eb269cf98dfa277be2f69acbbf4a97,8350,within_split_duplicate,near_phash,Train,Bun bo Hue,328.jpg
+Train,Bun bo Hue,356.jpg,e7b15369c47a2df9d8312a434d3b3aad,8374,within_split_duplicate,near_phash,Train,Bun bo Hue,355.jpg
+Train,Bun bo Hue,410.jpg,7ccb936b023c5abcb380ed92810cc561,8418,within_split_duplicate,near_phash,Train,Bun bo Hue,409.jpg
+Train,Bun bo Hue,424.jpg,7cd115c7d1ad7aeebf6c0376219cea15,8429,within_split_duplicate,near_phash,Train,Bun bo Hue,422.jpg
+Train,Bun bo Hue,570.jpg,d974bf782bf62138838fa8265615ba5a,8520,within_split_duplicate,near_phash,Train,Bun bo Hue,54.jpg
+Train,Bun bo Hue,96.jpg,67623f3ee799163d65b0de9c538f108b,8808,within_split_duplicate,near_phash,Train,Bun bo Hue,92.jpg
+Train,Bun dau mam tom,91.jpg,9f259eb56a756792edd601676c95c896,9447,within_split_duplicate,near_phash,Train,Bun dau mam tom,86.jpg
+Train,Bun mam,76.jpg,1171223b149ac220f50ed5c4441d1a49,9629,within_split_duplicate,near_phash,Train,Bun mam,247.jpg
+Train,Bun rieu,55.jpg,1752403c0d16a138ac1970adccf936e7,10083,within_split_duplicate,near_phash,Train,Bun rieu,105.jpg
+Train,Bun rieu,72.jpg,5eb814e1136e0e5d58cacb1d28fedcf4,10604,within_split_duplicate,near_phash,Train,Bun rieu,67.jpg
+Train,Bun thit nuong,71.jpg,1a7dd2da014f0e2669f1b79ecad0c9aa,10844,within_split_duplicate,near_phash,Train,Bun thit nuong,100.jpg
+Train,Bun thit nuong,155.jpg,e3049852868f6b08937ddf40712ddb33,10856,within_split_duplicate,near_phash,Train,Bun thit nuong,12.jpg
+Train,Bun thit nuong,154.jpg,6beedd74e05b8c9be68eca0ac6e0aa61,10884,within_split_duplicate,near_phash,Train,Bun thit nuong,151.jpg
+Train,Bun thit nuong,328.jpg,d39a7f5ef9b916cc4fafe8060a70f327,10893,within_split_duplicate,near_phash,Train,Bun thit nuong,164.jpg
+Train,Bun thit nuong,45.jpg,a5a6e97c2ad610eeeb725d9e115a25fd,10974,within_split_duplicate,near_phash,Train,Bun thit nuong,260.jpg
+Train,Bun thit nuong,472.jpg,651257f0f824926ee4d2cfa94198293e,11066,within_split_duplicate,near_phash,Train,Bun thit nuong,375.jpg
+Train,Ca kho to,139.jpg,f485bb80637476e493a954fc0cf05083,11384,within_split_duplicate,near_phash,Train,Ca kho to,133.jpg
+Train,Ca kho to,171.jpg,97bb69d3f0e60e5b9e2a5a1996b3cd72,11410,within_split_duplicate,near_phash,Train,Ca kho to,169.jpg
+Train,Ca kho to,244.jpg,edb4049267eb09d87098dedbfec68f8f,11460,within_split_duplicate,near_phash,Train,Ca kho to,239.jpg
+Train,Ca kho to,259.jpg,365a0edcbdcde6fd37fabe21cb88ada9,11472,within_split_duplicate,near_phash,Train,Ca kho to,257.jpg
+Train,Ca kho to,416.jpg,7d1cca35fd4bdadfe129707c08a838bc,11597,within_split_duplicate,near_phash,Train,Ca kho to,415.jpg
+Train,Ca kho to,89.jpg,dc40eb4e1a3744b24b4e15a717c64666,11813,within_split_duplicate,exact_md5,Train,Ca kho to,86.jpg
+Train,Canh chua,9.jpg,276f63e1a91680dd9772c837099506a5,11827,within_split_duplicate,near_phash,Train,Canh chua,10.jpg
+Train,Canh chua,27.jpg,118f81e9e499bb03a2b23c278f829e14,11913,within_split_duplicate,exact_md5,Train,Canh chua,21.jpg
+Train,Canh chua,51.jpg,50fc33eb58c9edfc5a2e37e09d4c1f5d,11934,within_split_duplicate,near_phash,Train,Canh chua,233.jpg
+Train,Canh chua,278.jpg,7a000adb35ee6d0d4777476c64cccbef,11965,within_split_duplicate,near_phash,Train,Canh chua,275.jpg
+Train,Canh chua,529.jpg,dae40311e4104d8357a9caa45a63431b,12154,within_split_duplicate,exact_md5,Train,Canh chua,527.jpg
+Train,Cao lau,618.jpg,9be802099af4849441d3221de26c5bca,12554,within_split_duplicate,near_phash,Train,Cao lau,310.jpg
+Train,Chao long,148.jpg,0dfa794a3c7eea33a359e457bad4cd02,12877,within_split_duplicate,near_phash,Train,Chao long,106.jpg
+Train,Chao long,543.jpg,3f09fa20796b00c79c580415f5e91e72,12883,within_split_duplicate,near_phash,Train,Chao long,107.jpg
+Train,Chao long,262.jpg,eff28aef0d7ba67ee8076158e3670d75,12904,within_split_duplicate,near_phash,Train,Chao long,129.jpg
+Train,Chao long,423.jpg,280590e2887ebba0652135ad9ce131f1,12910,within_split_duplicate,near_phash,Train,Chao long,135.jpg
+Test,Chao long,491.jpg,32d360b108d927de9612a165e018defd,13046,within_split_duplicate,near_phash,Test,Chao long,311.jpg
+Train,Chao long,645.jpg,bfd1752806b3f80ab4151ccbbbc3419f,13286,within_split_duplicate,near_phash,Train,Chao long,644.jpg
+Train,Com tam,227.jpg,0078f483ee92f56ce07fa78e3f5020f4,13579,within_split_duplicate,near_phash,Train,Com tam,106.jpg
+Train,Com tam,120.jpg,9792b39a1d509a9af8161f60524e6670,13582,within_split_duplicate,near_phash,Train,Com tam,11.jpg
+Train,Com tam,139.jpg,884ba71dafdd157dc4d4df5c7114c6dd,13602,within_split_duplicate,exact_md5,Train,Com tam,133.jpg
+Train,Com tam,137.jpg,7dd4f516b28ef2241556dd02fe9110b9,13603,within_split_duplicate,near_phash,Train,Com tam,134.jpg
+Train,Com tam,240.jpg,f6f38de5f105676717d0b7739068bcef,13603,within_split_duplicate,near_phash,Train,Com tam,134.jpg
+Train,Com tam,204.jpg,89ffb43d9df25f80ce871f5f25cbdf4e,13652,within_split_duplicate,near_phash,Train,Com tam,202.jpg
+Train,Com tam,261.jpg,d3ec960e58256dc76ad1b25eb2b042aa,13694,within_split_duplicate,near_phash,Train,Com tam,259.jpg
+Train,Com tam,351.jpg,78998caa683c0ef010ca2d91b273fe3e,13753,within_split_duplicate,near_phash,Train,Com tam,333.jpg
+Train,Com tam,461.jpg,322e93005a783751d26615347f3d416a,13850,within_split_duplicate,near_phash,Train,Com tam,459.jpg
+Train,Goi cuon,217.jpg,b667badb6e9c03ae835139f2ea2a7969,14313,within_split_duplicate,near_phash,Train,Goi cuon,215.jpg
+Train,Goi cuon,227.jpg,fd9c86d076141637a5fb1c30eac9fe76,14318,within_split_duplicate,near_phash,Train,Goi cuon,225.jpg
+Train,Goi cuon,43.jpg,ab60630a6d15d3d1fb017050cf839876,14442,within_split_duplicate,near_phash,Train,Goi cuon,39.jpg
+Train,Goi cuon,75.jpg,6234d3ad40d7ee9070c3bf020861866b,14622,within_split_duplicate,near_phash,Train,Goi cuon,62.jpg
+Train,Hu tieu,71.jpg,9aa2d4133d62ea0df8dc351928391965,14829,within_split_duplicate,near_phash,Train,Hu tieu,116.jpg
+Train,Hu tieu,569.jpg,607e43ad09e93c7409f910351d60bbe6,14832,within_split_duplicate,near_phash,Train,Hu tieu,119.jpg
+Train,Hu tieu,438.jpg,89213035f2cc159b65fb2a13d49dd080,14834,within_split_duplicate,near_phash,Train,Hu tieu,120.jpg
+Train,Hu tieu,147.jpg,05b783f9825d526318bdd63b6bc10581,14844,within_split_duplicate,near_phash,Train,Hu tieu,135.jpg
+Train,Hu tieu,150.jpg,7523b7b71a30d6f3e175d755b6acefa2,14854,within_split_duplicate,near_phash,Train,Hu tieu,148.jpg
+Train,Hu tieu,359.jpg,8a4598520a8a4cb9c26c37993e920f9a,14874,within_split_duplicate,near_phash,Train,Hu tieu,179.jpg
+Train,Hu tieu,215.jpg,2de37f1589b033529816a05de03c8ced,14902,within_split_duplicate,near_phash,Train,Hu tieu,213.jpg
+Train,Hu tieu,91.jpg,e083c9e595881660fae7c6020e81fcb9,14932,within_split_duplicate,near_phash,Train,Hu tieu,253.jpg
+Train,Hu tieu,270.jpg,7776969b8e9ccf7df6ef1ad7a42ba229,14943,within_split_duplicate,near_phash,Train,Hu tieu,267.jpg
+Train,Hu tieu,276.jpg,258b9242cc6f9b388d43e3bdc1b5ec29,14947,within_split_duplicate,near_phash,Train,Hu tieu,274.jpg
+Train,Hu tieu,44.jpg,9ff67e340730c1891a46058f88bf6d12,14994,within_split_duplicate,near_phash,Train,Hu tieu,33.jpg
+Train,Hu tieu,375.jpg,2022dcb76d8aea631309cc2017f99828,15016,within_split_duplicate,near_phash,Train,Hu tieu,365.jpg
+Train,Hu tieu,598.jpg,48b9098f3e860ffc0f339cc86b22908a,15185,within_split_duplicate,exact_md5,Train,Hu tieu,597.jpg
+Train,Hu tieu,614.jpg,b616bdebd2226be83a622acc65e7906e,15198,within_split_duplicate,near_phash,Train,Hu tieu,613.jpg
+Train,Mi quang,874.jpg,7a240e7587433cbe7780905eaaa8ef59,15496,within_split_duplicate,near_phash,Train,Mi quang,106.jpg
+Train,Mi quang,833.jpg,99efa8a025b215e15a1267c458e9aba8,15502,within_split_duplicate,near_phash,Train,Mi quang,112.jpg
+Train,Mi quang,865.jpg,c68cbe161851c37db4c58bd1044fd41c,15510,within_split_duplicate,near_phash,Train,Mi quang,123.jpg
+Train,Mi quang,872.jpg,6672b58512c663aed04a261eec285a6a,15536,within_split_duplicate,near_phash,Train,Mi quang,151.jpg
+Train,Mi quang,237.jpg,1b30848b3951545be7fe6f9485abd02a,15542,within_split_duplicate,near_phash,Train,Mi quang,159.jpg
+Train,Mi quang,880.jpg,7e5d50c364487131eb4e32ff23194cf8,15562,within_split_duplicate,exact_md5,Train,Mi quang,181.jpg
+Train,Mi quang,258.jpg,29d998a7e4fdf82df14b2053e744d2d9,15564,within_split_duplicate,near_phash,Train,Mi quang,183.jpg
+Train,Mi quang,32.jpg,f192f9ba7ad446a0d8118714c963331c,15623,within_split_duplicate,near_phash,Train,Mi quang,26.jpg
+Train,Mi quang,877.jpg,c2443194693106d292d3c35061d51d5c,15652,within_split_duplicate,near_phash,Train,Mi quang,304.jpg
+Train,Mi quang,859.jpg,e66988730a4cd795a0b9a2eee34eb919,15667,within_split_duplicate,near_phash,Train,Mi quang,329.jpg
+Test,Mi quang,835.jpg,348fc2334fc085b790a6569b0ce7f841,15690,within_split_duplicate,near_phash,Test,Mi quang,358.jpg
+Train,Mi quang,878.jpg,cd6fcb78190b448c24851f8ab50099e1,15778,within_split_duplicate,near_phash,Train,Mi quang,461.jpg
+Train,Mi quang,879.jpg,71710d9765933bd9aeef851ef7c3a54e,15797,within_split_duplicate,near_phash,Train,Mi quang,487.jpg
+Train,Mi quang,861.jpg,29db0d1511b6d6385c5153c5a8b70a6a,15801,within_split_duplicate,near_phash,Train,Mi quang,494.jpg
+Train,Mi quang,852.jpg,fd0bafcb2d6cdc0ecc064d0b78e8c6ef,16029,within_split_duplicate,exact_md5,Train,Mi quang,788.jpg
+Validate,Mi quang,855.jpg,4fd72d43e7eb54cc5cbe5150b0a2fccf,16048,within_split_duplicate,exact_md5,Validate,Mi quang,58.jpg
+Train,Nem chua,119.jpg,ee386af79126dbc340d49dd52c2fa204,16110,within_split_duplicate,near_phash,Train,Nem chua,117.jpg
+Train,Nem chua,91.jpg,df508dace731fa390175d502eeb70124,16229,within_split_duplicate,near_phash,Train,Nem chua,274.jpg
+Train,Nem chua,288.jpg,fbf62831d9a0f970290b179fc89f5e11,16236,within_split_duplicate,near_phash,Train,Nem chua,286.jpg
+Train,Nem chua,53.jpg,2df42d6994f543a936984ca19816c794,16409,within_split_duplicate,near_phash,Train,Nem chua,51.jpg
+Train,Nem chua,59.jpg,ccacb49e75914eb0211d7e0ef02e8cc4,16437,within_split_duplicate,near_phash,Train,Nem chua,57.jpg
+Train,Pho,159.jpg,4837aab9163d018e223b0fabf8941207,16500,within_split_duplicate,near_phash,Train,Pho,144.jpg
+Train,Pho,158.jpg,e70077ee6e598eddd2fb12604ebb062c,16511,within_split_duplicate,near_phash,Train,Pho,156.jpg
+Train,Pho,778.jpg,1b7c6e98e2d0984af7c319fc9d8ffb87,16559,within_split_duplicate,near_phash,Train,Pho,212.jpg
+Train,Pho,795.jpg,8fca2413f102558967f0a18a4654de32,16574,within_split_duplicate,near_phash,Train,Pho,232.jpg
+Train,Pho,477.jpg,10cda8e3289b1c9b612af470090a3187,16698,within_split_duplicate,near_phash,Train,Pho,393.jpg
+Train,Pho,403.jpg,5c49a80527cecc62e60687969881bdf4,16704,within_split_duplicate,near_phash,Train,Pho,40.jpg
+Train,Pho,429.jpg,b3ce6ce413ff7f1aa252452dddc9b7ab,16721,within_split_duplicate,near_phash,Train,Pho,427.jpg
+Train,Pho,794.jpg,395f7617fa0b3d0cce0920528b2f3c3f,16940,within_split_duplicate,near_phash,Train,Pho,72.jpg
+Train,Xoi xeo,194.jpg,b692bf7a4004e57a337dc74f354c86b7,17083,within_split_duplicate,near_phash,Train,Xoi xeo,192.jpg
+Train,Xoi xeo,37.jpg,03a757160d5d507d5b09fc05cf0ef24c,17083,within_split_duplicate,near_phash,Train,Xoi xeo,192.jpg
+Validate,Banh can,261.jpg,62999fc1d98042edfe960c05170326d0,17541,within_split_duplicate,near_phash,Validate,Banh can,259.jpg
+Validate,Banh chung,497.jpg,5b9c586a632bdf6f557d34f6230e162c,17705,within_split_duplicate,near_phash,Validate,Banh chung,31.jpg
+Validate,Bun bo Hue,86.jpg,d2cf10872d8ed8380452fe9f64b319ac,18549,within_split_duplicate,near_phash,Validate,Bun bo Hue,187.jpg
+Validate,Ca kho to,39.jpg,07773c7830b80a0dc3008a1302631a99,19018,within_split_duplicate,near_phash,Validate,Ca kho to,31.jpg
+Test,Banh beo,92.jpg,ca5f2fedc1ad301053421c6201c8deb4,19905,within_split_duplicate,near_phash,Test,Banh beo,5.jpg
+Test,Banh can,227.jpg,30e7a9f47be8fdd3fea6aa8ab392fc59,20105,within_split_duplicate,near_phash,Test,Banh can,226.jpg
+Test,Banh xeo,478.jpg,293782760a816b54b37ad266e29eb23a,21850,within_split_duplicate,near_phash,Test,Banh xeo,320.jpg
+Test,Bun bo Hue,90.jpg,c1e2eb4d55c7941626ee4995b8cd557e,22192,within_split_duplicate,near_phash,Test,Bun bo Hue,492.jpg
+Test,Cao lau,615.jpg,83c33964f61fa8bc6e1a1330596a7470,23302,within_split_duplicate,near_phash,Test,Cao lau,103.jpg
+Test,Cao lau,35.jpg,77de700efba87fde8c431373a0f17b74,23338,within_split_duplicate,near_phash,Test,Cao lau,27.jpg
+Test,Chao long,339.jpg,c496e5abe76483aa7f1d99a21887c61b,23454,within_split_duplicate,near_phash,Test,Chao long,158.jpg
+Test,Chao long,326.jpg,b616046789f6347706ad3699696a4321,23459,within_split_duplicate,near_phash,Test,Chao long,191.jpg
+Test,Chao long,36.jpg,c70aba2c5dda9370818221f6c118c08d,23466,within_split_duplicate,near_phash,Test,Chao long,212.jpg
+Test,Chao long,97.jpg,36cd4ec43a559f545bff14e635c3d271,23597,within_split_duplicate,near_phash,Test,Chao long,91.jpg
+Test,Goi cuon,360.jpg,53b05dbc6626fd9cc4f5fb371ce0760f,23829,within_split_duplicate,near_phash,Test,Goi cuon,195.jpg
+Test,Hu tieu,200.jpg,2a963bcf50ad874d3096a47956c9cdc1,23976,within_split_duplicate,near_phash,Test,Hu tieu,123.jpg
+Test,Hu tieu,95.jpg,1d01070f41b43a960420989a5112a255,24061,within_split_duplicate,near_phash,Test,Hu tieu,485.jpg
+Test,Mi quang,822.jpg,931faecc68765c88b9efb5de3088505b,24167,within_split_duplicate,near_phash,Test,Mi quang,158.jpg
+Test,Mi quang,827.jpg,3d89f31399c3a619891dfc06d5ac1896,24203,within_split_duplicate,near_phash,Test,Mi quang,322.jpg
+Test,Mi quang,813.jpg,7116de0333353833eb8a2c38e8748a97,24205,within_split_duplicate,near_phash,Test,Mi quang,33.jpg
