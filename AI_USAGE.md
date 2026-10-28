@@ -216,16 +216,3 @@ Copy the template below for every distinct use. Group the entries by assignment.
 ### Assignment 3
 
 _(no entries yet)_
-
----
-
-## Worked example (format reference only — delete before submission)
-
-- **Tool:** [tool/model name]
-- **Used by:** [member name]
-- **Task:** Debugging the validation loop in `train.py`
-- **Prompt summary:** Asked why validation loss was accumulated incorrectly
-- **AI contribution:** Suggested sample-weighted loss accumulation
-- **Student verification:** Compared with the PyTorch documentation; tested on a small controlled set
-- **Affected files/sections:** `src/train.py`; report §3.2
-- **Responsible member:** [member name]
