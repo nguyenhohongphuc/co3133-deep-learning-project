@@ -33,12 +33,22 @@ The completion script writes `results/a1/tables/a1_reproducibility_manifest.json
 
 ## Reconstruct a model
 
+All seven saved checkpoints are tracked at `results/a1/runs/<run_id>/best.pt`. The trainer saves model `state_dict` values (parameters and buffers), not optimizer or RNG states. File presence, archive integrity, and SHA-256 hashes were checked. Loading into models and test-metric reproduction were not verified in this update.
+
+To re-evaluate an existing checkpoint from the repository root:
+
+```sh
+python -m src.evaluate --run_dir results/a1/runs/a1_cnn_s42_1027-0157
+```
+
+Select another archived run ID as needed. Use a disposable copy: the evaluator overwrites `test_metrics.json` and test figures. It does not retrain the model.
+
 `scripts/a1_report/reproduce_a1.py --run-id <archived-run-id>` prints a plan without changes. Adding `--execute` explicitly trains and evaluates a new run using the archived snapshot, restoring the central configuration afterward. Use a disposable copy and a prepared training environment. Original artifacts are not overwritten. The execution path was not run during report preparation.
 
 ## Points for the requested review
 
 - Seven saved runs use seed 42; no multi-seed statistics are claimed.
-- Original checkpoints are absent. Two LSTM runs have dirty training states, and the exported dependency snapshot needs reconciliation. These limits and reconstruction instructions are documented.
+- Seven saved checkpoints are available. Two LSTM runs have dirty training states, optimizer/RNG states are not saved, and the exported dependency snapshot needs reconciliation. These limits and evaluation/retraining instructions are documented.
 - Test #32 is **Dress predicted as Trouser**. An earlier transcription error was corrected against the saved grid and annotation audit.
 - Member roles are supported by repository history and the AI log. The group should verify that summary and disclosure before submission.
 

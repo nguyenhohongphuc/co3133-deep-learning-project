@@ -122,7 +122,15 @@ def reproducibility(runs):
     original = subprocess.check_output(["git", "rev-parse", "c1747a1"], cwd=ROOT, text=True).strip()
     changed = subprocess.check_output(["git", "diff", "--name-only", original, head, "--", "src", "configs"],
                                       cwd=ROOT, text=True).splitlines()
-    assert changed == ["src/evaluate.py"], changed
+    a1_paths = ["src/models/__init__.py", "src/models/linear.py", "src/models/mlp.py",
+                "src/models/cnn.py", "src/models/rnn.py", "src/models/transformer.py",
+                "src/data/fashion_mnist.py", "src/data/split.py", "src/data/loaders.py",
+                "src/data/transforms.py", "src/utils", "src/engine", "src/train.py",
+                "src/evaluate.py", "configs/a1.yaml"]
+    a1_changed = subprocess.check_output(
+        ["git", "diff", "--name-only", original, head, "--", *a1_paths],
+        cwd=ROOT, text=True).splitlines()
+    assert a1_changed == ["src/evaluate.py"], a1_changed
     paths = [ROOT / "results/a1/splits/split_seed42.json", ROOT/"configs/a1.yaml",
              ROOT/"requirements.txt", ROOT/"requirements.lock.txt"]
     paths += sorted((ROOT/"src").rglob("*.py"))
@@ -133,12 +141,19 @@ def reproducibility(runs):
         directory = ROOT / f"results/a1/runs/{run['run_id']}"
         files = [directory/name for name in ["config.yaml", "metrics.json", "history.csv", "test_metrics.json"]]
         paths += files
+        checkpoint = directory/"best.pt"
+        if checkpoint.is_file():
+            paths.append(checkpoint)
         metadata = json.loads((directory/"metrics.json").read_text())
         config_hash = hashlib.sha256((directory/"config.yaml").read_bytes()).hexdigest()
         inventory.append(dict(run_id=run["run_id"], model=run["model"], seed=42,
                               training_commit=run["commit"], selected_epoch=metadata["best_epoch"],
                               epochs_run=metadata["epochs_run"], config_sha256=config_hash,
-                              checkpoint_available=(directory/"best.pt").is_file()))
+                              checkpoint_available=checkpoint.is_file(),
+                              checkpoint_sha256=(hashlib.sha256(checkpoint.read_bytes()).hexdigest()
+                                                 if checkpoint.is_file() else None),
+                              checkpoint_bytes=(checkpoint.stat().st_size
+                                                if checkpoint.is_file() else None)))
         rows.append(r"\path{"+run["run_id"]+"} & "+str(metadata["best_epoch"])+
                     r" & \texttt{"+run["commit"]+r"} & \texttt{"+config_hash[:10]+"}"+r" \\")
     table("run_traceability.tex", "@{}Yrlr@{}",
@@ -149,6 +164,8 @@ def reproducibility(runs):
     manifest = dict(purpose="Input fingerprint and availability audit for the completed A1 report; no training/evaluation.",
                     report_source_checkout=head, main_training_commit=original,
                     changes_in_src_or_configs_since_training_commit=changed,
+                    a1_source_paths_compared=a1_paths,
+                    changes_in_a1_sources_since_training_commit=a1_changed,
                     recorded_evaluation_revision="Not independently saved in test metadata; current evaluator is fingerprinted here.",
                     split_sha256=hashes["results/a1/splits/split_seed42.json"],
                     runs=inventory, input_sha256=hashes,
