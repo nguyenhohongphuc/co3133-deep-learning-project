@@ -128,7 +128,8 @@ Copy the template below for every distinct use. Group the entries by assignment.
 - **How the output was edited and verified:** every number on the page was recomputed from the committed run
   folders (`metrics.json`, `test_metrics.json`, `history.csv`) and `results/a1/tables/comparison.csv`, and checked
   against the report tables and slide 21; parameter counts were checked by hand from the layer sizes. Figures are
-  the report's own, not regenerated. [member to add: final read-through result]
+  the report's own, not regenerated. Nguyễn Nhật Nam (2352778) then read the published page end to end and
+  opened every link; no errors were found.
 - **Sources used for verification:** committed run outputs; `src/models/*.py`; course handbook §§2.2, 12.1, 12.2
 - **Member responsible for final verification:** Hồ Hồng Phúc Nguyên (2352824)
 
