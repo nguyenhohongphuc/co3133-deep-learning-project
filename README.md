@@ -365,10 +365,15 @@ If you change code after step 2, go back to step 2 and train again.
 
 ## Checkpoints
 
-`best.pt` files are not stored in git (they are large and `*.pt` is in `.gitignore`).
+`*.pt` is in `.gitignore`, so checkpoints are not committed by default.
 
-- **Download:** TODO — link to the shared folder with the `best.pt` of every reported run.
-  Put each file back at `results/a1/runs/<run_id>/best.pt`.
+- **A1 (included in the repository):** the `best.pt` of all seven reported A1 runs (4.3 MB in total) were
+  force-added in commit `44d4fd2` and sit next to the files of their run, at
+  `results/a1/runs/<run_id>/best.pt`. Each file is the model `state_dict` only (no optimizer state), selected
+  by best validation macro-F1. Evaluate one directly after cloning:
+  `python -m src.evaluate --run_dir results/a1/runs/a1_cnn_s42_1027-0157`.
+  The runs were trained at commit `c1747a1` (recorded in each `metrics.json`); the A1 model, data and config
+  code is unchanged between that commit and `44d4fd2`.
 - **Reconstruct:** check out the commit recorded in that run's `metrics.json`, copy the run's `config.yaml` to
   `configs/a1.yaml`, and run `python -m src.train --model <model>`. The committed split and the fixed seed give
   the same data order; small numerical differences on the GPU are possible.

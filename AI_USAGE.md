@@ -112,6 +112,23 @@ Copy the template below for every distinct use. Group the entries by assignment.
 - **Sources used for verification:** the repository's own files and run outputs; course handbook §§2.2, 3, 4.2
 - **Member responsible for final verification:** Hồ Hồng Phúc Nguyên (2352824)
 
+**Entry 4 — Final A1 assignment page and landing-page roles**
+
+- **Tool:** Claude (Claude Code, model Opus 5.5)
+- **Used by:** Hồ Hồng Phúc Nguyên (2352824)
+- **Time / stage:** 28 Oct 2026 — preparing the M2 Final package
+- **Purpose:** report writing / result analysis — rewrite the A1 page with the final seven-run comparison, and
+  fill each member's role on the landing page from the git history
+- **Affected assignment section(s) and files:** `docs/assignments/assignment-1.html`, `docs/index.html`,
+  `docs/assets/img/a1/` (figures copied from the report branch), this file
+- **Representative prompt:** "cập nhật assignment-1.html và vai trò landing page đi"
+- **How the output was edited and verified:** every number on the page was recomputed from the committed run
+  folders (`metrics.json`, `test_metrics.json`, `history.csv`) and `results/a1/tables/comparison.csv`, and checked
+  against the report tables and slide 21; parameter counts were checked by hand from the layer sizes. Figures are
+  the report's own, not regenerated. [member to add: final read-through result]
+- **Sources used for verification:** committed run outputs; `src/models/*.py`; course handbook §§2.2, 12.1, 12.2
+- **Member responsible for final verification:** Hồ Hồng Phúc Nguyên (2352824)
+
 <!-- template — copy per use -->
 - **Tool:** [tool name + version/model if known]
 - **Used by:** [member name]
