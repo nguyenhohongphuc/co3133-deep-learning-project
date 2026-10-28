@@ -1,0 +1,119 @@
+% !TeX root = ../main.tex
+\section{Training and Evaluation Protocol}
+\label{sec:training-and-evaluation}
+
+The protocol below describes the seven recorded runs: the five main architecture configurations, with rows used for the main LSTM, plus its column and patch variants. We checked the configuration snapshots, epoch histories, training metadata, and test outputs against one another. These checks are recorded in \path{results/a1/tables/a1_protocol_verification.json}; they audit existing artifacts and do not constitute new training or test experiments.
+
+\subsection{Training Configuration}
+
+Every run uses the fixed Stratified Split and preprocessing described in Section~\ref{sec:data-preparation}. The shared optimization settings are summarized in Table~\ref{tab:a1-training-protocol}; architectural settings and model-specific regularization appear in Sections~\ref{sec:models} and~\ref{sec:loss-and-optimization}.
+
+\begin{table}[H]
+    \centering
+    \caption{Shared training protocol verified from all seven saved configurations.}
+    \label{tab:a1-training-protocol}
+    \begin{tabularx}{\textwidth}{@{}lY@{}}
+        \toprule
+        Setting & Recorded value \\
+        \midrule
+        Dataset partitions & 54,000 train; 6,000 validation; 10,000 official test \\
+        Random seed & 42 \\
+        Batch size / workers & 128 / 2 \\
+        Loss / optimizer & Cross-entropy / Adam \\
+        Base learning rate & $10^{-3}$, fixed; no scheduler \\
+        Weight decay / augmentation & 0 / none \\
+        Maximum epochs & 50 \\
+        Early stopping & 5 consecutive epochs without improved validation macro-F1 \\
+        Checkpoint selection & Highest validation macro-F1; strict improvement \\
+        Computation & CUDA; standard floating-point training without mixed precision \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+The common epoch limit provides a shared upper bound rather than an equal number of updates: early stopping can end different models at different epochs. The implementation does not use automatic mixed precision or gradient accumulation; each training batch produces one optimizer step.
+
+\subsection{Hardware and Software Environment}
+
+All training metadata identify CUDA execution on an NVIDIA GeForce RTX 4060 Laptop GPU. The run-level records consistently report Python 3.10.21, PyTorch \texttt{2.14.1+cu126}, and CUDA 12.6. Test outputs also record \texttt{device: cuda}. These are the environments of the reported experiments, rather than the local environment used later to draft and compile this report.
+
+The repository README describes the workstation as an AMD Ryzen 7 7735HS laptop with 15.2 GB RAM, an 8 GB RTX 4060 Laptop GPU, and Windows 11. The automatic run records identify the GPU and an AMD64 processor string, but do not independently capture the RAM, GPU-memory capacity, or operating-system version. We therefore distinguish these README-supplied workstation details from the automatically logged software and device fields.
+
+The dependency snapshot is not an exact match to the run metadata: \path{requirements.lock.txt} lists PyTorch 2.14.0, whereas the recorded runs report \texttt{2.14.1+cu126}. Other dependency versions listed in that snapshot should not be assumed to have been captured independently for each run. Reproduction should preserve the recorded CUDA/PyTorch build and reconcile this manifest difference rather than silently treating the snapshot as a complete environment lock.
+
+\subsection{Hyperparameter Selection}
+
+The recorded comparison uses shared training defaults rather than a documented model-by-model hyperparameter search. Layer widths, dropout rates, and sequence representations are specified in each run's saved configuration. No search history or complete tuning budget is included in the experiment artifacts, so the report does not claim that these settings maximize each architecture's achievable performance.
+
+Validation macro-F1 determines checkpoint selection and early stopping. The test set is evaluated by a separate entry point after loading the selected checkpoint; test scores are not used by the fitting routine. The artifacts document the final settings and outcomes, but do not establish the full history of any manual decisions preceding those runs.
+
+\subsection{Checkpoint Selection}
+
+After each epoch, the trainer evaluates the complete validation set and compares macro-F1 with the best value seen so far. A strictly larger value overwrites \path{best.pt} and resets the patience counter. An equal or lower value increments the counter. Training ends after five consecutive non-improving epochs or at the 50-epoch limit, and test evaluation restores the best checkpoint rather than the final epoch's weights.
+
+We confirmed that each saved \texttt{best\_epoch} and \texttt{best\_value} matches the corresponding maximum in \path{history.csv}, and that all seven recorded runs stop after five subsequent non-improving epochs. Stored epoch indices start at zero; an index of 7 therefore denotes the eighth training epoch. Epoch indices quoted from these logs retain this convention.
+
+\subsection{Evaluation Metrics}
+
+Accuracy and macro-F1 measure predictive quality on the 10,000-image official test set. Parameter count, total training time, and forward-pass inference time describe different aspects of computational cost. A method is assessed using these measures together rather than declaring the largest accuracy alone to be sufficient evidence of superiority.
+
+\subsubsection{Accuracy}
+
+For $N$ test images, let $\widehat{y}_i$ be the predicted label and $y_i$ the ground truth. Accuracy is
+\begin{equation}
+    \operatorname{Accuracy}
+    =\frac{1}{N}\sum_{i=1}^{N}\mathbb{I}\!\left[\widehat{y}_i=y_i\right].
+\end{equation}
+The indicator $\mathbb{I}$ equals one for a correct prediction and zero otherwise. The implementation obtains each prediction by taking the argmax of the ten logits. Accuracy is reported as a fraction or percentage, with the unit indicated in each result table.
+
+\subsubsection{Macro-F1}
+
+For class $k$, define $TP_k$, $FP_k$, and $FN_k$ as its true-positive, false-positive, and false-negative counts. The classwise F1 and macro average are
+\begin{equation}
+    F1_k=\frac{2TP_k}{2TP_k+FP_k+FN_k},
+    \qquad
+    \operatorname{Macro\text{-}F1}=\frac{1}{10}\sum_{k=0}^{9}F1_k.
+\end{equation}
+Scikit-learn computes this quantity with \texttt{average="macro"}, giving every class equal weight~\cite{sklearn-f1}. It incorporates both precision and recall. Equal class frequencies do not make it interchangeable with accuracy because the distribution of false-positive and false-negative errors can differ across classes.
+
+The saved confusion matrices contain 1,000 test examples per true class. We recomputed accuracy and macro-F1 from these matrices and confirmed agreement with all seven stored metric files. Confusion matrices and prediction examples provide the class-level context for these aggregate scores.
+
+\subsubsection{Parameter Count}
+
+The training script sums \texttt{numel()} over model parameters. All parameters in the configured models are trainable, so this is also their trainable parameter count. It includes weights and biases and excludes buffers such as BatchNorm running statistics. It measures model size in scalar parameters and is not a direct measure of runtime or peak memory.
+
+\subsubsection{Training Time}
+
+Training time is measured in seconds around the call to \texttt{fit}. It includes the training and validation loops, checkpoint writes, and history-file output within that routine. Dataset preparation, model construction, and the separate final test and plotting steps fall outside this interval. The elapsed time is saved as \texttt{train\_time} in \path{metrics.json}.
+
+Because early stopping changes the number of completed epochs, this value is the cost of the recorded run rather than a measurement at a fixed update budget. The number of executed epochs is reported alongside runtime when interpreting efficiency.
+
+\subsubsection{Inference Time}
+
+The timing routine in \path{src/evaluate.py} measures forward passes over the full test set with batch size 128. It first loads and normalizes the data and transfers the tensors to the target device. The current implementation performs three warm-up calls on the first batch, then times five full test-set passes in evaluation mode with gradients disabled. CUDA synchronization brackets each timed pass so the interval includes completion of the device work.
+
+The reported duration is the median of the five passes. The saved outputs confirm a batch size of 128 and five repetitions for every run. Data loading, normalization, host-to-device copies, argmax, metric calculation, and plot generation are excluded from this timing. The stored per-image quantity is
+\begin{equation}
+    t_{\mathrm{image}}\;[\mathrm{ms}]
+    =\frac{1000\,\operatorname{median}(t_1,\ldots,t_5)}{10{,}000}.
+\end{equation}
+This is an amortized time per image under batched inference, not a separately measured single-image request latency. We checked that the stored per-image times match the total-duration conversion above.
+
+\subsection{Fair Comparison Protocol}
+
+The main comparison holds the saved split, seed, preprocessing, batch size, optimizer settings, epoch limit, checkpoint criterion, test set, and metric definitions fixed. Recorded training and test device fields also agree across runs. Architectural capacity, input representation, and regularization vary as documented in Section~\ref{sec:models}; parameters and computation budgets are not matched.
+
+Each configuration has only one recorded random seed, 42. Consequently, the tables describe individual runs and do not provide seed-to-seed standard deviations, confidence intervals, or evidence of statistical significance. Repeating inference timing five times does not provide independent training seeds.
+
+The five main runs record commit \texttt{c1747a1}. The additional LSTM column and patch runs record \texttt{c1747a1-dirty}, indicating uncommitted source or configuration changes during training. Their saved configurations and metrics remain available, but the commit identifier alone does not recover those working-tree changes. This limits traceability of these additional comparisons. The training commit also does not independently identify a later evaluation-code revision; the timing description above follows the stored timing metadata and the available evaluation implementation.
+
+\subsection{Experimental Hypotheses and Controlled Factors}
+
+The following questions organize the analysis of the existing runs. They are descriptive comparison criteria, with the common controls stated above; no multi-seed significance test or unrecorded acceptance threshold is assumed.
+
+\begin{enumerate}
+    \item \textbf{Nonlinear capacity: MLP versus linear.} The hypothesis is that hidden nonlinear layers improve predictive quality. The changed factors include hidden capacity and dropout. Compare test accuracy and macro-F1, then quantify the accompanying changes in parameters and runtime. An improvement supports a benefit of the configured MLP as a whole, rather than isolating nonlinearity alone.
+    \item \textbf{Spatial processing: CNN versus MLP.} The hypothesis is that local feature extraction and shared filters provide a useful spatial bias. The changed factors include connectivity, capacity, pooling, and normalization. Assess predictive metrics jointly with parameter count and runtime, and use class confusions to locate differences. This is an architecture comparison, not a single-factor ablation.
+    \item \textbf{Scan orientation: LSTM rows versus columns.} Change only the sequence orientation in the saved model settings while keeping hidden size, layer count, and parameter count fixed. Compare macro-F1, accuracy, and runtime to examine sensitivity to scan order. Interpret the result alongside the column run's incomplete commit traceability.
+    \item \textbf{Sequence granularity: LSTM rows versus patches.} The hypothesis is that grouping pixels into patches changes how the recurrent model processes spatial information. Both sequence length and input width change, increasing the parameter count. Compare predictive quality and runtime while reporting this capacity difference; the experiment does not isolate sequence length alone.
+    \item \textbf{Global token interaction: Transformer versus CNN.} Compare the patch encoder with the spatial CNN to examine the trade-off between global self-attention and convolutional processing. Report accuracy and macro-F1 alongside size and timing. Architectural family, tokenization, depth, and regularization all vary, so an observed difference is attributed to the recorded configurations rather than attention alone.
+\end{enumerate}

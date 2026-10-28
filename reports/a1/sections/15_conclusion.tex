@@ -1,0 +1,17 @@
+% !TeX root = ../main.tex
+\section{Conclusion}
+\label{sec:conclusion}
+
+\subsection{Main Findings}
+
+This study implemented and compared five model families through a shared PyTorch pipeline on Fashion-MNIST, with a fixed 54,000/6,000/10,000 train/validation/test partition and validation macro-F1 checkpoint selection. All seven recorded configurations use seed 42.
+
+The CNN achieves the strongest aggregate test result: 91.82\% accuracy and 91.76\% macro-F1 with 50,378 parameters. It reduces errors by 244 relative to the MLP and 779 relative to the linear baseline. Its advantage is supported by class-level counts and selected common-image predictions, while Dress recall remains higher for the row LSTM. Shirt is the weakest-F1 class across all five main models.
+
+The main research question therefore has a conditional answer: CNN offers the best recorded predictive quality with compact parameter size, whereas Linear and MLP retain lower-latency operating points under the measured batched protocol. Rows give the strongest LSTM quality among the tested representations. Patches lower recurrent arithmetic and inference cost while worsening test quality; the Transformer supplies the largest configured model without a corresponding gain under the shared recipe.
+
+These observations are consistent with a useful spatial prior on small grayscale images, but do not isolate architecture from regularization, optimization, or capacity. One seed, missing original checkpoints, incomplete dirty-run traceability, and environment differences limit stronger conclusions.
+
+\subsection{Future Work}
+
+The next experimental priorities are repeated seeds, complete prediction/checkpoint exports, and controlled validation studies. Match capacity and normalization when comparing dense and convolutional models; vary LSTM orientation or patch size with explicit capacity controls; and tune the patch encoder's optimization and regularization under a comparable search budget. Test candidate changes on validation data and evaluate the selected design independently after freezing the protocol. These steps would distinguish reproducible architectural effects from configuration-specific outcomes.

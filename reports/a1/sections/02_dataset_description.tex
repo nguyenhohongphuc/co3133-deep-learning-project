@@ -1,0 +1,88 @@
+% !TeX root = ../main.tex
+\section{Dataset Description}
+\label{sec:dataset-description}
+
+\subsection{Dataset Source and License}
+
+Fashion-MNIST contains fashion-product images released by Zalando Research and is the dataset used for the main comparison in this assignment~\cite{fashionmnist-repository}. The project loads it through \path{torchvision.datasets.FashionMNIST}; the download procedure is provided in \path{scripts/prepare_data.py}. The upstream repository distributes the dataset under the MIT license~\cite{fashionmnist-license}. We use the official image and label files without adding or relabeling samples. MNIST is reserved for development and debugging, and no CIFAR-10 experiments are included in the committed A1 comparison.
+
+To identify the dataset release reproducibly, we verified the MD5 checksums of all four local compressed files against the values published by the maintainers. All four matched. This identifies the data used more precisely than a download date alone.
+
+% Keep the heading and compact overview together; let the explanation flow.
+\noindent\begin{minipage}{\textwidth}
+\subsection{Dataset Statistics}
+
+Table~\ref{tab:a1-dataset-overview} summarizes the 70,000 Fashion-MNIST images and the partitions used in this project.
+
+\begin{table}[H]
+    \centering
+    \small
+    \captionsetup{font=small,skip=5pt}
+    \caption{Fashion-MNIST characteristics and partitions used in this project.}
+    \label{tab:a1-dataset-overview}
+    \begin{tabularx}{\textwidth}{@{}lY@{}}
+        \toprule
+        Property & Value \\
+        \midrule
+        Prediction unit & One image with one class label \\
+        Classes & 10, encoded by integers from 0 to 9 \\
+        Image size and channels & $28\times28$ pixels, one grayscale channel \\
+        Raw pixel representation & Unsigned 8-bit integers, intensity range $[0,255]$ \\
+        Official partitions & 60,000 training images; 10,000 test images \\
+        Project partitions & 54,000 train; 6,000 validation; 10,000 test \\
+        Training/validation split & Stratified Split, 90\%/10\% per class, seed 42 \\
+        Storage format & IDX image and label files, distributed as gzip archives \\
+        Compressed download size & 30,878,645 bytes (approximately 30.88 MB) \\
+        Uncompressed IDX size & 54,950,048 bytes (approximately 54.95 MB) \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+\end{minipage}
+
+We apply a \emph{Stratified Split} to the 60,000-image official training partition, allocating 90\% of each class to training and 10\% to validation with random seed 42. This yields 54,000 training images and 6,000 validation images while preserving class proportions. The official test partition of 10,000 images remains unchanged. Implementation details are described in the next section.
+
+The storage sizes above were measured from the four local archives and their four extracted IDX files, respectively. They exclude checkpoints, plots, and other experiment artifacts. Each image contributes 784 pixel values, and the annotations contain class IDs rather than bounding boxes or segmentation masks.
+
+\subsection{Exploratory Data Analysis}
+
+The EDA examines class counts, image dimensions, pixel representation, and examples from each category. We checked the saved split indices against the raw label files and confirmed that the counts in \path{results/a1/tables/a1_class_distribution.csv} match the data. The figures below reuse the existing EDA artifacts in \path{results/a1/figures/}.
+
+\subsubsection{Class Distribution}
+
+Figure~\ref{fig:a1-class-distribution} shows the training and validation counts for all ten classes. Each class has 6,000 images in the official training partition. The Stratified Split retains 5,400 per class for training and 600 per class for validation; the official test set contains 1,000 per class.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/eda/a1_class_distribution.png}
+    \caption{Class distribution after the fixed Stratified Split. All classes have identical support within each partition.}
+    \label{fig:a1-class-distribution}
+\end{figure}
+
+\subsubsection{Input Characteristics}
+
+All images have the same dimensions, so the comparison does not require resizing or padding to accommodate variable image sizes. Inspection of Figure~\ref{fig:a1-representative-samples} shows light and dark garments, differences in silhouette, and varying contrast against the background. Fine details are difficult to distinguish at this resolution.
+
+After conversion to tensors, an image has shape $[1,28,28]$ and a batch has shape $[B,1,28,28]$. The training configuration records a pixel mean of $0.286209$ and a standard deviation of $0.353160$ on the $[0,1]$ scale. The repository's statistics script computes these values using only the fixed 54,000-image training subset. Their use in normalization is explained in the data-preparation section.
+
+\subsubsection{Class Imbalance Analysis}
+
+Every class accounts for exactly 10\% of each partition. The ratio of the largest to the smallest class count is therefore $1.0$, indicating no class-frequency imbalance. Class reweighting or oversampling is not motivated by these counts. This balance does not imply equal classification difficulty: classes with similar appearances may still have different error rates. We report macro-F1 alongside accuracy to assess classwise precision and recall, and use confusion matrices to locate the remaining differences.
+
+\subsubsection{Representative Samples}
+
+Figure~\ref{fig:a1-representative-samples} shows one existing EDA example per class from the training subset. The grid illustrates the label mapping and visible differences between categories. It is illustrative rather than an exhaustive account of within-class variation.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/eda/a1_representative_samples.png}
+    \caption{One Fashion-MNIST training example per class, labeled with its class ID and name.}
+    \label{fig:a1-representative-samples}
+\end{figure}
+
+\subsubsection{Ambiguous Classes and Dataset Limitations}
+
+Upper-body categories such as T-shirt/top, shirt, pullover, and coat can share similar outlines. At $28\times28$ pixels, sleeve shape, garment length, and coarse intensity patterns may carry more visible information than small details. This motivates examining these categories in the later error analysis; it does not establish which class pairs the trained models confuse most often.
+
+The benchmark has several limits. Grayscale images remove color cues, and the small spatial resolution restricts the available texture and shape detail. The examples depict isolated fashion items, so they do not represent the full variation of backgrounds, occlusions, viewpoints, and lighting in everyday photographs. A balanced ten-class benchmark also does not reproduce the potentially uneven category frequencies of a deployed application. Consequently, the experiments support conclusions about this benchmark and the recorded training protocol; deployment performance and broader domain generalization remain untested.
+
+\clearpage

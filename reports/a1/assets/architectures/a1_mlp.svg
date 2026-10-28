@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="395" viewBox="0 0 1200 395">
+<title>Multilayer perceptron</title>
+<rect width="1200" height="395" fill="white"/>
+<text x="25" y="28" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#182D45" text-anchor="start" dominant-baseline="central">Multilayer perceptron</text>
+<text x="1175" y="28" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="end" dominant-baseline="central">235,146 parameters</text>
+<line x1="177" y1="119" x2="438" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="119" x2="438" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="119" x2="438" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="119" x2="438" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="119" x2="438" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="158" x2="438" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="158" x2="438" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="158" x2="438" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="158" x2="438" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="158" x2="438" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="197" x2="438" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="197" x2="438" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="197" x2="438" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="197" x2="438" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="197" x2="438" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="236" x2="438" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="236" x2="438" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="236" x2="438" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="236" x2="438" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="236" x2="438" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="275" x2="438" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="275" x2="438" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="275" x2="438" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="275" x2="438" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="177" y1="275" x2="438" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="119" x2="723" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="119" x2="723" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="119" x2="723" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="119" x2="723" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="119" x2="723" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="158" x2="723" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="158" x2="723" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="158" x2="723" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="158" x2="723" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="158" x2="723" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="197" x2="723" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="197" x2="723" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="197" x2="723" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="197" x2="723" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="197" x2="723" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="236" x2="723" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="236" x2="723" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="236" x2="723" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="236" x2="723" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="236" x2="723" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="275" x2="723" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="275" x2="723" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="275" x2="723" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="275" x2="723" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="462" y1="275" x2="723" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="119" x2="1053" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="119" x2="1053" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="119" x2="1053" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="119" x2="1053" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="119" x2="1053" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="158" x2="1053" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="158" x2="1053" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="158" x2="1053" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="158" x2="1053" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="158" x2="1053" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="197" x2="1053" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="197" x2="1053" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="197" x2="1053" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="197" x2="1053" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="197" x2="1053" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="236" x2="1053" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="236" x2="1053" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="236" x2="1053" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="236" x2="1053" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="236" x2="1053" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="275" x2="1053" y2="119" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="275" x2="1053" y2="158" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="275" x2="1053" y2="197" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="275" x2="1053" y2="236" stroke="#C7D4E1" stroke-width="0.85"/>
+<line x1="747" y1="275" x2="1053" y2="275" stroke="#C7D4E1" stroke-width="0.85"/>
+<text x="165" y="74" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#254F80" text-anchor="middle" dominant-baseline="central">Input</text>
+<circle cx="165" cy="119" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<circle cx="165" cy="158" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<circle cx="165" cy="197" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<circle cx="165" cy="236" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<circle cx="165" cy="275" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<text x="165" y="312" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">784 units</text>
+<text x="450" y="74" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#254F80" text-anchor="middle" dominant-baseline="central">Hidden 1</text>
+<circle cx="450" cy="119" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<circle cx="450" cy="158" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<circle cx="450" cy="197" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<circle cx="450" cy="236" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<circle cx="450" cy="275" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<text x="450" y="312" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">256 units</text>
+<text x="735" y="74" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#254F80" text-anchor="middle" dominant-baseline="central">Hidden 2</text>
+<circle cx="735" cy="119" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<circle cx="735" cy="158" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<circle cx="735" cy="197" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<circle cx="735" cy="236" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<circle cx="735" cy="275" r="12" fill="#F0F5FB" stroke="#254F80" stroke-width="2"/>
+<text x="735" y="312" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">128 units</text>
+<text x="1065" y="74" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#08776F" text-anchor="middle" dominant-baseline="central">Logits</text>
+<circle cx="1065" cy="119" r="12" fill="#EFF8F6" stroke="#08776F" stroke-width="2"/>
+<circle cx="1065" cy="158" r="12" fill="#EFF8F6" stroke="#08776F" stroke-width="2"/>
+<circle cx="1065" cy="197" r="12" fill="#EFF8F6" stroke="#08776F" stroke-width="2"/>
+<circle cx="1065" cy="236" r="12" fill="#EFF8F6" stroke="#08776F" stroke-width="2"/>
+<circle cx="1065" cy="275" r="12" fill="#EFF8F6" stroke="#08776F" stroke-width="2"/>
+<text x="1065" y="312" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">10 outputs</text>
+<text x="450" y="343" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#7356A4" text-anchor="middle" dominant-baseline="central">ReLU + dropout 0.2</text>
+<text x="735" y="343" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#7356A4" text-anchor="middle" dominant-baseline="central">ReLU + dropout 0.2</text>
+<text x="600" y="379" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#526578" text-anchor="middle" dominant-baseline="central">Flattened pixels → 256 → 128 → 10  |  Selected neurons shown; dropout is active only during training</text>
+</svg>

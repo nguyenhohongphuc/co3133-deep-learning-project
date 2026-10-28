@@ -1,0 +1,55 @@
+% !TeX root = ../main.tex
+\section{Qualitative Results}
+\label{sec:qualitative-results}
+
+We examine CNN run \texttt{a1\_cnn\_s42\_1027-0157}, which has the highest recorded test scores (Section~\ref{sec:quantitative-results}). Cases are selected from its saved grids of the first 16 correct and first 16 incorrect predictions in test-set order. They illustrate individual outcomes rather than population frequencies or robustness.
+
+All 32 source panels were matched to original test images and their true labels checked. Predictions come from saved annotations; no checkpoint was rerun. Figures show original $28\times28$ pixels with fixed grayscale and nearest-neighbor enlargement. Test IDs are zero-based; panel provenance is recorded in \path{results/a1/tables/a1_qualitative_examples.json}.
+
+\subsection{Correct Predictions}
+
+Figure~\ref{fig:a1-correct-examples} shows six correct predictions. The trouser image has two distinct legs, the dress has a long sleeveless outline, and the footwear shows different silhouettes. The correctly classified Shirt illustrates success on an individual example from the CNN's lowest-F1 class.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.92\textwidth]{\reportroot assets/qualitative/correct_examples.png}
+    \caption{Six correct CNN predictions selected from the saved correct-example grid. Each panel gives its official test index, ground-truth label, and recorded prediction. These examples illustrate individual successes rather than a balanced sample of all ten classes.}
+    \label{fig:a1-correct-examples}
+\end{figure}
+
+\subsection{Difficult but Correct Cases}
+
+Here, ``difficult'' describes visually challenging characteristics identified during inspection, not low confidence or a measured difficulty score. Figure~\ref{fig:a1-difficult-correct} shows four further correct cases, without repeating the images in Figure~\ref{fig:a1-correct-examples}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/qualitative/difficult_correct.png}
+    \caption{Visually challenging but correct CNN cases: a pullover with a prominent chest graphic (test \#1), a dark coat (\#6), a checked shirt (\#7), and a lighter coat (\#10). The cases were chosen by visual inspection, without confidence-based ranking.}
+    \label{fig:a1-difficult-correct}
+\end{figure}
+
+The chest graphic in test \#1 introduces strong internal contrast, while the checked pattern in test \#7 creates many local intensity changes. Both are classified correctly despite their different surface patterns. The two Coat images, tests \#6 and \#10, vary visibly in brightness and contrast while retaining the same correct predicted class. These observations demonstrate success on these particular images; they do not establish invariance to arbitrary texture or lighting changes because no controlled perturbation experiment was performed.
+
+The correctly classified checked Shirt is also informative when compared with test \#248 in Figure~\ref{fig:a1-incorrect-examples}: that checked Pullover is predicted as Shirt. A similar visible pattern can therefore accompany both a correct and an incorrect result. This comparison motivates examining shape and texture together, but does not identify a causal feature without additional model analysis.
+
+\subsection{Incorrect Predictions}
+
+Figure~\ref{fig:a1-incorrect-examples} presents eight errors selected from the saved incorrect-example grid. Their labels remain the official ground truth and the recorded CNN prediction, even where an image is visually ambiguous. No relabeling is inferred from appearance alone.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/qualitative/incorrect_examples.png}
+    \caption{Eight incorrect CNN predictions, selected to illustrate upper-body garment overlap, narrow or elongated views, and footwear confusion. The labels and test IDs identify individual observed errors; their proportions in this selected figure do not estimate error frequencies.}
+    \label{fig:a1-incorrect-examples}
+\end{figure}
+
+\paragraph{Upper-body garment overlap.}
+The Coat in test \#25 is predicted as Shirt, the Coat in \#98 as Pullover, and the Pullover in \#248 as Shirt. All have a torso-and-sleeve outline, while small construction details are difficult to resolve at $28\times28$. Test \#40, officially Shirt but predicted as T-shirt/top, has a short-sleeved appearance. These examples are consistent with the garment confusions in the test matrices, although they do not prove that low resolution alone caused the errors.
+
+\paragraph{View and silhouette ambiguity.}
+The Dress in test \#32 appears as a narrow view and is predicted as Trouser. The Shirt in \#147 has an elongated light outline and is predicted as Dress. These images illustrate cases where the visible silhouette provides incomplete or overlapping category cues. They do not establish that either official label is incorrect.
+
+\paragraph{Footwear confusion and selection limits.}
+Tests \#23 and \#68 are Ankle boots predicted as Sandal and Sneaker, respectively. Their visible openings, ankle regions, and sole shapes invite comparison with the correctly classified footwear in Figure~\ref{fig:a1-correct-examples}. However, the early-error grid is not a frequency summary: the complete CNN matrix contains 112 Shirt-to-T-shirt/top errors and 34 Ankle-boot-to-Sneaker errors. Conclusions about prevalence therefore come from Section~\ref{sec:quantitative-results}, rather than the number of shoe images selected here.
+
+The saved figures provide no per-image probability or logit values, and this analysis computes no saliency or attribution maps. Explanations above are visual hypotheses grounded in identified examples, not claims about confidence or the model's internal attention. The later error-analysis section can organize these observations alongside the full-set confusion counts.

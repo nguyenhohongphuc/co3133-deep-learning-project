@@ -27,3 +27,8 @@ Thumbs.db
 
 # Local working notes (not part of the submission)
 GROUP_INFO.md
+
+# A1 LaTeX build outputs (keep the named report PDF export)
+/reports/a1/main.pdf
+/reports/a1/main.log
+/reports/a1/main.synctex.gz

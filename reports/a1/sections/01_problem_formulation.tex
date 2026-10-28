@@ -1,0 +1,41 @@
+\section{Problem Formulation}
+\label{sec:problem-formulation}
+
+\subsection{Motivation}
+
+Recognizing the category of a fashion item from an image is relevant to organizing product catalogs and supporting product search. This report studies a simplified version of this task using Fashion-MNIST. The objective is to compare how different neural network architectures learn from the same images within a reproducible experimental pipeline.
+
+The comparison covers five model families: a linear classifier, a multilayer perceptron (MLP), a convolutional neural network (CNN), a long short-term memory network (LSTM), and a Transformer encoder. These models process the image in different ways: flattened pixels, a two-dimensional spatial grid, or a sequence of rows, columns, or patches. This makes the task suitable for examining how input representation and architectural assumptions relate to classification performance and computational cost.
+
+The study is limited to the Fashion-MNIST benchmark. Its results should not be interpreted as evidence of performance on full-resolution product photographs, cluttered scenes, or production catalog systems.
+
+\subsection{Input and Output}
+
+Each sample is a grayscale image of size $28\times28$ pixels paired with one of ten class labels. The prediction unit is one image, and the task is single-label multiclass classification. After preprocessing, a batch of $B$ images is represented by a tensor $X\in\mathbb{R}^{B\times1\times28\times28}$.
+
+For an individual image $x$, a model with parameters $\theta$ produces ten logits:
+\begin{equation}
+    f_{\theta}:\mathbb{R}^{1\times28\times28}\rightarrow\mathbb{R}^{10},
+    \qquad z=f_{\theta}(x).
+\end{equation}
+The predicted class is
+\begin{equation}
+    \hat{y}=\operatorname*{arg\,max}_{k\in\{0,\ldots,9\}} z_k.
+\end{equation}
+All models return logits and are trained using cross-entropy loss. Softmax is not applied before the loss. Although their internal input representations differ, every model follows the same external input and output interface.
+
+The main difficulties are distinguishing visually similar categories from low-resolution images and learning representations that generalize beyond the training set. The evaluation therefore considers both aggregate scores and the classes and examples on which each model makes errors.
+
+\subsection{Research Questions}
+
+The main research question is: \emph{How do the five architecture families compare on Fashion-MNIST in terms of predictive quality and computational cost under a shared data split and evaluation protocol?}
+
+We examine the following supporting questions:
+\begin{enumerate}
+    \item How much do nonlinear models improve over the linear baseline in accuracy and macro-F1?
+    \item How do spatial processing in the CNN and sequence processing in the LSTM and Transformer relate to performance and class confusions?
+    \item How does representing an image as rows, columns, or patches affect the LSTM in the available experiments?
+    \item What trade-offs arise between accuracy, macro-F1, parameter count, training time, and inference time?
+\end{enumerate}
+
+All main models use the same train, validation, and test partitions and evaluation metrics. Differences in model capacity, regularization, and training behavior are documented when interpreting the results; a performance difference alone does not isolate the causal effect of architecture. Numerical answers and supporting examples are presented in the results and discussion sections.

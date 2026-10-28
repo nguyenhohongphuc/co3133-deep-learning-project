@@ -1,0 +1,291 @@
+{
+  "purpose": "Analytical comparisons of recorded runs and structural operation counts; no new training or inference.",
+  "upper_group": {
+    "class_ids": [
+      0,
+      2,
+      3,
+      4,
+      6
+    ],
+    "names": [
+      "T-shirt/top",
+      "Pullover",
+      "Dress",
+      "Coat",
+      "Shirt"
+    ],
+    "test_support": 5000
+  },
+  "pairwise": [
+    {
+      "model": "MLP",
+      "baseline": "Linear",
+      "accuracy_gain_pp": 5.35,
+      "macro_f1_gain_pp": 5.303901138427436,
+      "net_fewer_errors": 535,
+      "relative_error_reduction": 0.33500313087038197,
+      "net_error_reduction_by_true_class": [
+        94,
+        13,
+        57,
+        36,
+        97,
+        64,
+        117,
+        9,
+        31,
+        17
+      ],
+      "upper_true_class_net_reduction": 401
+    },
+    {
+      "model": "CNN",
+      "baseline": "Linear",
+      "accuracy_gain_pp": 7.789999999999997,
+      "macro_f1_gain_pp": 7.685838272382217,
+      "net_fewer_errors": 779,
+      "relative_error_reduction": 0.48778960551033185,
+      "net_error_reduction_by_true_class": [
+        124,
+        25,
+        156,
+        43,
+        136,
+        69,
+        120,
+        22,
+        48,
+        36
+      ],
+      "upper_true_class_net_reduction": 579
+    },
+    {
+      "model": "CNN",
+      "baseline": "MLP",
+      "accuracy_gain_pp": 2.4399999999999977,
+      "macro_f1_gain_pp": 2.3819371339547812,
+      "net_fewer_errors": 244,
+      "relative_error_reduction": 0.2297551789077213,
+      "net_error_reduction_by_true_class": [
+        30,
+        12,
+        99,
+        7,
+        39,
+        5,
+        3,
+        13,
+        17,
+        19
+      ],
+      "upper_true_class_net_reduction": 178
+    },
+    {
+      "model": "CNN",
+      "baseline": "LSTM rows",
+      "accuracy_gain_pp": 1.9000000000000017,
+      "macro_f1_gain_pp": 1.8713094475720005,
+      "net_fewer_errors": 190,
+      "relative_error_reduction": 0.1884920634920635,
+      "net_error_reduction_by_true_class": [
+        69,
+        20,
+        32,
+        -40,
+        74,
+        0,
+        15,
+        4,
+        7,
+        9
+      ],
+      "upper_true_class_net_reduction": 150
+    },
+    {
+      "model": "CNN",
+      "baseline": "Transformer",
+      "accuracy_gain_pp": 3.3599999999999963,
+      "macro_f1_gain_pp": 3.3259005420011256,
+      "net_fewer_errors": 336,
+      "relative_error_reduction": 0.29116117850953205,
+      "net_error_reduction_by_true_class": [
+        53,
+        23,
+        84,
+        -20,
+        112,
+        27,
+        32,
+        5,
+        11,
+        9
+      ],
+      "upper_true_class_net_reduction": 261
+    },
+    {
+      "model": "LSTM rows",
+      "baseline": "LSTM columns",
+      "accuracy_gain_pp": 1.31,
+      "macro_f1_gain_pp": 1.2338232966557894,
+      "net_fewer_errors": 131,
+      "relative_error_reduction": 0.11501316944688324,
+      "net_error_reduction_by_true_class": [
+        18,
+        -12,
+        58,
+        35,
+        29,
+        21,
+        -29,
+        7,
+        7,
+        -3
+      ],
+      "upper_true_class_net_reduction": 111
+    },
+    {
+      "model": "LSTM rows",
+      "baseline": "LSTM patches",
+      "accuracy_gain_pp": 1.5900000000000025,
+      "macro_f1_gain_pp": 1.5092062946612472,
+      "net_fewer_errors": 159,
+      "relative_error_reduction": 0.13624678663239073,
+      "net_error_reduction_by_true_class": [
+        32,
+        -5,
+        90,
+        34,
+        -2,
+        19,
+        -32,
+        13,
+        14,
+        -4
+      ],
+      "upper_true_class_net_reduction": 122
+    }
+  ],
+  "error_groups": [
+    {
+      "model": "Linear",
+      "total_errors": 1597,
+      "within_upper_group_errors": 1200,
+      "within_upper_group_fraction": 0.7514088916718847,
+      "errors_from_true_upper_classes": 1290
+    },
+    {
+      "model": "MLP",
+      "total_errors": 1062,
+      "within_upper_group_errors": 857,
+      "within_upper_group_fraction": 0.8069679849340866,
+      "errors_from_true_upper_classes": 889
+    },
+    {
+      "model": "CNN",
+      "total_errors": 818,
+      "within_upper_group_errors": 678,
+      "within_upper_group_fraction": 0.8288508557457213,
+      "errors_from_true_upper_classes": 711
+    },
+    {
+      "model": "LSTM rows",
+      "total_errors": 1008,
+      "within_upper_group_errors": 833,
+      "within_upper_group_fraction": 0.8263888888888888,
+      "errors_from_true_upper_classes": 861
+    },
+    {
+      "model": "Transformer",
+      "total_errors": 1154,
+      "within_upper_group_errors": 929,
+      "within_upper_group_fraction": 0.8050259965337955,
+      "errors_from_true_upper_classes": 972
+    },
+    {
+      "model": "LSTM columns",
+      "total_errors": 1139,
+      "within_upper_group_errors": 934,
+      "within_upper_group_fraction": 0.820017559262511,
+      "errors_from_true_upper_classes": 972
+    },
+    {
+      "model": "LSTM patches",
+      "total_errors": 1167,
+      "within_upper_group_errors": 934,
+      "within_upper_group_fraction": 0.8003427592116538,
+      "errors_from_true_upper_classes": 983
+    }
+  ],
+  "arithmetic": {
+    "macs": {
+      "Linear": 7840,
+      "MLP": 234752,
+      "CNN": 3869824,
+      "LSTM rows": 2237696,
+      "LSTM columns": 2237696,
+      "LSTM patches": 1451264,
+      "Transformer": 9310464
+    },
+    "lstm_matrix_products": {
+      "input_to_gates_all_representations": 401408,
+      "hidden_to_gates_rows_or_columns": 1835008,
+      "hidden_to_gates_patches": 1048576,
+      "classifier": 1280
+    },
+    "transformer_per_block": {
+      "qkv_and_output": 1114112,
+      "attention_products": 73984,
+      "feed_forward": 1114112
+    },
+    "attention_products_fraction": 0.03213610586011342
+  },
+  "frontiers": {
+    "parameters_macro_f1": [
+      "Linear",
+      "CNN"
+    ],
+    "inference_macro_f1": [
+      "Linear",
+      "MLP",
+      "CNN"
+    ]
+  },
+  "fit_time_per_epoch": [
+    {
+      "model": "Linear",
+      "mean_fit_seconds_per_completed_epoch": 29.893094792085535
+    },
+    {
+      "model": "MLP",
+      "mean_fit_seconds_per_completed_epoch": 28.029907941818237
+    },
+    {
+      "model": "CNN",
+      "mean_fit_seconds_per_completed_epoch": 28.26835746031541
+    },
+    {
+      "model": "LSTM rows",
+      "mean_fit_seconds_per_completed_epoch": 28.02057013688264
+    },
+    {
+      "model": "Transformer",
+      "mean_fit_seconds_per_completed_epoch": 29.546612360898187
+    },
+    {
+      "model": "LSTM columns",
+      "mean_fit_seconds_per_completed_epoch": 28.084020312015827
+    },
+    {
+      "model": "LSTM patches",
+      "mean_fit_seconds_per_completed_epoch": 28.00372935258425
+    }
+  ],
+  "shared_test_ids": [
+    12,
+    7,
+    23,
+    40
+  ],
+  "evidence_limits": "Net count changes do not identify corrected individual images. Shared examples are selected panels, not full paired predictions or a significance test. MAC counts are structural estimates, not measured FLOPs or kernel times."
+}

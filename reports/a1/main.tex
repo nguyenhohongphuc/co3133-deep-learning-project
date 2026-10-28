@@ -1,0 +1,64 @@
+\documentclass[a4paper,11pt]{article}
+
+% Compile from the repository root or directly from reports/a1/.
+\IfFileExists{reports/a1/preamble.tex}{\def\reportroot{reports/a1/}}{\def\reportroot{}}
+\input{\reportroot preamble.tex}
+
+\begin{document}
+
+\hypersetup{pageanchor=false}
+\input{\reportroot frontmatter/cover.tex}
+\clearpage
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+\input{\reportroot frontmatter/abstract.tex}
+\clearpage
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+\part{Problem and Data Description}
+\input{\reportroot sections/01_problem_formulation.tex}
+\input{\reportroot sections/02_dataset_description.tex}
+\input{\reportroot sections/03_data_preparation.tex}
+
+\clearpage
+\part{Methodology}
+\input{\reportroot sections/04_overall_pipeline.tex}
+\input{\reportroot sections/05_models.tex}
+% Keep legal break points between included sections.
+\par\penalty0\relax
+\input{\reportroot sections/06_loss_and_optimization.tex}
+\par\penalty0\relax
+\input{\reportroot sections/07_training_and_evaluation.tex}
+\par\penalty0\relax
+
+\clearpage
+\part{Implementation Results}
+\input{\reportroot sections/08_training_behaviour.tex}
+\par\penalty0\relax
+\input{\reportroot sections/09_quantitative_results.tex}
+\par\penalty0\relax
+\input{\reportroot sections/10_qualitative_results.tex}
+\par\penalty0\relax
+\input{\reportroot sections/11_comparison_and_discussion.tex}
+\par\penalty0\relax
+\input{\reportroot sections/12_error_analysis.tex}
+\par\penalty0\relax
+\input{\reportroot sections/13_optional_extensions.tex}
+\par\penalty0\relax
+\input{\reportroot sections/14_limitations.tex}
+\par\penalty0\relax
+\input{\reportroot sections/15_conclusion.tex}
+\par\penalty0\relax
+\input{\reportroot sections/16_reproducibility.tex}
+\par\penalty0\relax
+
+\clearpage
+\input{\reportroot backmatter/ai_usage.tex}
+\input{\reportroot backmatter/references.tex}
+\clearpage
+\appendix
+\input{\reportroot backmatter/appendices.tex}
+
+\end{document}

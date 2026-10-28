@@ -1,0 +1,90 @@
+% !TeX root = ../main.tex
+\section{Training Behaviour}
+\label{sec:training-behaviour}
+
+This section examines the saved epoch histories of the five main models and the two additional LSTM variants. All results use seed 42 and the same Stratified Split. The figures replot the recorded values without smoothing; they do not represent new training experiments. Epoch indices start at zero throughout, so checkpoint index 7 is the eighth completed epoch.
+
+\subsection{Training and Validation Curves}
+
+Figure~\ref{fig:a1-training-losses} shows sample-weighted training and validation cross-entropy for each main model. Shared axes make both the loss scale and the different stopping points visible. Each dotted line marks the epoch selected by validation macro-F1, which need not minimize validation loss.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/training/main_model_losses.png}
+    \caption{Training and validation loss for the five main configurations. The main LSTM uses row sequences. Curves end at the recorded stopping epoch; a dotted line and validation-loss marker locate the selected checkpoint. Source: each run's saved \texttt{history.csv}.}
+    \label{fig:a1-training-losses}
+\end{figure}
+
+All five models reduce training loss between the first and final recorded epochs. The CNN reaches a validation loss of approximately 0.20 early in its run, whereas the linear model remains near 0.39--0.40. For the MLP and row LSTM, training loss continues to fall after the lowest validation loss has been reached, opening a larger separation between the curves.
+
+Figure~\ref{fig:a1-validation-f1} displays the actual checkpoint-selection metric. The CNN attains the highest peak validation macro-F1, 92.68\%, at index 7. The MLP and row LSTM reach their selected peaks later, at indices 22 and 21. These are validation observations; the held-out test comparison is reported separately in the next section.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/training/main_model_validation_f1.png}
+    \caption{Validation macro-F1 of the five main configurations on 6,000 validation images. Filled markers indicate the selected checkpoints. Each line stops at its own final recorded epoch; no values are extended to the common 50-epoch limit.}
+    \label{fig:a1-validation-f1}
+\end{figure}
+
+\subsection{Convergence and Checkpoint Selection}
+
+Table~\ref{tab:a1-convergence} separates the number of completed epochs from the zero-based checkpoint index. All seven runs stopped after five consecutive epochs without a strictly higher validation macro-F1; none exhausted the 50-epoch limit. This establishes the recorded stopping condition, rather than convergence to an optimum.
+
+\begin{table}[H]
+    \centering
+    \caption{Observed stopping and checkpoint selection. Epoch columns contain zero-based indices; completed epochs are counts. Peak F1 is validation macro-F1, expressed as a percentage.}
+    \label{tab:a1-convergence}
+    \small
+    \setlength{\tabcolsep}{5pt}
+    \begin{tabularx}{\textwidth}{@{}Yrrrr@{}}
+        \toprule
+        Configuration & \shortstack{Completed\\epochs} & \shortstack{Selected\\epoch} & \shortstack{Min. val.\\loss epoch} & \shortstack{Peak F1\\(\%)} \\
+        \midrule
+        Linear & 17 & 11 & 11 & 86.58 \\
+        MLP & 28 & 22 & 8 & 90.63 \\
+        CNN & 13 & 7 & 8 & 92.68 \\
+        LSTM rows & 27 & 21 & 14 & 91.18 \\
+        Transformer & 17 & 11 & 14 & 90.13 \\
+        \midrule
+        LSTM columns & 26 & 20 & 15 & 90.42 \\
+        LSTM patches & 26 & 20 & 11 & 90.17 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+The MLP illustrates why the two epoch criteria differ: its minimum validation loss is 0.2799 at index 8, while its best macro-F1 occurs at index 22 with validation loss 0.2876. Cross-entropy depends on the probabilities assigned to the labels, whereas macro-F1 depends on the predicted classes. Improvements in the latter therefore need not coincide with reductions in the former. The row LSTM and Transformer show the same mismatch between the two selected indices, although the ordering of those indices differs.
+
+The final epoch is also not the selected checkpoint. For example, CNN validation macro-F1 falls from its peak of 92.68\% to 92.52\% at the final index 12. The saved best checkpoint is restored for test evaluation.
+
+\subsection{Overfitting and Underfitting Analysis}
+
+\paragraph{Interpreting the loss gap.}
+Training loss is averaged over batches while the parameters are changing, with dropout and normalization layers in training mode. Validation loss is evaluated after the epoch with fixed parameters, dropout disabled, and BatchNorm using its running statistics where present. The difference between these losses is therefore not a controlled generalization-gap measurement. In particular, a validation loss below training loss, as seen at some early epochs and at the selected Transformer checkpoint, is not by itself evidence of data leakage or a faulty split.
+
+\paragraph{Main model behaviour.}
+At the selected MLP checkpoint, training and validation losses are 0.1946 and 0.2876. By the final epoch, training loss falls to 0.1797 while validation loss rises to 0.2894 and macro-F1 decreases from 90.63\% to 90.18\%. For the row LSTM, the corresponding selected losses are 0.1661 and 0.2672; final losses become 0.1373 and 0.2955. These trends are consistent with increasing overfitting late in the recorded runs. The CNN shows a smaller selected loss separation, 0.1999 versus 0.2059, followed by a larger separation at the stopping epoch. Early stopping retains the higher-F1 checkpoint in each case.
+
+The linear model retains a training loss of 0.3917 at its selected checkpoint and reaches a lower peak validation F1 than the nonlinear models. Its relatively high training loss and closely tracking validation loss are consistent with limited capacity under the recorded setup. They do not establish that a different optimizer, learning rate, or training budget could not improve it. Likewise, the Transformer curves alone do not identify an architectural cause for its validation result; no controlled regularization or optimization ablation was recorded.
+
+\paragraph{LSTM input representations.}
+Figure~\ref{fig:a1-lstm-training} compares all three sequence representations. The patch variant reaches the lowest final training loss, 0.1067, but the highest final validation loss, 0.3516. Its loss separation increases from 0.1765 at the selected checkpoint to 0.2450 at the final epoch. Rows and columns end with smaller separations of 0.1582 and 0.1356, respectively. This makes the patch configuration's late overfitting particularly visible, despite its better fit to the training batches.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/training/lstm_variant_curves.png}
+    \caption{LSTM representation comparison. Left: validation loss (solid) and training loss (dashed). Right: validation macro-F1, with selected checkpoints marked. All three histories use seed 42. Patch inputs change both the sequence representation and parameter count, so the comparison is not a capacity-matched ablation.}
+    \label{fig:a1-lstm-training}
+\end{figure}
+
+The row configuration has the highest peak validation macro-F1 among the three, at 91.18\%, compared with 90.42\% for columns and 90.17\% for patches. These are single-run observations. The seed and commit-traceability limits in Section~\ref{sec:training-and-evaluation} also apply here; the figures do not establish a statistically reliable ranking across random seeds.
+
+\subsection{Implementation Issues and Fixes}
+
+The development record in \path{AI_USAGE.md}, Entry 2, documents several issues encountered while building the training and evaluation pipeline:
+\begin{enumerate}
+    \item \textbf{Writing history after training.} A missing \texttt{pandas} import caused \texttt{fit()} to fail after training. The current trainer imports \texttt{pandas} and writes the epoch records to \path{history.csv}, making the curves and checkpoint checks above recoverable from saved artifacts.
+    \item \textbf{Plotting and console output.} Missing plotting imports and a Windows cp1252 console error when printing Vietnamese were documented and fixed during development. The current plotting module contains the required imports. These are artifact-generation and output-encoding issues; the record does not provide a controlled measurement of any effect on predictive accuracy.
+    \item \textbf{Inference timing on short loaders.} The development record reports a division-by-zero error in the earlier timing routine. The current evaluator warms up separately, times repeated complete passes, and derives per-image duration from the image count, as described in Section~\ref{sec:training-and-evaluation}. This avoids estimating the timed workload by subtracting warm-up batches from the loader length.
+\end{enumerate}
+
+These are documented development fixes, not failures reproduced during report preparation. For this section, verification consists of checking saved histories against run metadata and inspecting the current implementation. No new training or before-and-after predictive experiment was performed.

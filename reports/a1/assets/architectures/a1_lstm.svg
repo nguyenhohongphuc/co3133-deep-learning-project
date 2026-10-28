@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="465" viewBox="0 0 1200 465">
+<title>LSTM: image rows as a sequence</title>
+<rect width="1200" height="465" fill="white"/>
+<text x="25" y="28" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#182D45" text-anchor="start" dominant-baseline="central">LSTM: image rows as a sequence</text>
+<text x="1175" y="28" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="end" dominant-baseline="central">82,186 parameters · main row variant</text>
+<text x="25" y="69" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#526578" text-anchor="start" dominant-baseline="central">28 timesteps · 28 pixel values per row · hidden size 128 · one unidirectional layer</text>
+<image x="35" y="132" width="130" height="130" style="image-rendering:pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAAAAABXZoBIAAACBUlEQVR4nF2QvWtTURjGn/c9515zE0lSLYSmQwU/oNAqmoJ0EMHJxUEQHHRzctAp4F8gCA4OTuKirg666eAoRTrYQbDa0sWEdDDF2KQ2956PV+69afpxhjOc33me930eQnpIAMw+f7uSmLmbG0972D8E4OKT9R/trojIz1W/+Wp+DIDym/M82DVeV3a8AIUo/Hx3DD/NbHltCWwYnI2Zur4K6JQ1ZrpaRfUiG+0osP22hbvXHCmbD7teuReddn2TTXj80oOuLutTyExwyyop2Jem8eFyVJvcfuZ04V/93Mj2QksdQxkfd2ab727orw1bcv7X4loG539bVtEW5uKpx2RoEZ1p74dXXmfwUTRw0dAunDwR1MwwrN6e2K1QuJDbLtXOlEvr7ov3Tmly3F8rKe6838s5cfb+1ValF6g0Iw8r3+5kzzq7/yzH1yQsKQ8iX0gKS3mvnHUYQvrKy8hHoQdFe1AMNv7qGELpnDjANlj2IBi7iVhFQsScaHIHbCHwToRJmIjFs4fsQwDTpISymWxIHVbCIQQRgXxgJTiiHCrLXpQXrR2qB5UAfFYIE4TERrkyLyH/JTlkscX8LYfpP4U0p4IQu0MLEZAQwZNLDcipIwulnTAT0qGpy6EoHdg4NkkcJwYyUo4Xqpb0JHMIWNUqngb7MSTByvdeAB4IWW+qy2ky4D8KOdUXoboqaAAAAABJRU5ErkJggg=="/>
+<rect x="290" y="113" width="180" height="64" rx="13" fill="#F0F5FB" stroke="#CED9E3" stroke-width="1.4"/>
+<text x="380" y="134" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#254F80" text-anchor="middle" dominant-baseline="central">Row 1</text>
+<text x="380" y="159" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">[B, 28]</text>
+<polyline points="380,181 380,227" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="380,227 384.8,217.0 375.2,217.0" fill="#8092A4"/>
+<rect x="282" y="232" width="196" height="80" rx="13" fill="#EFF8F6" stroke="#BCDCD7" stroke-width="1.4"/>
+<text x="380" y="257" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#08776F" text-anchor="middle" dominant-baseline="central">LSTM cell</text>
+<text x="380" y="287" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">hidden: 128</text>
+<rect x="590" y="113" width="180" height="64" rx="13" fill="#F0F5FB" stroke="#CED9E3" stroke-width="1.4"/>
+<text x="680" y="134" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#254F80" text-anchor="middle" dominant-baseline="central">Row 2</text>
+<text x="680" y="159" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">[B, 28]</text>
+<polyline points="680,181 680,227" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="680,227 684.8,217.0 675.2,217.0" fill="#8092A4"/>
+<rect x="582" y="232" width="196" height="80" rx="13" fill="#EFF8F6" stroke="#BCDCD7" stroke-width="1.4"/>
+<text x="680" y="257" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#08776F" text-anchor="middle" dominant-baseline="central">LSTM cell</text>
+<text x="680" y="287" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">hidden: 128</text>
+<rect x="920" y="113" width="180" height="64" rx="13" fill="#F0F5FB" stroke="#CED9E3" stroke-width="1.4"/>
+<text x="1010" y="134" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#254F80" text-anchor="middle" dominant-baseline="central">Row 28</text>
+<text x="1010" y="159" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">[B, 28]</text>
+<polyline points="1010,181 1010,227" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="1010,227 1014.8,217.0 1005.2,217.0" fill="#8092A4"/>
+<rect x="912" y="232" width="196" height="80" rx="13" fill="#EFF8F6" stroke="#BCDCD7" stroke-width="1.4"/>
+<text x="1010" y="257" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#08776F" text-anchor="middle" dominant-baseline="central">LSTM cell</text>
+<text x="1010" y="287" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">hidden: 128</text>
+<polyline points="177,146 278,146" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="278,146 268.0,141.2 268.0,150.8" fill="#8092A4"/>
+<text x="101" y="291" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">Input image</text>
+<polyline points="486,272 570,272" fill="none" stroke="#08776F" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="570,272 560.0,267.2 560.0,276.8" fill="#08776F"/>
+<text x="526" y="251" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#08776F" text-anchor="middle" dominant-baseline="central">h_1, c_1</text>
+<polyline points="786,272 900,272" fill="none" stroke="#08776F" stroke-width="2.6" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="900,272 890.0,267.2 890.0,276.8" fill="#08776F"/>
+<text x="841" y="250" font-family="Arial, sans-serif" font-size="30" font-weight="400" fill="#08776F" text-anchor="middle" dominant-baseline="central">…</text>
+<text x="200" y="328" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#526578" text-anchor="middle" dominant-baseline="central">h_0 = c_0 = 0</text>
+<polyline points="207,272 277,272" fill="none" stroke="#08776F" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="277,272 267.0,267.2 267.0,276.8" fill="#08776F"/>
+<polyline points="1010,317 1010,359" fill="none" stroke="#08776F" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="1010,359 1014.8,349.0 1005.2,349.0" fill="#08776F"/>
+<rect x="742" y="365" width="430" height="75" rx="13" fill="#EFF8F6" stroke="#BCDCD7" stroke-width="1.4"/>
+<text x="957" y="387" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#08776F" text-anchor="middle" dominant-baseline="central">Final h_28 → linear 128 → 10</text>
+<text x="957" y="419" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">[B, 10] logits</text>
+<text x="310" y="371" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#526578" text-anchor="middle" dominant-baseline="central">The same LSTM weights are reused</text>
+<text x="310" y="400" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="middle" dominant-baseline="central">at every timestep; only the final h is classified.</text>
+</svg>

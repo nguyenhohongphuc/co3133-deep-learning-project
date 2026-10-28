@@ -1,7 +1,6 @@
 # AI Usage Disclosure — CO3133 Course Project, Group NNs
 
-This file is the detailed log required by the course handbook. Shorter summaries appear on the landing page, on
-each assignment page, and in each report; this file holds the full record.
+This file records AI assistance used in the course project. Related summaries appear on the website and in the reports.
 
 Rules the group follows:
 
@@ -18,7 +17,7 @@ Missing or false disclosure may be treated as an academic integrity violation.
 
 ## Declaration
 
-> The group declares that generative AI tools **were used** in this course project. Every use is logged below.
+> The group declares that generative AI tools **were used** in this course project. AI assistance is summarized below.
 
 ---
 
@@ -142,6 +141,13 @@ Copy the template below for every distinct use. Group the entries by assignment.
 - **How the output was edited and verified:** [what was changed; what was tested]
 - **Sources used for verification:** [docs / papers / tests]
 - **Member responsible for final verification:** [member name]
+
+**A1 report — collaborative writing with Nguyễn Nhật Nam**
+
+- **Tool / user / dates:** OpenAI Codex (model identifier not recorded); Nguyễn Nhật Nam (2352778); 27–28 Oct 2026.
+- **Purpose and workflow:** The student and AI developed the report section by section. The student directed the scope, section order, revisions, and review process. AI assisted with drafting, explanations, analysis of existing results, figures, and LaTeX formatting according to those instructions. Completion of the remaining sections for one consolidated review was explicitly requested by the student.
+- **Affected files:** `reports/a1/`, related report-generation scripts, and supporting analysis files in `results/a1/tables/`.
+- **Verification and responsibility:** Drafts and figures were checked against repository code, saved experiment outputs, source images, and cited references; the PDF was compiled and visually inspected. No new training or checkpoint inference was performed. Final human review is pending; Nguyễn Nhật Nam and the group remain responsible for the submitted report.
 
 ### Assignment 2
 

@@ -1,0 +1,19 @@
+{
+  "pdf": "reports/a1/NNs_A1_Report.pdf",
+  "pages": 56,
+  "sha256": "94f8292206af18881ac4417309e35650a6df6ac9777757a73e16bc51c8ea0f42",
+  "editor_preview_byte_identical": true,
+  "desktop_compile": "success",
+  "tectonic_compile": "success",
+  "latex_warnings": [],
+  "visual_review": "Full manuscript previously reviewed; page with relocated reconstruction commands rechecked after script relocation.",
+  "input_manifest_sha256": "7e1b621eae235e16fe226fa7edfa644790adf448c4088e719704e58ead5b0378",
+  "input_hashes_verified": 108,
+  "archived_config_plans_checked": 7,
+  "training_or_checkpoint_inference_executed": false,
+  "cnn_annotations_crosschecked": 32,
+  "corrected_test_32_prediction": "Trouser",
+  "missing_original_checkpoints": 7,
+  "unfinished_report_placeholders": 0,
+  "relocated_report_scripts_checked": 8
+}

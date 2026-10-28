@@ -1,0 +1,114 @@
+{
+  "model": "CNN",
+  "run_id": "a1_cnn_s42_1027-0157",
+  "n_test": 10000,
+  "errors": 818,
+  "definitions": {
+    "garment_group": [
+      0,
+      2,
+      3,
+      4,
+      6
+    ],
+    "footwear_group": [
+      5,
+      7,
+      9
+    ],
+    "residual": "Every other off-diagonal entry; buckets are disjoint and exhaustive."
+  },
+  "category_counts": [
+    678,
+    79,
+    61
+  ],
+  "top_directed_confusions": [
+    {
+      "count": 112,
+      "true": 6,
+      "pred": 0
+    },
+    {
+      "count": 82,
+      "true": 6,
+      "pred": 4
+    },
+    {
+      "count": 61,
+      "true": 6,
+      "pred": 2
+    },
+    {
+      "count": 59,
+      "true": 0,
+      "pred": 6
+    },
+    {
+      "count": 54,
+      "true": 2,
+      "pred": 4
+    },
+    {
+      "count": 43,
+      "true": 3,
+      "pred": 6
+    },
+    {
+      "count": 37,
+      "true": 4,
+      "pred": 2
+    },
+    {
+      "count": 37,
+      "true": 4,
+      "pred": 6
+    }
+  ],
+  "top_eight_error_count": 485,
+  "examples": [
+    {
+      "model": "CNN",
+      "run_id": "a1_cnn_s42_1027-0157",
+      "kind": "wrong",
+      "source_grid": "results/a1/runs/a1_cnn_s42_1027-0157/figures/wrong_test.png",
+      "source_panel": 4,
+      "test_index": 40,
+      "true": 6,
+      "pred": 0,
+      "ocr": "true Shirt\npred T-shirt/top",
+      "ocr_label_similarity": 1.0,
+      "match_mse": 0.025510204955935478,
+      "runner_up_mse": 733.4132690429688
+    },
+    {
+      "model": "CNN",
+      "run_id": "a1_cnn_s42_1027-0157",
+      "kind": "wrong",
+      "source_grid": "results/a1/runs/a1_cnn_s42_1027-0157/figures/wrong_test.png",
+      "source_panel": 8,
+      "test_index": 68,
+      "true": 9,
+      "pred": 7,
+      "ocr": "true Ankle boot\npred Sneaker",
+      "ocr_label_similarity": 1.0,
+      "match_mse": 0.02678571455180645,
+      "runner_up_mse": 1550.150390625
+    },
+    {
+      "model": "CNN",
+      "run_id": "a1_cnn_s42_1027-0157",
+      "kind": "wrong",
+      "source_grid": "results/a1/runs/a1_cnn_s42_1027-0157/figures/wrong_test.png",
+      "source_panel": 3,
+      "test_index": 32,
+      "true": 3,
+      "pred": 1,
+      "ocr": "true Dress\npred Trouser",
+      "ocr_label_similarity": 1.0,
+      "match_mse": 0.01658163219690323,
+      "runner_up_mse": 1969.8291015625
+    }
+  ],
+  "interpretation": "Counts classify label pairs, not causal visual attributes. No new predictions."
+}

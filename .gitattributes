@@ -1,0 +1,2 @@
+# Keep the shared AI log consistent across Windows and macOS.
+AI_USAGE.md text eol=lf

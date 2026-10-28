@@ -1,0 +1,32 @@
+% !TeX root = ../main.tex
+\section{Optional Ablation and Extensions}
+\label{sec:extensions}
+
+The available extension is the three-way LSTM representation study. Assignment 1 recommends such a study; additional architecture families or datasets are optional~\cite{course-handbook}. We use the existing row, column, and patch runs. This section adds no newly trained configuration and does not describe the comparison as a fully isolated causal ablation.
+
+\subsection{Hypothesis and Experimental Design}
+
+Two questions organize the recorded comparison. First, does changing row to column scan order affect predictive quality at the same recurrent capacity? Second, does shortening the sequence through patches reduce computation, and what predictive cost accompanies that change? These are retrospective analysis questions; no claim of preregistered hypotheses is made.
+
+All three use the fixed Stratified Split, seed 42, batch size 128, Adam at $10^{-3}$, a maximum of 50 epochs, patience 5, validation macro-F1 checkpointing, hidden size 128, one unidirectional LSTM layer, and no explicit recurrent dropout. Rows and columns have the same $[B,28,28]$ sequence shape and 82,186 parameters, making scan orientation their intended changed factor. Patches use $[B,16,49]$ and 92,938 parameters, changing granularity, recurrent depth in time, and capacity together. Actual completed epochs also differ.
+
+The descriptive decision criterion is joint validation/test quality and measured cost, without a significance threshold inferred after the fact. Accuracy and macro-F1 quantify prediction quality; parameter count, arithmetic estimates, and inference time describe cost. Test scores characterize these fixed runs and are not used here to tune a new model.
+
+\subsection{Results}
+
+\begin{table}[H]
+    \centering
+    \caption{Changes relative to LSTM rows. Accuracy and macro-F1 changes are percentage points; parameter and inference changes are relative percentages. Negative inference change means a shorter recorded batched forward time.}
+    \label{tab:a1-representation-deltas}
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \input{\reportroot assets/final/representation_deltas.tex}
+\end{table}
+
+Rows lead the available variants on accuracy and macro-F1. Patches reduce measured forward time by 18.4\% but increase size by 13.1\%, while losing 1.59 accuracy points. Figure~\ref{fig:a1-lstm-training} shows lower patch training loss together with worse late validation loss. The operation decomposition in Section~\ref{sec:comparison-and-discussion} identifies fewer recurrent hidden-state updates as the source of its lower counted arithmetic. Additional column and patch confusion matrices are included in Appendix~\ref{app:additional-results}.
+
+\subsection{Discussion}
+
+The results support choosing rows among these recorded LSTM configurations when quality is the priority. They also demonstrate that reducing sequence length can lower one computational cost without improving generalization or model size. A smaller patch size, hidden-size matching, regularization changes, or bidirectional processing would require new runs. No GRU, Mamba, CIFAR-10, pretrained-backbone, augmentation, or cross-framework result is claimed; code support for an option is not an evaluated experiment.
+
+Only one seed is recorded, and both additional runs carry \texttt{c1747a1-dirty}. Their exact working-tree changes cannot be reconstructed from the commit identifier alone. These limits prevent treating the observed orientation or patch effects as precise population estimates or attributing every difference to a single factor.

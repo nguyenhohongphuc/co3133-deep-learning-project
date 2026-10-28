@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="410" viewBox="0 0 1200 410">
+<title>Convolutional neural network</title>
+<rect width="1200" height="410" fill="white"/>
+<text x="25" y="28" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#182D45" text-anchor="start" dominant-baseline="central">Convolutional neural network</text>
+<text x="1175" y="28" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#526578" text-anchor="end" dominant-baseline="central">50,378 parameters</text>
+<image x="35" y="123" width="135" height="135" style="image-rendering:pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAAAAABXZoBIAAACBUlEQVR4nF2QvWtTURjGn/c9515zE0lSLYSmQwU/oNAqmoJ0EMHJxUEQHHRzctAp4F8gCA4OTuKirg666eAoRTrYQbDa0sWEdDDF2KQ2956PV+69afpxhjOc33me930eQnpIAMw+f7uSmLmbG0972D8E4OKT9R/trojIz1W/+Wp+DIDym/M82DVeV3a8AIUo/Hx3DD/NbHltCWwYnI2Zur4K6JQ1ZrpaRfUiG+0osP22hbvXHCmbD7teuReddn2TTXj80oOuLutTyExwyyop2Jem8eFyVJvcfuZ04V/93Mj2QksdQxkfd2ab727orw1bcv7X4loG539bVtEW5uKpx2RoEZ1p74dXXmfwUTRw0dAunDwR1MwwrN6e2K1QuJDbLtXOlEvr7ov3Tmly3F8rKe6838s5cfb+1ValF6g0Iw8r3+5kzzq7/yzH1yQsKQ8iX0gKS3mvnHUYQvrKy8hHoQdFe1AMNv7qGELpnDjANlj2IBi7iVhFQsScaHIHbCHwToRJmIjFs4fsQwDTpISymWxIHVbCIQQRgXxgJTiiHCrLXpQXrR2qB5UAfFYIE4TERrkyLyH/JTlkscX8LYfpP4U0p4IQu0MLEZAQwZNLDcipIwulnTAT0qGpy6EoHdg4NkkcJwYyUo4Xqpb0JHMIWNUqngb7MSTByvdeAB4IWW+qy2ky4D8KOdUXoboqaAAAAABJRU5ErkJggg=="/>
+<text x="102" y="284" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">[B, 1, 28, 28]</text>
+<polyline points="185,190 247,190" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="247,190 237.0,185.2 237.0,194.8" fill="#8092A4"/>
+<text x="325" y="85" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#254F80" text-anchor="middle" dominant-baseline="central">Block 1</text>
+<rect x="293" y="121" width="105" height="105" rx="4" fill="#F0F5FB" stroke="#254F80" stroke-width="1.4"/>
+<rect x="284" y="130" width="105" height="105" rx="4" fill="#F0F5FB" stroke="#254F80" stroke-width="1.4"/>
+<rect x="275" y="139" width="105" height="105" rx="4" fill="#F0F5FB" stroke="#254F80" stroke-width="1.4"/>
+<line x1="296.0" y1="139" x2="296.0" y2="244" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="275" y1="160.0" x2="380" y2="160.0" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="317.0" y1="139" x2="317.0" y2="244" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="275" y1="181.0" x2="380" y2="181.0" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="338.0" y1="139" x2="338.0" y2="244" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="275" y1="202.0" x2="380" y2="202.0" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="359.0" y1="139" x2="359.0" y2="244" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="275" y1="223.0" x2="380" y2="223.0" stroke="#C7D4E1" stroke-width="1.2"/>
+<text x="327" y="278" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#254F80" text-anchor="middle" dominant-baseline="central">32 × 14 × 14</text>
+<text x="327" y="310" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">Conv 1→32 · BN · ReLU</text>
+<text x="327" y="337" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#526578" text-anchor="middle" dominant-baseline="central">MaxPool 2×2</text>
+<polyline points="413,190 485,190" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="485,190 475.0,185.2 475.0,194.8" fill="#8092A4"/>
+<text x="570" y="85" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#08776F" text-anchor="middle" dominant-baseline="central">Block 2</text>
+<rect x="543" y="141" width="85" height="85" rx="4" fill="#EFF8F6" stroke="#08776F" stroke-width="1.4"/>
+<rect x="534" y="150" width="85" height="85" rx="4" fill="#EFF8F6" stroke="#08776F" stroke-width="1.4"/>
+<rect x="525" y="159" width="85" height="85" rx="4" fill="#EFF8F6" stroke="#08776F" stroke-width="1.4"/>
+<line x1="542.0" y1="159" x2="542.0" y2="244" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="525" y1="176.0" x2="610" y2="176.0" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="559.0" y1="159" x2="559.0" y2="244" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="525" y1="193.0" x2="610" y2="193.0" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="576.0" y1="159" x2="576.0" y2="244" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="525" y1="210.0" x2="610" y2="210.0" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="593.0" y1="159" x2="593.0" y2="244" stroke="#C7D4E1" stroke-width="1.2"/>
+<line x1="525" y1="227.0" x2="610" y2="227.0" stroke="#C7D4E1" stroke-width="1.2"/>
+<text x="569" y="278" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#08776F" text-anchor="middle" dominant-baseline="central">64 × 7 × 7</text>
+<text x="569" y="310" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">Conv 32→64 · BN · ReLU</text>
+<text x="569" y="337" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#526578" text-anchor="middle" dominant-baseline="central">MaxPool 2×2</text>
+<polyline points="646,190 727,190" fill="none" stroke="#8092A4" stroke-width="2.6" stroke-linejoin="round"/>
+<polygon points="727,190 717.0,185.2 717.0,194.8" fill="#8092A4"/>
+<rect x="745" y="108" width="420" height="173" rx="13" fill="#EFF8F6" stroke="#BCDCD7" stroke-width="1.4"/>
+<text x="955" y="137" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#08776F" text-anchor="middle" dominant-baseline="central">Classification head</text>
+<text x="955" y="175" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">Flatten: 64 × 7 × 7 → 3,136</text>
+<text x="955" y="210" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">Dropout 0.25</text>
+<text x="955" y="245" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#182D45" text-anchor="middle" dominant-baseline="central">Linear 3,136 → 10</text>
+<text x="955" y="316" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#08776F" text-anchor="middle" dominant-baseline="central">[B, 10] logits</text>
+<text x="600" y="389" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#526578" text-anchor="middle" dominant-baseline="central">3×3 convolutions, stride 1, padding 1 · pooling halves each spatial dimension · feature maps are schematic</text>
+</svg>

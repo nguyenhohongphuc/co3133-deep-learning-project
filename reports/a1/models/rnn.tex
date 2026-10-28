@@ -1,0 +1,55 @@
+% !TeX root = ../main.tex
+\subsection{Long Short-Term Memory Network (LSTM)}
+\label{sec:model-lstm}
+
+\subsubsection{Image to Sequence Representation}
+
+The recurrent model treats an image as an ordered sequence rather than a two-dimensional convolutional input. The helper \texttt{to\_sequence} in \path{src/models/rnn.py} supports rows, columns, and non-overlapping patches. All saved recurrent runs use an LSTM cell; the class also supports GRU, but no GRU result is included in the committed comparison.
+
+The row representation is the main configured LSTM input. Column and patch representations are additional experiments using the same recurrent implementation. The image-to-sequence conversion changes only the arrangement of the input values; it is not a learned feature extractor.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/architectures/a1_lstm.png}
+    \caption{The main row-based LSTM, unrolled over selected timesteps. Recurrent weights are shared, and the final hidden state feeds the classifier. Intermediate timesteps are omitted.}
+    \label{fig:a1-lstm-architecture}
+\end{figure}
+
+Figure~\ref{fig:a1-lstm-architecture} illustrates the row-based computation; the alternative sequence representations are detailed below.
+
+\subsubsection{Timestep Definition and Input Dimensions}
+
+For rows, timestep $t$ contains the 28 pixels in image row $t$, giving 28 timesteps with 28 features each. The column representation transposes the image so that each timestep contains one column. The patch representation partitions the image into a $4\times4$ grid of $7\times7$ patches, flattened and ordered across the grid. Table~\ref{tab:a1-lstm-inputs} summarizes the three variants.
+
+\begin{table}[H]
+    \centering
+    \caption{LSTM input representations and verified parameter counts.}
+    \label{tab:a1-lstm-inputs}
+    \begin{tabular}{@{}lrrlr@{}}
+        \toprule
+        Representation & Timesteps & Features & Sequence shape & Parameters \\
+        \midrule
+        Rows & 28 & 28 & $[B,28,28]$ & 82,186 \\
+        Columns & 28 & 28 & $[B,28,28]$ & 82,186 \\
+        $7\times7$ patches & 16 & 49 & $[B,16,49]$ & 92,938 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsubsection{Recurrent Architecture and Hidden Representation}
+
+The model uses one unidirectional LSTM layer with hidden size $H=128$ and batch-first input. Its hidden and cell states are initialized to zero by the PyTorch module because no initial states are supplied. At each timestep, the cell combines the current input with the previous states; its input, forget, and output gates control the memory update~\cite{pytorch-lstm}. Both states have 128 features per image.
+
+The final hidden state $h_T\in\mathbb{R}^{128}$ summarizes the sequence for classification. The implementation extracts this state from the LSTM's returned hidden-state tuple, rather than flattening all timestep outputs. No bidirectional processing, extra recurrent layer, or explicit dropout layer is used in these runs.
+
+\subsubsection{Classification Head and Parameter Count}
+
+A linear layer maps $h_T$ to ten logits, contributing $128\times10+10=1{,}290$ parameters. For an input width $F$, the LSTM layer contains $4H(F+H+2)$ parameters, accounting for its four gates, input and recurrent matrices, and two bias vectors per gate. Thus, the row and column variants contain
+\begin{equation}
+    4\times128\times(28+128+2)+1{,}290=82{,}186
+\end{equation}
+parameters. Using 49 features per patch raises the total to 92,938. Therefore, rows versus columns keeps the parameter count fixed, whereas the patch comparison changes both sequence structure and input-projection size.
+
+\subsubsection{Strengths and Limitations}
+
+The recurrent state allows information from earlier rows, columns, or patches to influence the final prediction. However, the chosen scan order imposes an ordering on an otherwise spatial object, and classification depends on compressing the sequence into the final hidden state. Recurrent timesteps also have sequential dependencies. These properties motivate the representation experiments, whose measured quality and runtime are analyzed in the results section.
