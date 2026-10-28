@@ -646,7 +646,12 @@
             <td><code>src/engine/metrics.py</code>, <code>src/engine/trainer.py</code>,
                 <code>src/engine/plots.py</code>, <code>src/engine/profiler.py</code>, <code>src/train.py</code>,
                 <code>src/evaluate.py</code>, <code>configs/a1/base.yaml</code>; this page; <code>README.md</code></td>
-            <td><span class="fill">[how the output was edited and checked, and against what sources]</span></td>
+            <td>Metrics cross-checked against <code>sklearn.metrics</code>; the loop run end to end (checkpoint on
+                validation macro-F1, early stopping), and the same seed run twice gave identical per-epoch numbers.
+                Defects found this way were fixed by hand. Later (23&ndash;27 Oct) Nguy&ecirc;n removed
+                <code>metrics.py</code> and <code>profiler.py</code> and rewrote <code>src/train.py</code> and
+                <code>src/evaluate.py</code> by hand; <code>trainer.py</code> and <code>plots.py</code> remain largely
+                the AI-assisted September version, edited by hand.</td>
             <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
           </tr>
           <tr>
@@ -659,6 +664,30 @@
                 against the report and slides; parameter counts checked from the layer sizes; figures taken
                 unchanged from the report.</td>
             <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
+          </tr>
+          <tr>
+            <td>ChatGPT (OpenAI GPT; version not recorded)</td>
+            <td>Phan Qu&#7889;c &#272;&#7841;i S&#417;n</td>
+            <td>October 2026 &mdash; implementation and debugging of the sequence models</td>
+            <td>Coding assistance, debugging and concept explanation: rows/columns/patches sequence conversion, LSTM and
+                Patch Transformer classifiers (CLS token, positional embeddings), training/evaluation issues</td>
+            <td><code>src/models/rnn.py</code>, <code>src/models/transformer.py</code>, A1 configs; report &sect;5.4&ndash;5.5
+                and the LSTM representation comparison</td>
+            <td>Suggestions adapted to the project's model interface; training and evaluation run locally; tensor
+                shapes and metrics checked against recorded runs and the PyTorch documentation. Reported metrics come
+                from recorded experiments only.</td>
+            <td>Phan Qu&#7889;c &#272;&#7841;i S&#417;n</td>
+          </tr>
+          <tr>
+            <td>OpenAI Codex (model not recorded)</td>
+            <td>Nguy&#7877;n Nh&#7853;t Nam</td>
+            <td>27&ndash;28 Oct 2026 &mdash; A1 report</td>
+            <td>Report writing, result analysis, figures and LaTeX formatting, section by section under the
+                student's direction</td>
+            <td><code>reports/a1/</code>, <code>scripts/a1_report/</code>, <code>results/a1/tables/</code></td>
+            <td>Drafts and figures checked against the code, saved run outputs and cited references; PDF compiled and
+                inspected. No new training or checkpoint inference.</td>
+            <td>Nguy&#7877;n Nh&#7853;t Nam</td>
           </tr>
         </tbody>
       </table>
