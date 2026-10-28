@@ -14,7 +14,7 @@ Each configuration has one training seed. No seed-level confidence interval, sig
 
 Training and validation losses are measured in different modes and at different stages of an epoch, so their difference is not a controlled generalization gap. Early stopping changes total training work. Saved inference time is a batched, forward-only median on the recorded CUDA environment; it excludes preprocessing and transfers, and the individual timing samples are not retained. Parameter count and analytical MACs do not measure peak memory or application latency.
 
-Reproduction has material limits: original checkpoints are absent from this checkout; two LSTM variants record dirty source states; evaluation revision was not independently stored; and the dependency snapshot differs from run metadata and contains machine-local paths. Saved configurations, split indices, histories, metrics, and source fingerprints remain auditable, but they do not recover missing weights or working-tree changes. Section~\ref{sec:reproducibility} distinguishes artifact re-analysis from new training.
+All seven saved checkpoints are available for re-evaluation, but reproduction still has material limits: two LSTM variants record dirty source states; evaluation revision was not independently stored; and the dependency snapshot differs from run metadata and contains machine-local paths. Each checkpoint stores a model \texttt{state\_dict}, including parameters and buffers, rather than optimizer or random-number-generator states. It therefore supports model restoration but not exact training continuation or recovery of unrecorded working-tree changes. Section~\ref{sec:reproducibility} distinguishes checkpoint evaluation from new training.
 
 \subsection{Generalization}
 
