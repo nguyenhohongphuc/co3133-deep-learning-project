@@ -1,0 +1,6 @@
+\section{Training and Evaluation Protocol}
+
+\draftnote{Tabulate saved run settings, including hardware/software, precision, batch size, epoch cap, patience, and seeds. The CNN draft used seed 42, batch 64, and a 20-epoch cap. Both ResNet arms used seeds 42--44, batch 32, a 15-epoch cap, and patience 5. See Section~\ref{sec:ablation} for the controlled design.}
+
+\draftnote{Define accuracy and macro-F1, with macro-F1 primary. Explain best-validation-macro-F1 checkpoint selection, validation-based illustrative run selection, the final cleaned test protocol, and secondary metrics.}
+\evidence{\path{results/a2/tables/a2_test_protocol.json}, per-run \path{config.yaml} and \path{metrics.json}.}

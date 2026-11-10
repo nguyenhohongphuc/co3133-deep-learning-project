@@ -1,0 +1,8 @@
+\section{Models}
+
+\subsection{CNN baseline}
+\draftnote{Diagram the self-implemented four-block CNN: Conv--BatchNorm--ReLU--pool, then global average pooling, dropout, and a 30-way linear head. Annotate intermediate shapes and the 397,086 trainable parameters.}
+
+\subsection{ImageNet-pretrained ResNet-50}
+\draftnote{Cite the torchvision backbone and \textup{\path{IMAGENET1K_V2}} weights. Explain the 30-way head and compare head-only training (61,470 trainable parameters) with full fine-tuning (23,569,502). State how gradients and BatchNorm statistics are handled in each arm.}
+\evidence{\path{src/a2/models.py}, \path{src/a2/trainer.py}, saved per-run configurations.}

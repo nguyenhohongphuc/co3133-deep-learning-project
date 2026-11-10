@@ -1,0 +1,24 @@
+\section{Quantitative Results}
+
+\subsection{Cleaned test performance}
+\begin{table}[htbp]
+  \centering
+  \caption{Cleaned test results over saved checkpoints. Values after $\pm$ are sample standard deviations across seeds.}
+  \label{tab:test}
+  \begin{tabular}{lrrr}
+    \toprule
+    Model & Runs & Accuracy & Macro-F1 \\
+    \midrule
+    CNN baseline & 1 & $0.5451$ & $0.5403$ \\
+    ResNet-50 frozen & 3 & $0.7679 \pm 0.0013$ & $0.7720 \pm 0.0022$ \\
+    ResNet-50 full & 3 & $0.8908 \pm 0.0064$ & $0.8922 \pm 0.0063$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\draftnote{Report the 4,984-image, 30-class support and note the CNN is a single draft run. Add per-class F1, representative confusion matrices, and validation metrics where they help explain checkpoint selection.}
+\evidence{\path{results/a2/tables/a2_test_summary.json}, \path{results/a2/tables/a2_test_evaluation.csv}.}
+
+\subsection{Compute cost}
+\draftnote{Compare total and trainable parameters, time per training run, peak training memory where measured, and forward time per image. State the RTX 4060 Laptop training device and Apple MPS evaluation device, batch size, PyTorch version, and timing boundaries.}
+\evidence{\path{results/a2/tables/a2_test_compute_cost.csv}.}

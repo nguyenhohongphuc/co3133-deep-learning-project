@@ -1,0 +1,6 @@
+\section{Data Preparation}
+
+\draftnote{\textbf{Split and leakage control.} Compare official and cleaned counts. The cleaned split retains 17,164 training, 2,481 validation, and 4,984 test images after 507 removals. Explain stratification, duplicate clusters as the leakage-control unit, MD5 and perceptual hashes, removal rules for conflicting labels, and the fixed manifest.}
+
+\draftnote{\textbf{Transforms and example batch.} Contrast training augmentation with evaluation resize and center crop. Document train-set normalization for CNN and ImageNet normalization for ResNet-50. Show an example batch with input and label shapes.}
+\evidence{\path{results/a2/splits/split_v2.json}, \path{results/a2/tables/a2_drop_list.csv}, \path{src/a2/data.py}, \path{results/a2/figures/a2_example_batch.png}.}

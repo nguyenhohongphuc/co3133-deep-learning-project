@@ -1,0 +1,13 @@
+\section{Error Analysis}
+
+\subsection{Error groups and examples}
+\draftnote{Build a table with group definition, error count and denominator, representative image IDs, plausible cause, and a future validation experiment. Start from the 525 errors in the validation-selected full seed-44 run. Show directed confusions such as Banh canh $\to$ Hu tieu (22/191) and Hu tieu $\to$ Banh canh (13/194). Explain that overlapping diagnostic groups may contain the same images.}
+
+\subsection{Check the four EDA hypotheses}
+\begin{itemize}
+  \item H1 (rice-cake shape): report 13 within-pair confusions among 234 true Banh chung/Banh tet images.
+  \item H2 (similar soup dishes): report 46 within-group confusions among 720 images from the three pre-specified soup classes.
+  \item H3 (extreme aspect ratio): compare 4/52 with 521/4,932 and show crop examples. The observed rates do not support an elevated error rate in the extreme group.
+  \item H4 (Banh pia background/packaging): explain the white-border proxy, the 0/11 vs.\ 2/78 counts, and the Grad-CAM observations. The shortcut hypothesis remains unresolved.
+\end{itemize}
+\evidence{\path{results/a2/tables/a2_test_error_groups.csv}, \path{results/a2/error_analysis/hypothesis_results.json}, \path{reports/a2/test_evaluation_analysis.md}.}
