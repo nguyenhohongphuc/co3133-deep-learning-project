@@ -70,6 +70,9 @@ python -m src.a2.data
 python -m src.a2.train --model cnn               # baseline
 python -m src.a2.train --model resnet50_frozen   # pretrained, backbone frozen
 python -m src.a2.train --model resnet50_full     # pretrained, full fine-tuning
+
+# 5. Controlled experiment: both arms with 3 seeds (they differ only in lr_backbone)
+foreach ($s in 42, 43, 44) { foreach ($m in "resnet50_frozen", "resnet50_full") { python -m src.a2.train --model $m --seed $s } }
 ```
 
 | Item | A2 |
@@ -78,6 +81,7 @@ python -m src.a2.train --model resnet50_full     # pretrained, full fine-tuning
 | Models (`src/a2/models.py`) | `cnn`: A1 CNN widened to 4 blocks + global average pooling (397 k params); `resnet50_frozen` / `resnet50_full`: torchvision ResNet-50 `IMAGENET1K_V2`, new 30-way head (23.6 M params) |
 | Preprocessing (`src/a2/data.py`) | train: `RandomResizedCrop(224)` + flip + `ColorJitter(0.1)`; eval: `Resize(256)` + `CenterCrop(224)`; CNN normalised with Train v2 stats, ResNet with ImageNet stats |
 | Checkpoint selection | best validation macro-F1, early stopping patience 5 (same trainer as A1) |
+| Controlled experiment | frozen vs. full fine-tuning, only the backbone lr differs (0 vs. 1e-4); val macro-F1 0.763 ± 0.003 vs. 0.885 ± 0.002 over seeds 42/43/44 (commit `41cf5e3`) |
 | Proposal | `reports/a2/proposal.md` (revision 2) |
 
 ---

@@ -235,7 +235,7 @@
     <h2>Methodology</h2>
     <h3>Pipeline overview</h3>
     <pre><code>30VNFoods JPEGs + split_v2.json -&gt; decode (PIL draft) -&gt; augment / resize-crop -&gt; normalise
-  -&gt; DataLoader (batch 64, 6 workers) -&gt; model -&gt; 30 logits -&gt; cross-entropy
+  -&gt; DataLoader (batch 64 CNN / 32 ResNet, 6 workers) -&gt; model -&gt; 30 logits -&gt; cross-entropy
   -&gt; Adam -&gt; argmax -&gt; accuracy, macro-F1 on validation -&gt; keep best checkpoint</code></pre>
     <p>The images (4.3 GB, median 1000&times;720 px) do not fit in memory, unlike Fashion-MNIST in A1. They are read
       from disk by six worker processes. Each worker decodes a JPEG straight to about 320 px using PIL draft mode
@@ -248,7 +248,7 @@
         <thead><tr><th>Role</th><th>Model</th><th>Input representation / loss</th><th>Self-implemented vs. library</th><th>Params</th><th>Status</th></tr></thead>
         <tbody>
           <tr><td>Simple baseline</td><td>CNN: 4 &times; (Conv3&times;3-BN-ReLU-MaxPool), channels 32-64-128-256, global average pooling, dropout 0.3, linear head</td><td>RGB 224&times;224, Train v2 normalisation / cross-entropy</td><td>Self-implemented (extends the A1 CNN); PyTorch layers</td><td>397,086</td><td><span class="badge wip">Trained (draft, 20 epochs)</span></td></tr>
-          <tr><td>Pretrained model</td><td>ResNet-50, torchvision <code>IMAGENET1K_V2</code>, 1000-way head replaced by a 30-way linear head</td><td>RGB 224&times;224, ImageNet normalisation / cross-entropy</td><td>Library backbone (torchvision); head, freezing and training loop ours</td><td>23,569,502 (61,470 trainable when frozen)</td><td><span class="badge wip">In progress (draft runs: frozen and full)</span></td></tr>
+          <tr><td>Pretrained model</td><td>ResNet-50, torchvision <code>IMAGENET1K_V2</code>, 1000-way head replaced by a 30-way linear head</td><td>RGB 224&times;224, ImageNet normalisation / cross-entropy</td><td>Library backbone (torchvision); head, freezing and training loop ours</td><td>23,569,502 (61,470 trainable when frozen)</td><td><span class="badge done">Trained: frozen and full, 3 seeds each</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -258,13 +258,18 @@
 
     <h3>Fine-tuning procedure</h3>
     <ul>
-      <li><strong>Frozen</strong> (<code>resnet50_frozen</code>): every backbone parameter has
-        <code>requires_grad = False</code>, and the backbone stays in eval mode so BatchNorm keeps its ImageNet
-        statistics. Only the new head (61,470 parameters) is trained, with Adam at lr 1e-3.</li>
-      <li><strong>Full</strong> (<code>resnet50_full</code>): all layers are trained with Adam at lr 1e-4 (10&times;
-        lower, to avoid destroying the pretrained features); batch 32 to fit in 8 GB without mixed precision.</li>
-      <li>Both use 224 px input, the same augmentation, weight decay 1e-4, early stopping on validation macro-F1
-        (patience 5). Weights are downloaded by torchvision on first use.</li>
+      <li>The optimizer has two parameter groups (<code>src/a2/trainer.py</code>): the new 30-way head always uses
+        lr 1e-3, and the backbone uses <code>lr_backbone</code>. This is the only setting that differs between the two
+        arms.</li>
+      <li><strong>Frozen</strong> (<code>resnet50_frozen</code>, <code>lr_backbone = 0</code>): every backbone
+        parameter has <code>requires_grad = False</code>, and the backbone stays in eval mode so BatchNorm keeps its
+        ImageNet statistics. Only the head (61,470 parameters) is trained.</li>
+      <li><strong>Full</strong> (<code>resnet50_full</code>, <code>lr_backbone = 1e-4</code>): all layers are trained;
+        the backbone learns 10&times; more slowly than the head so the pretrained features are adapted, not
+        overwritten.</li>
+      <li>Both arms: 224 px input, the same augmentation, Adam with weight decay 1e-4, batch 32 (the full arm does not
+        fit batch 64 in 8 GB at fp32, so the frozen arm uses 32 as well), at most 15 epochs, early stopping on
+        validation macro-F1 with patience 5. Weights are downloaded by torchvision on first use.</li>
     </ul>
   </section>
 
@@ -272,11 +277,11 @@
   <section id="setup">
     <h2>Experimental setup</h2>
     <dl class="kv">
-      <dt>Optimizer / LR / scheduler</dt><dd>Adam, weight decay 1e-4; lr 1e-3 (CNN, frozen ResNet), 1e-4 (full fine-tuning); no scheduler in the draft</dd>
-      <dt>Batch size / epochs</dt><dd>64 (32 for full fine-tuning); draft runs use fewer epochs than planned (see results)</dd>
+      <dt>Optimizer / LR / scheduler</dt><dd>Adam, weight decay 1e-4. CNN: lr 1e-3. ResNet-50: head lr 1e-3, backbone lr 0 (frozen) or 1e-4 (full). No scheduler</dd>
+      <dt>Batch size / epochs</dt><dd>CNN: batch 64, 20 epochs (draft). ResNet-50, both arms: batch 32, at most 15 epochs</dd>
       <dt>Regularization / early stopping</dt><dd>Augmentation, dropout 0.3 (CNN), weight decay; early stopping with patience 5 on validation macro-F1</dd>
       <dt>Checkpoint criterion</dt><dd>Highest validation macro-F1</dd>
-      <dt>Seeds / number of runs</dt><dd>Seed 42, one run per configuration in the draft; 3 seeds planned for M3</dd>
+      <dt>Seeds / number of runs</dt><dd>Controlled experiment: seeds 42, 43, 44 for each arm (6 runs). CNN baseline: seed 42 only (draft)</dd>
       <dt>Hardware</dt><dd>NVIDIA GeForce RTX 4060 Laptop GPU (8 GB), AMD Ryzen 7 7735HS, Windows 11</dd>
       <dt>Software versions</dt><dd>Python 3.10.21, PyTorch 2.14.1+cu126, torchvision 0.29.1+cu126, CUDA 12.6</dd>
       <dt>Mixed precision</dt><dd>No (draft); planned for M3</dd>
@@ -287,43 +292,82 @@
       <table>
         <thead><tr><th>Hypothesis</th><th>Changed factor</th><th>Fixed factors</th><th>Metrics</th><th>Decision criterion</th></tr></thead>
         <tbody>
-          <tr><td>Full fine-tuning beats a frozen backbone on 30VNFoods, because these photos differ from ImageNet in colour and content</td><td>Freeze vs. full fine-tune (with the learning rate that goes with each)</td><td>Data, split v2, augmentation, input size, epochs budget, seeds, metric</td><td>Validation/test macro-F1 and accuracy; training time and memory</td><td>The difference counts only if it exceeds the spread over 3 seeds; the gain is weighed against the extra GPU time</td></tr>
+          <tr><td>Full fine-tuning beats a frozen backbone on 30VNFoods, because these photos differ from ImageNet in colour and content</td><td>Backbone learning rate only: 0 (frozen) vs. 1e-4 (full fine-tuning)</td><td>Data, split v2, augmentation, input size, model, head lr 1e-3, optimizer and weight decay, batch 32, 15-epoch budget, patience 5, seeds 42/43/44, checkpoint rule, metric</td><td>Validation macro-F1 and accuracy (test in M3); training time and peak GPU memory</td><td>The difference counts only if it exceeds the spread over 3 seeds; the gain is weighed against the extra GPU time</td></tr>
         </tbody>
       </table>
     </div>
-    <p><span class="badge todo">TODO (M3)</span> Run both arms with 3 seeds.</p>
+    <p>The six runs come from one commit (<code>41cf5e3</code>); each run's <code>config.yaml</code> confirms that the two
+      arms differ only in <code>lr_backbone</code>. Results are in the next section.</p>
   </section>
 
   <!-- ============ RESULTS ============ -->
   <section id="results">
-    <h2>Results (preliminary)</h2>
-    <h3>Quantitative results</h3>
-    <p>Validation set (2,481 images), seed 42, one run per configuration, best checkpoint by validation macro-F1.
-      These are <strong>draft</strong> runs: fewer epochs than planned, no learning-rate schedule, no mixed precision.</p>
+    <h2>Results</h2>
+    <h3>Controlled experiment: frozen vs. full fine-tuning</h3>
+    <p>Validation set (2,481 images), best checkpoint by validation macro-F1, 3 seeds per arm. Mean &plusmn; sample
+      standard deviation over seeds 42, 43, 44.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Arm</th><th>Val macro-F1</th><th>Val accuracy</th><th>Trainable params</th><th>Epochs run (best epoch)</th><th>Time per run</th><th>Peak GPU memory</th></tr></thead>
+        <tbody>
+          <tr><td>Frozen backbone (lr<sub>backbone</sub> = 0)</td><td>0.763 &plusmn; 0.003</td><td>0.762 &plusmn; 0.003</td><td>61,470</td><td>15, 15, 15 (13, 11, 12)</td><td>12.1 min</td><td>0.43 GB</td></tr>
+          <tr><td>Full fine-tuning (lr<sub>backbone</sub> = 1e-4)</td><td><strong>0.885 &plusmn; 0.002</strong></td><td><strong>0.886 &plusmn; 0.003</strong></td><td>23,569,502</td><td>12, 14, 15 (7, 9, 11)</td><td>25.0 min</td><td>2.89 GB</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Seed</th><th>Frozen macro-F1</th><th>Full macro-F1</th><th>Gain</th><th>Run IDs</th></tr></thead>
+        <tbody>
+          <tr><td>42</td><td>0.764</td><td>0.883</td><td>+0.118</td><td><code>a2_resnet50_frozen_s42_1110-0659</code>, <code>a2_resnet50_full_s42_1110-0713</code></td></tr>
+          <tr><td>43</td><td>0.760</td><td>0.885</td><td>+0.126</td><td><code>a2_resnet50_frozen_s43_1110-0910</code>, <code>a2_resnet50_full_s43_1110-1121</code></td></tr>
+          <tr><td>44</td><td>0.766</td><td>0.887</td><td>+0.121</td><td><code>a2_resnet50_frozen_s44_1110-1151</code>, <code>a2_resnet50_full_s44_1110-1204</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Full fine-tuning wins on every seed, by 0.122 macro-F1 on average. That gap is about 40 times the seed-to-seed
+      spread of either arm (&le; 0.003), so by our decision criterion the difference is real. Epochs are counted from 1.
+      Peak memory is <code>torch.cuda.max_memory_allocated</code> (tensors only; <code>nvidia-smi</code> shows more
+      because of the CUDA context and allocator cache).</p>
+    <figure>
+      <img src="../assets/img/a2/a2_ablation_curves.png" alt="Validation macro-F1 and loss per epoch for the two arms over three seeds. Full fine-tuning reaches 0.82 after one epoch and levels off near 0.88 from epoch 4, with validation loss rising slightly after epoch 4 to 7 while training loss keeps falling. The frozen arm rises slowly from 0.66 to about 0.76, with training and validation loss nearly equal." style="width:100%;border-radius:var(--radius)">
+      <figcaption>Figure 5 &mdash; Controlled experiment: validation macro-F1 (left) and loss (right) per epoch, three seeds per arm.</figcaption>
+    </figure>
+    <ul>
+      <li><strong>Seeds barely matter.</strong> The three curves of each arm almost overlap, so the gap between arms is
+        not noise.</li>
+      <li><strong>Frozen: limited by capacity, not by data.</strong> Training and validation loss stay close (0.78 vs.
+        0.82 at epoch 15), so the head is not overfitting. Macro-F1 gains at most 0.014 over the last five epochs. A linear layer
+        on fixed ImageNet features cannot learn more, and more epochs would add little.</li>
+      <li><strong>Full: fast, then starts to overfit.</strong> Macro-F1 is 0.82 after one epoch, already above the
+        frozen arm's best, and levels off near 0.88 from epoch 4. Validation loss is lowest between epochs 4 and 10
+        and then creeps up while training loss keeps falling (0.25&ndash;0.30 vs. about 0.50 at the end). Early
+        stopping ended two of the three runs. A learning-rate schedule or stronger regularisation is the obvious
+        next step, but it would be a separate experiment.</li>
+    </ul>
+    <p><span class="badge todo">TODO (M3)</span> Test-set metrics, per-class F1, confusion matrix and inference cost
+      for the selected model.</p>
+
+    <h3>Draft runs (M2, superseded)</h3>
+    <p>Seed 42, validation set. The CNN row is still our only baseline result. The two ResNet-50 rows are
+      <strong>not</strong> a controlled comparison: they differ in backbone lr, head lr (1e-4 for the full arm),
+      batch size (64 vs. 32) and epoch budget (10 vs. 5). They are kept only for the record and are replaced by the
+      controlled experiment above.</p>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Model / config</th><th>Val macro-F1</th><th>Val accuracy</th><th>Params (trainable)</th><th>Epochs run (best)</th><th>Training time</th><th>Run ID</th></tr></thead>
         <tbody>
           <tr><td>CNN baseline (from scratch)</td><td>0.556</td><td>0.558</td><td>397,086 (all)</td><td>20 (18)</td><td>20.9 min</td><td><code>a2_cnn_s42_1028-1546</code></td></tr>
-          <tr><td>ResNet-50, frozen backbone</td><td>0.746</td><td>0.746</td><td>23,569,502 (61,470)</td><td>10 (8)</td><td>11.1 min</td><td><code>a2_resnet50_frozen_s42_1028-1607</code></td></tr>
-          <tr><td>ResNet-50, full fine-tuning</td><td><strong>0.874</strong></td><td><strong>0.878</strong></td><td>23,569,502 (all)</td><td>5 (4)</td><td>10.5 min</td><td><code>a2_resnet50_full_s42_1028-1619</code></td></tr>
+          <tr><td>ResNet-50, frozen (draft)</td><td>0.746</td><td>0.746</td><td>23,569,502 (61,470)</td><td>10 (8)</td><td>11.1 min</td><td><code>a2_resnet50_frozen_s42_1028-1607</code></td></tr>
+          <tr><td>ResNet-50, full (draft)</td><td>0.874</td><td>0.878</td><td>23,569,502 (all)</td><td>5 (4)</td><td>10.5 min</td><td><code>a2_resnet50_full_s42_1028-1619</code></td></tr>
         </tbody>
       </table>
     </div>
-    <p><span class="badge todo">TODO (M3)</span> Test-set metrics, per-class F1, confusion matrix, inference cost, 3 seeds.</p>
 
-    <h3>Training behaviour</h3>
+    <h3>Training behaviour of the CNN baseline</h3>
     <figure>
       <img src="../assets/img/a2/a2_cnn_curves.png" alt="CNN training curves over 20 epochs: training loss falls steadily from 3.0 to 1.77; validation loss and scores improve but oscillate." style="width:100%;border-radius:var(--radius)">
-      <figcaption>Figure 5 &mdash; CNN baseline: loss (left) and validation accuracy / macro-F1 (right) per epoch.</figcaption>
-    </figure>
-    <figure>
-      <img src="../assets/img/a2/a2_resnet50_frozen_curves.png" alt="Frozen ResNet-50 training curves over 10 epochs: smooth, flattening near 0.75 validation macro-F1." style="width:100%;border-radius:var(--radius)">
-      <figcaption>Figure 6 &mdash; ResNet-50 with a frozen backbone.</figcaption>
-    </figure>
-    <figure>
-      <img src="../assets/img/a2/a2_resnet50_full_curves.png" alt="Fully fine-tuned ResNet-50 curves over 5 epochs: validation macro-F1 rises from 0.80 to 0.87." style="width:100%;border-radius:var(--radius)">
-      <figcaption>Figure 7 &mdash; ResNet-50 with full fine-tuning.</figcaption>
+      <figcaption>Figure 6 &mdash; CNN baseline: loss (left) and validation accuracy / macro-F1 (right) per epoch.</figcaption>
     </figure>
     <ul>
       <li><strong>CNN: underfitting, not yet converged.</strong> Training loss is still falling at epoch 20 (1.77), and
@@ -331,12 +375,6 @@
         loss because training images are heavily augmented (random crops down to 8% of the image) and pass through
         dropout. Validation scores swing by up to 0.09 between epochs (0.556 at epoch 18, 0.462 at epoch 20). A likely
         cause is the constant learning rate of 1e-3 with no schedule; we will add one in M3.</li>
-      <li><strong>Frozen ResNet-50: smooth but flattening.</strong> Validation macro-F1 is 0.633 after one epoch and
-        0.746 at epoch 8, and changes by less than 0.002 over the last three epochs. Training only the linear head
-        limits what the model can learn.</li>
-      <li><strong>Full fine-tuning: fastest progress.</strong> Validation macro-F1 is 0.799 after one epoch and peaks
-        at 0.874 at epoch 4. Training loss (0.50) is still above validation loss (0.44), so there is no sign of
-        overfitting yet. The run ended at the 5-epoch draft budget, not by early stopping.</li>
     </ul>
 
     <h3>Qualitative results</h3>
@@ -345,35 +383,37 @@
     <h3>Compute-cost analysis</h3>
     <div class="table-scroll">
       <table>
-        <thead><tr><th>Configuration</th><th>Batch</th><th>Time per epoch (train + validation)</th><th>GPU memory</th></tr></thead>
+        <thead><tr><th>Configuration</th><th>Batch</th><th>Time per epoch (train + validation)</th><th>Peak GPU memory</th><th>GPU time, all runs</th></tr></thead>
         <tbody>
-          <tr><td>CNN baseline</td><td>64</td><td>1.0 min</td><td>&mdash;</td></tr>
-          <tr><td>ResNet-50 frozen</td><td>64</td><td>1.1 min</td><td>&mdash;</td></tr>
-          <tr><td>ResNet-50 full fine-tuning</td><td>32</td><td>2.1 min</td><td>&asymp; 4.0 GB (read from <code>nvidia-smi</code> during training)</td></tr>
+          <tr><td>CNN baseline (draft)</td><td>64</td><td>1.0 min</td><td>not recorded</td><td>20.9 min (1 run)</td></tr>
+          <tr><td>ResNet-50 frozen</td><td>32</td><td>0.81 min</td><td>0.43 GB</td><td>36.4 min (3 runs)</td></tr>
+          <tr><td>ResNet-50 full fine-tuning</td><td>32</td><td>1.83 min</td><td>2.89 GB</td><td>74.9 min (3 runs)</td></tr>
         </tbody>
       </table>
     </div>
-    <p>Times are <code>train_time / epochs_run</code> from each run's <code>metrics.json</code> (RTX 4060 Laptop GPU,
-      fp32, 6 data-loading workers). The three draft runs took 42.5 GPU-minutes in total. Full fine-tuning costs about
-      twice as much per epoch as the frozen backbone, yet in 5 epochs (10.5 min) it reached a higher macro-F1 than the
-      frozen model did in 10 epochs (11.1 min).</p>
-    <p><span class="badge todo">TODO (M3)</span> Peak memory from <code>torch.cuda.max_memory_allocated</code>,
-      inference latency and throughput, total GPU-hours over 3 seeds.</p>
+    <p>Times are <code>train_time / epochs_run</code> and memory is <code>peak_gpu_mem_gb</code>
+      (<code>torch.cuda.max_memory_allocated</code>), both from each run's <code>metrics.json</code> (RTX 4060 Laptop
+      GPU, fp32, 6 data-loading workers). The six controlled-experiment runs took 1.9 GPU-hours. Full fine-tuning
+      costs 2.3&times; more time per epoch and 6.7&times; more memory, because it stores activations and gradients for
+      the whole backbone. Even so, after one epoch (1.8 min) it already beats the frozen arm's best result after 15
+      epochs (0.82 vs. 0.76).</p>
+    <p><span class="badge todo">TODO (M3)</span> Inference latency and throughput of the selected model.</p>
   </section>
 
   <!-- ============ DISCUSSION ============ -->
   <section id="discussion">
     <h2>Comparison and discussion</h2>
-    <p>Preliminary, from one seed on the validation set:</p>
+    <p>On the validation set:</p>
     <ul>
       <li><strong>Pretraining is the largest factor.</strong> Even with a frozen backbone, ResNet-50 beats the CNN by
-        0.19 macro-F1 (0.746 vs. 0.556), while training only 61 k parameters, about one sixth of the CNN's 397 k. With
-        about 570 training images per class, ImageNet features transfer far better than features learned from
-        scratch.</li>
-      <li><strong>Full fine-tuning adds 0.13 macro-F1</strong> over the frozen backbone (0.874 vs. 0.746). This is in
-        line with the controlled-experiment hypothesis that 30VNFoods differs enough from ImageNet for the backbone to
-        need adapting. It rests on one seed and unequal epochs (5 vs. 10), so it is not yet a conclusion; M3 uses 3
-        seeds and the same epoch budget for both arms.</li>
+        about 0.21 macro-F1 (0.763 vs. 0.556), while training only 61 k parameters, about one sixth of the CNN's 397 k.
+        With about 570 training images per class, ImageNet features transfer far better than features learned from
+        scratch. The CNN number is still one draft run, so this gap is indicative.</li>
+      <li><strong>Full fine-tuning adds 0.122 macro-F1</strong> over the frozen backbone (0.885 &plusmn; 0.002 vs.
+        0.763 &plusmn; 0.003, 3 seeds each, only the backbone lr changed). The hypothesis holds: 30VNFoods differs
+        enough from ImageNet that the backbone has to adapt, and a linear head on fixed features plateaus at about
+        0.76. The cost is 2.1&times; the training time per run and 6.7&times; the GPU memory, which is affordable on an
+        8 GB laptop GPU, so full fine-tuning is the model we carry forward.</li>
       <li><strong>Not yet known:</strong> how far the CNN gets with a full training budget and a learning-rate
         schedule; per-class behaviour (H1&ndash;H4); test-set performance.</li>
     </ul>
@@ -396,16 +436,20 @@
       </table>
     </div>
     <h3>Ablation study (mandatory for A2)</h3>
-    <p><span class="badge todo">TODO (M3)</span> The controlled experiment above (frozen vs. full fine-tuning) is our
-      mandatory ablation. If time allows, we will add weighted vs. plain cross-entropy.</p>
+    <p>The controlled experiment above is our mandatory ablation. Removing backbone adaptation (backbone lr 1e-4
+      &rarr; 0, everything else fixed) lowers validation macro-F1 from 0.885 &plusmn; 0.002 to 0.763 &plusmn; 0.003 over
+      3 seeds (results section, Figure 5).</p>
+    <p><span class="badge todo">TODO (M3)</span> If time allows: weighted vs. plain cross-entropy.</p>
   </section>
 
   <!-- ============ CONCLUSION ============ -->
   <section id="conclusion">
     <h2>Limitations and conclusion</h2>
     <ul>
-      <li><strong>Draft numbers:</strong> one seed, fewer epochs than planned, validation set only. They show that the
-        pipeline works; they are not the final comparison.</li>
+      <li><strong>Validation set only so far:</strong> the controlled experiment uses 3 seeds, but test-set numbers
+        are not reported yet. The CNN baseline is a single draft run that had not converged.</li>
+      <li><strong>No learning-rate schedule:</strong> the full arm starts to overfit after about 4&ndash;10 epochs;
+        a schedule could raise its score and was not tested here.</li>
       <li><strong>Source leakage not checked:</strong> photos from the same website may still sit in different splits.
         <code>Urls/</code> might map images to domains, but we have not verified that mapping.</li>
       <li><strong>Label noise remains</strong> beyond the conflicts revealed by duplicates.</li>
@@ -425,8 +469,9 @@
         <thead><tr><th>Result</th><th>Config</th><th>Split</th><th>Checkpoint</th><th>Log / run ID</th><th>Commit</th></tr></thead>
         <tbody>
           <tr><td>CNN baseline</td><td><code>configs/a2.yaml</code>, <code>--model cnn --epochs 20</code></td><td><code>split_v2.json</code></td><td>best val macro-F1 (epoch 18)</td><td><code>a2_cnn_s42_1028-1546</code></td><td><code>a1246bc</code></td></tr>
-          <tr><td>ResNet-50 frozen</td><td><code>configs/a2.yaml</code>, <code>--model resnet50_frozen --epochs 10</code></td><td><code>split_v2.json</code></td><td>best val macro-F1 (epoch 8)</td><td><code>a2_resnet50_frozen_s42_1028-1607</code></td><td><code>a1246bc</code></td></tr>
-          <tr><td>ResNet-50 full</td><td><code>configs/a2.yaml</code>, <code>--model resnet50_full --epochs 5</code></td><td><code>split_v2.json</code></td><td>best val macro-F1 (epoch 4)</td><td><code>a2_resnet50_full_s42_1028-1619</code></td><td><code>a1246bc</code></td></tr>
+          <tr><td>Controlled experiment, frozen arm</td><td><code>configs/a2.yaml</code>, <code>--model resnet50_frozen --seed {42,43,44}</code></td><td><code>split_v2.json</code></td><td>best val macro-F1 (epochs 13, 11, 12)</td><td><code>a2_resnet50_frozen_s42_1110-0659</code>, <code>a2_resnet50_frozen_s43_1110-0910</code>, <code>a2_resnet50_frozen_s44_1110-1151</code></td><td><code>41cf5e3</code></td></tr>
+          <tr><td>Controlled experiment, full arm</td><td><code>configs/a2.yaml</code>, <code>--model resnet50_full --seed {42,43,44}</code></td><td><code>split_v2.json</code></td><td>best val macro-F1 (epochs 7, 9, 11)</td><td><code>a2_resnet50_full_s42_1110-0713</code>, <code>a2_resnet50_full_s43_1110-1121</code>, <code>a2_resnet50_full_s44_1110-1204</code></td><td><code>41cf5e3</code></td></tr>
+          <tr><td>Draft ResNet-50 frozen / full (superseded)</td><td>older config at that commit, <code>--epochs 10</code> / <code>--epochs 5</code></td><td><code>split_v2.json</code></td><td>best val macro-F1 (epoch 8 / 4)</td><td><code>a2_resnet50_frozen_s42_1028-1607</code>, <code>a2_resnet50_full_s42_1028-1619</code></td><td><code>a1246bc</code></td></tr>
         </tbody>
       </table>
     </div>
