@@ -1,0 +1,39 @@
+{
+  "cnn": {
+    "runs": 1,
+    "seeds": [
+      42
+    ],
+    "accuracy_mean": 0.5582426440951229,
+    "accuracy_sample_std": null,
+    "macro_f1_mean": 0.5564848212946167,
+    "macro_f1_sample_std": null,
+    "max_abs_training_f1_delta": 0.0004940315415208341
+  },
+  "resnet50_frozen": {
+    "runs": 3,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "accuracy_mean": 0.7623270186752653,
+    "accuracy_sample_std": 0.002915831575199616,
+    "macro_f1_mean": 0.7631798027322952,
+    "macro_f1_sample_std": 0.0030334239772235156,
+    "max_abs_training_f1_delta": 0.00012466347628059538
+  },
+  "resnet50_full": {
+    "runs": 3,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "accuracy_mean": 0.8863361547762999,
+    "accuracy_sample_std": 0.0031480248592933215,
+    "macro_f1_mean": 0.8849992506400096,
+    "macro_f1_sample_std": 0.0023812455052695516,
+    "max_abs_training_f1_delta": 0.0006052991235152572
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "split": "test",
+  "run_ids": [
+    "a2_cnn_s42_1028-1546",
+    "a2_resnet50_frozen_s42_1110-0659",
+    "a2_resnet50_frozen_s43_1110-0910",
+    "a2_resnet50_frozen_s44_1110-1151",
+    "a2_resnet50_full_s42_1110-0713",
+    "a2_resnet50_full_s43_1110-1121",
+    "a2_resnet50_full_s44_1110-1204"
+  ],
+  "device": "mps",
+  "batch_size": 32,
+  "cpu_threads": 5,
+  "num_workers": 0,
+  "representatives": {
+    "cnn": {
+      "run_id": "a2_cnn_s42_1028-1546",
+      "validation_macro_f1": 0.5564848212946167
+    },
+    "resnet50_frozen": {
+      "run_id": "a2_resnet50_frozen_s44_1110-1151",
+      "validation_macro_f1": 0.765667587480038
+    },
+    "resnet50_full": {
+      "run_id": "a2_resnet50_full_s44_1110-1204",
+      "validation_macro_f1": 0.8873449499628009
+    }
+  },
+  "selection_rule": "Highest existing validation macro-F1 within each model family; fixed before test",
+  "checkpoint_sha256": {
+    "a2_cnn_s42_1028-1546": "f507d2db4fa9306c55064fc389d89124c388a1eabf040d08e52bff721ffa3629",
+    "a2_resnet50_frozen_s42_1110-0659": "7031cf773b92f3a875c94de903b21f1a9335e0203cbab4201577d297c6915729",
+    "a2_resnet50_frozen_s43_1110-0910": "30fd44a2bc759268e082933b6c6d5967a9342641dd602a2d7a72619f608c3271",
+    "a2_resnet50_frozen_s44_1110-1151": "22431bf8196bb02219f8b9931af61902295407bfb3eccab57d7e42f65546a6a4",
+    "a2_resnet50_full_s42_1110-0713": "cfdabd1d724d6143a9485ed9a0709c4ba72ff5ab548ae97546667092a1c2c9ea",
+    "a2_resnet50_full_s43_1110-1121": "7317b00516c77ad73d9b8c8fdedf82088352894cbadfbd386d912d8f9394ca4e",
+    "a2_resnet50_full_s44_1110-1204": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd"
+  }
+}

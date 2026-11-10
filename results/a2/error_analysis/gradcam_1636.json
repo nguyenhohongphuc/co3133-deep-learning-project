@@ -1,0 +1,19 @@
+{
+  "run_id": "a2_resnet50_full_s44_1110-1204",
+  "path": "Test/Banh pia/146.jpg",
+  "index": 1636,
+  "reason": "Banh pia correct",
+  "true_class": "Banh pia",
+  "predicted_class": "Banh pia",
+  "csv_confidence": 1.0,
+  "figure": "a2_test_gradcam_1636.png",
+  "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+  "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+  "targets": [
+    {
+      "label": 10,
+      "probability": 1.0,
+      "max_before_normalization": 2.4220163822174072
+    }
+  ]
+}

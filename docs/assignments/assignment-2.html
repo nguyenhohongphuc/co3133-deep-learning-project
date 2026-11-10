@@ -259,8 +259,8 @@
     <h3>Fine-tuning procedure</h3>
     <ul>
       <li>The optimizer has two parameter groups (<code>src/a2/trainer.py</code>): the new 30-way head always uses
-        lr 1e-3, and the backbone uses <code>lr_backbone</code>. This is the only setting that differs between the two
-        arms.</li>
+        lr 1e-3, and the backbone uses <code>lr_backbone</code>. The treatment is frozen versus full backbone
+        adaptation, including the associated gradient and BatchNorm modes.</li>
       <li><strong>Frozen</strong> (<code>resnet50_frozen</code>, <code>lr_backbone = 0</code>): every backbone
         parameter has <code>requires_grad = False</code>, and the backbone stays in eval mode so BatchNorm keeps its
         ImageNet statistics. Only the head (61,470 parameters) is trained.</li>
@@ -292,12 +292,12 @@
       <table>
         <thead><tr><th>Hypothesis</th><th>Changed factor</th><th>Fixed factors</th><th>Metrics</th><th>Decision criterion</th></tr></thead>
         <tbody>
-          <tr><td>Full fine-tuning beats a frozen backbone on 30VNFoods, because these photos differ from ImageNet in colour and content</td><td>Backbone learning rate only: 0 (frozen) vs. 1e-4 (full fine-tuning)</td><td>Data, split v2, augmentation, input size, model, head lr 1e-3, optimizer and weight decay, batch 32, 15-epoch budget, patience 5, seeds 42/43/44, checkpoint rule, metric</td><td>Validation macro-F1 and accuracy (test in M3); training time and peak GPU memory</td><td>The difference counts only if it exceeds the spread over 3 seeds; the gain is weighed against the extra GPU time</td></tr>
+          <tr><td>Full fine-tuning improves on frozen ImageNet features for 30VNFoods</td><td>Backbone adaptation mode: frozen versus full, with backbone lr 0 vs. 1e-4 and the corresponding BatchNorm mode</td><td>Data, split v2, augmentation, input size, architecture, head lr 1e-3, optimizer and weight decay, batch 32, 15-epoch budget, patience 5, seeds 42/43/44, checkpoint rule, metric</td><td>Validation/test macro-F1 and accuracy; training time and peak GPU memory</td><td>Compare paired-seed gains with observed seed spread and additional GPU cost; no formal significance claim from three seeds</td></tr>
         </tbody>
       </table>
     </div>
-    <p>The six runs come from one commit (<code>41cf5e3</code>); each run's <code>config.yaml</code> confirms that the two
-      arms differ only in <code>lr_backbone</code>. Results are in the next section.</p>
+    <p>The six runs come from one commit (<code>41cf5e3</code>); saved configs confirm the common training settings
+      and the frozen/full treatment. Results are in the next section.</p>
   </section>
 
   <!-- ============ RESULTS ============ -->
@@ -326,7 +326,7 @@
       </table>
     </div>
     <p>Full fine-tuning wins on every seed, by 0.122 macro-F1 on average. That gap is about 40 times the seed-to-seed
-      spread of either arm (&le; 0.003), so by our decision criterion the difference is real. Epochs are counted from 1.
+      spread of either arm (&le; 0.003), supporting a consistent gap across the observed seeds. Epochs are counted from 1.
       Peak memory is <code>torch.cuda.max_memory_allocated</code> (tensors only; <code>nvidia-smi</code> shows more
       because of the CUDA context and allocator cache).</p>
     <figure>
@@ -334,19 +334,36 @@
       <figcaption>Figure 5 &mdash; Controlled experiment: validation macro-F1 (left) and loss (right) per epoch, three seeds per arm.</figcaption>
     </figure>
     <ul>
-      <li><strong>Seeds barely matter.</strong> The three curves of each arm almost overlap, so the gap between arms is
-        not noise.</li>
-      <li><strong>Frozen: limited by capacity, not by data.</strong> Training and validation loss stay close (0.78 vs.
-        0.82 at epoch 15), so the head is not overfitting. Macro-F1 gains at most 0.014 over the last five epochs. A linear layer
-        on fixed ImageNet features cannot learn more, and more epochs would add little.</li>
+      <li><strong>Low variation over the observed seeds.</strong> Within-arm variation is much smaller than the
+        frozen/full gap; this observation is limited to three seeds.</li>
+      <li><strong>Frozen: learning slows within the tested budget.</strong> Training and validation loss stay close
+        (0.78 vs. 0.82 at epoch 15), with small late macro-F1 gains. This does not prove a hard capacity limit or rule out
+        improvements from another optimization setup.</li>
       <li><strong>Full: fast, then starts to overfit.</strong> Macro-F1 is 0.82 after one epoch, already above the
         frozen arm's best, and levels off near 0.88 from epoch 4. Validation loss is lowest between epochs 4 and 10
         and then creeps up while training loss keeps falling (0.25&ndash;0.30 vs. about 0.50 at the end). Early
         stopping ended two of the three runs. A learning-rate schedule or stronger regularisation is the obvious
         next step, but it would be a separate experiment.</li>
     </ul>
-    <p><span class="badge todo">TODO (M3)</span> Test-set metrics, per-class F1, confusion matrix and inference cost
-      for the selected model.</p>
+    <h3 id="final-test">Final test evaluation</h3>
+    <p>All seven fixed checkpoints were evaluated on the cleaned test split (4,984 images, 30 classes).
+      Mean &plusmn; sample standard deviation over seeds 42/43/44 is reported for each ResNet arm; CNN has one draft run.
+      No model or hyperparameter was changed using these test results.</p>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Model</th><th>Runs</th><th>Test accuracy</th><th>Test macro-F1</th><th>Top-3 accuracy</th></tr></thead>
+      <tbody>
+        <tr><td>CNN baseline</td><td>1</td><td>0.5451</td><td>0.5403</td><td>0.7542</td></tr>
+        <tr><td>ResNet-50 frozen</td><td>3</td><td>0.7679 &plusmn; 0.0013</td><td>0.7720 &plusmn; 0.0022</td><td>0.9169</td></tr>
+        <tr><td>ResNet-50 full</td><td>3</td><td><strong>0.8908 &plusmn; 0.0064</strong></td><td><strong>0.8922 &plusmn; 0.0063</strong></td><td>0.9683</td></tr>
+      </tbody>
+    </table></div>
+    <p>Full improves over frozen at every paired seed, by 0.1202 macro-F1 on average. This is a descriptive result over
+      three seeds, not a formal significance claim. Illustrations below use seed 44 for both ResNet arms, selected by
+      their validation macro-F1 before test evaluation; the seed was not selected by its test score.</p>
+    <figure><img src="../assets/img/a2/test/a2_test_model_comparison.png" alt="Final test accuracy and macro-F1 for CNN, frozen and full ResNet-50, with sample standard deviation over three ResNet seeds" style="width:100%;border-radius:var(--radius)">
+      <figcaption>Final test comparison. Error bars are sample standard deviations, not confidence intervals.</figcaption></figure>
+    <figure><img src="../assets/img/a2/test/a2_test_per_class_f1.png" alt="Per-class F1 on the test set for the validation-selected illustrative runs" style="width:100%;border-radius:var(--radius)">
+      <figcaption>Per-class behavior of the illustrative runs. Complete per-run metrics and confusion counts are stored under <code>evaluation/test/</code>.</figcaption></figure>
 
     <h3>Draft runs (M2, superseded)</h3>
     <p>Seed 42, validation set. The CNN row is still our only baseline result. The two ResNet-50 rows are
@@ -378,7 +395,16 @@
     </ul>
 
     <h3>Qualitative results</h3>
-    <p><span class="badge todo">TODO (M3)</span> Correct, hard-but-correct and failure cases on the test set.</p>
+    <p>The galleries show the exact evaluation crop, ground truth and predictions from the same three illustrative runs.
+      Correct examples have probability margin &ge; 0.5; hard-correct examples use the smallest top-1/top-2 margins;
+      failures prioritize frequent confusion pairs and confidence. Selection is deterministic with class diversity.</p>
+    <figure><img src="../assets/img/a2/test/a2_test_examples_correct.png" alt="Correct test examples with ground truth and predictions from CNN, frozen and full ResNet" style="width:100%;border-radius:var(--radius)">
+      <figcaption>Correct examples: clear bread shape, cut-section geometry or characteristic dish appearance can be visible.</figcaption></figure>
+    <figure><img src="../assets/img/a2/test/a2_test_examples_hard_correct.png" alt="Correct predictions with small probability margins, including partial rolls, occluded noodles and blurred plates" style="width:100%;border-radius:var(--radius)">
+      <figcaption>Hard-correct examples: low margin does not mean an error. Partial visibility, garnish and blur are observations, not proven causes.</figcaption></figure>
+    <figure><img src="../assets/img/a2/test/a2_test_examples_wrong.png" alt="Failure examples from common confusion pairs with model confidences and ground truth" style="width:100%;border-radius:var(--radius)">
+      <figcaption>Failures include Banh canh / Hu tieu and Bun rieu / Bun bo Hue, sometimes at high confidence.
+        The analysis also retains full-only improvements (755 images) and frozen-only successes (130), avoiding a one-sided selection.</figcaption></figure>
 
     <h3>Compute-cost analysis</h3>
     <div class="table-scroll">
@@ -397,7 +423,12 @@
       costs 2.3&times; more time per epoch and 6.7&times; more memory, because it stores activations and gradients for
       the whole backbone. Even so, after one epoch (1.8 min) it already beats the frozen arm's best result after 15
       epochs (0.82 vs. 0.76).</p>
-    <p><span class="badge todo">TODO (M3)</span> Inference latency and throughput of the selected model.</p>
+    <p>Current test inference was measured on Apple MPS with PyTorch 2.8.0, batch 32 and no loader workers:
+      CNN 0.859 ms/image, frozen 4.312 ms/image and full 4.285 ms/image (means over the available runs).
+      These are amortized forward-only times from one streamed pass after one warmup batch, excluding data loading,
+      transfers and CSV export. They are not repeated batch-1 latency benchmarks. Frozen and full have the same inference
+      architecture; these small timing differences do not establish a speed advantage. The RTX training costs above and
+      Apple inference costs are measurements on different devices.</p>
   </section>
 
   <!-- ============ DISCUSSION ============ -->
@@ -405,36 +436,55 @@
     <h2>Comparison and discussion</h2>
     <p>On the validation set:</p>
     <ul>
-      <li><strong>Pretraining is the largest factor.</strong> Even with a frozen backbone, ResNet-50 beats the CNN by
+      <li><strong>The pretrained ResNet baseline performs better.</strong> Even with a frozen backbone, ResNet-50 beats the CNN by
         about 0.21 macro-F1 (0.763 vs. 0.556), while training only 61 k parameters, about one sixth of the CNN's 397 k.
-        With about 570 training images per class, ImageNet features transfer far better than features learned from
-        scratch. The CNN number is still one draft run, so this gap is indicative.</li>
+        Architecture and capacity also differ, so this comparison does not isolate pretraining. The CNN number is
+        still one draft run, so this gap is indicative.</li>
       <li><strong>Full fine-tuning adds 0.122 macro-F1</strong> over the frozen backbone (0.885 &plusmn; 0.002 vs.
-        0.763 &plusmn; 0.003, 3 seeds each, only the backbone lr changed). The hypothesis holds: 30VNFoods differs
-        enough from ImageNet that the backbone has to adapt, and a linear head on fixed features plateaus at about
-        0.76. The cost is 2.1&times; the training time per run and 6.7&times; the GPU memory, which is affordable on an
+        0.763 &plusmn; 0.003, 3 seeds each, frozen versus full adaptation). These results support adaptation under this
+        protocol without isolating why ImageNet features differ from the target domain. The cost is
+        2.1&times; the training time per run and 6.7&times; the GPU memory, which is affordable on an
         8 GB laptop GPU, so full fine-tuning is the model we carry forward.</li>
-      <li><strong>Not yet known:</strong> how far the CNN gets with a full training budget and a learning-rate
-        schedule; per-class behaviour (H1&ndash;H4); test-set performance.</li>
+      <li><strong>Final test:</strong> mean macro-F1 is 0.5403 (CNN), 0.7720 (frozen) and 0.8922 (full).
+        CNN versus ResNet changes architecture/capacity as well as initialization, so this comparison does not isolate
+        pretraining alone. How far the CNN would get with a different training budget remains untested.</li>
     </ul>
   </section>
 
   <!-- ============ ERROR ANALYSIS ============ -->
   <section id="error-analysis">
     <h2>Error analysis</h2>
-    <p><span class="badge todo">TODO (M3)</span> We will test four hypotheses from the EDA on the test confusion matrix
-      and the misclassified images:</p>
+    <p>The following diagnostic counts refer to the validation-selected full run, seed 44: 525 errors in 4,984 images.
+      They are distinct from the three-seed aggregate above. Error groups may overlap. Image observations and proposed
+      causes were recorded for 23 inspected examples; suspected label ambiguity does not automatically change labels.</p>
     <div class="table-scroll">
       <table>
-        <thead><tr><th></th><th>Hypothesis</th><th>How it will be checked</th></tr></thead>
+        <thead><tr><th></th><th>Hypothesis</th><th>Observed test evidence</th></tr></thead>
         <tbody>
-          <tr><td>H1</td><td>Banh chung and Banh tet are confused, since they differ mainly in shape</td><td>Confusion matrix, per-class F1</td></tr>
-          <tr><td>H2</td><td>Bun bo Hue / Bun rieu / Banh canh are confused; errors lean towards Bun bo Hue and concentrate on Banh canh photos with red broth and hidden noodles</td><td>The two off-diagonal cells; broth colour of the misclassified photos</td></tr>
-          <tr><td>H3</td><td>Images with aspect ratio &gt; 2 fail more often, because the centre crop cuts the dish</td><td>Accuracy on that group vs. overall</td></tr>
-          <tr><td>H4</td><td>Banh pia relies on white backgrounds or packaging</td><td>Grad-CAM</td></tr>
+          <tr><td>H1</td><td>Banh chung / Banh tet confusion</td><td>13 within-pair confusions among 234 images: 10 Banh chung &rarr; Banh tet, 3 in reverse. Wrapped and close-up views can obscure geometry; this remains a hypothesized cause.</td></tr>
+          <tr><td>H2</td><td>Bun bo Hue / Bun rieu / Banh canh confusion</td><td>46 within-group confusions among 720 images. The largest directed error overall is Banh canh &rarr; Hu tieu (22/191); the original three-class hypothesis does not cover all soup errors.</td></tr>
+          <tr><td>H3</td><td>Extreme-aspect images fail more often</td><td>Not supported in this run: 4/52 errors (7.7%) for ratio &gt;2 or &lt;0.5, versus 521/4,932 (10.6%) otherwise. Individual crop failures exist, but the small subgroup has a wide interval.</td></tr>
+          <tr><td>H4</td><td>Banh pia background / packaging shortcut</td><td>Unresolved: a white-border proxy gives 0/11 errors versus 2/78 otherwise; this proxy is not a packaging label. Four Banh pia Grad-CAM cases were inspected, without claiming causal background dependence.</td></tr>
         </tbody>
       </table>
     </div>
+    <figure><img src="../assets/img/a2/test/a2_test_confusion_resnet50_full.png" alt="Row-normalized full ResNet test confusion matrix, emphasizing Banh canh and Hu tieu confusion" style="width:100%;border-radius:var(--radius)">
+      <figcaption>Rows are true classes; columns are predictions. Percentages use each true class as the denominator.</figcaption></figure>
+    <p>Additional diagnostics: 120 errors among 4,005 predictions with confidence &ge;0.9; these account for 22.9% of all
+      errors. Low-margin cases (&le;0.1) have 68 errors in 109 images. The exploratory five-class soup group
+      (H2 plus Hu tieu and Pho) has 188 errors in 1,076 images; the exploratory white-cake group has 85/624.
+      These groups overlap and do not establish visual causes by themselves.</p>
+    <figure><img src="../assets/img/a2/test/a2_test_crop_cases.png" alt="Original panoramic photos compared with the exact evaluation center crops for three errors" style="width:100%;border-radius:var(--radius)">
+      <figcaption>Individual crop/context examples. Their existence does not imply that all extreme-aspect images are harder.</figcaption></figure>
+    <figure><img src="../assets/img/a2/test/a2_test_gradcam_1623.png" alt="Correct Banh pia Grad-CAM overlapping the central pastry and filling" style="width:100%;border-radius:var(--radius)">
+      <figcaption>A correct Banh pia case: attribution overlaps the pastry region. The map is coarse, not a food/background segmentation.</figcaption></figure>
+    <figure><img src="../assets/img/a2/test/a2_test_gradcam_1673.png" alt="Banh pia predicted as Banh xeo at low confidence, with predicted-class and ground-truth Grad-CAM maps" style="width:100%;border-radius:var(--radius)">
+      <figcaption>A failure case with overlapping browned texture. Grad-CAM is explanatory evidence, not causal proof.
+        Implementation follows <a href="https://arxiv.org/abs/1610.02391">Selvaraju et al.</a>; 12 diagnostic figures are retained in the repository.</figcaption></figure>
+    <p>Improvement ideas are future studies: audit ambiguous training labels, collect varied whole-dish/cut-section views,
+      compare crop-preserving preprocessing on validation, and assess confidence calibration on validation. No improvement
+      was fitted to the final test set. Full selection manifests, group rates/intervals, image reviews and a detailed
+      write-up are stored in <code>results/a2/error_analysis/</code> and <code>reports/a2/test_evaluation_analysis.md</code>.</p>
     <h3>Ablation study (mandatory for A2)</h3>
     <p>The controlled experiment above is our mandatory ablation. Removing backbone adaptation (backbone lr 1e-4
       &rarr; 0, everything else fixed) lowers validation macro-F1 from 0.885 &plusmn; 0.002 to 0.763 &plusmn; 0.003 over
@@ -446,15 +496,18 @@
   <section id="conclusion">
     <h2>Limitations and conclusion</h2>
     <ul>
-      <li><strong>Validation set only so far:</strong> the controlled experiment uses 3 seeds, but test-set numbers
-        are not reported yet. The CNN baseline is a single draft run that had not converged.</li>
+      <li><strong>Limited baseline and seed coverage:</strong> both ResNet arms have three-seed final test results;
+        CNN remains a single draft run. Subgroup/error illustrations use one validation-selected run per family.</li>
       <li><strong>No learning-rate schedule:</strong> the full arm starts to overfit after about 4&ndash;10 epochs;
         a schedule could raise its score and was not tested here.</li>
       <li><strong>Source leakage not checked:</strong> photos from the same website may still sit in different splits.
         <code>Urls/</code> might map images to domains, but we have not verified that mapping.</li>
       <li><strong>Label noise remains</strong> beyond the conflicts revealed by duplicates.</li>
     </ul>
-    <p><span class="badge todo">TODO (M3)</span> Conclusion and answer to the research question.</p>
+    <p>For these fixed checkpoints, full backbone adaptation improves mean test macro-F1 from 0.7720 to 0.8922 at about
+      twice the training time per run; inference architectures and costs remain similar. Fine-grained soup confusions
+      and high-confidence mistakes remain. H3 is not supported by this test subgroup, while H4 remains unresolved.
+      This conclusion applies to the cleaned split and current protocol; the original uncleaned test set is not reported.</p>
   </section>
 
   <!-- ============ REPRODUCIBILITY ============ -->

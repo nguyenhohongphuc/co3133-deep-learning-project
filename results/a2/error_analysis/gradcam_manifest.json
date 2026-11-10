@@ -1,0 +1,280 @@
+[
+  {
+    "run_id": "a2_resnet50_full_s44_1110-1204",
+    "path": "Test/Banh pia/340.jpg",
+    "index": 1673,
+    "reason": "Banh pia failure",
+    "true_class": "Banh pia",
+    "predicted_class": "Banh xeo",
+    "csv_confidence": 0.3778897225856781,
+    "figure": "a2_test_gradcam_1673.png",
+    "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+    "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+    "targets": [
+      {
+        "label": 13,
+        "probability": 0.37789034843444824,
+        "max_before_normalization": 0.4020761251449585
+      },
+      {
+        "label": 10,
+        "probability": 0.23316775262355804,
+        "max_before_normalization": 0.36188557744026184
+      }
+    ]
+  },
+  {
+    "run_id": "a2_resnet50_full_s44_1110-1204",
+    "path": "Test/Banh pia/301.jpg",
+    "index": 1669,
+    "reason": "Banh pia failure",
+    "true_class": "Banh pia",
+    "predicted_class": "Banh mi",
+    "csv_confidence": 0.2379167079925537,
+    "figure": "a2_test_gradcam_1669.png",
+    "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+    "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+    "targets": [
+      {
+        "label": 9,
+        "probability": 0.23791714012622833,
+        "max_before_normalization": 0.0698944628238678
+      },
+      {
+        "label": 10,
+        "probability": 0.06789625436067581,
+        "max_before_normalization": 0.49990347027778625
+      }
+    ]
+  },
+  {
+    "run_id": "a2_resnet50_full_s44_1110-1204",
+    "path": "Test/Banh pia/101.jpg",
+    "index": 1623,
+    "reason": "Banh pia correct",
+    "true_class": "Banh pia",
+    "predicted_class": "Banh pia",
+    "csv_confidence": 1.0,
+    "figure": "a2_test_gradcam_1623.png",
+    "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+    "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+    "targets": [
+      {
+        "label": 10,
+        "probability": 1.0,
+        "max_before_normalization": 1.3923430442810059
+      }
+    ]
+  },
+  {
+    "run_id": "a2_resnet50_full_s44_1110-1204",
+    "path": "Test/Banh pia/146.jpg",
+    "index": 1636,
+    "reason": "Banh pia correct",
+    "true_class": "Banh pia",
+    "predicted_class": "Banh pia",
+    "csv_confidence": 1.0,
+    "figure": "a2_test_gradcam_1636.png",
+    "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+    "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+    "targets": [
+      {
+        "label": 10,
+        "probability": 1.0,
+        "max_before_normalization": 2.4220163822174072
+      }
+    ]
+  },
+  {
+    "run_id": "a2_resnet50_full_s44_1110-1204",
+    "path": "Test/Banh chung/297.jpg",
+    "index": 650,
+    "reason": "H1 shape-pair confusion",
+    "true_class": "Banh chung",
+    "predicted_class": "Banh tet",
+    "csv_confidence": 0.9986200332641602,
+    "figure": "a2_test_gradcam_0650.png",
+    "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+    "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+    "targets": [
+      {
+        "label": 11,
+        "probability": 0.9986200332641602,
+        "max_before_normalization": 1.2342183589935303
+      },
+      {
+        "label": 4,
+        "probability": 0.0012603679206222296,
+        "max_before_normalization": 0.41855481266975403
+      }
+    ]
+  },
+  {
+    "run_id": "a2_resnet50_full_s44_1110-1204",
+    "path": "Test/Banh tet/652.jpg",
+    "index": 1833,
+    "reason": "H1 shape-pair confusion",
+    "true_class": "Banh tet",
+    "predicted_class": "Banh chung",
+    "csv_confidence": 0.9980899691581726,
+    "figure": "a2_test_gradcam_1833.png",
+    "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+    "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+    "targets": [
+      {
+        "label": 4,
+        "probability": 0.9980899691581726,
+        "max_before_normalization": 1.652913212776184
+      },
+      {
+        "label": 11,
+        "probability": 0.0017145185265690088,
+        "max_before_normalization": 0.5673127174377441
+      }
+    ]
+  },
+  {
+    "run_id": "a2_resnet50_full_s44_1110-1204",
+    "path": "Test/Bun rieu/412.jpg",
+    "index": 2973,
+    "reason": "H2 soup-group confusion",
+    "true_class": "Bun rieu",
+    "predicted_class": "Bun bo Hue",
+    "csv_confidence": 0.9998034834861755,
+    "figure": "a2_test_gradcam_2973.png",
+    "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+    "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+    "targets": [
+      {
+        "label": 14,
+        "probability": 0.9998034834861755,
+        "max_before_normalization": 1.111416220664978
+      },
+      {
+        "label": 17,
+        "probability": 3.836047471850179e-05,
+        "max_before_normalization": 0.2426489293575287
+      }
+    ]
+  },
+  {
+    "run_id": "a2_resnet50_full_s44_1110-1204",
+    "path": "Test/Bun rieu/254.jpg",
+    "index": 2943,
+    "reason": "H2 soup-group confusion",
+    "true_class": "Bun rieu",
+    "predicted_class": "Bun bo Hue",
+    "csv_confidence": 0.998542308807373,
+    "figure": "a2_test_gradcam_2943.png",
+    "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+    "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+    "targets": [
+      {
+        "label": 14,
+        "probability": 0.998542308807373,
+        "max_before_normalization": 0.4939088523387909
+      },
+      {
+        "label": 17,
+        "probability": 9.361560660181567e-05,
+        "max_before_normalization": 0.266798198223114
+      }
+    ]
+  },
+  {
+    "run_id": "a2_resnet50_full_s44_1110-1204",
+    "path": "Test/Bun thit nuong/340.jpg",
+    "index": 3152,
+    "reason": "Extreme-aspect failure",
+    "true_class": "Bun thit nuong",
+    "predicted_class": "Com tam",
+    "csv_confidence": 0.9980918765068054,
+    "figure": "a2_test_gradcam_3152.png",
+    "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+    "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+    "targets": [
+      {
+        "label": 23,
+        "probability": 0.9980918765068054,
+        "max_before_normalization": 0.8639893531799316
+      },
+      {
+        "label": 18,
+        "probability": 0.001838147290982306,
+        "max_before_normalization": 0.3203745186328888
+      }
+    ]
+  },
+  {
+    "run_id": "a2_resnet50_full_s44_1110-1204",
+    "path": "Test/Banh bot loc/410.jpg",
+    "index": 191,
+    "reason": "Extreme-aspect failure",
+    "true_class": "Banh bot loc",
+    "predicted_class": "Banh cuon",
+    "csv_confidence": 0.7881717681884766,
+    "figure": "a2_test_gradcam_0191.png",
+    "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+    "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+    "targets": [
+      {
+        "label": 5,
+        "probability": 0.7881708741188049,
+        "max_before_normalization": 0.882590651512146
+      },
+      {
+        "label": 1,
+        "probability": 0.056436456739902496,
+        "max_before_normalization": 0.37973788380622864
+      }
+    ]
+  },
+  {
+    "run_id": "a2_resnet50_full_s44_1110-1204",
+    "path": "Test/Banh bot loc/253.jpg",
+    "index": 155,
+    "reason": "High-confidence failure",
+    "true_class": "Banh bot loc",
+    "predicted_class": "Banh beo",
+    "csv_confidence": 0.9999980926513672,
+    "figure": "a2_test_gradcam_0155.png",
+    "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+    "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+    "targets": [
+      {
+        "label": 0,
+        "probability": 0.9999980926513672,
+        "max_before_normalization": 0.9328952431678772
+      },
+      {
+        "label": 1,
+        "probability": 1.7901373894346762e-06,
+        "max_before_normalization": 0.17803701758384705
+      }
+    ]
+  },
+  {
+    "run_id": "a2_resnet50_full_s44_1110-1204",
+    "path": "Test/Banh canh/799.jpg",
+    "index": 568,
+    "reason": "High-confidence failure",
+    "true_class": "Banh canh",
+    "predicted_class": "Hu tieu",
+    "csv_confidence": 0.9999978542327881,
+    "figure": "a2_test_gradcam_0568.png",
+    "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+    "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+    "targets": [
+      {
+        "label": 25,
+        "probability": 0.9999978542327881,
+        "max_before_normalization": 0.8710843920707703
+      },
+      {
+        "label": 3,
+        "probability": 7.410678790620295e-07,
+        "max_before_normalization": 1.0230810642242432
+      }
+    ]
+  }
+]

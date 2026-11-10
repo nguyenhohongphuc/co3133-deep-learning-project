@@ -1,0 +1,24 @@
+{
+  "run_id": "a2_resnet50_full_s44_1110-1204",
+  "path": "Test/Banh bot loc/410.jpg",
+  "index": 191,
+  "reason": "Extreme-aspect failure",
+  "true_class": "Banh bot loc",
+  "predicted_class": "Banh cuon",
+  "csv_confidence": 0.7881717681884766,
+  "figure": "a2_test_gradcam_0191.png",
+  "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+  "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+  "targets": [
+    {
+      "label": 5,
+      "probability": 0.7881708741188049,
+      "max_before_normalization": 0.882590651512146
+    },
+    {
+      "label": 1,
+      "probability": 0.056436456739902496,
+      "max_before_normalization": 0.37973788380622864
+    }
+  ]
+}

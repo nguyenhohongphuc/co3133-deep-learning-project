@@ -1,0 +1,30 @@
+{
+  "H1": {
+    "classes": [
+      "Banh chung",
+      "Banh tet"
+    ],
+    "support": 234,
+    "within_group_confusions": 13,
+    "confusion_rate": 0.05555555555555555,
+    "total_errors": 26
+  },
+  "H2": {
+    "classes": [
+      "Banh canh",
+      "Bun bo Hue",
+      "Bun rieu"
+    ],
+    "support": 720,
+    "within_group_confusions": 46,
+    "confusion_rate": 0.06388888888888888,
+    "total_errors": 118
+  },
+  "H3": {
+    "extreme_support": 52,
+    "observed_errors": 4,
+    "covered_support": 52,
+    "expected_errors_using_same_class_normal_rates": 4.5978870416804405,
+    "note": "Descriptive adjustment, not a causal test of center cropping"
+  }
+}

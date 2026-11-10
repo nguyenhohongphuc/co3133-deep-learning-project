@@ -1,0 +1,24 @@
+{
+  "run_id": "a2_resnet50_full_s44_1110-1204",
+  "path": "Test/Banh pia/340.jpg",
+  "index": 1673,
+  "reason": "Banh pia failure",
+  "true_class": "Banh pia",
+  "predicted_class": "Banh xeo",
+  "csv_confidence": 0.3778897225856781,
+  "figure": "a2_test_gradcam_1673.png",
+  "checkpoint_sha256": "06734e730da8eee5d2fb8b2ad2473777f4d29cf009588d7a0a5ddc36ecaee8cd",
+  "backend": "CPU; explanation-only forward/backward; eval mode; no optimizer",
+  "targets": [
+    {
+      "label": 13,
+      "probability": 0.37789034843444824,
+      "max_before_normalization": 0.4020761251449585
+    },
+    {
+      "label": 10,
+      "probability": 0.23316775262355804,
+      "max_before_normalization": 0.36188557744026184
+    }
+  ]
+}
