@@ -1,6 +1,38 @@
+% !TeX root = ../main.tex
 \section{Dataset Description}
+\label{sec:dataset-description}
 
-\draftnote{\textbf{Source and proposal.} Describe 30VNFoods (Kaggle version 11), 25,136 original images, 30 folder labels, web collection, license, storage size, formats, and source bias. Record the confirmed proposal approval and conditions. The cleaned training set has 17,164 images across 30 classes, above the handbook's minimums of 5,000 images and 5 classes. Report minimum per-class support.}
+\subsection{Source and Annotations}
 
-\draftnote{\textbf{EDA.} Plot class counts, image sizes and aspect ratios. Report the approximately $3.4\times$ imbalance and brightness overlap. Tie the observations to macro-F1 and the H1--H4 error hypotheses.}
-\evidence{\path{reports/a2/proposal.md}, \path{reports/a2/approval.md}, \path{notebooks/a2_eda.ipynb}, and the plots under \path{results/a2/figures/}.}
+We use 30VNFoods, the Vietnamese Foods dataset published as \path{quandang/vietnamese-foods} on Kaggle, pinned to version 11. The release contains 25,136 web-sourced RGB JPEG images in 30 dish categories. The class folder supplies one label per image. The release also supplies lists of source URLs by class. The downloaded ZIP is approximately 4.48 GB and the extracted JPEGs total 4.51 GB, using decimal units. The release includes an MIT license file credited to Quan Dang (2021). The photos originate from third-party websites. The collection and labeling workflow is documented in the \href{https://github.com/ds4v/30VNFoods}{authors' project repository}.
+
+The cleaned training partition has 17,164 images in 30 classes, exceeding the handbook's image-classification minimums of 5,000 training samples and five classes. The smallest category, Banh pia, retains 306 training, 44 validation, and 89 test images. The dataset proposal and its approval record are listed in Appendix~\ref{app:dataset-proposal}.
+
+\subsection{Exploratory Data Analysis}
+
+\subsubsection{Class Distribution and Imbalance}
+
+Figure~\ref{fig:a2-class-distribution} shows the original partitions. In the original training set, Bun bo Hue has 1,071 images and Banh pia has 310, a largest-to-smallest ratio of $3.45$. After duplicate cleaning, these counts are 1,043 and 306, respectively, giving a ratio of $3.41$. Accuracy weights examples equally, so larger classes influence it more. We use macro-F1 as the primary metric to give each of the 30 classes equal weight and report accuracy alongside it.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.80\linewidth]{\resultfigures a2_class_distribution.png}
+    \caption{Class counts in the original 30VNFoods train, validation, and test partitions before duplicate removal.}
+    \label{fig:a2-class-distribution}
+\end{figure}
+
+\clearpage
+\subsubsection{Image Dimensions and Appearance}
+
+In the original training set of 17,581 images, median width and height were 1,000 and 720 pixels, respectively. Widths ranged from 100 to 7,360 pixels and heights from 83 to 5,184 pixels. The median width-to-height ratio was 1.33. There were 4,327 square images (24.6\%), 193 images (1.1\%) with a ratio below 0.5 or above 2, and 251 images (1.4\%) with a short side below 224 pixels. Figure~\ref{fig:a2-aspect-ratio} shows the ratio distribution.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.93\linewidth]{\resultfigures a2_aspect_ratio.png}
+    \caption{Width-to-height ratios in the original training partition. The dashed line marks square inputs.}
+    \label{fig:a2-aspect-ratio}
+\end{figure}
+
+In a fixed-seed sample of 3,000 original training images, class distributions of mean RGB intensity overlapped. Banh pia had the highest median intensity in that sample. Visual inspection found examples showing pastries with packaging on white backgrounds. Photos also show that wrapped Banh chung and Banh tet can lose their shape cues in close-up, and that toppings can hide the noodles in visually similar soup dishes. The underlying plots and examples are saved in \path{notebooks/a2_eda.ipynb}.
+
+These observations motivate four error hypotheses: confusion between Banh chung and Banh tet when the whole shape is hard to see (H1), confusion among Bun bo Hue, Bun rieu, and Banh canh (H2), elevated errors on extreme-aspect images after cropping (H3), and possible reliance on packaging or white backgrounds for Banh pia (H4). Web collection can overrepresent particular sources and presentations. The retained images may also contain label noise beyond the conflicts revealed by duplicate detection.

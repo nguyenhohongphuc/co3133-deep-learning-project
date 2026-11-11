@@ -1,14 +1,16 @@
 \documentclass[a4paper,11pt]{article}
 
 % Compile from the repository root or directly from reports/a2/.
-\IfFileExists{reports/a2/preamble.tex}{\def\reportroot{reports/a2/}}{\def\reportroot{}}
+\IfFileExists{reports/a2/preamble.tex}
+  {\def\reportroot{reports/a2/}\def\resultfigures{results/a2/figures/}}
+  {\def\reportroot{}\def\resultfigures{../../results/a2/figures/}}
 \input{\reportroot preamble.tex}
 
 % Remove these drafting aids when replacing the outline with final prose.
 \newcommand{\draftnote}[1]{\par\noindent\textit{#1}\par}
 \newcommand{\evidence}[1]{\par\noindent\textbf{Source material.} #1\par}
 \setlength{\parskip}{4pt}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 
 \begin{document}
 
@@ -39,6 +41,7 @@
 \input{\reportroot sections/07_training_and_evaluation.tex}
 
 \clearpage
+\addtocontents{toc}{\protect\newpage}
 \part{Implementation Results}
 \input{\reportroot sections/08_training_behaviour.tex}
 \input{\reportroot sections/09_quantitative_results.tex}

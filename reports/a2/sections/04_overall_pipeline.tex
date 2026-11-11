@@ -1,4 +1,50 @@
+% !TeX root = ../main.tex
 \section{Overall Pipeline}
+\label{sec:overall-pipeline}
 
-\draftnote{Draw the flow from dataset and split manifest through preprocessing, data loader, model, cross-entropy, and optimization. Show the inference path from saved checkpoint to logits, predictions, and evaluation. Label the validation checkpoint decision and the final test evaluation.}
-\evidence{\path{src/a2/data.py}, \path{src/a2/trainer.py}, \path{src/a2/evaluate.py}.}
+The scratch CNN and both ResNet-50 variants use the cleaned split manifest described in Section~\ref{sec:data-preparation}. Each loader produces batches of RGB images of shape $[B,3,224,224]$, normalized for the selected model family. Each model returns logits of shape $[B,30]$. Figure~\ref{fig:a2-overall-pipeline} shows how a training run produces the files consumed by the separate test evaluator.
+
+\begin{figure}[H]
+    \centering
+    \small
+    \setlength{\unitlength}{1pt}
+    \begin{picture}(432,214)
+        % The manifest assigns images to the loaders in each lane.
+        \put(3,191){\framebox(426,23){30VNFoods images + \texttt{split\_v2.json}}}
+        \put(216,181){\rule{0.4pt}{10pt}}
+        \put(100,181){\rule{232pt}{0.4pt}}
+        \put(100,169){\makebox(0,12){$\downarrow$}}
+        \put(332,169){\makebox(0,12){$\downarrow$}}
+        \put(100,160){\makebox(0,0){\textbf{Training and validation}}}
+        \put(332,160){\makebox(0,0){\textbf{Held-out test evaluation}}}
+
+        % Training and validation repeat each epoch until the stop criterion.
+        \put(3,122){\framebox(195,30){\shortstack{Train and validation loaders\\Apply split-specific transforms}}}
+        \put(100,112){\makebox(0,10){$\downarrow$}}
+        \put(3,82){\framebox(195,30){\shortstack{Training forward pass and cross-entropy\\Backpropagation and Adam update}}}
+        \put(100,72){\makebox(0,10){$\downarrow$}}
+        \put(3,42){\framebox(195,30){\shortstack{Validation forward pass\\Monitor macro-F1 and early stopping}}}
+        \put(100,32){\makebox(0,10){$\downarrow$}}
+        \put(3,2){\framebox(195,30){\shortstack{Retain best validation checkpoint\\\texttt{best.pt} and run \texttt{config.yaml}}}}
+
+        % Test inference uses the saved run configuration and model state.
+        \put(234,122){\framebox(195,30){\shortstack{Test loader\\Apply evaluation transforms}}}
+        \put(332,112){\makebox(0,10){$\downarrow$}}
+        \put(234,82){\framebox(195,30){\shortstack{Rebuild model from run configuration\\Load the selected checkpoint}}}
+        \put(332,72){\makebox(0,10){$\downarrow$}}
+        \put(234,42){\framebox(195,30){\shortstack{Test forward pass\\Rank classes by softmax score}}}
+        \put(332,32){\makebox(0,10){$\downarrow$}}
+        \put(234,2){\framebox(195,30){\shortstack{Per-image predictions\\Test metrics and confusion matrix}}}
+        \put(198,17){\rule{18pt}{0.4pt}}
+        \put(216,17){\rule{0.4pt}{80pt}}
+        \put(216,97){\makebox(18,0){$\longrightarrow$}}
+    \end{picture}
+    \caption{Shared A2 pipeline. The training and validation loop selects the checkpoint before held-out test evaluation.}
+    \label{fig:a2-overall-pipeline}
+\end{figure}
+
+\textbf{Training and checkpoint selection.} The training entry point \path{src/a2/train.py} saves the resolved model settings and seed in the run's \path{config.yaml}. For each training batch, cross-entropy compares the logits with the integer labels and Adam updates the trainable parameters. After each epoch, the validation loop runs in evaluation mode with gradients disabled. The trainer saves \path{best.pt} when validation macro-F1 strictly improves and stops when patience or the epoch budget is exhausted.
+
+\textbf{Test inference and post-processing.} The evaluator in \path{src/a2/evaluate.py} reconstructs each model from its saved run configuration, restores \path{best.pt}, and runs on the cleaned test split. Softmax scores give the top-1 label, its confidence, and the next two ranked classes. It exports one prediction row per image along with accuracy, macro-F1, per-class scores, and a confusion matrix. The test results are used for model comparison and error analysis. Checkpoint selection and early stopping use validation scores.
+
+\textbf{Implementation.} The project supplies the manifest-driven dataset, configuration and checkpoint logic, model wrappers, and evaluation exports. PyTorch supplies batching, neural network layers, differentiation, and Adam. Torchvision supplies image transforms and the pretrained ResNet-50.

@@ -1,3 +1,19 @@
+% !TeX root = ../main.tex
 \section{Problem Formulation}
+\label{sec:problem-formulation}
 
-\draftnote{Motivate Vietnamese dish recognition and map one RGB image in $\mathbb{R}^{3\times224\times224}$ to 30 logits and a top-1 label. Describe visually similar dishes, hidden ingredients, and background variation. Ask how much adapting the ImageNet backbone improves test accuracy and macro-F1, and what it costs relative to the frozen backbone. Include the scratch CNN as the baseline.}
+\subsection{Motivation}
+
+Recognizing Vietnamese dishes from photos can support image search and food catalog organization. The task is challenging because distinct dishes can share broth, toppings, or wrappers, while photos of the same dish vary in preparation, presentation, lighting, and framing. Garnishes or tight crops can obscure informative features such as noodle width or the shape of a wrapped rice cake.
+
+\subsection{Input and Output}
+
+The prediction unit is one RGB photograph with one of 30 dish labels. Let $x\in\mathbb{R}^{3\times224\times224}$ be the preprocessed image, $y\in\{0,\ldots,29\}$ its folder-derived class ID, and $f_\theta$ a classifier with parameters $\theta$. The classifier returns one logit per class and predicts the class with the largest logit:
+\begin{equation}
+    z=f_\theta(x)\in\mathbb{R}^{30},
+    \qquad \hat{y}=\operatorname*{arg\,max}_{k\in\{0,\ldots,29\}}z_k.
+\end{equation}
+
+\subsection{Research Question}
+
+How much does adapting an ImageNet-pretrained ResNet-50 backbone improve accuracy and macro-F1 over training only its classification head, and what is the associated compute cost? The controlled comparison uses these two ResNet-50 variants. A CNN trained from scratch provides a simpler baseline on the same data partitions. The experiments assess recognition within the 30 classes represented in 30VNFoods.

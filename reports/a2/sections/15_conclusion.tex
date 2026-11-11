@@ -1,3 +1,10 @@
+% !TeX root = ../main.tex
 \section{Conclusion}
+\label{sec:a2-conclusion}
 
-\draftnote{Answer the research question with the test metrics, paired macro-F1 gain and compute trade-off. Identify one unresolved failure pattern and a next experiment tied to it.}
+Full fine-tuning yields the best test performance on the cleaned 30VNFoods split. Mean accuracy rises from 76.79\% with a frozen ResNet-50 backbone to 89.08\% with full adaptation, and mean macro-F1 rises from 0.7720 to 0.8922. All three paired seeds improve, with a mean gain of 12.29 percentage points in accuracy and 0.1202 in macro-F1. The scratch CNN provides a smaller and faster reference under the measured forward protocol, with 54.51\% accuracy and 0.5403 macro-F1 from one run.
+
+Adapting the backbone increases mean training time from 12.13 to 24.97 minutes and peak allocated training GPU memory by about $6.7\times$ relative to freezing. Both ResNet variants average about 4.3\,ms per image in the measured batched forward pass. In this setup, the higher predictive quality of full fine-tuning comes mainly at a training cost.
+
+The Banh canh to Hu tieu confusion persists after fine-tuning. A next experiment would compare the current center crop with aspect-preserving padding under matched training settings. On validation, we would record noodle visibility in both input views and compare the two directions of this confusion alongside overall macro-F1.
+\clearpage

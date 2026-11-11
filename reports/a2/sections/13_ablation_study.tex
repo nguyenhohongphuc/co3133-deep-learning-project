@@ -1,7 +1,35 @@
+% !TeX root = ../main.tex
 \section{Ablation Study}
 \label{sec:ablation}
 
-\draftnote{Present frozen vs.\ full fine-tuning as the controlled factor study. State the hypothesis that backbone adaptation improves macro-F1, the shared data, augmentation, head learning rate, optimizer, epoch cap, patience and seeds, and the changes to backbone learning rate, gradients and BatchNorm behavior.}
+\subsection{Controlled Factor and Hypothesis}
 
-\draftnote{Report accuracy and primary macro-F1. Use the proposal criterion of a gain exceeding the observed spread across seeds. Interpret paired macro-F1 gains ($+0.1150$, $+0.1236$, $+0.1219$) and the extra training cost.}
-\evidence{\path{reports/a2/proposal.md}, \path{results/a2/tables/a2_test_paired_seed_gains.csv}.}
+We compare a fixed ImageNet ResNet-50 backbone with one adapted to 30VNFoods. We expect full fine-tuning to improve macro-F1 because the visual cues that distinguish Vietnamese dishes can differ from those learned on ImageNet. In the frozen arm, only the classifier head is optimized. Backbone gradients are disabled and BatchNorm stays in evaluation mode. In the full arm, the backbone receives optimizer updates at $10^{-4}$ and its BatchNorm running statistics update during training. The experiment measures the combined effect of these backbone changes.
+
+Both arms start from the same pretrained weights and use the same classifier architecture, cleaned splits, $224\times224$ inputs, ImageNet normalization, and training augmentation. They share cross-entropy, Adam, weight decay of $10^{-4}$, a head learning rate of $10^{-3}$, and batch size 32. For each of seeds 42, 43, and 44, both arms have a 15-epoch cap and stop after five epochs without improvement in validation macro-F1. The resulting run lengths can differ under that shared stopping rule (Table~\ref{tab:a2-checkpoint-epochs}). Each run is evaluated on the same test images using the checkpoint with the highest validation macro-F1.
+
+\subsection{Paired Test Results}
+
+\begin{table}[H]
+  \centering
+  \small
+  \caption{Frozen and full test results by matched seed. Deltas are full minus frozen, computed before rounding. Accuracy deltas are in percentage points (pp).}
+  \label{tab:a2-ablation-paired}
+  \begin{tabular}{@{}lrrrrrr@{}}
+    \toprule
+    & \multicolumn{3}{c}{Accuracy} & \multicolumn{3}{c}{Macro-F1 (primary)} \\
+    \cmidrule(lr){2-4}\cmidrule(l){5-7}
+    Seed & Frozen & Full & $\Delta$ (pp) & Frozen & Full & $\Delta$ \\
+    \midrule
+    42 & 76.67\% & 88.34\% & $+11.68$ & 0.7698 & 0.8849 & $+0.1150$ \\
+    43 & 76.77\% & 89.43\% & $+12.66$ & 0.7720 & 0.8957 & $+0.1236$ \\
+    44 & 76.93\% & 89.47\% & $+12.54$ & 0.7742 & 0.8961 & $+0.1219$ \\
+    \midrule
+    Mean & 76.79\% & 89.08\% & $+12.29$ & 0.7720 & 0.8922 & $+0.1202$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The proposal requires a gain larger than the observed spread across three seeds. We quantify spread as the maximum minus minimum test macro-F1 within each arm. The ranges are 0.0044 for frozen and 0.0112 for full. Even the smallest paired gain, 0.1150, exceeds the larger range. The result meets the proposal criterion on these runs. This is a descriptive comparison across three seeds.
+
+Full fine-tuning raises mean training time from 12.13 to 24.97 minutes and mean peak allocated training GPU memory from 0.43 to 2.89\,GiB, with similar measured forward time (Table~\ref{tab:a2-test-compute}). The paired scores are saved in \path{results/a2/tables/a2_test_paired_seed_gains.csv}.

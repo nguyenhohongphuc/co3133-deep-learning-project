@@ -1,7 +1,7 @@
 \section{Dataset Proposal and Approval}
+\label{app:dataset-proposal}
 
-\draftnote{Link the revised proposal and attach the confirmed approval record with any conditions.}
-\evidence{\path{reports/a2/proposal.md}, \path{reports/a2/approval.md}.}
+The revised dataset proposal dated 28 October 2026 is in \path{reports/a2/proposal.md}. The group's record at \path{reports/a2/approval.md} still has placeholders for the decision, date, and any conditions. Add the confirmed decision and its source before submission.
 
 \section{Supplementary Evidence}
 
@@ -9,5 +9,24 @@
 \evidence{\path{results/a2/tables/}, \path{results/a2/figures/test/}, \path{results/a2/runs/}.}
 
 \section{Team Contributions}
+\label{app:a2-team-contributions}
 
-\draftnote{Record each member's contributions after the group verifies them.}
+\begin{table}[H]
+  \centering
+  \small
+  \caption{Assignment 2 workload by team member.}
+  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.29\linewidth}Y@{}}
+    \toprule
+    Member & Assignment 2 workload \\
+    \midrule
+    Nguyễn Nhật Nam\newline 2352778
+      & Implemented checkpoint evaluation and ran the cleaned test comparison. Prepared the qualitative examples, error analysis, and LaTeX report. Repository commits \texttt{ee975d4} and \texttt{348a1ec} record the evaluation and report setup. \\
+    \addlinespace
+    Hồ Hồng Phúc Nguyên\newline 2352824
+      & Prepared the dataset proposal, carried out the EDA and split cleaning, and implemented the A2 data and training pipeline. Trained the CNN baseline and ran the paired frozen and full ResNet-50 experiments. Repository commits \texttt{a1246bc}, \texttt{d7d99f2}, and \texttt{a7bd85f} record this work. \\
+    \addlinespace
+    Phan Quốc Đại Sơn\newline 2353053
+      & Assigned to prepare the A2 presentation slides for the final milestone. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}

@@ -1,6 +1,9 @@
+% !TeX root = ../main.tex
 \section*{Abstract}
 \addcontentsline{toc}{section}{Abstract}
 
-\draftnote{Write the abstract after the main text. Cover the single-label 30VNFoods task, duplicate-aware cleaning, the scratch CNN and two ResNet-50 variants, and evaluation on the cleaned test split. State the paired fine-tuning gain, its training cost, and one error pattern supported by the analysis.}
+We classify photographs into 30 Vietnamese dish categories in 30VNFoods. We use exact and perceptual hashes to filter duplicates and label conflicts, then compare a CNN trained from scratch with two ImageNet-pretrained ResNet-50 variants. One variant trains only the classifier head, and the other fine-tunes the entire network. Checkpoints are selected by validation macro-F1 and evaluated on the same 4,984 cleaned test images.
+
+Across three matched seeds, full fine-tuning reaches 89.08\% mean accuracy and 0.8922 mean macro-F1, compared with 76.79\% and 0.7720 for the frozen backbone. The mean paired gain is 0.1202 macro-F1. The single CNN run reaches 54.51\% accuracy and 0.5403 macro-F1. Full fine-tuning takes about twice as long to train as the frozen variant, while both average about 4.3\,ms per image in the batched forward pass. In the validation-selected full checkpoint, 22 of 191 Banh canh images are still classified as Hu tieu.
 
 \textbf{Keywords.} Vietnamese food classification, 30VNFoods, transfer learning, ResNet-50, error analysis.
