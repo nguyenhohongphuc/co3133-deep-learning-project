@@ -204,6 +204,19 @@ Copy the template below for every distinct use. Group the entries by assignment.
 - **Sources used for verification:** course handbook; torchvision documentation (ResNet-50 weights, transforms);
   the repository's own run outputs
 - **Member responsible for final verification:** Hồ Hồng Phúc Nguyên (2352824)
+
+**A2 final report — collaborative writing with Nguyễn Nhật Nam**
+
+- **Tool:** OpenAI Codex (model identifier not recorded).
+- **Used by:** Nguyễn Nhật Nam (2352778).
+- **Time / stage:** 10–11 November 2026, final A2 evaluation and report writing.
+- **Purpose and workflow:** Nam selected one report section at a time and checked the relevant evidence together with Codex. Codex helped explain the results and draft or revise the selected LaTeX section, including figures and tables where needed. Nam reviewed each draft and requested corrections before deciding to move on. Codex began work on the next section only after Nam had reviewed the current one and asked to continue. Codex also assisted with checkpoint evaluation and error analysis that supplied evidence for the report.
+- **Affected files and sections:** `reports/a2/` (Abstract, Sections 1–16, and appendices), `src/a2/evaluate.py`, `scripts/a2_evaluate_all.py`, `scripts/a2_error_analysis.py`, `scripts/a2_gradcam.py`, report figures and tables under `results/a2/`.
+- **Representative prompt (paraphrased):** “Check the repository and saved results with me, then help draft the current section. I will review it before asking you to continue.”
+- **How the output was edited and verified:** Nam reviewed the explanation and reported numbers for each section and directed revisions. The numerical claims were checked against saved configurations, run histories, checkpoint metadata, and test prediction exports. The evaluation used saved model weights. The LaTeX was compiled, and the PDF was checked for legibility and consistency.
+- **Sources used for verification:** Course handbook, A2 source code and EDA notebook, the cleaned split manifest, saved experiment logs and predictions, and the rendered A2 report.
+- **Member responsible for final verification:** Nguyễn Nhật Nam (2352778).
+
 ### Assignment 3
 
 _(no entries yet)_
