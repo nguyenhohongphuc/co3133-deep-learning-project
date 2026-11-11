@@ -26,7 +26,7 @@
 
 <div class="hero">
   <div class="wrap">
-    <p class="eyebrow">Assignment 2 &middot; 30% of the course project &middot; <span class="badge wip">M2 Draft</span></p>
+    <p class="eyebrow">Assignment 2 &middot; 30% of the course project &middot; <span class="badge done">M3 Final</span></p>
     <h1>Deep Learning on Large-Scale Data and Specialized Tasks</h1>
     <p class="lede">Track: image classification. We classify photos of 30 Vietnamese dishes (30VNFoods) with a CNN
       trained from scratch and a ResNet-50 pretrained on ImageNet.</p>
@@ -35,10 +35,9 @@
 
 <main class="wrap">
 
-  <div class="note"><strong>Draft status (M2, 28 Oct 2026).</strong> This page covers what the M2 Draft requires
-    (handbook &sect;7.5): EDA, the simple baseline, the pretrained model in progress, and preliminary metrics.
-    Every metric is on the <strong>validation</strong> set; the test set is kept for the final evaluation (M3).
-    Sections marked <span class="badge todo">TODO</span> belong to the M3 Final.</div>
+  <div class="note"><strong>Final status (M3, 11 Nov 2026).</strong> This page is the A2 final package (handbook &sect;7.5):
+    controlled experiment, final test evaluation, error analysis, report, slides, video and checkpoints.
+    Checkpoints were selected on the <strong>validation</strong> set; the cleaned test set was used only for the final evaluation.</div>
 
   <!-- ============ AT A GLANCE ============ -->
   <section id="overview">
@@ -59,8 +58,8 @@
         <h3 style="margin-top:0">Milestones</h3>
         <dl class="kv">
           <dt>M1 Proposal</dt><dd>07 Oct 2026 &middot; 15% of A2 &middot; <span class="badge wip">Submitted; revision 2 on 28 Oct</span></dd>
-          <dt>M2 Draft</dt><dd>28 Oct 2026 &middot; 25% of A2 &middot; <span class="badge wip">This page</span></dd>
-          <dt>M3 Final</dt><dd>11 Nov 2026 &middot; 60% of A2 &middot; <span class="badge todo">Not started</span></dd>
+          <dt>M2 Draft</dt><dd>28 Oct 2026 &middot; 25% of A2 &middot; <span class="badge done">Submitted</span></dd>
+          <dt>M3 Final</dt><dd>11 Nov 2026 &middot; 60% of A2 &middot; <span class="badge done">This page</span></dd>
         </dl>
       </div>
     </div>
@@ -247,7 +246,7 @@
       <table>
         <thead><tr><th>Role</th><th>Model</th><th>Input representation / loss</th><th>Self-implemented vs. library</th><th>Params</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>Simple baseline</td><td>CNN: 4 &times; (Conv3&times;3-BN-ReLU-MaxPool), channels 32-64-128-256, global average pooling, dropout 0.3, linear head</td><td>RGB 224&times;224, Train v2 normalisation / cross-entropy</td><td>Self-implemented (extends the A1 CNN); PyTorch layers</td><td>397,086</td><td><span class="badge wip">Trained (draft, 20 epochs)</span></td></tr>
+          <tr><td>Simple baseline</td><td>CNN: 4 &times; (Conv3&times;3-BN-ReLU-MaxPool), channels 32-64-128-256, global average pooling, dropout 0.3, linear head</td><td>RGB 224&times;224, Train v2 normalisation / cross-entropy</td><td>Self-implemented (extends the A1 CNN); PyTorch layers</td><td>397,086</td><td><span class="badge done">Trained (20 epochs, seed 42)</span></td></tr>
           <tr><td>Pretrained model</td><td>ResNet-50, torchvision <code>IMAGENET1K_V2</code>, 1000-way head replaced by a 30-way linear head</td><td>RGB 224&times;224, ImageNet normalisation / cross-entropy</td><td>Library backbone (torchvision); head, freezing and training loop ours</td><td>23,569,502 (61,470 trainable when frozen)</td><td><span class="badge done">Trained: frozen and full, 3 seeds each</span></td></tr>
         </tbody>
       </table>
@@ -489,7 +488,6 @@
     <p>The controlled experiment above is our mandatory ablation. Removing backbone adaptation (backbone lr 1e-4
       &rarr; 0, everything else fixed) lowers validation macro-F1 from 0.885 &plusmn; 0.002 to 0.763 &plusmn; 0.003 over
       3 seeds (results section, Figure 5).</p>
-    <p><span class="badge todo">TODO (M3)</span> If time allows: weighted vs. plain cross-entropy.</p>
   </section>
 
   <!-- ============ CONCLUSION ============ -->
