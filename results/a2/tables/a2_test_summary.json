@@ -1,0 +1,48 @@
+{
+  "cnn": {
+    "runs": 1,
+    "seeds": [
+      42
+    ],
+    "accuracy_mean": 0.5451444622792937,
+    "accuracy_sample_std": null,
+    "macro_f1_mean": 0.5402747562377778,
+    "macro_f1_sample_std": null,
+    "top3_accuracy_mean": 0.7542134831460674,
+    "top3_accuracy_sample_std": null,
+    "inference_ms_per_image_mean": 0.8592113585515315,
+    "inference_ms_per_image_sample_std": null
+  },
+  "resnet50_frozen": {
+    "runs": 3,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "accuracy_mean": 0.7678571428571428,
+    "accuracy_sample_std": 0.0013156979382628379,
+    "macro_f1_mean": 0.7720241465660453,
+    "macro_f1_sample_std": 0.0021781002317036485,
+    "top3_accuracy_mean": 0.9169341894060995,
+    "top3_accuracy_sample_std": 0.0021138952152593713,
+    "inference_ms_per_image_mean": 4.311591182457035,
+    "inference_ms_per_image_sample_std": 0.017185530918667435
+  },
+  "resnet50_full": {
+    "runs": 3,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "accuracy_mean": 0.8907838416265382,
+    "accuracy_sample_std": 0.006374399442185057,
+    "macro_f1_mean": 0.8922064015439037,
+    "macro_f1_sample_std": 0.006335693318575458,
+    "top3_accuracy_mean": 0.9682985553772071,
+    "top3_accuracy_sample_std": 0.0023139170535054036,
+    "inference_ms_per_image_mean": 4.284853372204002,
+    "inference_ms_per_image_sample_std": 0.0022361229982993894
+  }
+}

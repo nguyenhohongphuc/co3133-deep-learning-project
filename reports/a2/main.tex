@@ -1,0 +1,62 @@
+\documentclass[a4paper,11pt]{article}
+
+% Compile from the repository root or directly from reports/a2/.
+\IfFileExists{reports/a2/preamble.tex}
+  {\def\reportroot{reports/a2/}\def\resultfigures{results/a2/figures/}}
+  {\def\reportroot{}\def\resultfigures{../../results/a2/figures/}}
+\input{\reportroot preamble.tex}
+
+% Remove these drafting aids when replacing the outline with final prose.
+\newcommand{\draftnote}[1]{\par\noindent\textit{#1}\par}
+\newcommand{\evidence}[1]{\par\noindent\textbf{Source material.} #1\par}
+\setlength{\parskip}{4pt}
+\setcounter{tocdepth}{2}
+
+\begin{document}
+
+\hypersetup{pageanchor=false}
+\input{\reportroot frontmatter/cover.tex}
+\clearpage
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+\input{\reportroot frontmatter/abstract.tex}
+\clearpage
+\begingroup
+\setlength{\parskip}{0pt}
+\tableofcontents
+\endgroup
+\clearpage
+\pagenumbering{arabic}
+
+\part{Problem and Data Description}
+\input{\reportroot sections/01_problem_formulation.tex}
+\input{\reportroot sections/02_dataset_description.tex}
+\input{\reportroot sections/03_data_preparation.tex}
+
+\clearpage
+\part{Methodology}
+\input{\reportroot sections/04_overall_pipeline.tex}
+\input{\reportroot sections/05_models.tex}
+\input{\reportroot sections/06_loss_and_optimization.tex}
+\input{\reportroot sections/07_training_and_evaluation.tex}
+
+\clearpage
+\addtocontents{toc}{\protect\newpage}
+\part{Implementation Results}
+\input{\reportroot sections/08_training_behaviour.tex}
+\input{\reportroot sections/09_quantitative_results.tex}
+\input{\reportroot sections/10_qualitative_results.tex}
+\input{\reportroot sections/11_comparison_and_discussion.tex}
+\input{\reportroot sections/12_error_analysis.tex}
+\input{\reportroot sections/13_ablation_study.tex}
+\input{\reportroot sections/14_limitations.tex}
+\input{\reportroot sections/15_conclusion.tex}
+\input{\reportroot sections/16_reproducibility.tex}
+
+\clearpage
+\input{\reportroot backmatter/references.tex}
+\clearpage
+\appendix
+\input{\reportroot backmatter/appendices.tex}
+
+\end{document}

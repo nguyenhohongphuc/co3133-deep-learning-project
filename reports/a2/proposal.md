@@ -107,14 +107,15 @@ Without this step, 222 clusters would sit in more than one split.
 
 **Fine-tuning protocol:**
 
-- **Frozen:** backbone frozen, only the head is trained (61 k parameters), lr 1e-3.
+- **Frozen:** backbone frozen (backbone lr 0), only the head is trained (61 k parameters), head lr 1e-3.
 - **Full:** all layers trained; backbone lr 1e-4, head lr 1e-3.
-- Shared settings: AdamW with cosine schedule; augmentation `RandomResizedCrop(224)` +
-  `HorizontalFlip` + light `ColorJitter`; up to 15 epochs; best validation macro-F1.
+- Shared settings: Adam with weight decay 1e-4, no schedule; batch 32 (the full arm does not fit
+  batch 64 in 8 GB at fp32); augmentation `RandomResizedCrop(224)` + `HorizontalFlip` + light
+  `ColorJitter`; up to 15 epochs, early stopping with patience 5; best validation macro-F1.
 
-**Controlled experiment (§20, §21):** frozen backbone vs. full fine-tuning. Only the set of trainable
-layers changes, together with the learning rate that goes with it. Data, split, augmentation,
-epochs, seeds and metrics stay fixed.
+**Controlled experiment (§20, §21):** frozen backbone vs. full fine-tuning. Only the backbone
+learning rate changes (0 vs. 1e-4; `lr_backbone` in `configs/a2.yaml`). Data, split, augmentation,
+head lr, optimizer, batch size, epoch budget, patience, seeds (42, 43, 44) and metrics stay fixed.
 
 - Hypothesis: full fine-tuning gains macro-F1, because 30VNFoods differs from ImageNet in colour and
   content.

@@ -204,7 +204,6 @@ Copy the template below for every distinct use. Group the entries by assignment.
 - **Sources used for verification:** course handbook; torchvision documentation (ResNet-50 weights, transforms);
   the repository's own run outputs
 - **Member responsible for final verification:** Hồ Hồng Phúc Nguyên (2352824)
-
 ### Assignment 3
 
 _(no entries yet)_

@@ -1,0 +1,62 @@
+% !TeX root = ../main.tex
+\section{Reproducibility}
+\label{sec:a2-reproducibility}
+
+\subsection{Environment, Dataset, and Checkpoints}
+
+Use the \href{https://github.com/nguyenhohongphuc/co3133-deep-learning-project}{group repository} and run the commands from its root. The batch evaluator requires Python 3.11 or later. The recorded Apple MPS evaluation used Python 3.13.1 and PyTorch 2.8.0. The test protocol uses batch size 32, five CPU threads, and zero loader workers. The training logs record an NVIDIA GeForce RTX 4060 Laptop GPU, CUDA 12.6, Python 3.10.21, and PyTorch \texttt{2.14.1+cu126}.
+
+Download Kaggle dataset \path{quandang/vietnamese-foods/versions/11} and place the extracted \path{Images/} directory at \path{data/30VNFoods/Images/}. All seven runs share the same image paths, labels, and class order in \path{results/a2/splits/split_v2.json}. The EDA notebook \path{notebooks/a2_eda.ipynb} documents how the manifest was generated.
+
+Obtain the saved weights from the \href{https://drive.google.com/drive/folders/1tai-N28-ftkYfRAXHKoxyH1pl2SJbSNL}{group checkpoint folder}. Place each model's weights at \path{results/a2/runs/<run_id>/best.pt}, beside that run's saved \path{config.yaml}. The batch evaluator discovers every \path{best.pt} under that directory. Use the seven checkpoints in Table~\ref{tab:a2-repro-runs} to reproduce the reported aggregates.
+
+\begin{table}[H]
+  \centering
+  \small
+  \caption{Reported runs, training commits, and selected epochs. Epoch numbers are one-based.}
+  \label{tab:a2-repro-runs}
+  \begin{tabular}{@{}lrrl@{}}
+    \toprule
+    Run ID & Seed & Best epoch & Training commit \\
+    \midrule
+    \path{a2_cnn_s42_1028-1546} & 42 & 18 & \texttt{a1246bc} \\
+    \path{a2_resnet50_frozen_s42_1110-0659} & 42 & 13 & \texttt{41cf5e3} \\
+    \path{a2_resnet50_frozen_s43_1110-0910} & 43 & 11 & \texttt{41cf5e3} \\
+    \path{a2_resnet50_frozen_s44_1110-1151} & 44 & 12 & \texttt{41cf5e3} \\
+    \path{a2_resnet50_full_s42_1110-0713} & 42 & 7 & \texttt{41cf5e3} \\
+    \path{a2_resnet50_full_s43_1110-1121} & 43 & 9 & \texttt{41cf5e3} \\
+    \path{a2_resnet50_full_s44_1110-1204} & 44 & 11 & \texttt{41cf5e3} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Each run directory contains its resolved configuration, epoch history, and training metrics. Its \path{evaluation/test/metrics.json} records the checkpoint, config, and split SHA-256 hashes alongside the training and evaluation commit fields. The test logs identify the evaluation worktree as \path{a7bd85f-dirty}. The committed evaluator and exports are available at \texttt{ee975d4}. The dirty marker limits exact source reconstruction for the original evaluation. The checkpoint hashes for all seven runs also appear in \path{results/a2/tables/a2_test_protocol.json}.
+
+\clearpage
+\subsection{Rerun Evaluation and Error Analysis}
+
+In a virtual environment, select PyTorch and Torchvision builds for the target device, then install the remaining dependencies. Keep the saved validation exports in each run directory. The batch evaluator uses those scores to select illustrative checkpoints and checks that the selection agrees with the saved protocol.
+
+\begin{verbatim}
+python -m pip install -r requirements.txt
+python scripts/a2_evaluate_all.py --split test --device mps --batch-size 32
+python scripts/a2_error_analysis.py
+python scripts/a2_gradcam.py
+python scripts/a2_error_analysis.py
+\end{verbatim}
+
+The evaluator reuses complete exports when their hashes and evaluation settings match. To recompute predictions or use a different device, run the sequence in a separate copy with \path{--rerun} and the corresponding \path{--device} value on the evaluator command. Forward timings depend on the device. The first analysis pass prepares error groups and example selections, Grad-CAM produces attribution figures on CPU, and the second pass incorporates those figures and the saved visual review.
+
+Per-run predictions and confusion matrices are stored under each run's \path{evaluation/test/} directory. Table~\ref{tab:test} uses \path{results/a2/tables/a2_test_summary.json}, and Table~\ref{tab:a2-ablation-paired} uses the per-run test export \path{results/a2/tables/a2_test_evaluation.csv}. The analysis writes subgroup counts to \path{results/a2/tables/a2_test_error_groups.csv} and figures to \path{results/a2/figures/test/}.
+
+\subsection{Rebuild Checkpoints from Training}
+
+To reconstruct weights, use a separate checkout of the training commit in Table~\ref{tab:a2-repro-runs} with the same dataset layout and split. Train the CNN at \texttt{a1246bc} with the original 20-epoch override. Train both ResNet arms at \texttt{41cf5e3}, repeating the ResNet commands for seeds 43 and 44.
+
+\begin{verbatim}
+python -m src.a2.train --model cnn --seed 42 --epochs 20
+python -m src.a2.train --model resnet50_frozen --seed 42
+python -m src.a2.train --model resnet50_full --seed 42
+\end{verbatim}
+
+The historical base configs and these arguments resolve to the saved settings. The trainer writes a new run directory and selects \path{best.pt} by validation macro-F1. Use the original weights and run IDs to reproduce the exact checkpoint fingerprints.

@@ -1,7 +1,7 @@
-"""Train một model A2. Dùng lại src/engine/trainer.fit của A1 (không sửa).
+"""Train một model A2. Vòng train ở src/a2/trainer.py (optimizer hai nhóm lr cho head / backbone).
 
     python -m src.a2.train --model cnn
-    python -m src.a2.train --model resnet50_frozen --epochs 10
+    python -m src.a2.train --model resnet50_frozen --seed 43
 """
 from __future__ import annotations
 
@@ -14,8 +14,8 @@ import yaml
 
 from src.a2.data import build_loaders
 from src.a2.models import MODELS, count_params
+from src.a2.trainer import fit
 from src.engine.plots import plot_curves
-from src.engine.trainer import fit
 from src.utils.env import get_env_info
 from src.utils.git_commit import git_commit
 from src.utils.run_dir import make_run_dir
@@ -78,6 +78,7 @@ def main():
         "epochs_planned": config["training"]["epochs"],
         "epochs_run": len(result["history"]),
         "train_time": train_time,
+        "peak_gpu_mem_gb": result["peak_gpu_mem_gb"],
         "best_epoch": result["best_epoch"],
         "best_value": result["best_value"],
         "monitor": config["training"]["monitor"],

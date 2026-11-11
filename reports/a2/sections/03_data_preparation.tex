@@ -1,0 +1,59 @@
+% !TeX root = ../main.tex
+\clearpage
+\section{Data Preparation}
+\label{sec:data-preparation}
+
+\subsection{Duplicate Detection and Split Construction}
+
+We retained the original train, validation, and test assignments, which allocate roughly 70\%, 10\%, and 20\% of each class, and filtered duplicates within and across them. The notebook identified 63 groups of byte-identical files with MD5, including 40 groups that crossed split boundaries. It then compared 64-bit perceptual hashes to find visually similar copies. Images were linked at Hamming distance at most 6, with distance 8 also accepted for pairs sharing a label. The notebook's inspection found more cross-label candidates at distance 8, motivating the tighter threshold for those pairs. The resulting graph contained 427 connected components with at least two images, of which 222 crossed splits and 56 contained conflicting labels.
+
+The connected component is the leakage-control unit. For components with conflicting labels, we dropped all images (118 removals). For single-label components, we retained one image, prioritizing test over validation over training, with filename as the tie-breaker. This removed 196 cross-split copies and 193 additional copies within a split. The notebook opened RGB images in all partitions, and the drop list records duplicate and label-conflict removals. Different photos from the same source website may remain in different partitions because source-domain grouping was not verified.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Original and cleaned 30VNFoods partitions. All 30 classes remain in each split.}
+    \label{tab:a2-data-splits}
+    \begin{tabular}{lrrr}
+        \toprule
+        Partition & Original & Removed & Cleaned v2 \\
+        \midrule
+        Training & 17,581 & 417 & 17,164 \\
+        Validation & 2,515 & 34 & 2,481 \\
+        Test & 5,040 & 56 & 4,984 \\
+        \midrule
+        Total & 25,136 & 507 & 24,629 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+The shared manifest, \path{results/a2/splits/split_v2.json}, fixes the image paths, class IDs, and file checksums for every run. The exclusions are listed in \path{results/a2/tables/a2_drop_list.csv}. Training seeds affect model training and sampling order. The manifest determines partition membership. The validation set supplies the early-stopping and checkpoint-selection scores, and the cleaned test set is reserved for final evaluation.
+
+\clearpage
+\subsection{Image Transforms and Batching}
+
+The dataset loader decodes images as RGB. During training it applies a random resized crop to $224\times224$ with crop area scale $[0.08,1.0]$, a random horizontal flip, and color jitter of 0.1 for brightness, contrast, and saturation. During validation and test, it resizes the shorter side to 256 pixels while preserving aspect ratio, then center crops to $224\times224$ without random augmentation.
+
+Images are converted to float tensors in $[0,1]$ before channel-wise normalization. For the CNN, the mean and standard deviation come from the cleaned training images resized to $224\times224$. Both ResNet-50 variants use the ImageNet statistics associated with their pretrained inputs. Table~\ref{tab:a2-normalization} gives the configured values in RGB order. The loader shuffles training samples before batching and returns a tensor of shape $B\times3\times224\times224$ and a length-$B$ vector of integer class IDs.
+
+\begin{table}[H]
+    \centering
+    \caption{Channel-wise normalization statistics used by each model family.}
+    \label{tab:a2-normalization}
+    \begin{tabular}{lll}
+        \toprule
+        Model family & RGB mean & RGB standard deviation \\
+        \midrule
+        CNN & $(0.5819, 0.5140, 0.3997)$ & $(0.2693, 0.2645, 0.2933)$ \\
+        ResNet-50 & $(0.485, 0.456, 0.406)$ & $(0.229, 0.224, 0.225)$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Figure~\ref{fig:a2-training-batch} shows augmented crops with their dataset labels. Normalization is reversed for display.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.70\linewidth]{\resultfigures a2_example_batch.png}
+    \caption{A training batch after preprocessing. The input tensor has shape $16\times3\times224\times224$ and the label vector has length 16.}
+    \label{fig:a2-training-batch}
+\end{figure}

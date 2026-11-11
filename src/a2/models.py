@@ -47,6 +47,8 @@ class ResNet50(nn.Module):
     giữ nguyên thống kê ImageNet (nếu không, running mean/var vẫn bị cập nhật dù không có gradient).
     """
 
+    head_prefix = "net.fc."  # src/a2/trainer.py: tham số head dùng lr, phần còn lại dùng lr_backbone
+
     def __init__(self, num_classes: int = 30, freeze_backbone: bool = True, pretrained: bool = True):
         super().__init__()
         weights = tv_models.ResNet50_Weights.IMAGENET1K_V2 if pretrained else None

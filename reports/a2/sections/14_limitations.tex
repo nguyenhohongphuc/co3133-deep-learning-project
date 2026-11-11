@@ -1,0 +1,12 @@
+% !TeX root = ../main.tex
+\clearpage
+\section{Limitations}
+\label{sec:a2-limitations}
+
+The evaluation covers one cleaned split of 30VNFoods. Exact and perceptual hashes reduce duplicate leakage (Section~\ref{sec:data-preparation}), but near duplicates outside the chosen thresholds can remain. Distinct images from the same website can also appear in multiple splits because source-domain separation was not verified. The web collection may overrepresent certain plating styles and backgrounds, and folder labels may be ambiguous even after removing conflicts found through duplicate detection. Generalization to new sources or user photos remains unmeasured. The proposal also planned a comparison with the original 5,040-image test set. That comparison remains pending, so the reported scores cover the 4,984-image cleaned test set.
+
+The ResNet-50 results span three seeds on the same split. The observed spread describes variability under this setup. The CNN baseline has one saved run, so its variability across seeds is unknown. Its architecture and training settings differ from the ResNet-50 arms, which limits what that comparison can attribute to pretraining. The paired ResNet study estimates the joint effect of updating backbone parameters and BatchNorm statistics (Section~\ref{sec:ablation}).
+
+The error analysis uses one validation-selected full checkpoint. The extreme-aspect group has 52 images and the white-border Banh pia group has 11, so their error rates are imprecise. The crop examples and Grad-CAM maps help identify regions to inspect, while the white-border proxy can include plates and food. To test the suspected mechanisms, future validation runs could compare center crops with aspect-preserving padding under matched training settings and measure prediction changes when annotated background or packaging is masked while the food stays visible.
+
+Training times include validation on an RTX 4060 Laptop GPU. Forward times come from one batched Apple MPS pass per checkpoint and exclude image loading, preprocessing, and transfers. They describe model forward cost under that protocol. Estimating deployment latency would require repeated end-to-end measurements on the intended hardware and batch size.

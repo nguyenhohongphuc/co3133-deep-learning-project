@@ -1,0 +1,76 @@
+% !TeX root = ../main.tex
+\clearpage
+\section{Error Analysis}
+\label{sec:a2-error-analysis}
+
+The full ResNet-50 checkpoint from seed 44, chosen by validation macro-F1, makes 525 errors on 4,984 test images (10.5\%). Table~\ref{tab:a2-error-groups} counts errors against the eligible images in each group. The groups can overlap, so their counts cannot be added to obtain 525. The examples use the saved prediction IDs from Section~\ref{sec:a2-qualitative-results}. They illustrate possible causes, while the counts describe where the model disagrees with dataset labels.
+
+\subsection{Error Groups and Examples}
+
+\begin{table}[H]
+  \centering
+  \caption{Diagnostic groups for the validation-selected full ResNet-50. The soup and white-cake families are exploratory. Rates are conditional on the group definitions.}
+  \label{tab:a2-error-groups}
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.28\linewidth} p{0.15\linewidth} Y Y@{}}
+    \toprule
+    Group & Errors / images & Example and possible cause & Follow-up on validation \\
+    \midrule
+    Soup family: H2 classes plus Hu tieu and Pho
+      & 188 / 1,076\newline (17.5\%)
+      & \#568 and \#4289 show similar toppings and partly visible noodles.
+      & Review training labels and add clear views of noodle shape. Measure both confusion directions. \\
+    \addlinespace
+    Banh chung and Banh tet: errors within the pair
+      & 13 / 234\newline (5.6\%)
+      & \#678 shows the cut filling with little of the overall shape.
+      & Add labeled whole and cut views. Measure within-pair confusion. \\
+    \addlinespace
+    White cakes: Banh duc, Banh cuon, Banh gio, and Banh bot loc
+      & 85 / 624\newline (13.6\%)
+      & In \#978, pale folds and minced toppings resemble the predicted Banh gio.
+      & Review ambiguous training labels and add examples with clear shapes. \\
+    \addlinespace
+    Extreme aspect ratio: width/height below 0.5 or above 2
+      & 4 / 52\newline (7.7\%)
+      & In \#191, the crop excludes much of the tray and condiments.
+      & Compare padding to a square with center cropping under matched training settings. \\
+    \addlinespace
+    Top-1 softmax score at least 0.9
+      & 120 / 4,005\newline (3.0\%)
+      & \#568 assigns nearly all probability to a visually similar dish.
+      & Measure calibration and error rates at candidate review thresholds. \\
+    \addlinespace
+    Top-1 minus top-2 score at most 0.1
+      & 68 / 109\newline (62.4\%)
+      & In \#1669, small, blurred pastries compete with the tea setting.
+      & Measure error versus review workload when flagging low-margin cases. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+The Banh canh--Hu tieu confusion is asymmetric. Banh canh is predicted as Hu tieu in 22 of 191 cases (11.5\%), and Hu tieu is predicted as Banh canh in 13 of 194 (6.7\%). The confidence groups also answer different questions. Only 3.0\% of predictions with a score of at least 0.9 are wrong, but those 120 predictions account for 22.9\% of all errors.
+
+\clearpage
+\subsection{Checks of the EDA Hypotheses}
+\label{sec:a2-error-hypotheses}
+
+\textbf{H1 (rice-cake shape).} Of 234 true Banh chung or Banh tet images, 13 (5.6\%) are confused with the other class, accounting for 13 of the 26 errors on the pair. Banh chung is predicted as Banh tet 10 times out of 99, versus 3 out of 135 in reverse. The cut view in \#678 illustrates a missing shape cue. An annotated comparison of whole and cut views would test whether that cue explains the pattern across the pair.
+
+\textbf{H2 (similar soup dishes).} Of 720 true Banh canh, Bun bo Hue, or Bun rieu images, 46 (6.4\%) are confused with another class in that group, accounting for 46 of its 118 errors. Bun rieu is predicted as Bun bo Hue in 19 of 227 cases. The reddish broth and toppings in \#2973 are consistent with visual overlap. Annotations of broth and noodle visibility would help test which cues explain these confusions.
+
+\textbf{H3 (extreme aspect ratios).} The extreme group has 4 errors in 52 images (7.7\%, 95\% Wilson interval 3.0--18.2\%), compared with 521 in 4,932 (10.6\%) for the other images. Applying the other images' error rates within each true class gives 4.60 expected errors among the 52 extreme images. The observed rates do not support an increase for this run. The small group leaves substantial uncertainty. Figure~\ref{fig:a2-error-crops} illustrates how cropping can remove dish context in an individual case.
+
+\begin{figure}[H]
+  \centering
+  % Show the first pair from the saved gallery and use the report caption.
+  \includegraphics[width=0.85\linewidth,trim=0 640bp 0 20bp,clip]{\resultfigures test/a2_test_crop_cases.png}
+  \caption{Original image and evaluation crop for \#191. The crop retains the center of the tray, while much of the serving context falls outside it.}
+  \label{fig:a2-error-crops}
+\end{figure}
+
+\textbf{H4 (Banh pia background and packaging).} The white-border proxy requires at least half the pixels in the outer 13-pixel band of a $64\times64$ thumbnail to have all RGB channels at least 220 and a channel range of at most 30 on a 0--255 scale. It includes white plates and food. The model makes 0 errors on 11 Banh pia images meeting the proxy and 2 on the other 78 (2.6\%). Grad-CAM overlaps pastry in the correct \#1623 case and part of the tea setting for the wrong prediction on \#1669. These observations leave the shortcut hypothesis unresolved. Masking annotated background and packaging regions while preserving the food on validation would provide a more direct test.
+
+Group counts and image IDs are available in \path{results/a2/tables/a2_test_error_groups.csv} and \path{results/a2/error_analysis/qualitative_review.csv}. These diagnostics describe a single checkpoint. The proposed follow-ups are future validation experiments.
+\clearpage

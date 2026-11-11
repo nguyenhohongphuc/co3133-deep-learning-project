@@ -1,0 +1,96 @@
+% !TeX root = ../main.tex
+\section{Qualitative Results}
+\label{sec:a2-qualitative-results}
+
+The examples use the validation-selected checkpoints from Section~\ref{sec:training-and-evaluation}: CNN seed 42 and both ResNet-50 arms at seed 44. The images show the $224\times224$ evaluation crops before normalization. The tables give each checkpoint's top-1 label and softmax score.
+
+The galleries prioritize different true classes within each group. Correct examples with a full-model top-1/top-2 score margin of at least 0.5 are ordered by a stable path hash. Hard-correct examples are ranked by their smallest margins. Failures are ranked by directed confusion frequency and then confidence. The paired galleries use path hashing within cases where only one ResNet is correct. The panels below take the first image in each displayed gallery group. The full selection is recorded in \path{results/a2/error_analysis/qualitative_manifest.csv}.
+
+% Extract the first image tile from each saved gallery at 617x616+16+205.
+\newcommand{\aTwoQualTile}[2][0.27\linewidth]{%
+  \includegraphics[width=#1]{\reportroot assets/qualitative/#2.png}%
+}
+
+\subsection{Correct, Difficult, and Failed Predictions}
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}{@{}ccc@{}}
+    \aTwoQualTile{correct} & \aTwoQualTile{hard_correct} & \aTwoQualTile{wrong} \\
+    \small Correct (\#2250) & \small Difficult (\#4165) & \small Failure (\#568)
+  \end{tabular}
+  \caption{Evaluation crops from the correct, low-margin correct, and failure galleries. IDs index the saved test prediction rows.}
+  \label{fig:a2-qual-crops}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Predicted labels and top-1 softmax scores for Figure~\ref{fig:a2-qual-crops}.}
+  \small
+  \begin{tabular}{rlccc}
+    \toprule
+    ID & Dataset label & CNN & Frozen & Full \\
+    \midrule
+    2250 & Bun bo Hue & \shortstack{Bun bo Hue\\33.7\%}
+         & \shortstack{Bun bo Hue\\46.8\%} & \shortstack{Bun bo Hue\\99.7\%} \\
+    \addlinespace[3pt]
+    4165 & Goi cuon & \shortstack{Banh bot loc\\12.4\%}
+         & \shortstack{Goi cuon\\51.2\%} & \shortstack{Goi cuon\\45.3\%} \\
+    \addlinespace[3pt]
+    568 & Banh canh & \shortstack{Banh duc\\40.4\%}
+        & \shortstack{Hu tieu\\80.4\%} & \shortstack{Hu tieu\\99.9998\%} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The Bun bo Hue crop shows broth, meat, and noodles together, and all three models predict the dataset label. In the Goi cuon example, the dipping-sauce bowl fills much of the crop and only part of the roll is visible. The full model selects Goi cuon over Banh duc by a margin of 0.0047. In the Banh canh example, sliced meats and egg occupy much of the bowl, with white noodles visible around them. Both ResNets predict Hu tieu. The full model assigns nearly all its softmax score to that class.
+
+\clearpage
+\begingroup
+\setlength{\intextsep}{6pt}
+\subsection{Changes After Full Fine-tuning}
+
+On the same 4,984 test images, the two illustrated ResNets agree with the dataset label on 3,704 images and both miss 395. The full model alone is correct on 755 images. The frozen model alone is correct on 130.
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}{@{}cc@{}}
+    \aTwoQualTile[0.22\linewidth]{improvements} & \aTwoQualTile[0.22\linewidth]{regressions} \\
+    \small Full correct (\#708) & \small Frozen correct (\#4120)
+  \end{tabular}
+  \caption{Evaluation crops illustrating changes in both directions between the paired ResNet checkpoints.}
+  \label{fig:a2-qual-paired}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Predicted labels and top-1 softmax scores for Figure~\ref{fig:a2-qual-paired}.}
+  \small
+  \begin{tabular}{rlccc}
+    \toprule
+    ID & Dataset label & CNN & Frozen & Full \\
+    \midrule
+    708 & Banh cuon & \shortstack{Banh cuon\\26.8\%}
+        & \shortstack{Banh khot\\43.6\%} & \shortstack{Banh cuon\\68.2\%} \\
+    \addlinespace[3pt]
+    4120 & Goi cuon & \shortstack{Goi cuon\\78.8\%}
+         & \shortstack{Goi cuon\\99.8\%} & \shortstack{Banh cuon\\79.1\%} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+In \#708, herbs and toppings partially cover the small white rolls. The full checkpoint recovers Banh cuon from the frozen checkpoint's Banh khot prediction. In \#4120, pale wrappers dominate the crop and the filling is less visible. The full model predicts Banh cuon, while frozen and CNN predict Goi cuon. Wrapper appearance is a plausible source of the ambiguity in this example.
+
+\subsection{Grad-CAM for the Banh Canh Failure}
+
+Grad-CAM weights final convolutional activations by class-score gradients to produce coarse spatial attributions (Selvaraju et al.). In Figure~\ref{fig:a2-qual-gradcam}, positive attribution for Hu tieu overlaps parts of the toppings and noodles.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.86\linewidth]{\resultfigures test/a2_test_gradcam_0568.png}
+  \caption{Full ResNet-50, seed 44, on \#568. The overlays target the predicted class Hu tieu and the dataset class Banh canh.}
+  \label{fig:a2-qual-gradcam}
+\end{figure}
+
+\endgroup
+\clearpage

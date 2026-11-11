@@ -1,0 +1,92 @@
+% !TeX root = ../main.tex
+\section{Training and Evaluation Protocol}
+\label{sec:training-and-evaluation}
+
+This protocol covers the seven checkpoints evaluated on the fixed split of 17,164 training, 2,481 validation, and 4,984 test images. Settings were checked against saved configurations, epoch histories, and evaluation records.
+
+\subsection{Training Setup}
+
+Table~\ref{tab:a2-training-setup} gives the resolved settings saved with each run. Section~\ref{sec:loss-and-optimization} gives the optimization settings.
+
+\begin{table}[H]
+    \centering
+    \caption{Training settings from the saved run configurations.}
+    \label{tab:a2-training-setup}
+    \begin{tabular}{lrrr}
+        \toprule
+        Setting & CNN baseline & ResNet-50 frozen & ResNet-50 full \\
+        \midrule
+        Seeds & 42 & 42, 43, 44 & 42, 43, 44 \\
+        Batch size & 64 & 32 & 32 \\
+        Maximum epochs & 20 & 15 & 15 \\
+        Early-stopping patience & 5 & 5 & 5 \\
+        Loader workers & 6 & 6 & 6 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Training uses float32 tensors and one optimizer step per batch. The seed function initializes Python, NumPy, and PyTorch generators, requests deterministic cuDNN behavior, and disables cuDNN benchmarking. Loader sampling and workers also receive seeds.
+
+The controlled ResNet study fixes the data, transforms, head learning rate, optimizer, batch size, epoch cap, patience, and paired seeds while varying backbone adaptation.
+
+\subsection{Hyperparameter Selection and Configuration Development}
+
+The saved draft runs at seed 42 used batch 64 and a 10-epoch cap for frozen ResNet-50, and batch 32, a 5-epoch cap, and one $10^{-4}$ learning rate for full fine-tuning. Commit \texttt{41cf5e3} introduced separate head/backbone optimizer groups and aligned both arms to batch 32, a 15-epoch cap, and head learning rate $10^{-3}$. The full backbone retained $10^{-4}$. Configuration comments attribute batch 32 to the full model's FP32 memory constraint.
+
+The six final ResNet runs repeat these adopted settings at seeds 42--44. The CNN's saved run uses dropout 0.3. The recorded validation procedure selects checkpoint epochs under each configuration. The separate compute benchmark supplies throughput and memory estimates for planning.
+
+\subsection{Hardware and Software}
+
+Training records identify an RTX 4060 Laptop GPU, CUDA 12.6, Python 3.10.21, and PyTorch \texttt{2.14.1+cu126}. Source commits are \texttt{a1246bc} for the CNN and \texttt{41cf5e3} for the controlled ResNet runs.
+
+Checkpoint evaluation used Apple MPS, Python 3.13.1, and PyTorch 2.8.0. All seven test runs used batch size 32, zero loader workers, and five CPU threads. Outputs retain device, environment, and checkpoint/configuration/split hashes.
+
+\subsection{Checkpoint Selection and Early Stopping}
+
+A strict improvement in validation macro-F1 saves \path{best.pt} and resets patience. Five non-improving epochs or the epoch cap stop training. Table~\ref{tab:a2-checkpoint-epochs} converts saved zero-based indices to one-based epoch numbers.
+
+\begin{table}[H]
+    \centering
+    \caption{Completed epochs, selected checkpoints, and recorded training duration.}
+    \label{tab:a2-checkpoint-epochs}
+    \begin{tabular}{lrrrr}
+        \toprule
+        Model & Seed & Completed & Selected epoch & Train time (min) \\
+        \midrule
+        CNN baseline & 42 & 20 & 18 & 20.85 \\
+        ResNet-50 frozen & 42 & 15 & 13 & 13.67 \\
+                         & 43 & 15 & 11 & 11.51 \\
+                         & 44 & 15 & 12 & 11.23 \\
+        ResNet-50 full & 42 & 12 & 7 & 22.07 \\
+                       & 43 & 14 & 9 & 25.61 \\
+                       & 44 & 15 & 11 & 27.24 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Full seeds 42 and 43 stopped five epochs after their selected checkpoints. The other runs reached their caps. Both ResNet arms share the cap and stopping rule.
+
+\subsection{Evaluation Metrics}
+
+For $N$ evaluated images with true labels $y_i$ and predictions $\widehat{y}_i$, accuracy is
+\begin{equation}
+    \operatorname{Accuracy}
+    =\frac{1}{N}\sum_{i=1}^{N}\mathbb{I}[\widehat{y}_i=y_i].
+\end{equation}
+For class $k$, let $TP_k$, $FP_k$, and $FN_k$ denote true positives, false positives, and false negatives. The primary metric is
+\begin{equation}
+    F1_k=\frac{2TP_k}{2TP_k+FP_k+FN_k},
+    \qquad
+    \operatorname{Macro\text{-}F1}=\frac{1}{30}\sum_{k=0}^{29}F1_k.
+\end{equation}
+Macro-F1 includes all 30 classes, assigning zero for a zero denominator. Secondary outputs include per-class precision/recall/F1, confusion matrices, top-3 accuracy, and cross-entropy.
+
+ResNet results use means and sample standard deviations over three seeds. The study averages paired macro-F1 gains and compares them with the observed seed spread, as proposed. The CNN result represents one run.
+
+\subsection{Final Test and Compute Protocol}
+
+Validation re-evaluation selected illustrative runs before test: CNN seed 42 and both ResNets at seed 44. Each saved checkpoint comes from its original validation history.
+
+All seven checkpoints were tested on 4,984 cleaned images. \path{results/a2/tables/a2_test_protocol.json} fixes the run selections and checkpoint hashes. Prediction rows follow manifest order.
+
+Training time includes fitting, validation, and checkpoint writes. Forward timing measures one complete test pass after a warm-up batch, synchronizing timed batches. Measured forward time divided by 4,984 gives time per image. Loading, transfers, ranking, and export fall outside this interval. Training uses CUDA and forward timing uses MPS.

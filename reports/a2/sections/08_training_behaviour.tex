@@ -1,0 +1,38 @@
+% !TeX root = ../main.tex
+\section{Training Behaviour}
+\label{sec:a2-training-behaviour}
+
+The curves reproduce the saved \path{history.csv} values for the seven runs in Section~\ref{sec:training-and-evaluation}. Epochs start at one. The validation macro-F1 panels mark the selected checkpoint with a circle and the last recorded epoch with a cross.
+
+\subsection{CNN Baseline}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/training/a2_cnn_training.pdf}
+    \caption{CNN baseline at seed 42. The selected checkpoint is at epoch 18 and the run reaches its 20-epoch cap.}
+    \label{fig:a2-cnn-training}
+\end{figure}
+
+CNN training cross-entropy fell from 2.999 to 1.767 over 20 epochs. Validation macro-F1 rose from 0.167 to a peak of 0.556 at epoch 18, then fell to 0.462 by epoch 20. Validation loss also reached its minimum at epoch 18 (1.586) before rising to 1.883. The run was still reducing training loss at its cap, with substantial validation fluctuations. The single run leaves open how much longer training or a different learning rate would change this pattern.
+
+Training cross-entropy averages augmented batches while parameters are changing. Validation cross-entropy uses fixed parameters and center crops. In addition, dropout is active for the CNN during training. These differences affect the loss gap, so the interpretation uses the trajectories and validation scores together.
+
+\clearpage
+\subsection{Paired ResNet-50 Runs}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{\reportroot assets/training/a2_resnet_training.pdf}
+    \caption{Training loss, validation loss, and validation macro-F1 for the three paired seeds. Both rows use the same axes. Lines end at the last completed epoch.}
+    \label{fig:a2-resnet-training}
+\end{figure}
+
+\textbf{Frozen backbone.} Validation macro-F1 rose from 0.657--0.669 at epoch 1 to peaks of 0.760--0.766 at epochs 11--13. All three runs reached epoch 15, where training loss was 0.772--0.784 and validation loss was 0.817--0.822. Learning slowed late in the run, with the two losses still close.
+
+\textbf{Full fine-tuning.} Validation macro-F1 reached 0.875--0.876 by epoch 4 and peaked at 0.883--0.887. For seed 44, training loss fell from 0.381 at epoch 7 to 0.253 at epoch 15 while validation loss rose from 0.455 to 0.524. This widening gap is consistent with late overfitting under the recorded setup. Seed 44's validation loss was lowest at epoch 7, while macro-F1 selected epoch 11. Loss reflects probabilities and macro-F1 reflects predicted labels, so their optima can occur at different epochs. Seeds 42 and 43 stopped at epochs 12 and 14 after five epochs without improvement. Seed 44 reached the cap.
+
+\subsection{Training Time and Implementation}
+
+Table~\ref{tab:a2-checkpoint-epochs} records durations including validation. The mean per-run time per completed epoch was 1.04 minutes for CNN, 0.81 for frozen ResNet-50, and 1.83 for full fine-tuning. Full fine-tuning backpropagates through the backbone and updates its parameters. The shared batch of 32 addresses its FP32 memory constraint. The A2 trainer adds separate head and backbone learning rates for full fine-tuning, as described in Section~\ref{sec:loss-and-optimization}.
+
+\clearpage

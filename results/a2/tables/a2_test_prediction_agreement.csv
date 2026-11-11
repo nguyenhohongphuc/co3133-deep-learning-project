@@ -1,0 +1,5 @@
+outcome,count,fraction
+both_correct,3704,0.7431781701444623
+full_only_correct,755,0.15148475120385232
+frozen_only_correct,130,0.02608346709470305
+both_wrong,395,0.07925361155698234

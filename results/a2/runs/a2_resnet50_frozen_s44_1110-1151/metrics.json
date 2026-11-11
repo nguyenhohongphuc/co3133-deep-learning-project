@@ -1,0 +1,25 @@
+{
+  "run_id": "a2_resnet50_frozen_s44_1110-1151",
+  "model": "resnet50_frozen",
+  "seed": 44,
+  "commit": "41cf5e3",
+  "device": "cuda",
+  "env": {
+    "python": "3.10.21",
+    "torch": "2.14.1+cu126",
+    "cuda": "12.6",
+    "cpu": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "param": 23569502,
+  "param_trainable": 61470,
+  "epochs_planned": 15,
+  "epochs_run": 15,
+  "train_time": 673.5163750648499,
+  "peak_gpu_mem_gb": 0.4335751533508301,
+  "best_epoch": 11,
+  "best_value": 0.765641522670953,
+  "monitor": "val_macro_f1",
+  "val_accuracy": 0.7642079806529625,
+  "val_macro_f1": 0.765641522670953
+}

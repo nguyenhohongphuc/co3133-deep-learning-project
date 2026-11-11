@@ -53,7 +53,8 @@ All commands are run from the **repository root** (the folder that contains `src
 ## Assignment 2 (30VNFoods, image classification)
 
 A2 code lives in its own package `src/a2/` and config `configs/a2.yaml`, so the A1 files are never touched.
-It imports the shared `src/engine/trainer.fit` and `src/utils/` without changing them.
+Its trainer uses separate head/backbone learning rates and reuses the shared A1 epoch functions
+and `src/utils/` without changing the A1 files.
 
 ```powershell
 # 1. Data (once): Kaggle quandang/vietnamese-foods, version 11 -> data/30VNFoods/{Images,Urls,LICENSE}
@@ -70,7 +71,80 @@ python -m src.a2.data
 python -m src.a2.train --model cnn               # baseline
 python -m src.a2.train --model resnet50_frozen   # pretrained, backbone frozen
 python -m src.a2.train --model resnet50_full     # pretrained, full fine-tuning
+
+# 5. Controlled experiment: frozen vs. full backbone adaptation, 3 seeds per arm
+foreach ($s in 42, 43, 44) { foreach ($m in "resnet50_frozen", "resnet50_full") { python -m src.a2.train --model $m --seed $s } }
+
+# 6. After the teammate supplies best.pt in the matching run folder:
+#    Start error analysis on validation. Evaluate test after the protocol is final.
+python -m src.a2.evaluate --run-dir results/a2/runs/<run_id> --split val
+python -m src.a2.evaluate --run-dir results/a2/runs/<run_id> --split test
 ```
+
+The A2 evaluator reads **that run's `config.yaml`**, including model, seed, normalisation and
+resolved training settings. It requires a matching full model `state_dict` checkpoint saved by
+`src.a2.train` (default: `<run_dir>/best.pt`). It never downloads ImageNet weights or trains the model.
+Keep the saved run config alongside the checkpoint when transferring runs between machines.
+
+Evaluation defaults to validation, device `auto` (CUDA, then MPS, then CPU), and zero data-loader
+workers. The evaluation device is independent of the saved training device. Optional overrides:
+`--checkpoint /path/to/best.pt`, `--data-dir /path/to/30VNFoods/Images`,
+`--split-file /path/to/split_v2.json`, `--device cpu`, `--batch-size 32`, `--num-workers 4`,
+and `--output-dir /path/to/evaluation`. Explicit path overrides are relative to the current working
+directory; paths inside the saved config are relative to the repository root. Use the same dataset
+version and split/class order used for training; the evaluator records file hashes for traceability.
+
+Outputs go to `<run_dir>/evaluation/<val|test>/` (rerunning replaces these derived files):
+
+| File | Content |
+|---|---|
+| `predictions.csv` | One row per image, in split-file order: relative path, original MD5 from the manifest, true/predicted label and class, correct flag, softmax confidence, true-class probability, top-2/top-3 predictions, top-1/top-2 probability margin, original width/height/aspect ratio, model/run/seed/split |
+| `metrics.json` | Accuracy, macro-F1 over all listed classes (undefined F1 = 0), weighted-F1, top-3 accuracy, cross-entropy, confusion matrix, forward-only timing, effective evaluation settings and checkpoint/config/split SHA-256 hashes |
+| `per_class_metrics.csv` | Precision, recall, F1, support, number predicted and number correct for every class |
+| `confusion_matrix.csv` | Counts, with true classes in rows and predicted classes in columns |
+
+Softmax confidence is a model score, not a calibrated guarantee of correctness. The CSV records the
+manifest MD5; it does not recompute every image checksum. Inference streams batches instead of
+loading the whole dataset onto the GPU. Forward timing uses one untimed warmup batch and one timed
+pass, excluding data loading, device transfers and CSV export; it is an initial cost measurement,
+not a repeated latency benchmark. No qualitative conclusions are generated automatically.
+
+Offline checks use temporary synthetic images/checkpoints, with no real A2 data or pretrained download:
+
+```bash
+python -m unittest discover -s tests -p 'test_a2_evaluate.py' -v
+```
+
+### Final test evaluation and error analysis
+
+The completed analysis is in [`reports/a2/test_evaluation_analysis.md`](reports/a2/test_evaluation_analysis.md).
+All seven available checkpoints were evaluated on the cleaned 4,984-image test split. Main results use
+all seeds; qualitative examples use the best **validation** run within each model family, fixed before test.
+
+```bash
+python scripts/a2_evaluate_all.py --split test --device auto --batch-size 32
+python scripts/a2_error_analysis.py
+python scripts/a2_gradcam.py
+python scripts/a2_error_analysis.py
+python -m unittest discover -s tests -p 'test_a2_*.py' -v
+```
+
+The batch runner reuses complete exports only when checkpoint/config/split hashes and evaluation
+settings match. `--rerun` explicitly replaces exports. Analysis/Grad-CAM commands use matplotlib and
+the existing PyTorch/Pillow stack; the second analysis pass incorporates Grad-CAM and the visual
+review CSV without rerunning test inference. Grad-CAM uses CPU, eval mode and no optimizer.
+
+- Per-run predictions and metrics: `results/a2/runs/<run_id>/evaluation/test/`.
+- Seven-run results, mean/sample-SD summaries, paired seed gains, confusion/error-group tables,
+  image features and compute costs: `results/a2/tables/a2_test_*`.
+- Confusion heatmaps, per-class F1, correct/low-margin/failure cases, improvements/regressions,
+  crop comparisons and Grad-CAM: `results/a2/figures/test/`.
+- Example-selection manifests, hypothesis results and 23 inspected image observations:
+  `results/a2/error_analysis/`.
+
+Error groups overlap; visual explanations are hypotheses, not automatic label corrections or causal
+claims. The original uncleaned test set is not included in these results. No model changes were
+made after inspecting the final test results.
 
 | Item | A2 |
 |---|---|
@@ -78,6 +152,7 @@ python -m src.a2.train --model resnet50_full     # pretrained, full fine-tuning
 | Models (`src/a2/models.py`) | `cnn`: A1 CNN widened to 4 blocks + global average pooling (397 k params); `resnet50_frozen` / `resnet50_full`: torchvision ResNet-50 `IMAGENET1K_V2`, new 30-way head (23.6 M params) |
 | Preprocessing (`src/a2/data.py`) | train: `RandomResizedCrop(224)` + flip + `ColorJitter(0.1)`; eval: `Resize(256)` + `CenterCrop(224)`; CNN normalised with Train v2 stats, ResNet with ImageNet stats |
 | Checkpoint selection | best validation macro-F1, early stopping patience 5 (same trainer as A1) |
+| Controlled experiment | frozen vs. full backbone adaptation (including BatchNorm mode), head lr fixed at 1e-3 and backbone lr 0 vs. 1e-4; val macro-F1 0.763 ± 0.003 vs. 0.885 ± 0.002 over seeds 42/43/44 (commit `41cf5e3`) |
 | Proposal | `reports/a2/proposal.md` (revision 2) |
 
 ---

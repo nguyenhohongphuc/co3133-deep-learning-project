@@ -1,0 +1,58 @@
+category,run_id,index,path,true_class,pred_class,confidence,confidence_margin
+correct,a2_resnet50_full_s44_1110-1204,2250,Test/Bun bo Hue/1057.jpg,Bun bo Hue,Bun bo Hue,0.9967719912528992,0.9945204854011536
+correct,a2_resnet50_full_s44_1110-1204,891,Test/Banh cuon/815.jpg,Banh cuon,Banh cuon,0.9839480519294739,0.9696670174598694
+correct,a2_resnet50_full_s44_1110-1204,1699,Test/Banh pia/49.jpg,Banh pia,Banh pia,1.0,1.0
+correct,a2_resnet50_full_s44_1110-1204,4904,Test/Xoi xeo/180.jpg,Xoi xeo,Xoi xeo,0.99994957447052,0.9999045729637146
+correct,a2_resnet50_full_s44_1110-1204,1750,Test/Banh tet/242.jpg,Banh tet,Banh tet,0.9997989535331726,0.9996650218963623
+correct,a2_resnet50_full_s44_1110-1204,3837,Test/Chao long/746.jpg,Chao long,Chao long,0.7525528073310852,0.6180028915405273
+correct,a2_resnet50_full_s44_1110-1204,1430,Test/Banh mi/1329.jpg,Banh mi,Banh mi,0.9987804293632507,0.9978967905044556
+correct,a2_resnet50_full_s44_1110-1204,4639,Test/Nem chua/230.jpg,Nem chua,Nem chua,0.9999971389770508,0.9999958276748657
+correct,a2_resnet50_full_s44_1110-1204,1857,Test/Banh trang nuong/169.jpg,Banh trang nuong,Banh trang nuong,0.9999847412109375,0.9999783039093018
+hard_correct,a2_resnet50_full_s44_1110-1204,4165,Test/Goi cuon/500.jpg,Goi cuon,Goi cuon,0.4527980387210846,0.0047349631786346436
+hard_correct,a2_resnet50_full_s44_1110-1204,2739,Test/Bun mam/186.jpg,Bun mam,Bun mam,0.21445466578006744,0.005429387092590332
+hard_correct,a2_resnet50_full_s44_1110-1204,1356,Test/Banh mi/1011.jpg,Banh mi,Banh mi,0.47389012575149536,0.00593140721321106
+hard_correct,a2_resnet50_full_s44_1110-1204,3582,Test/Cao lau/22.jpg,Cao lau,Cao lau,0.2633296549320221,0.010170906782150269
+hard_correct,a2_resnet50_full_s44_1110-1204,489,Test/Banh canh/415.jpg,Banh canh,Banh canh,0.4712268114089966,0.011177211999893188
+hard_correct,a2_resnet50_full_s44_1110-1204,4812,Test/Pho/523.jpg,Pho,Pho,0.31106066703796387,0.011912763118743896
+hard_correct,a2_resnet50_full_s44_1110-1204,183,Test/Banh bot loc/383.jpg,Banh bot loc,Banh bot loc,0.38619428873062134,0.01255500316619873
+hard_correct,a2_resnet50_full_s44_1110-1204,3170,Test/Bun thit nuong/419.jpg,Bun thit nuong,Bun thit nuong,0.42940545082092285,0.018948078155517578
+hard_correct,a2_resnet50_full_s44_1110-1204,4051,Test/Com tam/829.jpg,Com tam,Com tam,0.3755791187286377,0.020154327154159546
+wrong,a2_resnet50_full_s44_1110-1204,568,Test/Banh canh/799.jpg,Banh canh,Hu tieu,0.9999978542327881,0.999996542930603
+wrong,a2_resnet50_full_s44_1110-1204,2973,Test/Bun rieu/412.jpg,Bun rieu,Bun bo Hue,0.9998034834861755,0.9996987581253052
+wrong,a2_resnet50_full_s44_1110-1204,4289,Test/Hu tieu/30.jpg,Hu tieu,Banh canh,0.9726479649543762,0.9572185277938843
+wrong,a2_resnet50_full_s44_1110-1204,2406,Test/Bun bo Hue/367.jpg,Bun bo Hue,Banh canh,0.8450310230255127,0.7823250889778137
+wrong,a2_resnet50_full_s44_1110-1204,2238,Test/Banh xeo/999.jpg,Banh xeo,Banh khot,0.8739864826202393,0.7842143177986145
+wrong,a2_resnet50_full_s44_1110-1204,966,Test/Banh duc/258.jpg,Banh duc,Banh cuon,0.9989784955978394,0.998374342918396
+wrong,a2_resnet50_full_s44_1110-1204,650,Test/Banh chung/297.jpg,Banh chung,Banh tet,0.9986200332641602,0.9973596930503845
+wrong,a2_resnet50_full_s44_1110-1204,4799,Test/Pho/471.jpg,Pho,Bun bo Hue,0.9797928333282471,0.9634118676185608
+wrong,a2_resnet50_full_s44_1110-1204,1352,Test/Banh khot/94.jpg,Banh khot,Banh can,0.9969647526741028,0.9946568012237549
+high_confidence_wrong,a2_resnet50_full_s44_1110-1204,155,Test/Banh bot loc/253.jpg,Banh bot loc,Banh beo,0.9999980926513672,0.9999963045120239
+high_confidence_wrong,a2_resnet50_full_s44_1110-1204,568,Test/Banh canh/799.jpg,Banh canh,Hu tieu,0.9999978542327881,0.999996542930603
+high_confidence_wrong,a2_resnet50_full_s44_1110-1204,1982,Test/Banh trang nuong/719.jpg,Banh trang nuong,Banh beo,0.9999876022338867,0.9999808669090271
+high_confidence_wrong,a2_resnet50_full_s44_1110-1204,304,Test/Banh can/30.jpg,Banh can,Banh cuon,0.9999459981918335,0.9999085664749146
+high_confidence_wrong,a2_resnet50_full_s44_1110-1204,4574,Test/Mi quang/732.jpg,Mi quang,Cao lau,0.9999126195907593,0.9998375773429871
+high_confidence_wrong,a2_resnet50_full_s44_1110-1204,2973,Test/Bun rieu/412.jpg,Bun rieu,Bun bo Hue,0.9998034834861755,0.9996987581253052
+high_confidence_wrong,a2_resnet50_full_s44_1110-1204,2876,Test/Bun mam/89.jpg,Bun mam,Banh canh,0.9994412064552307,0.998907208442688
+high_confidence_wrong,a2_resnet50_full_s44_1110-1204,2307,Test/Bun bo Hue/1293.jpg,Bun bo Hue,Pho,0.9993847608566284,0.9989607930183411
+high_confidence_wrong,a2_resnet50_full_s44_1110-1204,948,Test/Banh duc/179.jpg,Banh duc,Banh trang nuong,0.9993246793746948,0.9988363981246948
+improvements,a2_resnet50_full_s44_1110-1204,708,Test/Banh cuon/1013.jpg,Banh cuon,Banh cuon,0.6824297904968262,0.44374048709869385
+improvements,a2_resnet50_full_s44_1110-1204,3837,Test/Chao long/746.jpg,Chao long,Chao long,0.7525528073310852,0.6180028915405273
+improvements,a2_resnet50_full_s44_1110-1204,4325,Test/Hu tieu/443.jpg,Hu tieu,Hu tieu,0.8856208920478821,0.8231489062309265
+improvements,a2_resnet50_full_s44_1110-1204,1122,Test/Banh gio/388.jpg,Banh gio,Banh gio,0.9901918172836304,0.9829540848731995
+improvements,a2_resnet50_full_s44_1110-1204,975,Test/Banh duc/296.jpg,Banh duc,Banh duc,0.6622284650802612,0.4823997914791107
+improvements,a2_resnet50_full_s44_1110-1204,4856,Test/Pho/724.jpg,Pho,Pho,0.7614469528198242,0.5931648015975952
+improvements,a2_resnet50_full_s44_1110-1204,557,Test/Banh canh/756.jpg,Banh canh,Banh canh,0.9214181900024414,0.8766756653785706
+improvements,a2_resnet50_full_s44_1110-1204,2983,Test/Bun rieu/465.jpg,Bun rieu,Bun rieu,0.8788946270942688,0.7900892496109009
+improvements,a2_resnet50_full_s44_1110-1204,55,Test/Banh beo/392.jpg,Banh beo,Banh beo,0.8934264779090881,0.7959499955177307
+regressions,a2_resnet50_full_s44_1110-1204,4120,Test/Goi cuon/278.jpg,Goi cuon,Banh cuon,0.7905328869819641,0.581444501876831
+regressions,a2_resnet50_full_s44_1110-1204,2406,Test/Bun bo Hue/367.jpg,Bun bo Hue,Banh canh,0.8450310230255127,0.7823250889778137
+regressions,a2_resnet50_full_s44_1110-1204,454,Test/Banh canh/270.jpg,Banh canh,Mi quang,0.5775368809700012,0.16347435116767883
+regressions,a2_resnet50_full_s44_1110-1204,678,Test/Banh chung/427.jpg,Banh chung,Banh tet,0.9516534209251404,0.9123895168304443
+regressions,a2_resnet50_full_s44_1110-1204,978,Test/Banh duc/315.jpg,Banh duc,Banh gio,0.8607355356216431,0.7484389543533325
+regressions,a2_resnet50_full_s44_1110-1204,195,Test/Banh bot loc/421.jpg,Banh bot loc,Banh gio,0.6561763286590576,0.4680699110031128
+regressions,a2_resnet50_full_s44_1110-1204,87,Test/Banh beo/526.jpg,Banh beo,Bun thit nuong,0.6356844902038574,0.5087943077087402
+regressions,a2_resnet50_full_s44_1110-1204,4268,Test/Hu tieu/188.jpg,Hu tieu,Banh canh,0.5633949041366577,0.14628440141677856
+regressions,a2_resnet50_full_s44_1110-1204,926,Test/Banh cuon/978.jpg,Banh cuon,Banh gio,0.5433270931243896,0.09712666273117065
+crop_case,a2_resnet50_full_s44_1110-1204,191,Test/Banh bot loc/410.jpg,Banh bot loc,Banh cuon,0.7881717681884766,0.6429749131202698
+crop_case,a2_resnet50_full_s44_1110-1204,3452,Test/Canh chua/390.jpg,Canh chua,Bun bo Hue,0.5699781179428101,0.36352553963661194
+crop_case,a2_resnet50_full_s44_1110-1204,442,Test/Banh canh/210.jpg,Banh canh,Canh chua,0.5186421871185303,0.28088682889938354

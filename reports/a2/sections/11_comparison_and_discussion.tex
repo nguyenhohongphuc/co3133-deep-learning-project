@@ -1,0 +1,21 @@
+% !TeX root = ../main.tex
+\section{Comparison and Discussion}
+\label{sec:a2-comparison-discussion}
+
+\subsection{Effect of Backbone Adaptation}
+
+Full fine-tuning improves test accuracy by 12.29 percentage points and macro-F1 by 0.1202 over frozen ResNet-50 on average across the paired seeds (Table~\ref{tab:test}). All three paired gains support the hypothesis that adapting ImageNet features helps on 30VNFoods. Both arms use the same cross-entropy objective, data, classifier architecture, and head learning rate. The gain reflects the combined effect of backbone parameter updates and the associated changes in BatchNorm behavior. The three seeds characterize variation under this setup.
+
+Full fine-tuning reached higher validation macro-F1 early, then showed a widening separation between training and validation loss late in training (Figure~\ref{fig:a2-resnet-training}). The checkpoint rule preserves the epoch with the highest validation macro-F1 within each run. Test performance therefore reflects the selected checkpoints from these learning trajectories.
+
+\subsection{Where the Predictions Change}
+
+At seed 44, the full checkpoint correctly classifies 625 more test images overall than the frozen checkpoint. Figure~\ref{fig:a2-qual-paired} illustrates changes in both directions. Bun rieu shows one of the largest classwise improvements. False negatives fall from 102 to 34 and false positives from 61 to 14, so both recall and precision improve.
+
+Banh canh improves from 0.503 to 0.727 F1 as its true positives rise from 90 to 140. The specific Banh canh to Hu tieu confusion nevertheless rises from 20 to 22 of 191 images (Table~\ref{tab:a2-selected-confusions}). In the failure crop in Figure~\ref{fig:a2-qual-crops}, meat and egg occupy much of the bowl and white noodles remain visible around them. This case illustrates how shared ingredients and presentation can leave ambiguity even for a class with a large aggregate gain.
+
+\subsection{Accuracy and Compute Trade-offs}
+
+Full fine-tuning takes roughly twice as long to train as the frozen arm and uses about 6.7 times the peak allocated GPU memory (Table~\ref{tab:a2-test-compute}). Backpropagation through the backbone accounts for the additional training work. Both variants use the same architecture at inference and average about 4.3 ms per image on the batched MPS protocol. Their main measured cost difference is during training.
+
+The frozen arm gains 22.27 accuracy points over the CNN baseline, while the CNN uses about one fifty-ninth as many parameters and one fifth of the measured forward time. The CNN comparison combines differences in architecture, initialization, normalization, and training budget. Its single saved run provides a reference point for these configurations. The paired ResNet comparison gives the more direct evidence about backbone adaptation.

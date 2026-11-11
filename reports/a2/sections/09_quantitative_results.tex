@@ -1,0 +1,94 @@
+% !TeX root = ../main.tex
+\section{Quantitative Results}
+\label{sec:a2-quantitative-results}
+
+\subsection{Cleaned Test Performance}
+
+All seven saved checkpoints were evaluated on the same 4,984 test images across 30 classes. Table~\ref{tab:test} reports accuracy, macro-F1, and top-3 accuracy. The CNN result comes from one draft run at seed 42. Each ResNet-50 row summarizes seeds 42, 43, and 44.
+
+\begin{table}[H]
+  \centering
+  \caption{Results on the cleaned test split. ResNet-50 cells show the mean and sample standard deviation over three seeds.}
+  \label{tab:test}
+  \small
+  \begin{tabular}{lrrrr}
+    \toprule
+    Model & Runs & Accuracy & Macro-F1 & Top-3 accuracy \\
+    \midrule
+    CNN baseline & 1 & $0.5451$ & $0.5403$ & $0.7542$ \\
+    ResNet-50 frozen & 3 & $0.7679 \pm 0.0013$ & $0.7720 \pm 0.0022$ & $0.9169 \pm 0.0021$ \\
+    ResNet-50 full & 3 & $0.8908 \pm 0.0064$ & $0.8922 \pm 0.0063$ & $0.9683 \pm 0.0023$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Full fine-tuning gives the highest test macro-F1 in every paired seed. The mean paired increase over the frozen backbone is 0.1202 macro-F1, with gains from 0.1150 to 0.1236. The controlled comparison is examined in Section~\ref{sec:ablation}. Individual checkpoint scores are available in \path{results/a2/tables/a2_test_evaluation.csv}.
+
+\subsection{Compute Cost}
+
+\begin{table}[H]
+  \centering
+  \caption{Parameter counts and mean costs per run. Peak memory refers to allocated training GPU memory. The dash marks an unrecorded value.}
+  \label{tab:a2-test-compute}
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{lrrrrr}
+    \toprule
+    Model & \shortstack{Total\\parameters} & \shortstack{Trainable\\parameters}
+          & \shortstack{Train time\\(min)} & \shortstack{Peak memory\\(GiB)}
+          & \shortstack{Forward\\(ms/image)} \\
+    \midrule
+    CNN baseline & 397,086 & 397,086 & 20.85 & \textemdash & 0.859 \\
+    ResNet-50 frozen & 23,569,502 & 61,470 & 12.13 & 0.434 & 4.312 \\
+    ResNet-50 full & 23,569,502 & 23,569,502 & 24.97 & 2.894 & 4.285 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Training times were recorded on an RTX 4060 Laptop GPU and include validation. Full fine-tuning took about $2.06\times$ the training time and $6.67\times$ the peak allocated GPU memory of the frozen arm. Forward timings use Apple MPS with PyTorch 2.8.0 and batch size 32, following Section~\ref{sec:training-and-evaluation}. Both ResNet variants execute the same architecture at inference and average about 4.3 ms per image under this protocol. The CNN averaged 0.86 ms per image.
+
+\clearpage
+\subsection{Per-class F1}
+
+Figure~\ref{fig:a2-test-class-f1} uses the three checkpoints selected for illustration by validation macro-F1 before test evaluation. These are CNN seed 42 and ResNet-50 seed 44 for both arms.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\linewidth]{\resultfigures test/a2_test_per_class_f1.png}
+  \caption{Test F1 by dish class for the validation-selected runs. Each bar represents one checkpoint.}
+  \label{fig:a2-test-class-f1}
+\end{figure}
+
+For these runs, full fine-tuning improves F1 over the frozen backbone in all 30 classes. The largest increases are for Bun rieu (0.605 to 0.889), Banh duc (0.561 to 0.805), and Hu tieu (0.546 to 0.774). Banh canh improves from 0.503 to 0.727 and remains the lowest-F1 class for the illustrated full model. Test support varies by class, from 89 images for Banh pia to 302 for Bun bo Hue.
+
+\clearpage
+\subsection{Confusion Matrix}
+
+Figure~\ref{fig:a2-test-confusion-full} shows the full fine-tuning checkpoint at seed 44. Each row is normalized by the number of test images in its true class, so the diagonal entries are class recalls.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.97\linewidth]{\resultfigures test/a2_test_confusion_resnet50_full.png}
+  \caption{Row-normalized confusion matrix for the validation-selected full fine-tuning checkpoint. Entries annotated in the heatmap are percentages.}
+  \label{fig:a2-test-confusion-full}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Selected directed confusions for the three illustrated checkpoints. Each entry is the error count out of the true-class support.}
+  \label{tab:a2-selected-confusions}
+  \small
+  \begin{tabular}{llrrr}
+    \toprule
+    True class & Predicted class & CNN & Frozen & Full \\
+    \midrule
+    Bun rieu & Bun bo Hue & $5/227$ & $52/227$ & $19/227$ \\
+    Banh canh & Hu tieu & $37/191$ & $20/191$ & $22/191$ \\
+    Hu tieu & Banh canh & $7/194$ & $20/194$ & $13/194$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Full fine-tuning reduces the Bun rieu to Bun bo Hue error rate from 22.9\% to 8.4\% in the illustrated ResNet runs. Banh canh to Hu tieu remains frequent at 11.5\%. The full set of confusion matrices for the three illustrated runs is available in \path{results/a2/figures/test/}.
+
+\clearpage

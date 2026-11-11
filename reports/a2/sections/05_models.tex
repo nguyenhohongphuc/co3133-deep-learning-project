@@ -1,0 +1,73 @@
+% !TeX root = ../main.tex
+\section{Models}
+\label{sec:models}
+
+All three configurations receive the normalized RGB input described in Section~\ref{sec:data-preparation} and return 30 logits. The models are defined in \path{src/a2/models.py}. The layer dimensions and parameter counts below follow the configurations saved with the evaluated runs.
+
+\subsection{CNN Baseline}
+\label{sec:a2-cnn}
+
+The group implements \texttt{SmallCNN} with standard PyTorch layers and trains it from scratch. Its feature extractor has four blocks with 32, 64, 128, and 256 output channels. Each block applies a $3\times3$ convolution with stride 1 and padding 1, BatchNorm, ReLU, and $2\times2$ max pooling with stride 2. The convolution preserves spatial dimensions and the pooling operation halves them.
+
+\begin{figure}[H]
+    \centering
+    \small
+    \mbox{%
+        \fbox{\shortstack{RGB input\\$3\times224\times224$}}
+        \enspace$\rightarrow$\enspace
+        \fbox{\shortstack{Four conv.\ blocks\\$256\times14\times14$}}
+        \enspace$\rightarrow$\enspace
+        \fbox{\shortstack{Global average pool\\256 features}}
+        \enspace$\rightarrow$\enspace
+        \fbox{\shortstack{Dropout + linear\\30 logits}}%
+    }
+    \caption{CNN feature extraction and classification. Shapes exclude the batch dimension.}
+    \label{fig:a2-cnn}
+\end{figure}
+
+Global average pooling summarizes each final feature map as a single value. The resulting 256 features pass through dropout with probability 0.3 during training, then a linear layer with $256\times30+30=7{,}710$ parameters. Table~\ref{tab:a2-cnn-stages} details the feature dimensions and the total of \textbf{397,086 trainable parameters}. Weight sharing and global pooling keep the baseline compact. Repeated downsampling and spatial averaging can weaken cues that depend on fine structure or location.
+
+\begin{table}[H]
+    \centering
+    \caption{CNN output shapes and parameter counts. Block counts include convolution weights and biases and BatchNorm scale and shift.}
+    \label{tab:a2-cnn-stages}
+    \begin{tabular}{lrr}
+        \toprule
+        Stage & Output per image & Parameters \\
+        \midrule
+        Block 1 & $32\times112\times112$ & 960 \\
+        Block 2 & $64\times56\times56$ & 18,624 \\
+        Block 3 & $128\times28\times28$ & 74,112 \\
+        Block 4 & $256\times14\times14$ & 295,680 \\
+        Global average pool and flatten & $256$ & 0 \\
+        Dropout and linear classifier & $30$ & 7,710 \\
+        \midrule
+        Total & & 397,086 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\clearpage
+\subsection{ImageNet-Pretrained ResNet-50}
+\label{sec:a2-resnet50}
+
+Both transfer-learning configurations use Torchvision's implementation of He et al.'s ResNet-50, initialized with \texttt{IMAGENET1K\_V2} weights. The convolutional stem feeds four stages with 3, 4, 6, and 3 residual bottleneck blocks. Each bottleneck applies a $1\times1$, $3\times3$, and $1\times1$ convolution along the residual path and adds the shortcut. For a $224\times224$ input, the last stage outputs a $2048\times7\times7$ tensor. Global average pooling yields 2,048 features. The group replaces the ImageNet classifier with a newly initialized 30-way linear head containing $2048\times30+30=61{,}470$ parameters.
+
+\textbf{Frozen backbone.} The wrapper disables gradients for the backbone, and the optimizer receives only the classifier parameters. During training, the backbone stays in evaluation mode so its BatchNorm running means and variances retain the pretrained values. The linear head learns to classify the fixed features. This reduces training cost, while the representation stays fixed when ImageNet features differ from those needed for the dish labels.
+
+\textbf{Full fine-tuning.} The optimizer receives both the backbone and the head. Backbone parameters receive gradients, and BatchNorm updates its running statistics on training batches. This allows the representation to adapt to the dataset and adds the cost of backpropagation through the backbone. Both ResNet variants execute the same architecture at inference with their respective learned states.
+
+\begin{table}[H]
+    \centering
+    \caption{Model parameters in the reported runs. Total parameters include frozen weights and biases. BatchNorm running statistics are buffers.}
+    \label{tab:a2-model-parameters}
+    \begin{tabular}{lrrl}
+        \toprule
+        Model & Total parameters & Trainable parameters & Updated modules \\
+        \midrule
+        CNN baseline & 397,086 & 397,086 & Entire CNN \\
+        ResNet-50 frozen & 23,569,502 & 61,470 & Classifier head \\
+        ResNet-50 full & 23,569,502 & 23,569,502 & Backbone and head \\
+        \bottomrule
+    \end{tabular}
+\end{table}

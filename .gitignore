@@ -32,3 +32,8 @@ GROUP_INFO.md
 /reports/a1/main.pdf
 /reports/a1/main.log
 /reports/a1/main.synctex.gz
+
+# A2 LaTeX build outputs (keep the named outline PDF export)
+/reports/a2/main.pdf
+/reports/a2/main.log
+/reports/a2/main.synctex.gz

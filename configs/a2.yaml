@@ -39,16 +39,23 @@ models:
       dropout: 0.3
     training:
       epochs: 30
-  resnet50_frozen:               # nhánh A của thí nghiệm có kiểm soát: chỉ train head
+  # Thí nghiệm có kiểm soát (proposal mục 9): hai nhánh CHỈ khác lr_backbone (0 = đóng băng).
+  # Giữ giống nhau: lr của head, batch, epochs, patience, augmentation, split, seed.
+  resnet50_frozen:               # nhánh A: backbone đóng băng, chỉ train head
     normalize: imagenet
     params:
       freeze_backbone: true
     training:
-      lr: 0.001
-  resnet50_full:                 # nhánh B: train toàn bộ, lr nhỏ hơn
+      lr: 0.001                  # lr của head (src/a2/trainer.py)
+      lr_backbone: 0.0
+      batch_size: 32             # nhánh full không vừa batch 64 trong 8 GB khi chạy fp32
+      epochs: 15
+  resnet50_full:                 # nhánh B: backbone được fine-tune với lr nhỏ hơn head 10 lần
     normalize: imagenet
     params:
       freeze_backbone: false
     training:
-      lr: 0.0001
-      batch_size: 32             # chưa có mixed precision, batch 64 dễ vượt 8 GB
+      lr: 0.001
+      lr_backbone: 0.0001
+      batch_size: 32
+      epochs: 15

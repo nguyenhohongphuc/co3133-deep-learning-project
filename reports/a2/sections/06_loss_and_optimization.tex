@@ -1,0 +1,45 @@
+% !TeX root = ../main.tex
+\clearpage
+\section{Loss and Optimization}
+\label{sec:loss-and-optimization}
+
+The seven evaluated runs share the same loss and optimizer. The CNN run uses the training engine inherited from Assignment 1. The paired ResNet-50 runs use the A2 optimizer in \path{src/a2/trainer.py} to assign separate learning rates to the classifier and trainable backbone. The settings below come from the resolved \path{config.yaml} saved with each run.
+
+\subsection{Multiclass Cross-Entropy}
+
+For a batch of $B$ images, let $z\in\mathbb{R}^{B\times30}$ be the model logits and $y_i\in\{0,\ldots,29\}$ the class index for image $i$. The batch objective is
+\begin{equation}
+    \mathcal{L}_{\mathrm{CE}}
+    = -\frac{1}{B}\sum_{i=1}^{B}
+    \log\frac{\exp(z_{i,y_i})}{\sum_{k=0}^{29}\exp(z_{i,k})}.
+    \label{eq:a2-cross-entropy}
+\end{equation}
+PyTorch's \texttt{CrossEntropyLoss} receives the raw logits and integer labels and uses mean reduction with equal sample weights and zero label smoothing. For the reported epoch loss, the engine weights each batch mean by its actual number of images. Cross-entropy drives parameter updates. Validation macro-F1, which gives each class equal weight, drives checkpoint selection.
+
+\subsection{Adam and Learning Rates}
+
+Every run uses \texttt{torch.optim.Adam} with the default moment coefficients $(0.9,0.999)$, $\epsilon=10^{-8}$, and weight decay $10^{-4}$. This is coupled L2 regularization on the optimized parameters. Adam uses estimates of the first and second moments of the gradients to scale the updates. Each parameter group's configured learning rate stays fixed throughout training.
+
+\begin{table}[H]
+    \centering
+    \caption{Learning rates by optimizer group in the evaluated runs.}
+    \label{tab:a2-learning-rates}
+    \begin{tabular}{llr}
+        \toprule
+        Model & Parameter group in Adam & Learning rate \\
+        \midrule
+        CNN baseline & All CNN parameters & $10^{-3}$ \\
+        ResNet-50 frozen & Classifier head & $10^{-3}$ \\
+        ResNet-50 full & Classifier head & $10^{-3}$ \\
+                       & Backbone & $10^{-4}$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+The frozen configuration stores \texttt{lr\_backbone = 0} and excludes the backbone from the optimizer. Full fine-tuning keeps the same head learning rate and uses one tenth of that rate for the pretrained backbone to allow smaller updates to the transferred features.
+
+\subsection{Regularization}
+
+All runs use the training augmentation described in Section~\ref{sec:data-preparation}. The CNN applies dropout with probability 0.3 before its classifier. The two ResNet-50 variants use a single linear classifier, with backbone BatchNorm behavior as described in Section~\ref{sec:a2-resnet50}. The trainer uses validation macro-F1 for early stopping within each run's epoch budget.
+
+\clearpage
