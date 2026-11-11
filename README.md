@@ -75,7 +75,7 @@ python -m src.a2.train --model resnet50_full     # pretrained, full fine-tuning
 # 5. Controlled experiment: frozen vs. full backbone adaptation, 3 seeds per arm
 foreach ($s in 42, 43, 44) { foreach ($m in "resnet50_frozen", "resnet50_full") { python -m src.a2.train --model $m --seed $s } }
 
-# 6. After the teammate supplies best.pt in the matching run folder:
+# 6. Download best.pt from the checkpoint folder (see Checkpoints) into the matching run folder:
 #    Start error analysis on validation. Evaluate test after the protocol is final.
 python -m src.a2.evaluate --run-dir results/a2/runs/<run_id> --split val
 python -m src.a2.evaluate --run-dir results/a2/runs/<run_id> --split test
@@ -449,6 +449,11 @@ If you change code after step 2, go back to step 2 and train again.
   `python -m src.evaluate --run_dir results/a1/runs/a1_cnn_s42_1027-0157`.
   The runs were trained at commit `c1747a1` (recorded in each `metrics.json`); the A1 model, data and config
   code is unchanged between that commit and `44d4fd2`.
+- **A2 (Google Drive):** the seven reported A2 checkpoints (1 CNN, 1.6 MB; 6 ResNet-50, 94.6 MB each) are in the
+  [A2 checkpoint folder](https://drive.google.com/drive/folders/1tai-N28-ftkYfRAXHKoxyH1pl2SJbSNL) (anyone with the link can view). Each file is named
+  `<run_id>.pt`; save it as `results/a2/runs/<run_id>/best.pt`, beside that run's `config.yaml`, then evaluate with
+  `python -m src.a2.evaluate --run-dir results/a2/runs/<run_id> --split test`.
+  Run IDs: `a2_cnn_s42_1028-1546`, `a2_resnet50_{frozen,full}_s{42,43,44}_1110-*` (see `results/a2/runs/`).
 - **Reconstruct:** check out the commit recorded in that run's `metrics.json`, copy the run's `config.yaml` to
   `configs/a1.yaml`, and run `python -m src.train --model <model>`. The committed split and the fixed seed give
   the same data order; small numerical differences on the GPU are possible.

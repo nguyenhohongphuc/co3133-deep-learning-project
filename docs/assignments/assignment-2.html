@@ -76,7 +76,7 @@
           <tr><td>Dataset proposal</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/reports/a2/proposal.md">reports/a2/proposal.md</a></td><td><span class="badge wip">Revision 2 &middot; approval pending</span></td></tr>
           <tr><td>EDA notebook</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/notebooks/a2_eda.ipynb">notebooks/a2_eda.ipynb</a></td><td><span class="badge done">Done</span></td></tr>
           <tr><td>Source code</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/tree/main/src/a2">src/a2/</a> &middot; <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/configs/a2.yaml">configs/a2.yaml</a></td><td><span class="badge wip">In progress</span></td></tr>
-          <tr><td>Checkpoints (or reconstruction instructions)</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project#assignment-2-30vnfoods-image-classification">README &mdash; Assignment 2</a> (reconstruction commands)</td><td><span class="badge wip">Reconstruction only</span></td></tr>
+          <tr><td>Checkpoints (or reconstruction instructions)</td><td><a href="https://drive.google.com/drive/folders/1tai-N28-ftkYfRAXHKoxyH1pl2SJbSNL">Google Drive &mdash; 7 checkpoints</a> &middot; <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project#checkpoints">README &mdash; how to use / reconstruct</a></td><td><span class="badge done">Available</span></td></tr>
           <tr><td>Report</td><td><span class="fill">[PDF URL]</span></td><td><span class="badge todo">TODO (M3)</span></td></tr>
           <tr><td>Slides</td><td><span class="fill">[slides URL]</span></td><td><span class="badge todo">TODO (M3)</span></td></tr>
           <tr><td>YouTube presentation</td><td><span class="fill">[video URL &ndash; title: CO3133-Semester-261 &ndash; Group NNs &ndash; Assignment 2]</span></td><td><span class="badge todo">TODO (M3)</span></td></tr>
@@ -515,8 +515,10 @@
     <h2>Reproducibility</h2>
     <p>Each run folder <code>results/a2/runs/&lt;run_id&gt;/</code> stores <code>config.yaml</code> (resolved config),
       <code>history.csv</code>, <code>metrics.json</code> (seed, commit, hardware, software) and the training curves.
-      <code>best.pt</code> is not committed; rebuild it by checking out the recorded commit and running the command in
-      the README.</p>
+      <code>best.pt</code> is not committed (<code>*.pt</code> is git-ignored). The seven reported checkpoints are in the
+      <a href="https://drive.google.com/drive/folders/1tai-N28-ftkYfRAXHKoxyH1pl2SJbSNL">A2 checkpoint folder on Google Drive</a>; save each <code>&lt;run_id&gt;.pt</code> as
+      <code>results/a2/runs/&lt;run_id&gt;/best.pt</code>. Alternatively, rebuild it by checking out the recorded commit and
+      running the command in the README.</p>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Result</th><th>Config</th><th>Split</th><th>Checkpoint</th><th>Log / run ID</th><th>Commit</th></tr></thead>
