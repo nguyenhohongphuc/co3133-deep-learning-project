@@ -1,2 +1,4 @@
 # Keep the shared AI log consistent across Windows and macOS.
 AI_USAGE.md text eol=lf
+/reports/a3/a3_proposal.pdf binary
+/docs/assets/a3/a3_proposal.pdf binary
