@@ -26,9 +26,9 @@
 
 <div class="hero">
   <div class="wrap">
-    <p class="eyebrow">Assignment 3 &middot; 30% of the course project &middot; <span class="badge todo">Not started</span></p>
+    <p class="eyebrow">Assignment 3 &middot; 30% of the course project &middot; <span class="badge wip">M1 prepared</span></p>
     <h1>Multimodal Deep Learning</h1>
-    <p class="lede">Representation, fusion, and evaluation across at least two genuinely related modalities.</p>
+    <p class="lede">Amazon Berkeley Objects catalog classification from product images and titles.</p>
   </div>
 </div>
 
@@ -37,254 +37,132 @@
 
   <!-- ============ AT A GLANCE ============ -->
   <section id="overview">
-    <h2>At a glance</h2>
-    <div class="grid-2">
-      <div class="card">
-        <h3 style="margin-top:0">Assignment</h3>
-        <dl class="kv">
-          <dt>Title</dt><dd>Multimodal Deep Learning</dd>
-          <dt>Instructor</dt><dd>L&ecirc; Th&agrave;nh S&aacute;ch</dd>
-          <dt>Group</dt><dd>NNs</dd>
-          <dt>Members</dt><dd>Nguy&#7877;n Nh&#7853;t Nam (2352778), H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n (2352824), Phan Qu&#7889;c &#272;&#7841;i S&#417;n (2353053)</dd>
-          <dt>Task</dt><dd><span class="fill">[image-text classification | image-text retrieval | VQA | captioning | open-vocabulary detection | text-guided segmentation | RGB-depth prediction | video-text retrieval | re-ID with image + metadata | other approved task]</span></dd>
-          <dt>Modalities</dt><dd>A = <span class="fill">[modality A]</span>, B = <span class="fill">[modality B]</span></dd>
-        </dl>
-      </div>
-      <div class="card">
-        <h3 style="margin-top:0">Milestones</h3>
-        <dl class="kv">
-          <dt>M1 Proposal</dt><dd>18 Nov 2026 &middot; 15% of A3 &middot; <span class="badge todo">Not started</span></dd>
-          <dt>M2 Draft</dt><dd>25 Nov 2026 &middot; 25% of A3 &middot; <span class="badge todo">Not started</span></dd>
-          <dt>M3 Final</dt><dd>02 Dec 2026 &middot; 60% of A3 &middot; <span class="badge todo">Not started</span></dd>
-        </dl>
-      </div>
-    </div>
+    <h2>Assignment and milestones</h2>
+    <div class="grid-2"><div class="card"><dl class="kv">
+      <dt>Group</dt><dd>NNs</dd><dt>Instructor</dt><dd>Lê Thành Sách</dd>
+      <dt>Members</dt><dd>Nguyễn Nhật Nam (2352778), Hồ Hồng Phúc Nguyên (2352824), Phan Quốc Đại Sơn (2353053)</dd>
+      <dt>Task</dt><dd>Single-label catalog product-type classification</dd>
+      <dt>Modalities</dt><dd>A = main product image, B = native English-locale title</dd>
+    </dl></div><div class="card"><dl class="kv">
+      <dt>M1 Proposal</dt><dd>18 Nov 2026 · 15% of A3 · Prepared, decision pending</dd>
+      <dt>M2 Draft</dt><dd>25 Nov 2026 · 25% of A3 · Planned</dd>
+      <dt>M3 Final</dt><dd>02 Dec 2026 · 60% of A3 · Planned</dd>
+    </dl></div></div>
   </section>
 
   <!-- ============ LINKS ============ -->
   <section id="links">
-    <h2>Links</h2>
-    <div class="table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Link</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr><td>Dataset proposal</td><td><span class="fill">[document URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
-          <tr><td>Source code</td><td><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project">github.com/nguyenhohongphuc/co3133-deep-learning-project</a></td><td><span class="badge wip">In progress</span></td></tr>
-          <tr><td>Checkpoints (or reconstruction instructions)</td><td><span class="fill">[URL or README section]</span></td><td><span class="badge todo">TODO</span></td></tr>
-          <tr><td>Report</td><td><span class="fill">[PDF URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
-          <tr><td>Slides</td><td><span class="fill">[slides URL]</span></td><td><span class="badge todo">TODO</span></td></tr>
-          <tr><td>YouTube presentation</td><td><span class="fill">[video URL &ndash; title: CO3133-Semester-261 &ndash; Group NNs &ndash; Assignment 3]</span></td><td><span class="badge todo">TODO</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <!-- Ghi chu noi bo: video A3 phai noi them ve tuong tac giua cac modality (ho tro / mau thuan). -->
+    <h2>M1 package</h2>
+    <ul>
+      <li><a href="../assets/a3/a3_proposal.pdf">Dataset Proposal PDF</a></li>
+      <li><a href="../assets/a3/a3_eda_summary.json">Machine-readable EDA and manifest hashes</a></li>
+      <li><a href="../assets/a3/a3_pair_review.csv">Recorded review of 36 image/title pairs</a></li>
+      <li><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project">Source repository</a> · <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/tree/main/scripts">A3 data scripts</a> (<code>scripts/a3_*.py</code>) · <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/reports/a3/a3_proposal.md">proposal source</a> · <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/reports/a3/a3_approval.md">approval record</a></li>
+    </ul>
+    <p>Checkpoint, final-report, slide and presentation deliverables are scheduled for M2/M3 after dataset approval.</p>
   </section>
 
   <!-- ============ PROPOSAL ============ -->
   <section id="proposal">
     <h2>Dataset proposal and approval</h2>
-    <p>Approval status: <span class="badge todo">Not submitted</span>
-       <span class="fill">[Approved | Approved with conditions | Rejected + date + conditions]</span></p>
-    <div class="table-scroll">
-      <table>
-        <thead><tr><th>Proposal field</th><th>Content</th></tr></thead>
-        <tbody>
-          <tr><td>Dataset name, source, version, license</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Task, modalities, input, output</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Paired-sample count and annotation types</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Preliminary pair-quality and distribution analysis</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Split plan and leakage-prevention unit</td><td><span class="fill">[entity / event / scene]</span></td></tr>
-          <tr><td>Metrics, baselines, planned models</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Compute estimate and subset rules</td><td><span class="fill">[&hellip;]</span></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <p><strong>Awaiting instructor approval.</strong> Prepared 18 November 2026. Submission timestamp and the instructor's decision will be recorded in <code>reports/a3/a3_approval.md</code>.</p>
+    <div class="table-scroll"><table><thead><tr><th>Proposal field</th><th>Content</th></tr></thead><tbody>
+      <tr><td>Dataset and license</td><td>Amazon Berkeley Objects, official metadata/image index snapshot downloaded 18 Nov 2026, CC BY 4.0, credited to Amazon.com.</td></tr>
+      <tr><td>Task and target</td><td>Predict one of 12 native catalog product-type tags from a paired main image and title.</td></tr>
+      <tr><td>Sample counts</td><td>147,702 raw records, 19,230 cleaned pairs in the chosen class scope, 10,627 experiment pairs, 8,739 distinct selected image IDs.</td></tr>
+      <tr><td>Quality analysis</td><td>Source correspondence checked for all 10,627 pairs. All 13,320 downloaded main images decoded. A 36-pair visual review documents broad and overlapping native labels.</td></tr>
+      <tr><td>Split unit</td><td>Connected item/image/title/model/perceptual-duplicate groups. Seed 42. Train 8,501, validation 1,063, test 1,063.</td></tr>
+      <tr><td>Metrics and models</td><td>Macro-F1 and accuracy. Image-only ResNet-18, title-only DistilBERT, concatenation fusion, learned-gate fusion.</td></tr>
+      <tr><td>Subset and resources</td><td>Cap 1,250 pairs per class. Planned 16 GB CUDA GPU. Budget 32 GPU hours using explicit throughput assumptions, to be replaced by an approved-run pilot.</td></tr>
+    </tbody></table></div>
   </section>
 
   <!-- ============ PROBLEM ============ -->
   <section id="problem">
     <h2>Problem statement</h2>
-    <p><span class="fill">[Real-world motivation; inputs per modality; output; prediction unit; formulation; main difficulties.]</span></p>
-    <h3>Research question</h3>
-    <p><span class="fill">[e.g. does modality B add information beyond modality A for this task, and where?]</span></p>
+    <p>Product titles can be short or noisy, while photographs can contain similar products or several objects. The prediction unit is a native product item ID, with one main photograph, one title and one catalog product-type tag.</p>
+    <p>The research question is whether image information adds value beyond a title-only model, and whether learned gating improves fusion when modalities supply unequal or conflicting evidence.</p>
   </section>
 
   <!-- ============ DATA ============ -->
   <section id="data">
-    <h2>Dataset description and EDA</h2>
-    <p><span class="fill">[Source, version, license; collection/labeling process; sample counts and annotations; target distribution; storage size and formats; bias and limitations.]</span></p>
-
-    <h3>Cross-modal validity</h3>
-    <ul>
-      <li>Linking key across modalities (same entity / event / scene / timestamp): <span class="fill">[&hellip;]</span></li>
-      <li>Pairs are native to the dataset, not randomly assembled from two independent sources: <span class="fill">[evidence]</span></li>
-      <li>Missing, noisy, and mismatched pairs: <span class="fill">[rates and handling]</span></li>
-      <li>Split unit preventing leakage; all records of one entity stay in the same split: <span class="fill">[&hellip;]</span></li>
-    </ul>
-
-    <h3>Multimodal EDA (required items)</h3>
-    <ul>
-      <li>Pair counts &mdash; <span class="fill">[&hellip;]</span></li>
-      <li>Missing-modality rates &mdash; <span class="fill">[&hellip;]</span></li>
-      <li>Text length distribution, if applicable &mdash; <span class="fill">[&hellip;]</span></li>
-      <li>Pair quality &mdash; <span class="fill">[&hellip;]</span></li>
-    </ul>
-
-    <h3>Splitting and preprocessing</h3>
-    <p>Split unit: <span class="fill">[unit]</span> &middot; Seed: <span class="fill">[seed]</span> &middot;
-       Sizes: <span class="fill">[train / val / test]</span>.</p>
-    <p><span class="fill">[Per-modality preprocessing; alignment procedure; tensor shapes; one example batch after preprocessing.]</span></p>
+    <h2>Dataset and multimodal EDA</h2>
+    <p><a href="https://amazon-berkeley-objects.s3.us-east-1.amazonaws.com/index.html">Official ABO source</a>. Data and images are credited to Amazon.com under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. File hashes pin the local snapshot. Modalities are paired through each source item's original main-image ID.</p>
+    <p>The selected experiment contains 10,627 complete image/title pairs. Title length has median 12 words, 95th percentile 19, and range 2–45. Image short side has median 197 pixels and range 40–256. Width/height ratio ranges from 0.156 to 4.741.</p>
+    <div class="table-scroll"><table><thead><tr><th>Population</th><th>Records/pairs</th><th>Missing any title</th><th>Missing main-image ID/file</th><th>No English title</th></tr></thead><tbody>
+      <tr><td>All raw records</td><td>147,702</td><td>0</td><td>575 (0.3893%)</td><td>24,968 (16.9043%)</td></tr>
+      <tr><td>Raw selected classes</td><td>27,316</td><td>0</td><td>23 (0.0842%)</td><td>6,924 (25.3478%)</td></tr>
+      <tr><td>Selected experiment</td><td>10,627</td><td>0</td><td>0</td><td>0</td></tr>
+    </tbody></table></div>
+    <p>English-title absence is a language-eligibility condition. Raw missingness uses independent counts, while cleaning exclusions follow sequential filters.</p>
+    <figure><img src="../assets/a3/a3_class_distribution.png" alt="Selected class counts across train, validation and test" style="max-width:100%;height:auto"><figcaption>Fixed grouped split and class counts.</figcaption></figure>
+    <div class="table-scroll"><table><thead><tr><th>Native product type</th><th>Selected pairs</th></tr></thead><tbody><tr><td>BOOT</td><td>909</td></tr><tr><td>CHAIR</td><td>1,250</td></tr><tr><td>FINEEARRING</td><td>724</td></tr><tr><td>FINENECKLACEBRACELETANKLET</td><td>939</td></tr><tr><td>FINERING</td><td>898</td></tr><tr><td>HANDBAG</td><td>681</td></tr><tr><td>RUG</td><td>817</td></tr><tr><td>SANDAL</td><td>850</td></tr><tr><td>SHOES</td><td>1,250</td></tr><tr><td>SOFA</td><td>969</td></tr><tr><td>TABLE</td><td>742</td></tr><tr><td>WALL_ART</td><td>598</td></tr></tbody></table></div>
+    <figure><img src="../assets/a3/a3_text_length_distribution.png" alt="Word and character length distributions by split" style="max-width:100%;height:auto"><figcaption>Title lengths before WordPiece tokenization.</figcaption></figure>
+    <figure><img src="../assets/a3/a3_image_geometry.png" alt="Image short-side and aspect-ratio distributions" style="max-width:100%;height:auto"></figure>
+    <h3>Pair quality and native labels</h3>
+    <p>All 10,627 selected source mappings matched. A fixed-seed visual review covered two random pairs per class and 12 additional label-flag candidates. All 36 depicted compatible product families, with nine native SHOES labels on sandals and one SOFA label on a fabric swatch. Fine attributes were not exhaustively verified. This mixed sample provides qualitative observations.</p>
+    <p>Across the selected subset, title checks flag 45 SHOES titles mentioning boots, 97 mentioning sandals and 76 CHAIR/SOFA titles mentioning accessory terms. These 218 candidates can include full furniture products with cushions. Native labels are retained for the proposed catalog-tag task.</p>
+    <figure><img src="../assets/a3/a3_proposal_pair_examples.jpg" alt="Examples of source taxonomy overlap and a complete chair triggering an accessory-word check" style="max-width:100%;height:auto"></figure>
+    <h3>Cleaning and split validity</h3>
+    <p>Cleaning removes exact image/title/label duplicates and identical images with conflicting labels. Native source locations and exclusion reasons are saved. Shared item/image identity, pixels, normalized titles, brand/model identifiers and pHash distance at most four form connected groups before subset selection.</p>
+    <p>The split contains 5,286 selected groups, with zero cross-split overlap in checked IDs, pixels and normalized titles. The largest group has 1,211 pairs (11.40%), reflecting conservative footwear grouping. Every model uses the same train/validation/test manifests.</p>
   </section>
 
   <!-- ============ METHOD ============ -->
   <section id="methodology">
-    <h2>Methodology</h2>
-    <h3>Pipeline overview</h3>
-    <pre><code>raw paired data -&gt; preprocessing -&gt; data loader
-                -&gt; encoders -&gt; fusion -&gt; loss
-                -&gt; optimization -&gt; prediction -&gt; evaluation</code></pre>
-    <p><span class="fill">[Pipeline diagram and walkthrough.]</span></p>
-
-    <h3>Mandatory models</h3>
-    <div class="table-scroll">
-      <table>
-        <thead><tr><th>#</th><th>Model</th><th>Description</th><th>Params</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>Unimodal baseline &mdash; modality A</td><td><span class="fill">[encoder + head]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
-          <tr><td>2</td><td>Unimodal baseline &mdash; modality B</td><td><span class="fill">[encoder + head]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
-          <tr><td>3</td><td>Simple fusion baseline</td><td><span class="fill">[e.g. late fusion by concatenation]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
-          <tr><td>4</td><td>Improved multimodal / fusion model</td><td><span class="fill">[e.g. cross-attention fusion]</span></td><td><span class="fill">[n]</span></td><td><span class="badge todo">TODO</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <!-- Ghi chu noi bo: ket qua da phuong thuc khong bat buoc phai hon unimodal; neu kem hon phai giai thich bang bang chung. -->
-
-    <h3>Mandatory method content</h3>
-    <div class="table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Description</th></tr></thead>
-        <tbody>
-          <tr><td>Encoder per modality</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Representation per modality</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Data alignment procedure</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Fusion stage (early / intermediate / late)</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Fusion operation</td><td><span class="fill">[concat / gating / attention / &hellip;]</span></td></tr>
-          <tr><td>Per-modality losses and overall loss</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Training procedure</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Missing-modality handling (if applicable)</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Pretraining and fine-tuning strategy</td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td>Ablation removing/changing a modality or fusion component</td><td><span class="fill">[&hellip;]</span></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <h2>Planned methodology</h2>
+    <pre><code>native paired records → cleaning and grouped split → per-modality preprocessing
+→ ResNet-18 image encoder and DistilBERT title encoder → classifier or fusion
+→ cross-entropy loss → optimization → validation-selected checkpoint → evaluation</code></pre>
+    <div class="table-scroll"><table><thead><tr><th>Required model</th><th>Planned architecture</th><th>Status</th></tr></thead><tbody>
+      <tr><td>Image-only A</td><td>ImageNet-pretrained ResNet-18, pooled 512-vector, 12-class head.</td><td>Planned after approval</td></tr>
+      <tr><td>Title-only B</td><td>Pretrained distilbert-base-uncased, masked mean-pooled 768-vector, 12-class head.</td><td>Planned after approval</td></tr>
+      <tr><td>Simple fusion</td><td>Concatenate image/title vectors, then a 256-unit MLP and class head.</td><td>Planned after approval</td></tr>
+      <tr><td>Improved fusion</td><td>Project both vectors to 256 units, learn a sigmoid gate, blend and classify.</td><td>Planned after approval</td></tr>
+    </tbody></table></div>
+    <p>Images preserve aspect ratio and use white padding to 224×224 with ImageNet normalization. Titles retain natural product names and use WordPiece IDs plus an attention mask with planned length 96. The truncation rate will be measured with the tokenizer.</p>
+    <p>Each model minimizes cross-entropy for its own output. The controlled gate ablation uses a fixed 0.5 blend with the same projections and training policy. Additional inference ablations mask either representation in the improved model.</p>
   </section>
 
   <!-- ============ SETUP ============ -->
   <section id="setup">
-    <h2>Experimental setup</h2>
-    <dl class="kv">
-      <dt>Optimizer / LR / scheduler</dt><dd><span class="fill">[&hellip;]</span></dd>
-      <dt>Batch size / epochs</dt><dd><span class="fill">[&hellip;]</span></dd>
-      <dt>Regularization / early stopping</dt><dd><span class="fill">[&hellip;]</span></dd>
-      <dt>Checkpoint criterion</dt><dd><span class="fill">[&hellip;]</span></dd>
-      <dt>Seeds / number of runs</dt><dd><span class="fill">[&hellip;]</span></dd>
-      <dt>Hardware / software versions</dt><dd><span class="fill">[&hellip;]</span></dd>
-    </dl>
-    <h3>Experimental design</h3>
-    <div class="table-scroll">
-      <table>
-        <thead><tr><th>Experiment</th><th>Hypothesis</th><th>Changed factor</th><th>Fixed factors</th><th>Metrics</th><th>Conclusion criterion</th></tr></thead>
-        <tbody>
-          <tr><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <h2>Planned experimental setup</h2>
+    <p>Batch size 32, maximum 20 epochs, two frozen-encoder warm-up epochs followed by fine-tuning of the final ResNet stage and final two DistilBERT layers. AdamW uses head LR 0.001, encoder LR 0.00002, weight decay 0.01, cosine scheduling, fusion dropout 0.2 and gradient clipping 1.0.</p>
+    <p>Best validation macro-F1 selects checkpoints, with early-stopping patience four. Seeds 42, 43 and 44 use the same fixed dataset split. Accuracy, macro-F1, per-class results, parameters and runtime will be reported.</p>
+    <p>The resource plan assumes one CUDA GPU with at least 16 GB memory. The 32-hour budget uses assumed throughputs of 35 image-only, 60 title-only and 25 fusion training pairs/second. These are planning assumptions to be replaced by pilot measurements after approval.</p>
   </section>
 
   <!-- ============ RESULTS ============ -->
   <section id="results">
-    <h2>Results</h2>
-    <h3>Unimodal versus multimodal</h3>
-    <div class="table-scroll">
-      <table>
-        <thead><tr><th>Model</th><th>Primary metric</th><th>Secondary metric</th><th>Params</th><th>Training time</th><th>Inference cost</th></tr></thead>
-        <tbody>
-          <tr><td>Unimodal A</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
-          <tr><td>Unimodal B</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
-          <tr><td>Simple fusion</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
-          <tr><td>Improved fusion</td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td><td><span class="fill">[x]</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>Training behaviour</h3>
-    <p><span class="fill">[Curves; selected checkpoints; over/underfitting; training time; issues and fixes.]</span></p>
-
-    <h3>Qualitative results</h3>
-    <p><span class="fill">[Examples with predictions versus ground truth for each model.]</span></p>
-
-    <h3>Modality interaction</h3>
-    <div class="grid-2">
-      <div class="card">
-        <h3 style="margin-top:0">Modalities support each other</h3>
-        <p><span class="fill">[Cases where fusion succeeds while at least one unimodal model fails, with examples.]</span></p>
-      </div>
-      <div class="card">
-        <h3 style="margin-top:0">Modalities conflict</h3>
-        <p><span class="fill">[Cases where the modalities disagree and fusion degrades, with examples and the reason.]</span></p>
-      </div>
-    </div>
-
-    <h3>Compute-cost analysis</h3>
-    <p><span class="fill">[GPU hours, memory, throughput per configuration.]</span></p>
+    <h2>Milestone evidence and planned results</h2>
+    <p>M1 evidence consists of the completed source/quality audit, EDA plots, fixed manifests and proposal. Quantitative unimodal and simple-fusion comparisons are scheduled for M2, followed by improved fusion and ablations for M3.</p>
   </section>
 
   <!-- ============ DISCUSSION ============ -->
   <section id="discussion">
-    <h2>Comparison and discussion</h2>
-    <p><span class="fill">[Which model is better and by how much; where the gains or losses come from; whether the fusion design choices are justified; trade-offs; supported and unsupported hypotheses.]</span></p>
+    <h2>Discussion plan</h2>
+    <p>Comparisons will report effect sizes and seed variability under the fixed protocol. Supporting cases, conflicting evidence and fusion failures will connect numerical results to the data and architecture.</p>
   </section>
 
   <!-- ============ ERROR ANALYSIS ============ -->
   <section id="error-analysis">
-    <h2>Error analysis</h2>
-    <div class="table-scroll">
-      <table>
-        <thead><tr><th>Error group</th><th>Frequency / rate</th><th>Examples</th><th>Hypothesised cause</th><th>Improvement idea</th></tr></thead>
-        <tbody>
-          <tr><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[x%]</span></td><td><span class="fill">[figure]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <h3>Ablation study (mandatory for A3)</h3>
-    <div class="table-scroll">
-      <table>
-        <thead><tr><th>Ablation</th><th>Change</th><th>Metric</th><th>Delta</th><th>Interpretation</th></tr></thead>
-        <tbody>
-          <tr><td><span class="fill">[remove modality B]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
-          <tr><td><span class="fill">[change fusion stage/operation]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <h2>Error analysis and ablation plan</h2>
+    <p>The recorded data review identifies overlapping product tags, broad accessory tags, translated/romanized titles and repeated variants as categories to investigate. Learned versus fixed gating and modality-masking ablations will examine fusion contribution and dependence on each input.</p>
   </section>
 
   <!-- ============ CONCLUSION ============ -->
   <section id="conclusion">
-    <h2>Limitations and conclusion</h2>
-    <p><span class="fill">[Data, method, and experimental limits; generalization; future work; short answer to the research question.]</span></p>
+    <h2>Scope and limitations</h2>
+    <p>The proposal uses a custom 12-class subset and the original catalog tags. Titles may be strong label cues. English locale tags can contain noisy translation fragments. Small images limit fine-detail recognition and conservative duplicate groups can combine distinct items. The proposal requests instructor approval of this scope and target definition.</p>
   </section>
 
   <!-- ============ REPRODUCIBILITY ============ -->
   <section id="reproducibility">
     <h2>Reproducibility</h2>
-    <div class="table-scroll">
-      <table>
-        <thead><tr><th>Result</th><th>Config</th><th>Split</th><th>Checkpoint</th><th>Log / run ID</th><th>Commit / tag</th></tr></thead>
-        <tbody>
-          <tr><td><span class="fill">[Table row]</span></td><td><span class="fill">[configs/&hellip;.yaml]</span></td><td><span class="fill">[split id]</span></td><td><span class="fill">[ckpt]</span></td><td><span class="fill">[run id]</span></td><td><span class="fill">[sha]</span></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <pre><code>python scripts/a3_download_abo.py
+python scripts/a3_prepare_abo.py --download-images --workers 16
+python scripts/a3_eda.py</code></pre>
+    <p>Six preparation CSV files were byte-identical after an offline rerun. The EDA summary records manifest hashes and library versions. Image receipts record source URLs, bytes, ETags and SHA-256 values. The approval record is maintained under <code>reports/a3/a3_approval.md</code>.</p>
   </section>
 
   <!-- ============ AI USAGE ============ -->
@@ -306,7 +184,8 @@
                 verified. No experimental content was generated.</td>
             <td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td>
           </tr>
-          <tr><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td><td><span class="fill">[&hellip;]</span></td></tr>
+          <tr><td>OpenAI Codex, model not recorded</td><td>Nguyễn Nhật Nam</td><td>18 Nov 2026 · A3 M1</td><td>ABO acquisition, cleaning/EDA, visual review, experiment planning and proposal drafting</td><td>scripts/a3_*.py, reports/a3/, results/a3/, website and AI_USAGE.md</td><td>Real source-file runs, all selected source mappings, 36 visual pairs, split checks, offline rerun and PDF layout review. Member review pending.</td><td>Nguyễn Nhật Nam</td></tr>
+          <tr><td>Claude (Claude Code, Opus 5.5)</td><td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td><td>18 Nov 2026 &middot; A3 M1</td><td>Merge the A3 M1 pages into the main site; update the landing-page status, deliverable links and disclosures</td><td><code>docs/index.html</code>, <code>docs/assignments/assignment-3.html</code></td><td>Merge conflict resolved by hand; page links and asset paths checked. No experimental content was generated.</td><td>H&#7891; H&#7891;ng Ph&uacute;c Nguy&ecirc;n</td></tr>
         </tbody>
       </table>
     </div>

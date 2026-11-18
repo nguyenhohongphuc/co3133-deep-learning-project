@@ -1,0 +1,155 @@
+{
+  "raw_missingness": {
+    "raw_all": {
+      "records": 147702,
+      "missing_text_any_language": 0,
+      "no_english_title": 24968,
+      "missing_main_image_id": 575,
+      "missing_either_modality": 575,
+      "missing_or_ambiguous_label": 0,
+      "rates_percent": {
+        "missing_text_any_language": 0.0,
+        "no_english_title": 16.90431,
+        "missing_main_image_id": 0.3893,
+        "missing_either_modality": 0.3893,
+        "missing_or_ambiguous_label": 0.0
+      }
+    },
+    "raw_selected_classes": {
+      "records": 27316,
+      "missing_text_any_language": 0,
+      "no_english_title": 6924,
+      "missing_main_image_id": 23,
+      "missing_either_modality": 23,
+      "missing_or_ambiguous_label": 0,
+      "rates_percent": {
+        "missing_text_any_language": 0.0,
+        "no_english_title": 25.34778,
+        "missing_main_image_id": 0.0842,
+        "missing_either_modality": 0.0842,
+        "missing_or_ambiguous_label": 0.0
+      }
+    },
+    "selected_source_pairs_checked": 10627,
+    "selected_source_pair_mismatches": 0
+  },
+  "selected_pairs": 10627,
+  "classes": 12,
+  "train_validation_test": {
+    "test": 1063,
+    "train": 8501,
+    "validation": 1063
+  },
+  "selected_missing_text": 0,
+  "selected_missing_image_files": 0,
+  "word_length_quantiles": {
+    "p0": 2.0,
+    "p25": 9.0,
+    "p50": 12.0,
+    "p75": 15.0,
+    "p90": 17.0,
+    "p95": 19.0,
+    "p99": 22.0,
+    "p100": 45.0
+  },
+  "character_length_quantiles": {
+    "p0": 11.0,
+    "p25": 58.0,
+    "p50": 75.0,
+    "p75": 92.0,
+    "p90": 105.0,
+    "p95": 114.0,
+    "p99": 136.0,
+    "p100": 321.0
+  },
+  "image_short_side_quantiles": {
+    "p0": 40.0,
+    "p25": 150.0,
+    "p50": 197.0,
+    "p75": 256.0,
+    "p90": 256.0,
+    "p95": 256.0,
+    "p99": 256.0,
+    "p100": 256.0
+  },
+  "image_aspect_ratio_quantiles": {
+    "p0": 0.15625,
+    "p25": 0.9765625,
+    "p50": 1.0,
+    "p75": 1.5058823529411764,
+    "p90": 2.064516129032258,
+    "p95": 2.327272727272727,
+    "p99": 3.1219512195121952,
+    "p100": 4.7407407407407405
+  },
+  "selected_class_counts": {
+    "BOOT": 909,
+    "CHAIR": 1250,
+    "FINEEARRING": 724,
+    "FINENECKLACEBRACELETANKLET": 939,
+    "FINERING": 898,
+    "HANDBAG": 681,
+    "RUG": 817,
+    "SANDAL": 850,
+    "SHOES": 1250,
+    "SOFA": 969,
+    "TABLE": 742,
+    "WALL_ART": 598
+  },
+  "class_imbalance_ratio": 2.0903010033444818,
+  "label_flag_counts": {
+    "furniture_title_mentions_accessory_terms": 76,
+    "shoes_title_mentions_boot": 45,
+    "shoes_title_mentions_sandal": 97
+  },
+  "label_flag_unique_pairs": 218,
+  "review_sample_size": 36,
+  "pair_review_counts": {
+    "compatible_product_family": 36
+  },
+  "label_review_counts": {
+    "source_label_consistent": 26,
+    "overlapping_source_category": 9,
+    "source_label_broad_accessory": 1
+  },
+  "groups": {
+    "count": 5286,
+    "largest": 1211,
+    "largest_fraction": 0.11395502023148583,
+    "size_quantiles": {
+      "p0": 1.0,
+      "p25": 1.0,
+      "p50": 1.0,
+      "p75": 1.0,
+      "p90": 3.0,
+      "p95": 4.0,
+      "p99": 12.149999999999636,
+      "p100": 1211.0
+    }
+  },
+  "clean_catalog_pairs": 19230,
+  "split_validation": {
+    "cross_split_item_overlap": 0,
+    "cross_split_group_overlap": 0,
+    "cross_split_image_id_overlap": 0,
+    "cross_split_pixel_overlap": 0,
+    "cross_split_normalized_title_overlap": 0,
+    "phash_grouping_hamming_radius": 4,
+    "all_manifest_images_verified": true
+  },
+  "manifest_sha256": {
+    "clean_catalog.csv": "a881a3b2861abb2f42a8d3ba4d9d17cffef86befcfdb0f0c2475fb48b23e8f73",
+    "excluded.csv": "a5de84652e1589a02be121f418b3001296962fd9eb57b29f9dec971fb26223e7",
+    "metadata_candidates.csv": "3e7aec07b1f35eaa159e9b68f5563e10e01b5e2b05ca360dee72d69d3314f68c",
+    "selected_pairs.csv": "dc5c98e0605297c5517da6e9b145f6c50693b68d8d898d6f5d66eed8049e5048",
+    "test.csv": "20d32425e28565b136f55d9eb2a6a21380a5ad784d33e0482439610d34bbefe0",
+    "train.csv": "1d29006f8d7b749bfb68103805b3ea07a01ca40ee3b723e819c7e5f5365a64b2",
+    "validation.csv": "693c080dbb93afb9721b8d30984b528eb6c0cddaad2dbfc33233ae8944aec4d6"
+  },
+  "review_method": "Two fixed-seed random pairs per class plus 12 fixed-seed label-flag candidates. Automated flags request inspection and do not establish label errors.",
+  "versions": {
+    "numpy": "2.3.5",
+    "matplotlib": "3.10.8",
+    "pillow": "13.0.0"
+  }
+}

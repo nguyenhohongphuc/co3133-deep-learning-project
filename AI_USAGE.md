@@ -219,4 +219,14 @@ Copy the template below for every distinct use. Group the entries by assignment.
 
 ### Assignment 3
 
-_(no entries yet)_
+**ABO dataset acquisition and cleaning**
+
+- **Tool:** OpenAI Codex (model identifier not recorded).
+- **Used by:** Nguyễn Nhật Nam (2352778).
+- **Time / stage:** 18 November 2026, dataset preparation before main training experiments.
+- **Purpose:** Download official Amazon Berkeley Objects metadata and native small images, implement data cleaning, select a 12-class experiment subset, create grouped splits, and document reproducibility.
+- **Affected files:** `scripts/a3_download_abo.py`, `scripts/a3_prepare_abo.py`, `README.md`, this disclosure, preparation outputs in `data/raw/abo/` and `data/processed/abo/`, and data-audit outputs in `results/a3/data/`.
+- **AI contribution:** Implemented resumable downloads, image validation, title normalization, duplicate/conflicting-label removal, conservative duplicate grouping, deterministic subset selection and grouped train/validation/test splits. Generated counts and a preview from the actual downloaded data.
+- **Verification:** Checked the official dataset documentation and CC BY 4.0 license. Verified source transfer sizes/checksums and decoded all 13,320 downloaded main images. Re-ran preparation offline and checked split isolation, retained-record counts and source provenance. Inspected the image/title preview. Toy checks covered grouped splitting, title cleanup and corrupt-image detection. Member review remains pending.
+- **Sources used for verification:** Official ABO website, downloaded Amazon source metadata/image index and license, source-image transfer receipts, and the generated CSV manifests and data-audit outputs.
+- **Member responsible for final verification:** Nguyễn Nhật Nam (2352778).

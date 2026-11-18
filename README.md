@@ -50,6 +50,55 @@ All commands are run from the **repository root** (the folder that contains `src
 
 ---
 
+## Assignment 3 (Amazon Berkeley Objects, image and title classification)
+
+The A3 preparation pipeline downloads the complete official listing metadata and image index,
+then downloads native 256px main images for 12 product types. It keeps English titles and predicts
+the original `product_type`. The selected classes are SHOES, CHAIR, BOOT, SOFA, SANDAL,
+FINENECKLACEBRACELETANKLET, FINERING, RUG, TABLE, FINEEARRING, HANDBAG, and WALL_ART.
+Data are credited to Amazon.com and released under CC BY 4.0. Source documentation and the
+license are saved in `data/raw/abo/`.
+
+Run from the repository root with Python 3.12+ and the M1 dependencies pinned in `a3_requirements.txt`.
+
+```bash
+python -m pip install -r a3_requirements.txt
+python scripts/a3_download_abo.py
+python scripts/a3_prepare_abo.py --download-images --workers 16
+python scripts/a3_eda.py
+python scripts/a3_export_proposal.py
+```
+
+Downloads can resume. After the images are available, reproduce cleaning offline with
+`python scripts/a3_prepare_abo.py`. The default seed is 42 and the subset cap is 1,250 pairs per class.
+Use `--classes` and `--max-per-class` to prepare a different subset. The optional downloader flag
+`--full-image-archive` fetches the complete 3 GB small-image archive.
+
+Outputs under `data/processed/abo/` include all English metadata candidates, the complete cleaned
+catalog for the selected class scope, `selected_pairs.csv`, `train.csv`, `validation.csv`, `test.csv`,
+`labels.json`, and `excluded.csv` with exclusion reasons. Image paths are relative to the repository.
+Training inputs are `image_path` and `title`. Targets are `label`, mapped from `product_type`.
+Other metadata columns are retained for provenance and grouping.
+
+Cleaning validates image decoding and dimensions, normalizes Unicode/HTML/whitespace in titles,
+removes duplicate image/title/label pairs and identical images with conflicting labels, and groups
+shared image IDs, decoded pixels, identical titles, brand/model identifiers, and perceptual hashes
+within Hamming distance 4. Connected groups stay together across an approximate 80/10/10 split.
+The scripts save exact source hashes, per-class counts, exclusion counts, overlap checks, and an
+image/title preview in `results/a3/data/`. Grouping is conservative and may place distinct but
+visually similar products together. Review the preview and grouping report when interpreting results.
+Visual inspection found chair cushions under CHAIR and boots under SHOES. Native labels are retained.
+Dataset approval is still pending and must be recorded before the main training experiments.
+
+The M1 package is `reports/a3/a3_proposal.pdf`, with editable source `reports/a3/a3_proposal.md`
+and decision record `reports/a3/a3_approval.md`. The proposal contains completed data EDA and a
+planned four-model comparison, ablation and compute budget. The EDA checks every selected pair
+against its raw source record and saves a 36-pair visual review with notes. Reproduce the plots
+with `scripts/a3_eda.py`. The local A3 page and landing page link a static copy of the M1 PDF.
+The executed `notebooks/a3_eda.ipynb` reproduces the audit, shows the figures and verifies the manifests.
+The compute figures in the proposal are assumptions for resource planning, to be replaced by
+measured pilot results after approval.
+
 ## Assignment 2 (30VNFoods, image classification)
 
 A2 code lives in its own package `src/a2/` and config `configs/a2.yaml`, so the A1 files are never touched.
