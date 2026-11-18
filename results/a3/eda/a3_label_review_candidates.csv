@@ -1,0 +1,219 @@
+item_id,product_type,split,title,image_path,flags
+B00018HTFK,CHAIR,train,"Strathwood Chaise Lounge Cushion, Hunter",data/raw/abo/images/small/71/71f18e17.jpg,furniture_title_mentions_accessory_terms
+B000BIU1X2,CHAIR,train,"Strathwood Bainbridge Cast Aluminum Arm Chair with Cushion, Set of 2",data/raw/abo/images/small/1e/1e40608c.jpg,furniture_title_mentions_accessory_terms
+B000E617U2,CHAIR,train,"Strathwood Chaise Lounge Replacement Cushion, Daiquri",data/raw/abo/images/small/3a/3aab65d8.jpg,furniture_title_mentions_accessory_terms
+B000E636C4,CHAIR,train,"Strathwood Chaise Lounge Replacement Cushion, Paprika",data/raw/abo/images/small/46/46e50432.jpg,furniture_title_mentions_accessory_terms
+B000HBYIKK,CHAIR,train,Strathwood Balboa Deep Seat Chaise with Cushion,data/raw/abo/images/small/e8/e8b83775.jpg,furniture_title_mentions_accessory_terms
+B000HBYM0Q,CHAIR,test,Strathwood Bahia Resin Wicker 2-Seater Bench with Cushion,data/raw/abo/images/small/39/39090f92.jpg,furniture_title_mentions_accessory_terms
+B000HC0CEK,CHAIR,train,Strathwood Balboa Deep Seat Corner Chair with Cushion,data/raw/abo/images/small/94/940f5b93.jpg,furniture_title_mentions_accessory_terms
+B000HVD9A0,CHAIR,train,"Strathwood Sanibel Cast Aluminum Balcony Chair with Cushion, Set of 2",data/raw/abo/images/small/c1/c1804f5e.jpg,furniture_title_mentions_accessory_terms
+B0010SJP16,CHAIR,train,"Strathwood Chaise Lounge Cushion, Pearwood",data/raw/abo/images/small/f1/f1b21581.jpg,furniture_title_mentions_accessory_terms
+B0010SJRO6,CHAIR,train,"Strathwood St. Croix Chaise Lounge Cushion, Sebastian Domino",data/raw/abo/images/small/f7/f7a91e7b.jpg,furniture_title_mentions_accessory_terms
+B0010SMZ40,CHAIR,train,"Strathwood St. Thomas Chaise Lounge Cushion, Eggshell",data/raw/abo/images/small/15/15f262dc.jpg,furniture_title_mentions_accessory_terms
+B0010SMZF4,CHAIR,train,"Strathwood St. Croix Chaise Lounge Cushion, Winsten Domino",data/raw/abo/images/small/15/153b2180.jpg,furniture_title_mentions_accessory_terms
+B0010SN0R6,CHAIR,train,"Strathwood Falkner Chaise Lounge Cushion, Eggshell",data/raw/abo/images/small/c4/c4165ae6.jpg,furniture_title_mentions_accessory_terms
+B0010SQEM4,CHAIR,train,"Strathwood St. Thomas Cast Aluminum Chaise Lounge Cushion, Renata Hemp",data/raw/abo/images/small/73/73d6a42d.jpg,furniture_title_mentions_accessory_terms
+B0010SQGLI,CHAIR,train,"Strathwood Talbot Double Sunlounger Cushion, Garnet",data/raw/abo/images/small/ae/aeae244b.jpg,furniture_title_mentions_accessory_terms
+B0010SSE0E,CHAIR,train,"Strathwood Talbot Hardwood Double Sunlounger Cushion, Donatella Lacquer",data/raw/abo/images/small/e4/e429abb5.jpg,furniture_title_mentions_accessory_terms
+B0010SUJ48,CHAIR,train,"Strathwood Talbot Double Sunlounger Cushion, Pearwood",data/raw/abo/images/small/94/943bf347.jpg,furniture_title_mentions_accessory_terms
+B00196ELTU,CHAIR,train,Strathwood St. Thomas Chaise Lounge Cushion,data/raw/abo/images/small/dc/dc160333.jpg,furniture_title_mentions_accessory_terms
+B00196EOCO,CHAIR,train,Strathwood Talbot Double Sunlounger Cushion,data/raw/abo/images/small/14/1409a2e3.jpg,furniture_title_mentions_accessory_terms
+B001CZEWLU,SOFA,train,Strathwood Falkner Sectional Right Arm Loveseat with Cushions,data/raw/abo/images/small/7c/7c5e5609.jpg,furniture_title_mentions_accessory_terms
+B001CZJGAW,SOFA,train,Strathwood Falkner Sectional Left Arm Loveseat with Cushions,data/raw/abo/images/small/d6/d6d79d01.jpg,furniture_title_mentions_accessory_terms
+B001R23YG2,CHAIR,train,"Strathwood St. Thomas Cast Aluminum Chaise Lounge Zippered Cushion, Neutral",data/raw/abo/images/small/1c/1c84195e.jpg,furniture_title_mentions_accessory_terms
+B001RTS5B4,CHAIR,train,Strathwood Balboa Chaise Lounge Garnet Spun Polyester Cushion # F336J70B-9Q1,data/raw/abo/images/small/01/01d8c371.jpg,furniture_title_mentions_accessory_terms
+B002FL53KY,CHAIR,train,"Strathwood Chaise Lounge Cushion, Admiral Blue",data/raw/abo/images/small/91/9140ee00.jpg,furniture_title_mentions_accessory_terms
+B002FL53L8,CHAIR,train,"Strathwood Chaise Lounge Cushion, Salsa",data/raw/abo/images/small/b4/b403684f.jpg,furniture_title_mentions_accessory_terms
+B002FL53LI,CHAIR,train,"Strathwood Chaise Lounge Cushion, Brick",data/raw/abo/images/small/1c/1c2014f3.jpg,furniture_title_mentions_accessory_terms
+B002FQJ116,CHAIR,train,"Strathwood Chaise Lounge Cushion, Kiwi",data/raw/abo/images/small/aa/aa607e2c.jpg,furniture_title_mentions_accessory_terms
+B002KMI972,SOFA,train,Strathwood Grand Isle Motion Loveseat with Seat and Back Cushion,data/raw/abo/images/small/3c/3c367bc6.jpg,furniture_title_mentions_accessory_terms
+B002KQ53MW,CHAIR,train,"Strathwood Chaise Lounge Cushion, Camel",data/raw/abo/images/small/fd/fd51517b.jpg,furniture_title_mentions_accessory_terms
+B002KQ53O0,CHAIR,train,"Strathwood Chaise Lounge Cushion, Forest Green",data/raw/abo/images/small/71/71f18e17.jpg,furniture_title_mentions_accessory_terms
+B0030MHOSG,CHAIR,train,"Strathwood Falkner Dining Arm Chair Cushion, Set of 2",data/raw/abo/images/small/d3/d3b6e47e.jpg,furniture_title_mentions_accessory_terms
+B0030MHOVI,CHAIR,validation,Strathwood Hardwood Double Sunlounger Cushion,data/raw/abo/images/small/0d/0d1e84a1.jpg,furniture_title_mentions_accessory_terms
+B0030MHPWG,CHAIR,train,"Strathwood Falkner Lounge Deep Seat Arm Chair Cushions, Set of 2",data/raw/abo/images/small/ba/ba8b8974.jpg,furniture_title_mentions_accessory_terms
+B0030MHQ9I,CHAIR,train,Strathwood Falkner Chaise Lounge Cushion,data/raw/abo/images/small/e0/e0dc770f.jpg,furniture_title_mentions_accessory_terms
+B004Y15DJO,CHAIR,train,Topstar 70570BB00 Swivel Chair for Children and Teenagers High School Fabric Cover Black,data/raw/abo/images/small/d1/d14314fd.jpg,furniture_title_mentions_accessory_terms
+B00796T5Z4,CHAIR,train,"Strathwood Basics Hardwood Chaise Lounge Sunbrella Cushion, Capri",data/raw/abo/images/small/c8/c8e980c8.jpg,furniture_title_mentions_accessory_terms
+B00796TCVG,CHAIR,train,"Strathwood Basics Hardwood Chaise Lounge Sunbrella Cushion, Scavo Willow",data/raw/abo/images/small/f8/f8d3460d.jpg,furniture_title_mentions_accessory_terms
+B010E6VZL2,SHOES,train,"Franklin & Freeman Men's Mitchell Plain Toe Chelsea Boot, Black, 12 M",data/raw/abo/images/small/a7/a7b2c0f3.jpg,shoes_title_mentions_boot
+B01MR87CKU,SHOES,train,Amazon brand: RED WAGON Girls' Shiny Strappy Sandals,data/raw/abo/images/small/d4/d42d0e11.jpg,shoes_title_mentions_sandal
+B01MRBH4NN,SHOES,validation,"Amazon Brand - The Fix Women's Cantu Ruffle Ankle Wrap Dress Sandal, Petal Blush, 11 B US",data/raw/abo/images/small/69/694c0e3d.jpg,shoes_title_mentions_sandal
+B01MRBH5A5,SHOES,validation,"Amazon Brand - The Fix Women's Cantu Ruffle Ankle Wrap Dress Sandal, Petal Blush, 8 B US",data/raw/abo/images/small/69/694c0e3d.jpg,shoes_title_mentions_sandal
+B01MRBTBXD,SHOES,validation,"Amazon Brand - The Fix Women's Garza Whipstitch Platform Dress Sandal, Dark Brown/Orange Sun, 9.5 B US",data/raw/abo/images/small/b8/b830f4e0.jpg,shoes_title_mentions_sandal
+B01MRCXVNW,SHOES,validation,"206 Collective Women's Ballard Chelsea Ankle Boot, Black/Black Leather, 8 B US",data/raw/abo/images/small/c6/c6550faf.jpg,shoes_title_mentions_boot
+B01MSCUZIV,SHOES,validation,"The Fix Amazon Brand Women's Unda Cross Strap Footbed Platform Slide Sandal, Petal Blush, 9.5 B US",data/raw/abo/images/small/99/99aa0135.jpg,shoes_title_mentions_sandal
+B01MSCV4OK,SHOES,validation,"Amazon Brand - The Fix Women's Cantu Ruffle Ankle Wrap Dress Sandal, Lavender, 7.5 B US",data/raw/abo/images/small/66/6649b70d.jpg,shoes_title_mentions_sandal
+B01MUG39J1,SHOES,validation,"Amazon Brand - The Fix Women's Cantu Ruffle Ankle Wrap Dress Sandal, Black, 11 B US",data/raw/abo/images/small/6f/6f6a171b.jpg,shoes_title_mentions_sandal
+B01MUG3D4L,SHOES,train,"Amazon Brand - The Fix Women's Finley Dome Stud Slide Sandal,Fuchsia,9 B US",data/raw/abo/images/small/1b/1bd2c2d5.jpg,shoes_title_mentions_sandal
+B01MYDNFZI,SHOES,validation,"Amazon Brand - The Fix Women's Cantu Ruffle Ankle Wrap Dress Sandal, Mushroom, 7.5 B US",data/raw/abo/images/small/1a/1ab76f09.jpg,shoes_title_mentions_sandal
+B01MYDNIO8,SHOES,train,"Amazon Brand - The Fix Women's Finley Dome Stud Slide Sandal, Light Rose/Gold,9.5 B US",data/raw/abo/images/small/a8/a88de4c0.jpg,shoes_title_mentions_sandal
+B01MYF3A5N,SHOES,validation,"206 Collective Women's Ballard Chelsea Ankle Boot, Black, 7 B US",data/raw/abo/images/small/c6/c6550faf.jpg,shoes_title_mentions_boot
+B01N27SNSU,SHOES,train,"Amazon Brand - The Fix Women's Finley Dome Stud Slide Sandal, Bright Blue,7.5 B US",data/raw/abo/images/small/17/17cd58fa.jpg,shoes_title_mentions_sandal
+B01N39CRDQ,SHOES,validation,"Amazon Brand - The Fix Women's Cantu Ruffle Ankle Wrap Dress Sandal, Lavender, 7 B US",data/raw/abo/images/small/66/6649b70d.jpg,shoes_title_mentions_sandal
+B01N3ATK9T,SHOES,validation,"206 Collective Women's Ballard Chelsea Ankle Boot, Black, 5 B US",data/raw/abo/images/small/c6/c6550faf.jpg,shoes_title_mentions_boot
+B01N3ATSCO,SHOES,train,"206 Collective Women's Ballard Chelsea Ankle Boot, Black, 12 B US",data/raw/abo/images/small/36/3662d979.jpg,shoes_title_mentions_boot
+B01N5UR4IH,SHOES,train,"Amazon Brand - The Fix Women's Foley Tassel Slide Sandal, Black, 6 B US",data/raw/abo/images/small/4c/4cf58b22.jpg,shoes_title_mentions_sandal
+B01N5UR5NI,SHOES,train,Amazon Brand - The Fix Women's Upson Double Buckle Studded Footbed Platform Slide Sandal,data/raw/abo/images/small/a5/a5b954a9.jpg,shoes_title_mentions_sandal
+B01N6RLH80,SHOES,train,"find. Women's Grays Boots, Black, 4 UK",data/raw/abo/images/small/d3/d3ba65d0.jpg,shoes_title_mentions_boot
+B01N6WEBVX,SHOES,train,"Amazon Brand - The Fix Women's Finley Dome Stud Slide Sandal,Black,8 B US",data/raw/abo/images/small/b8/b8445cf4.jpg,shoes_title_mentions_sandal
+B01N7XN9AQ,SHOES,train,"Amazon Brand - The Fix Women's Jackson Rope-Tie Block Heel Dress Sandal,Havana Tan,8.5 B US",data/raw/abo/images/small/33/33e10258.jpg,shoes_title_mentions_sandal
+B01N9X5U2L,SHOES,train,"The Fix Women's Dawson Stud Heel Dress Sandal,Matte Silver/Metallic,9 B US",data/raw/abo/images/small/b4/b460390e.jpg,shoes_title_mentions_sandal
+B01NA074XP,SHOES,train,"Amazon Brand - 206 Collective Men's Denny Lace-up Motorcycle Boot, Black Burnish, 7.5 D US",data/raw/abo/images/small/ac/ace19f42.jpg,shoes_title_mentions_boot
+B01NAYN9IA,SHOES,train,"The Fix Amazon Brand Women's Page Block Heel Ghillie Dress Sandal, Green, 9 B US",data/raw/abo/images/small/e4/e4048c79.jpg,shoes_title_mentions_sandal
+B01NB1NR54,SHOES,train,Amazon Brand - 206 Collective Men's Pioneer Moc-Toe Lace-up Boot,data/raw/abo/images/small/eb/ebd072f0.jpg,shoes_title_mentions_boot
+B01ND1287E,SHOES,train,"The Fix Amazon Brand Women's Conley Lucite Heel Dress Sandal,Black,7.5 B US",data/raw/abo/images/small/3f/3f922f8e.jpg,shoes_title_mentions_sandal
+B01ND1A1N5,SHOES,validation,"The Fix Amazon Brand Women's Unda Cross Strap Footbed Platform Slide Sandal, Black/White, 9.5 B US",data/raw/abo/images/small/dc/dc9814c5.jpg,shoes_title_mentions_sandal
+B06VWTFW49,SHOES,train,"Amazon Brand - find. Women’s Ankle Boots with Platform and High Heel, Pink (Nude), US 10.5",data/raw/abo/images/small/3c/3c74723b.jpg,shoes_title_mentions_boot
+B06X9WN5HT,SHOES,train,"find. Amazon Brand Women's Ankle Boots with Open-Toe and Lace Up, Black (Black), US 9.5",data/raw/abo/images/small/12/12dfc911.jpg,shoes_title_mentions_boot
+B06X9X9H52,SHOES,train,find. Women's Buck Ankle Boots Brown (Brown 02) 6 UK (39 EU),data/raw/abo/images/small/21/21bb9c28.jpg,shoes_title_mentions_boot
+B06X9XSRKM,SHOES,train,FIND Women's Marhsall Open-Toe Ankle Boots,data/raw/abo/images/small/a9/a9722314.jpg,shoes_title_mentions_boot
+B06XGS5KYS,SHOES,train,"The Fix Amazon Brand Women's Farah Single Buckle Platform Dress Sandal, Black, 9.5 B US",data/raw/abo/images/small/95/95afafd8.jpg,shoes_title_mentions_sandal
+B07124WCH8,CHAIR,train,"Amazon Brand – Stone & Beam Sascha Removable Cushion Wingback Accent Chair, 34.6""W, Ivory",data/raw/abo/images/small/0d/0db0582c.jpg,furniture_title_mentions_accessory_terms
+B071GFDGF9,SHOES,train,"find. Women's 123957 Boots, Grey, 3/3.5 UK",data/raw/abo/images/small/2b/2b397eb7.jpg,shoes_title_mentions_boot
+B071GFDLHC,SHOES,train,"find. Women's 123957 Boots, Grey, 2",data/raw/abo/images/small/2b/2b397eb7.jpg,shoes_title_mentions_boot
+B072V71HJD,SHOES,test,Amazon Brand - The Fix Women's Kendra Stretch Thigh-High-Heeled Boot,data/raw/abo/images/small/b6/b6b725e1.jpg,shoes_title_mentions_boot
+B072V77LPK,SHOES,train,"Amazon Brand - The Fix Women's Kelly Knee-High Studded Boot, Black, 7.5 B US",data/raw/abo/images/small/c7/c7c81ce6.jpg,shoes_title_mentions_boot
+B072V81JZ1,SHOES,test,"Amazon Brand - The Fix Women's Delany Block-Heel Chelsea Ankle Boot, Black/Star Print, 8 M US",data/raw/abo/images/small/86/8606b4ef.jpg,shoes_title_mentions_boot
+B072V88KF5,SHOES,validation,"Amazon Brand - The Fix Women's Colette Ankle Wrap Dress Sandal,black,8 B US",data/raw/abo/images/small/ea/ea333f63.jpg,shoes_title_mentions_sandal
+B072V89QR6,SHOES,validation,"Amazon Brand - The Fix Women's Colette Ankle Wrap Dress Sandal,black,9.5 B US",data/raw/abo/images/small/ea/ea333f63.jpg,shoes_title_mentions_sandal
+B072V89RT7,SHOES,validation,"Amazon Brand - The Fix Women's Colette Ankle Wrap Dress Sandal,petrol blue,10 B US",data/raw/abo/images/small/1f/1f5f5b97.jpg,shoes_title_mentions_sandal
+B072V8VNWJ,SHOES,validation,"Amazon Brand - The Fix Women's Colette Ankle Wrap Dress Sandal,black,8.5 B US",data/raw/abo/images/small/ea/ea333f63.jpg,shoes_title_mentions_sandal
+B072V9J14T,SHOES,validation,"Amazon Brand - The Fix Women's Colette Ankle Wrap Dress Sandal,black,6 B US",data/raw/abo/images/small/ea/ea333f63.jpg,shoes_title_mentions_sandal
+B072V9J18G,SHOES,train,"Amazon Brand - The Fix Women's Gabriela High-Heel Cross-Strap Platform Dress Sandal,petrol blue,9 B US",data/raw/abo/images/small/0a/0a5c2495.jpg,shoes_title_mentions_sandal
+B072Y1TLJP,SHOES,train,"Amazon Brand - The Fix Women's Colette Ankle Wrap Dress Sandal,blush champagne,8 B US",data/raw/abo/images/small/11/11b6598f.jpg,shoes_title_mentions_sandal
+B072Y3MDF8,SHOES,train,"Amazon Brand - The Fix Women's Colette Ankle Wrap Dress Sandal,blush champagne,6 B US",data/raw/abo/images/small/11/11b6598f.jpg,shoes_title_mentions_sandal
+B073RM8546,SHOES,train,FIND Women’s Stiletto Leather Boots,data/raw/abo/images/small/51/510aa240.jpg,shoes_title_mentions_boot
+B075FTBDR6,CHAIR,train,"Amazon Brand – Stone & Beam Sascha Removable Cushion Wingback Accent Chair, 34.6""W",data/raw/abo/images/small/0d/0db0582c.jpg,furniture_title_mentions_accessory_terms
+B075QD1G9N,SHOES,train,"TRUTH & FABLE Women's 124014 Ankle Strap Sandals, Red, 6 us",data/raw/abo/images/small/a7/a780d49f.jpg,shoes_title_mentions_sandal
+B075QDCJZT,SHOES,train,"TRUTH & FABLE Women's 124014 Ankle Strap Sandals, Red, 5 UK",data/raw/abo/images/small/a7/a780d49f.jpg,shoes_title_mentions_sandal
+B075RDV95V,SHOES,train,Amazon Brand - TRUTH & FABLE Women's Bridesmaid Ankle Strap Sandals,data/raw/abo/images/small/82/82996327.jpg,shoes_title_mentions_sandal
+B075T3977B,SHOES,train,Amazon Brand - Symbol Men's Leather Casual Chukka Boots - 8 UK/India (42 EU)(AZ-WS-118A),data/raw/abo/images/small/fa/fa0b1112.jpg,shoes_title_mentions_boot
+B075T4TXTM,SHOES,train,Amazon Brand - Find Women's Espadrilles Sole Sandals,data/raw/abo/images/small/28/281775ff.jpg,shoes_title_mentions_sandal
+B075YN3HPQ,CHAIR,test,"Amazon Brand – Rivet Brianna Mid-Century Modern Kitchen Dining Room Set of 2 Removable Cushion Chairs, 34.2 Inch Height, Grey",data/raw/abo/images/small/89/894c9aba.jpg,furniture_title_mentions_accessory_terms
+B075YNQ7TC,CHAIR,train,"Amazon Brand – Rivet Wide Cushion Mid-Century Modern Top-Grain Leather Set of 2 Accent Dining Room Table Chairs, 26.8""W, Brown",data/raw/abo/images/small/5c/5cb2b175.jpg,furniture_title_mentions_accessory_terms
+B075YPTG6H,CHAIR,train,"Amazon Brand – Rivet Brianna Mid-Century 2-Pack Removable Cushion Chairs, 34.2""H, Olive Green",data/raw/abo/images/small/94/940107f2.jpg,furniture_title_mentions_accessory_terms
+B075YPTG6M,CHAIR,test,"Amazon Brand – Rivet Brianna Mid-Century 2-Pack Removable Cushion Chairs, 34.2""H, Red",data/raw/abo/images/small/5b/5b415b9d.jpg,furniture_title_mentions_accessory_terms
+B075YQXR5P,CHAIR,train,"Amazon Brand – Rivet Wide Cushion Mid-Century Modern Top-Grain Leather Set of 2 Accent Dining Room Kitchen Chairs, 26.8""W, Black",data/raw/abo/images/small/d4/d483e6fc.jpg,furniture_title_mentions_accessory_terms
+B075YY26B3,SHOES,train,Amazon Brand - Symbol Men's Grey Casual Chelsea boots - 7 UK/India (41 EU)(AZ-OM-71A),data/raw/abo/images/small/1f/1f4ea5ec.jpg,shoes_title_mentions_boot
+B075Z24CD9,SHOES,train,Amazon Brand - Symbol Men's Casual Chelsea boots,data/raw/abo/images/small/6c/6c3c1bf8.jpg,shoes_title_mentions_boot
+B077BH517V,SHOES,train,"find. Men’s Leather Chelsea Boots, Brown (Tan), 8 UK (42 EU)",data/raw/abo/images/small/8d/8d686b08.jpg,shoes_title_mentions_boot
+B079PVL9VD,SHOES,train,Amazon Brand - Symbol Men's Sandals,data/raw/abo/images/small/f6/f66f5c77.jpg,shoes_title_mentions_sandal
+B079PXH4WH,SHOES,train,Amazon Brand - Symbol Men's Navy Sandals-11 UK/India (45 EU) (AZ-KY-329A),data/raw/abo/images/small/2d/2d96fd8f.jpg,shoes_title_mentions_sandal
+B079PYYN5V,SHOES,train,Amazon Brand - Symbol Men's Brown Sandals-7 UK/India (41 EU) (AZ-KY-333A),data/raw/abo/images/small/f7/f707cea6.jpg,shoes_title_mentions_sandal
+B079PZ4Q3Z,SHOES,train,Amazon Brand - Symbol Men's Black Sandals-9 UK/India (43 EU) (AZ-KY-332B),data/raw/abo/images/small/f6/f60e1b97.jpg,shoes_title_mentions_sandal
+B079PZMFD9,SHOES,train,Amazon Brand - Symbol Men's Tan Sandals-6 UK/India (39 EU) (AZ-KY-321A),data/raw/abo/images/small/d9/d909853d.jpg,shoes_title_mentions_sandal
+B079PZMFH6,SHOES,train,Amazon Brand - Symbol Men's Black Sandals-6 UK/India (39 EU) (AZ-KY-332B),data/raw/abo/images/small/f6/f60e1b97.jpg,shoes_title_mentions_sandal
+B079Q155BD,SHOES,validation,Amazon Brand - Symbol Men's Tan Sandals-8 UK/India (42 EU) (AZ-KY-332A),data/raw/abo/images/small/c1/c14e2cca.jpg,shoes_title_mentions_sandal
+B079Q157N1,SHOES,train,Amazon Brand - Symbol Men's Brown Sandals-8 UK/India (42 EU) (AZ-KY-340B),data/raw/abo/images/small/31/31bf0ef1.jpg,shoes_title_mentions_sandal
+B079Q2XTYS,SHOES,train,Amazon Brand - Symbol Men's Sandals,data/raw/abo/images/small/2d/2d96fd8f.jpg,shoes_title_mentions_sandal
+B079QB3GM6,SHOES,train,Amazon Brand - Symbol Men's Black Sandals-11 UK/India (45 EU) (AZ-KY-345B),data/raw/abo/images/small/5b/5bac8a2f.jpg,shoes_title_mentions_sandal
+B079QFM8K6,SHOES,train,Amazon Brand - Symbol Men's Sandals,data/raw/abo/images/small/26/2694af50.jpg,shoes_title_mentions_sandal
+B079QGDX53,SHOES,train,Amazon Brand - Symbol Men's Cherry Sandals-10 UK/India (44 EU) (AZ-KY-329B),data/raw/abo/images/small/62/626665f1.jpg,shoes_title_mentions_sandal
+B07B6DWR57,SHOES,train,Amazon Brand - Symbol Men's Olive Sandals- 8 UK/India (42 EU) (AZ-KY-312B),data/raw/abo/images/small/2f/2fbd1b62.jpg,shoes_title_mentions_sandal
+B07B6LG156,SHOES,train,Amazon Brand - Symbol Men's Grey Sandals-10 UK/India (44 EU) (AZ-KY-312A),data/raw/abo/images/small/bd/bd8d70bc.jpg,shoes_title_mentions_sandal
+B07DX18ZHK,SHOES,train,find. Men's Leather Chelsea Boots,data/raw/abo/images/small/97/972ebfd7.jpg,shoes_title_mentions_boot
+B07DX2PZBL,SHOES,train,find. Men's Suede Apron Chukka Boots,data/raw/abo/images/small/c3/c32f3ad7.jpg,shoes_title_mentions_boot
+B07G1V4F95,SHOES,train,"find. Croc Embellished Leather Ankle Boots, Black), 3/ 3.5 UK",data/raw/abo/images/small/82/82105901.jpg,shoes_title_mentions_boot
+B07HG8M97Z,CHAIR,train,AmazonBasics Multi-Purpose Adjustable Office Drafting Spa Stool with Back Cushion and Wheels - Beige,data/raw/abo/images/small/5a/5a9e12c2.jpg,furniture_title_mentions_accessory_terms
+B07HGCYJB8,SOFA,train,"Amazon Brand - Rivet Midtown Removable Cushion Modern Sofa, 94 x 174 x 80cm, Cream",data/raw/abo/images/small/92/92e0c588.jpg,furniture_title_mentions_accessory_terms
+B07HGD1WW3,SOFA,train,"Amazon Brand - Rivet Midtown Removable Cushion Modern Sofa, 94 x 234 x 80cm, Cream",data/raw/abo/images/small/e0/e0f6e479.jpg,furniture_title_mentions_accessory_terms
+B07HGMCC7K,SOFA,train,"Amazon Brand - Rivet Midtown Removable Cushion Modern Sofa, 94 x 234 x 80cm, Charcoal",data/raw/abo/images/small/ec/ec5711cb.jpg,furniture_title_mentions_accessory_terms
+B07HGPDMB7,SOFA,train,"Amazon Brand - Rivet Midtown Removable Cushion Modern Sofa, 94 x 174 x 80cm, Charcoal",data/raw/abo/images/small/65/650e32ca.jpg,furniture_title_mentions_accessory_terms
+B07HJFY5KD,CHAIR,validation,AmazonBasics Gaming/Racing Style Office Chair with Removable Headrest and High Back Cushion - White,data/raw/abo/images/small/bb/bbd9c5aa.jpg,furniture_title_mentions_accessory_terms
+B07HPSM3JG,SHOES,test,"find. Block Heel Ankle Strap Open Toe Sandals, Orange Peach), 3/ 3.5 UK",data/raw/abo/images/small/e6/e6aa62c9.jpg,shoes_title_mentions_sandal
+B07HXF7WRX,CHAIR,train,AmazonBasics Drafting Stool with Back Cushion,data/raw/abo/images/small/5a/5a9e12c2.jpg,furniture_title_mentions_accessory_terms
+B07J2G2GRD,SHOES,train,"Amazon Brand - find. Men's Chelsea Boots Black), US 9",data/raw/abo/images/small/db/dbd14dc2.jpg,shoes_title_mentions_boot
+B07J5NCMB4,SHOES,test,"Amazon Brand - find. Women's Wedge Heels Sandals, Brown Tan, US 6.5",data/raw/abo/images/small/06/065d999b.jpg,shoes_title_mentions_sandal
+B07K4SL4HP,SHOES,train,"find. Women's Asymmetric Toe-Thong Flat Sandals Black), US 10",data/raw/abo/images/small/2c/2cdb3161.jpg,shoes_title_mentions_sandal
+B07L3M4GBN,SHOES,test,find. Womens Large Buckle Block Heel Sandal Heeled Sandal,data/raw/abo/images/small/09/091c2295.jpg,shoes_title_mentions_sandal
+B07L6DQJHN,SHOES,test,Amazon Brand - find. Women's Wide Band Mule Sandal,data/raw/abo/images/small/ad/adf9301f.jpg,shoes_title_mentions_sandal
+B07L8V1VWR,SHOES,train,"The Drop Women's Valencia Pointed Toe Mule Sandal, White, 7.5",data/raw/abo/images/small/ee/eed157f1.jpg,shoes_title_mentions_sandal
+B07L8ZPH4K,SHOES,train,"The Drop Women's Valencia Pointed Toe Mule Sandal, Silver, 8.5",data/raw/abo/images/small/21/219d6534.jpg,shoes_title_mentions_sandal
+B07L8ZVNDW,SHOES,test,The Drop Women's Essen Bow Pointed Toe Flat Mule Sandal,data/raw/abo/images/small/5f/5f936616.jpg,shoes_title_mentions_sandal
+B07L9182XP,SHOES,test,"The Drop Women's Essen Bow Pointed Toe Flat Mule Sandal, Merlot, 7",data/raw/abo/images/small/5f/5f936616.jpg,shoes_title_mentions_sandal
+B07L95D8VZ,SHOES,test,find. Womens Wedge Heels Sandals Wedge Sandal,data/raw/abo/images/small/06/065d999b.jpg,shoes_title_mentions_sandal
+B07P5LN1Y6,SOFA,train,"Amazon Brand – Rivet Andrews Contemporary Loveseat Sofa with Removable Cushions, 67""W, Light Grey",data/raw/abo/images/small/0b/0b7cf457.jpg,furniture_title_mentions_accessory_terms
+B07P5LN1YJ,CHAIR,train,"Amazon Brand – Rivet Andrews Contemporary Chair with Removable Cushions, 40""W, Light Grey",data/raw/abo/images/small/a0/a0dae437.jpg,furniture_title_mentions_accessory_terms
+B07P5LNMDK,SOFA,train,"Amazon Brand – Rivet Andrews Contemporary Top-Grain Leather Sofa with Removable Cushions, 82""W, Dark Brown",data/raw/abo/images/small/68/68c4f1df.jpg,furniture_title_mentions_accessory_terms
+B07P5LP2TT,SOFA,train,"Amazon Brand – Rivet Andrews Contemporary Loveseat Sofa with Removable Cushions, 67""W, Dark Grey",data/raw/abo/images/small/6f/6f182134.jpg,furniture_title_mentions_accessory_terms
+B07P6JWDGR,SOFA,train,"Amazon Brand – Rivet Andrews Contemporary Sofa with Removable Cushions, 82""W, Light Grey",data/raw/abo/images/small/29/2962a3b2.jpg,furniture_title_mentions_accessory_terms
+B07P7NVH69,CHAIR,train,"Amazon Brand – Rivet Andrews Contemporary Chair with Removable Cushions, 40""W, Wathet Blue",data/raw/abo/images/small/78/7810bb33.jpg,furniture_title_mentions_accessory_terms
+B07P8ST791,SOFA,train,"Amazon Brand – Rivet Andrews Contemporary Top-Grain Leather Loveseat Sofa with Removable Cushions, 67""W, Black",data/raw/abo/images/small/e6/e63ae953.jpg,furniture_title_mentions_accessory_terms
+B07P8STB67,CHAIR,train,"Amazon Brand – Rivet Andrews Contemporary Top-Grain Leather Chair with Removable Cushions, 40""W, Black",data/raw/abo/images/small/6e/6ec92e00.jpg,furniture_title_mentions_accessory_terms
+B07P8STB84,SOFA,train,"Amazon Brand – Rivet Andrews Contemporary Loveseat Sofa with Removable Cushions, 67""W, Wathet Blue",data/raw/abo/images/small/e0/e0e9a928.jpg,furniture_title_mentions_accessory_terms
+B07P8STD8P,SOFA,train,"Amazon Brand – Rivet Andrews Contemporary Top-Grain Leather Loveseat Sofa with Removable Cushions, 67""W, Dark Brown",data/raw/abo/images/small/54/5465b9ff.jpg,furniture_title_mentions_accessory_terms
+B07P8STHZG,SOFA,train,"Amazon Brand – Rivet Andrews Contemporary Sofa with Removable Cushions, 82""W, Dark Grey",data/raw/abo/images/small/0d/0df37758.jpg,furniture_title_mentions_accessory_terms
+B07P9Y5SDP,CHAIR,train,"Amazon Brand – Rivet Andrews Contemporary Top-Grain Leather Chair with Removable Cushions, 40""W, Dark Brown",data/raw/abo/images/small/66/6625cffe.jpg,furniture_title_mentions_accessory_terms
+B07P9Y6W9P,SOFA,train,"Amazon Brand – Rivet Andrews Contemporary Top-Grain Leather Sofa with Removable Cushions, 82""W, Black",data/raw/abo/images/small/2f/2ffef77c.jpg,furniture_title_mentions_accessory_terms
+B07PBYX3B6,SOFA,train,"Amazon Brand – Rivet Andrews Contemporary Sofa Couch with Removable Cushions, 82""W, Wathet Blue",data/raw/abo/images/small/3d/3d22ef2f.jpg,furniture_title_mentions_accessory_terms
+B07PBZBF73,CHAIR,train,"Amazon Brand – Rivet Andrews Contemporary Chair with Removable Cushions, 40""W, Dark Grey",data/raw/abo/images/small/02/02dcb050.jpg,furniture_title_mentions_accessory_terms
+B07PKD2N2Q,SHOES,train,Amazon Brand - find. Women’s Wide Fit Open Toe Sandals,data/raw/abo/images/small/c8/c8858713.jpg,shoes_title_mentions_sandal
+B07QFP4ZG4,SOFA,train,"Amazon Brand – Stone & Beam Joanna Contemporary Tufted Sofa Couch with Reversible Cushions, 84""W, Blue",data/raw/abo/images/small/9a/9a5f5aea.jpg,furniture_title_mentions_accessory_terms
+B07QHYD4KD,SOFA,test,"Amazon Brand – Stone & Beam Joanna Contemporary Tufted Sofa Couch with Reversible Cushions, 84""W, Heather Grey",data/raw/abo/images/small/48/485c928f.jpg,furniture_title_mentions_accessory_terms
+B07QHYD94M,SOFA,train,"Amazon Brand – Stone & Beam Joanna Contemporary Tufted Sofa Couch with Reversible Cushions, 84""W, Grey",data/raw/abo/images/small/4d/4d3b92d5.jpg,furniture_title_mentions_accessory_terms
+B07R5TVGPP,SHOES,test,"find. Amazon Brand Women's Casual Suede Chelsea Boots, Brown Chocolate, 4 UK",data/raw/abo/images/small/ad/addfc310.jpg,shoes_title_mentions_boot
+B07R6SL28V,SHOES,validation,"find. Women's Flexi-Sole Cuban Heel Chelsea Boots, Brown (Tan Tan), US 6",data/raw/abo/images/small/3c/3ce691f4.jpg,shoes_title_mentions_boot
+B07RFWWF33,SHOES,validation,"find. Women's Flexi-Sole Cuban Heel Chelsea Boots, Brown (Tan Tan), US 7",data/raw/abo/images/small/3c/3ce691f4.jpg,shoes_title_mentions_boot
+B07RT14NZG,SHOES,train,Amazon Brand - Symbol Men's Brown Leather Sandals-10 UK (44 EU) (11 US) (AZ-KY-405B),data/raw/abo/images/small/59/592d58b2.jpg,shoes_title_mentions_sandal
+B07WGP9BQR,SHOES,test,"find. Women's Block Heel Sandal, Beige (Natural Snake), US - 8",data/raw/abo/images/small/e1/e1c92452.jpg,shoes_title_mentions_sandal
+B07WGPBB29,SHOES,test,"find. Women's #_SHANA-1A-58 Open Toe Sandals, Gold, US-0 / Asia Size s",data/raw/abo/images/small/19/19b0b2d5.jpg,shoes_title_mentions_sandal
+B07WGPBBSG,SHOES,validation,"find. Women's #_INNIS-S-10 Open Toe Sandals, Silver Sparkle, 7 us",data/raw/abo/images/small/aa/aa505e37.jpg,shoes_title_mentions_sandal
+B07WGPBYF2,SHOES,test,"find. Women's Block Heel Sandal, Beige (Natural Snake), US 9",data/raw/abo/images/small/e1/e1c92452.jpg,shoes_title_mentions_sandal
+B07WR3YB64,SHOES,train,Klepe Men's Black High Ankle Boots-9 UK (43 EU) (10 US) (KP701/BLK),data/raw/abo/images/small/c7/c70f96a6.jpg,shoes_title_mentions_boot
+B07WTDZZKD,SHOES,train,Amazon Brand - find. Women's Ankle Boots with Open-Toe and Lace Up,data/raw/abo/images/small/2b/2b27c9ea.jpg,shoes_title_mentions_boot
+B07X34486Q,CHAIR,test,"AmazonBasics Outdoor Patio Garden Faux Wicker Rattan Chair Conversation Set with Cushion - 3-Piece Set, Brown",data/raw/abo/images/small/a9/a9f4f2f7.jpg,furniture_title_mentions_accessory_terms
+B07XB1FNFT,SHOES,train,Flavia Women's Gold Fashion Sandals-6 UK (38 EU) (7 US) (FL124/GLD),data/raw/abo/images/small/d3/d3444d4a.jpg,shoes_title_mentions_sandal
+B07XB1GJYQ,SHOES,train,Flavia Women's Gold Fashion Sandals-9 UK (41 EU) (10 US) (FL139/GLD),data/raw/abo/images/small/f6/f6a508b4.jpg,shoes_title_mentions_sandal
+B07XB1HY66,SHOES,validation,Flavia Women's Beige Fashion Sandals-6 UK (38 EU) (7 US) (FL157/BEG),data/raw/abo/images/small/ef/efd1d380.jpg,shoes_title_mentions_sandal
+B07XC1CF37,SHOES,train,Flavia Women's Beige Fashion Sandals- 7 UK (39 EU) (8 US) (FL139/CRM),data/raw/abo/images/small/0e/0ef9987d.jpg,shoes_title_mentions_sandal
+B07XC1FRQ8,SHOES,train,Flavia Women's Grey Fashion Sandals-7 UK (39 EU) (8 US) (FL135/GRY),data/raw/abo/images/small/9d/9d73a0d1.jpg,shoes_title_mentions_sandal
+B07XC1FXSF,SHOES,train,Flavia Women's Blue Fashion Sandals-9 UK (41 EU) (10 US) (FL134/BLU),data/raw/abo/images/small/63/63f28839.jpg,shoes_title_mentions_sandal
+B07XC1G8X3,SHOES,train,Flavia Women's Pink Fashion Sandals-9 UK (41 EU) (10 US) (FL117/PNK),data/raw/abo/images/small/7a/7a306d7e.jpg,shoes_title_mentions_sandal
+B07XC1JQG4,SHOES,train,Flavia Women's Blue Fashion Sandals-6 UK (38 EU) (7 US) (FL156/BLU),data/raw/abo/images/small/6d/6d248af1.jpg,shoes_title_mentions_sandal
+B07XLG8KHC,SHOES,validation,Spotted Zebra Girls' Frozen Rain Boot,data/raw/abo/images/small/5f/5f1ed166.jpg,shoes_title_mentions_boot
+B07XRGDKR9,SHOES,train,Flavia Women's Silver Fashion Sandals-7 UK (39 EU) (8 US) (FL/214/SLV),data/raw/abo/images/small/6c/6cbd4b48.jpg,shoes_title_mentions_sandal
+B07XRYCP51,SHOES,train,Flavia Women's Silver Fashion Sandals-9 UK (41 EU) (10 US) (FL/208/SLV),data/raw/abo/images/small/cd/cdd349e4.jpg,shoes_title_mentions_sandal
+B07XRYDK1G,SHOES,train,Flavia Women's Nude Fashion Sandals-8 UK (40 EU) (9 US) (FL/205/NUD),data/raw/abo/images/small/69/691fdff2.jpg,shoes_title_mentions_sandal
+B07XRYDK7B,SHOES,train,Flavia Women's Blue Fashion Sandals-8 UK (40 EU) (9 US) (FL/229/BLU),data/raw/abo/images/small/2c/2c5dffd9.jpg,shoes_title_mentions_sandal
+B07XRYJ82V,SHOES,train,Flavia Women's Beige Fashion Sandals-7 UK (39 EU) (8 US) (FL/209/BGE),data/raw/abo/images/small/7d/7d74bdb3.jpg,shoes_title_mentions_sandal
+B07XRYM2XJ,SHOES,train,Flavia Women's R-Gold Fashion Sandals- 4 UK (36 EU) (5 US) (FL/216/R-GLD),data/raw/abo/images/small/57/579814d2.jpg,shoes_title_mentions_sandal
+B07XRYM9HR,SHOES,train,Flavia Women's Blue Fashion Sandals-8 UK (40 EU) (9 US) (FL/202/BLU),data/raw/abo/images/small/55/5514886b.jpg,shoes_title_mentions_sandal
+B07XRYS8N3,SHOES,train,Flavia Women's Black Fashion Sandals-4 UK (36 EU) (5 US) (FL/205/BLK),data/raw/abo/images/small/95/95cf5b14.jpg,shoes_title_mentions_sandal
+B07XRZ5127,SHOES,train,Flavia Women's Tan Fashion Sandals-9 UK (41 EU) (10 US) (FL/218/TAN),data/raw/abo/images/small/ed/edff83b1.jpg,shoes_title_mentions_sandal
+B07XRZB8MS,SHOES,train,Flavia Women's Blue Fashion Sandals-6 UK (38 EU) (7 US) (FL/219/BLU),data/raw/abo/images/small/ff/ff7b7239.jpg,shoes_title_mentions_sandal
+B07XRZKSR5,SHOES,train,Flavia Women's White Fashion Sandals-5 UK (37 EU) (6 US) (FL/215/WHT),data/raw/abo/images/small/41/4149cb8e.jpg,shoes_title_mentions_sandal
+B07YN9B81V,CHAIR,train,AmazonBasics BIFMA Certified Gaming/Racing Style Office Chair - with Removable Headrest and High Back Cushion - Red (Renewed),data/raw/abo/images/small/91/915ed977.jpg,furniture_title_mentions_accessory_terms
+B07Z8TRG3Q,CHAIR,train,AmazonBasics BIFMA Certified Gaming/Racing Style Office Chair - with Removable Headrest and High Back Cushion - White (Renewed),data/raw/abo/images/small/bb/bb6fa9cf.jpg,furniture_title_mentions_accessory_terms
+B07ZFPPBKY,SHOES,train,Teen Mix By Catwalk Women's Gold Fashion Sandals- 4 UK (36 EU) (6 US) (TM4292XX_A),data/raw/abo/images/small/8b/8b93a253.jpg,shoes_title_mentions_sandal
+B07ZTPL42H,SOFA,train,AmazonBasics Aluminum Outdoor L-Shaped Sofa Lounge Set with Cushions and Table - Grey,data/raw/abo/images/small/5d/5d4ab70e.jpg,furniture_title_mentions_accessory_terms
+B07ZTQDCLY,SOFA,train,AmazonBasics Aluminum Outdoor L-Shaped Sofa Lounge Set with Cushions and Table - Navy,data/raw/abo/images/small/86/8620c78d.jpg,furniture_title_mentions_accessory_terms
+B0812BMJZD,SHOES,train,"find. Men's Moccasin Boot, Brown Suede, womens 12",data/raw/abo/images/small/9e/9eb4e0ab.jpg,shoes_title_mentions_boot
+B0812C9DNB,SHOES,train,"find. Men's Moccasin Boot, Green Suede, womens 12",data/raw/abo/images/small/34/34008557.jpg,shoes_title_mentions_boot
+B0812CM3BY,SHOES,train,"find. Women's Moccasin Boot, Blue Jeans Blue, 6 us",data/raw/abo/images/small/93/933b69d0.jpg,shoes_title_mentions_boot
+B0812CM94V,SHOES,train,"find. Women's Moccasin Boot, Brown Dark Brown, us-0 / asia size s",data/raw/abo/images/small/a6/a6321a98.jpg,shoes_title_mentions_boot
+B0812CNMS8,SHOES,train,"find. Women's Moccasin Boot, Orange Dark Orange, 8 us",data/raw/abo/images/small/1c/1cd72a7a.jpg,shoes_title_mentions_boot
+B082VGM164,SOFA,train,"Amazon Brand - Ravenna Home Archer Steel-Framed Outdoor Patio Plush 3-Seater Sofa with Removable, Water-Resistant Cushions, 68.5""W, Gray",data/raw/abo/images/small/f2/f2ff12f5.jpg,furniture_title_mentions_accessory_terms
+B0833NP519,SHOES,test,"The Drop Women's Listilla Espadrille Flatform Ankle Strap Sandal, Faux Leather Black, 12",data/raw/abo/images/small/cd/cd3ce629.jpg,shoes_title_mentions_sandal
+B0845F7CPM,SHOES,test,find. Lace-s-2-46 Women's Open Sandals,data/raw/abo/images/small/1b/1b8b28f9.jpg,shoes_title_mentions_sandal
+B084LLRZZB,SHOES,test,"find. Women's Marco-03w4-002 Ankle Boots, Grey Whisper, 10",data/raw/abo/images/small/2b/2b94ad92.jpg,shoes_title_mentions_boot
+B084LLTCYF,SHOES,train,"find. Women's Andy-03w4-012 Chelsea Boots, Black Black Nubuk, US-0 / Asia Size s",data/raw/abo/images/small/bf/bfe40fff.jpg,shoes_title_mentions_boot
+B084LLVC22,SHOES,train,"find. Women's Drepy-01w4-001 Chelsea Boots, Grey Truffle Nubuk, 2",data/raw/abo/images/small/1b/1b33440a.jpg,shoes_title_mentions_boot
+B084LLYN4Q,SHOES,train,"find. Women's Andy-1w4-001 Chelsea Boots, Brown Tan Nubuk, 6 us",data/raw/abo/images/small/ec/ec803655.jpg,shoes_title_mentions_boot
+B084LLYV9Z,SHOES,train,"find. Women's ANDY-1W4-001 Chelsea Boots, Brown Tan Nubuk, 10",data/raw/abo/images/small/ec/ec803655.jpg,shoes_title_mentions_boot
+B085BGSWNS,CHAIR,train,"Rivet Wide Cushion Mid-Century Modern Top-Grain Leather Set of 2 Accent Dining Room Kitchen Chairs, 26.8""W, Black (Renewed)",data/raw/abo/images/small/f9/f9a9ca73.jpg,furniture_title_mentions_accessory_terms
+B085J73J8R,SHOES,train,Centrino Men's 7746 Coffee Boots-11 UK (45 EU) (12 US) (7746-01),data/raw/abo/images/small/6d/6dbb7c21.jpg,shoes_title_mentions_boot
+B089SPCNTH,SHOES,validation,find. Womens Flexi-Sole Cuban Heel Chelsea Boots,data/raw/abo/images/small/3c/3ce691f4.jpg,shoes_title_mentions_boot
+B08C3915JG,SHOES,train,Centrino Men's Olive Fisherman Sandals-10 UK (44 EU) (11 US) (6113-02),data/raw/abo/images/small/48/48849767.jpg,shoes_title_mentions_sandal
+B08C39SQMT,SHOES,train,Centrino Men's Brown Fisherman Sandals-8 UK (42 EU) (9 US) (6102-02),data/raw/abo/images/small/10/104732c3.jpg,shoes_title_mentions_sandal
+B08C39TTKY,SHOES,train,Centrino Men's Tan Fisherman Sandals-8 UK (42 EU) (9 US) (6119-02),data/raw/abo/images/small/a8/a86375d5.jpg,shoes_title_mentions_sandal
+B08C3BS9RW,SHOES,train,Centrino Men's Tan Fisherman Sandals-10 UK (44 EU) (11 US) (6114-01),data/raw/abo/images/small/5f/5f9b6711.jpg,shoes_title_mentions_sandal
+B08C3CVY1P,SHOES,train,Centrino Men's 6108-01 M Tan Fisherman Sandals-11 UK (45 EU) (12 US) (6108-01),data/raw/abo/images/small/8f/8fb184a3.jpg,shoes_title_mentions_sandal
+B08C3DJ66Q,SHOES,train,Centrino Men's Brown Fisherman Sandals-11 UK (45 EU) (12 US) (6119-01),data/raw/abo/images/small/f0/f04c9a22.jpg,shoes_title_mentions_sandal
+B08C5Q9FYX,SHOES,train,Centrino Men's Brown Fisherman Sandals-10 UK (44 EU) (11 US) (6108-03),data/raw/abo/images/small/80/8006bfcd.jpg,shoes_title_mentions_sandal
+B08F7TMCSL,SHOES,train,Centrino Men's Brown Thong Sandals-9 UK (43 EU) (10 US) (5902-02),data/raw/abo/images/small/e1/e10001e1.jpg,shoes_title_mentions_sandal
+B08F7V4K1V,SHOES,validation,Centrino Men's Brown Thong Sandals-9 UK (43 EU) (10 US) (5912-01),data/raw/abo/images/small/75/756470f4.jpg,shoes_title_mentions_sandal
+B08F7VH1Q6,SHOES,validation,Centrino Men's Black Thong Sandals-10 UK (44 EU) (11 US) (5910-01),data/raw/abo/images/small/a0/a0e2840a.jpg,shoes_title_mentions_sandal
+B08F7VR1T4,SHOES,train,Centrino Men's Brown Thong Sandals-13 UK (47 EU) (14 US) (5907-02),data/raw/abo/images/small/96/9690e7cd.jpg,shoes_title_mentions_sandal
+B08FTS24CM,SHOES,validation,find. Womens Menorcan Leather Sling Back Sandals,data/raw/abo/images/small/27/27509f6e.jpg,shoes_title_mentions_sandal
+B08GNF8GYS,SHOES,train,find. womens 122993 Boots,data/raw/abo/images/small/c1/c1a047cc.jpg,shoes_title_mentions_boot
