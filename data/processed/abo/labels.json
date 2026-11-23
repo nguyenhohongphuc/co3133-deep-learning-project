@@ -1,0 +1,14 @@
+{
+  "BOOT": 0,
+  "CHAIR": 1,
+  "FINEEARRING": 2,
+  "FINENECKLACEBRACELETANKLET": 3,
+  "FINERING": 4,
+  "HANDBAG": 5,
+  "RUG": 6,
+  "SANDAL": 7,
+  "SHOES": 8,
+  "SOFA": 9,
+  "TABLE": 10,
+  "WALL_ART": 11
+}

@@ -56,8 +56,9 @@ The A3 preparation pipeline downloads the complete official listing metadata and
 then downloads native 256px main images for 12 product types. It keeps English titles and predicts
 the original `product_type`. The selected classes are SHOES, CHAIR, BOOT, SOFA, SANDAL,
 FINENECKLACEBRACELETANKLET, FINERING, RUG, TABLE, FINEEARRING, HANDBAG, and WALL_ART.
-Data are credited to Amazon.com and released under CC BY 4.0. Source documentation and the
-license are saved in `data/raw/abo/`.
+Data are credited to Amazon.com and released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The [official ABO source](https://amazon-berkeley-objects.s3.us-east-1.amazonaws.com/index.html) provides
+the dataset documentation and license, also saved locally in `data/raw/abo/`.
 
 Run from the repository root with Python 3.12+ and the M1 dependencies pinned in `a3_requirements.txt`.
 
@@ -79,6 +80,10 @@ catalog for the selected class scope, `selected_pairs.csv`, `train.csv`, `valida
 `labels.json`, and `excluded.csv` with exclusion reasons. Image paths are relative to the repository.
 Training inputs are `image_path` and `title`. Targets are `label`, mapped from `product_type`.
 Other metadata columns are retained for provenance and grouping.
+
+The seven CSV tables in `data/processed/abo/`, together with `labels.json` and
+`metadata_summary.json`, are versioned in Git. CSV bytes are preserved by `.gitattributes`
+so the recorded SHA-256 values remain valid after cloning.
 
 Cleaning validates image decoding and dimensions, normalizes Unicode/HTML/whitespace in titles,
 removes duplicate image/title/label pairs and identical images with conflicting labels, and groups
