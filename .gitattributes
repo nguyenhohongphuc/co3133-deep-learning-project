@@ -2,3 +2,5 @@
 AI_USAGE.md text eol=lf
 /reports/a3/a3_proposal.pdf binary
 /docs/assets/a3/a3_proposal.pdf binary
+# Keep A3 CSV bytes consistent with the recorded SHA-256 manifests.
+/data/processed/abo/*.csv -text
