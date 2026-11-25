@@ -1,0 +1,44 @@
+{
+  "config": {
+    "image_root": "D:\\HK261\\DeepLearning\\Assignment\\Assignment3\\Data\\images\\small",
+    "split_dir": null,
+    "output_dir": "D:\\HK261\\DeepLearning\\Assignment\\Assignment\\results\\a3_image_only\\resnet50",
+    "backbone": "resnet50",
+    "image_size": 224,
+    "batch_size": 32,
+    "workers": 0,
+    "epochs": 15,
+    "lr": 0.0001,
+    "weight_decay": 0.0001,
+    "dropout": 0.2,
+    "seed": 42,
+    "amp": true
+  },
+  "fingerprint": {
+    "train.csv": "1d29006f8d7b749bfb68103805b3ea07a01ca40ee3b723e819c7e5f5365a64b2",
+    "validation.csv": "693c080dbb93afb9721b8d30984b528eb6c0cddaad2dbfc33233ae8944aec4d6",
+    "test.csv": "20d32425e28565b136f55d9eb2a6a21380a5ad784d33e0482439610d34bbefe0",
+    "labels.json": "be3967db30f7add345d5fb8b6b025f522591fdda8495fb77e5afd229303f4494"
+  },
+  "labels": {
+    "BOOT": 0,
+    "CHAIR": 1,
+    "FINEEARRING": 2,
+    "FINENECKLACEBRACELETANKLET": 3,
+    "FINERING": 4,
+    "HANDBAG": 5,
+    "RUG": 6,
+    "SANDAL": 7,
+    "SHOES": 8,
+    "SOFA": 9,
+    "TABLE": 10,
+    "WALL_ART": 11
+  },
+  "torch": "2.7.1+cu118",
+  "torchvision": "0.22.1+cu118",
+  "python": "3.10.18",
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "git_commit": "2d738acee9721334521189b07ae9b0d95703baf3",
+  "parameters": 23532620
+}
