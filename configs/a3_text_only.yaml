@@ -1,0 +1,26 @@
+# Cấu hình model TEXT-ONLY cho A3 (DistilBERT + mean pooling + head)
+# Dùng: python -m scripts.a3_train_text configs/a3_text_only.yaml
+
+seed: 42
+
+data:
+  dir: data/processed/abo
+  max_length: 96          # đo bằng scripts/a3_token_lengths.py: 0% title bị cắt ở 96
+
+model:
+  name: distilbert/distilbert-base-uncased
+  revision: null          # điền mã commit của model để cố định weight
+  dropout: 0.1            # dropout của head
+
+train:
+  batch_size: 32
+  epochs: 15
+  freeze_epochs: 2        # 2 epoch đầu chỉ train head
+  unfreeze_last: 2        # sau đó mở 2 layer cuối của encoder
+  lr_head: 1.0e-3         # YAML cần có dấu chấm: viết 1e-3 sẽ bị đọc thành chuỗi
+  lr_encoder: 2.0e-5
+  weight_decay: 0.01
+  grad_clip: 1.0
+  patience: 4             # 4 epoch không cải thiện val macro-F1 thì dừng
+
+output_dir: results/a3
