@@ -1,5 +1,10 @@
-# A3 M1 data preparation, EDA and PDF export. Python 3.12+.
+# A3 data preparation, EDA, PDF export and fusion. Tested with Python 3.12.
+# On GPU hosts, retain an appropriate compatible CUDA torch/torchvision build.
 numpy==2.3.5
 Pillow==13.0.0
 matplotlib==3.10.8
 reportlab==4.4.9
+torch==2.8.0
+torchvision==0.23.0
+transformers==4.57.6
+PyYAML==6.0.4

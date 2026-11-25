@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 .venv/
+.venv-a3-fusion/
 venv/
 .ipynb_checkpoints/
 

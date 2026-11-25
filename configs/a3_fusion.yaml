@@ -1,0 +1,25 @@
+# Run from repository root: python -m scripts.a3_train_fusion configs/a3_fusion.yaml
+seed: 42
+data:
+  dir: data/processed/abo
+  image_root: .                  # root joined with image_path in the CSV
+  max_length: 96                 # same tokenizer/pooling as text-only
+  workers: 0                    # portable on Windows/Jupyter
+model:
+  name: distilbert/distilbert-base-uncased
+  revision: null                 # resolved HF commit is saved in the run metadata
+  image_weights: IMAGENET1K_V2    # ResNet50_Weights.DEFAULT in teammate's baseline
+  hidden_dim: 256
+  dropout: 0.2
+train:
+  batch_size: 32
+  epochs: 15
+  freeze_epochs: 2
+  unfreeze_last: 2               # final DistilBERT blocks; image opens layer4
+  lr_head: 1.0e-3
+  lr_encoder: 2.0e-5
+  weight_decay: 0.01
+  grad_clip: 1.0
+  patience: 4
+  amp: true                     # CUDA only; CPU/MPS use float32
+output_dir: outputs/a3_fusion/concat_seed42

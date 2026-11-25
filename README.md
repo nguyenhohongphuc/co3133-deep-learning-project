@@ -60,7 +60,7 @@ Data are credited to Amazon.com and released under [CC BY 4.0](https://creativec
 The [official ABO source](https://amazon-berkeley-objects.s3.us-east-1.amazonaws.com/index.html) provides
 the dataset documentation and license, also saved locally in `data/raw/abo/`.
 
-Run from the repository root with Python 3.12+ and the M1 dependencies pinned in `a3_requirements.txt`.
+Run from the repository root with Python 3.12 and the A3 dependencies pinned in `a3_requirements.txt`.
 
 ```bash
 python -m pip install -r a3_requirements.txt
@@ -103,6 +103,27 @@ with `scripts/a3_eda.py`. The local A3 page and landing page link a static copy 
 The executed `notebooks/a3_eda.ipynb` reproduces the audit, shows the figures and verifies the manifests.
 The compute figures in the proposal are assumptions for resource planning, to be replaced by
 measured pilot results after approval.
+
+The draft concatenation fusion model combines ResNet50 (2048 dimensions) with the team's
+mean-pooled DistilBERT (768), then uses a 2816→256→12 classification head.
+Configuration lives in `configs/a3_fusion.yaml`; reference dependencies are in
+`a3_requirements.txt`. All fusion checks run with one command:
+
+```bash
+python -m unittest discover -s tests -p test_a3_fusion.py -v
+```
+
+The tests include two real image/title pairs, a miniature head-only/fine-tuning run,
+gradient checks, exact checkpoint reconstruction and offline evaluation. They require
+local ABO images, use random weights and a reduced text encoder, and do not measure
+fusion accuracy. After review, train and evaluate with:
+
+```bash
+python -m scripts.a3_train_fusion configs/a3_fusion.yaml
+python -m scripts.a3_evaluate_fusion outputs/a3_fusion/concat_seed42/best.pt --split validation
+```
+
+Use `--split test` explicitly only after finalizing the configuration.
 
 ## Assignment 2 (30VNFoods, image classification)
 

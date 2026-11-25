@@ -2,9 +2,10 @@ import torch.nn as nn
 from transformers import AutoModel
 
 class TextEncoder(nn.Module):
-    def __init__(self, model_name, revision=None):
+    def __init__(self, model_name, revision=None, *, backbone=None):
         super().__init__()
-        self.bert = AutoModel.from_pretrained(model_name, revision=revision)
+        # Injection supports offline fusion tests and checkpoint reconstruction.
+        self.bert = backbone if backbone is not None else AutoModel.from_pretrained(model_name, revision=revision)
         self.out_dim = self.bert.config.dim              # 768
 
     def forward(self, input_ids, attention_mask):
