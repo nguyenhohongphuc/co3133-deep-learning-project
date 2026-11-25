@@ -1,0 +1,13 @@
+{
+  "loss": 0.37590004157481727,
+  "accuracy": 0.8936970837253058,
+  "macro_f1": 0.9061128227301559,
+  "seconds": 7.316683600016404,
+  "ms_per_sample": 6.883051364079401,
+  "checkpoint_epoch": 11,
+  "parameters": 23532620,
+  "training_seconds": 749.0398281000671,
+  "through_best_only": false,
+  "forward_ms_per_image": 0.9071565624253708,
+  "latency_batch_size": 32
+}
