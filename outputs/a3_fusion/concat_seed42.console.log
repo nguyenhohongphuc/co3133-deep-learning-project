@@ -1,0 +1,194 @@
+Checking manifests and local image paths...
+Loading pretrained ResNet50 and DistilBERT...
+Downloading: "https://download.pytorch.org/models/resnet50-11ad3fa6.pth" to /Users/nhatnam/.cache/torch/hub/checkpoints/resnet50-11ad3fa6.pth
+Full-length GPU batch preflight passed: {'batch': 32, 'tokens': 96, 'shape': [32, 12], 'seconds': 7.04}
+Starting full training; held-out test is not evaluated.
+Device: mps | split counts: {'train': 8501, 'validation': 1063, 'test': 1063}
+Loading pretrained ResNet50 and DistilBERT...
+Starting epoch 1/15 (head-only)
+Train 25/266 | loss 1.1087 | 1.6 pairs/s
+Restarting with verified local image cache: /private/tmp/dla261-a3-fusion-cache
+Training Python: /private/tmp/a3-fusion-venv/bin/python
+Device: mps | split counts: {'train': 8501, 'validation': 1063, 'test': 1063}
+Loading pretrained ResNet50 and DistilBERT...
+Starting epoch 1/15 (head-only)
+Train 25/266 | loss 1.1087 | 132.5 pairs/s
+Train 50/266 | loss 0.6945 | 138.9 pairs/s
+Train 75/266 | loss 0.5308 | 142.4 pairs/s
+Train 100/266 | loss 0.4589 | 143.4 pairs/s
+Train 125/266 | loss 0.3977 | 144.9 pairs/s
+Train 150/266 | loss 0.3594 | 145.8 pairs/s
+Train 175/266 | loss 0.3315 | 146.5 pairs/s
+Train 200/266 | loss 0.3102 | 146.9 pairs/s
+Train 225/266 | loss 0.2894 | 147.3 pairs/s
+Train 250/266 | loss 0.2738 | 147.3 pairs/s
+Train 266/266 | loss 0.2668 | 145.8 pairs/s
+Validate 25/34 | loss 0.1646 | 151.7 pairs/s
+Validate 34/34 | loss 0.1707 | 144.1 pairs/s
+Epoch 1/15 | loss 0.2668 | val macro-F1 0.9544 | best 0.9544
+Starting epoch 2/15 (head-only)
+Train 25/266 | loss 0.1315 | 140.5 pairs/s
+Train 50/266 | loss 0.1369 | 141.1 pairs/s
+Train 75/266 | loss 0.1266 | 142.1 pairs/s
+Train 100/266 | loss 0.1166 | 142.8 pairs/s
+Train 125/266 | loss 0.1139 | 144.0 pairs/s
+Train 150/266 | loss 0.1171 | 144.9 pairs/s
+Train 175/266 | loss 0.1179 | 144.2 pairs/s
+Train 200/266 | loss 0.1130 | 143.1 pairs/s
+Train 225/266 | loss 0.1114 | 143.6 pairs/s
+Train 250/266 | loss 0.1077 | 143.9 pairs/s
+Train 266/266 | loss 0.1062 | 143.4 pairs/s
+Validate 25/34 | loss 0.1414 | 155.2 pairs/s
+Validate 34/34 | loss 0.1522 | 156.4 pairs/s
+Epoch 2/15 | loss 0.1062 | val macro-F1 0.9622 | best 0.9622
+Starting epoch 3/15 (finetune)
+Train 25/266 | loss 0.1053 | 77.9 pairs/s
+Train 50/266 | loss 0.0889 | 86.2 pairs/s
+Train 75/266 | loss 0.0865 | 90.0 pairs/s
+Train 100/266 | loss 0.0958 | 92.7 pairs/s
+Train 125/266 | loss 0.0915 | 94.4 pairs/s
+Train 150/266 | loss 0.0874 | 95.5 pairs/s
+Train 175/266 | loss 0.0866 | 96.4 pairs/s
+Train 200/266 | loss 0.0868 | 97.2 pairs/s
+Train 225/266 | loss 0.0843 | 97.5 pairs/s
+Train 250/266 | loss 0.0837 | 98.0 pairs/s
+Train 266/266 | loss 0.0825 | 97.0 pairs/s
+Validate 25/34 | loss 0.1014 | 148.3 pairs/s
+Validate 34/34 | loss 0.1208 | 150.6 pairs/s
+Epoch 3/15 | loss 0.0825 | val macro-F1 0.9736 | best 0.9736
+Starting epoch 4/15 (finetune)
+Train 25/266 | loss 0.0468 | 99.4 pairs/s
+Train 50/266 | loss 0.0408 | 100.2 pairs/s
+Train 75/266 | loss 0.0520 | 101.1 pairs/s
+Train 100/266 | loss 0.0530 | 101.8 pairs/s
+Train 125/266 | loss 0.0522 | 101.1 pairs/s
+Train 150/266 | loss 0.0470 | 101.5 pairs/s
+Train 175/266 | loss 0.0462 | 101.7 pairs/s
+Train 200/266 | loss 0.0455 | 102.1 pairs/s
+Train 225/266 | loss 0.0461 | 101.4 pairs/s
+Train 250/266 | loss 0.0461 | 100.7 pairs/s
+Train 266/266 | loss 0.0458 | 100.7 pairs/s
+Validate 25/34 | loss 0.1033 | 152.5 pairs/s
+Validate 34/34 | loss 0.1268 | 150.2 pairs/s
+Epoch 4/15 | loss 0.0458 | val macro-F1 0.9725 | best 0.9736
+Starting epoch 5/15 (finetune)
+Train 25/266 | loss 0.0314 | 95.6 pairs/s
+Train 50/266 | loss 0.0312 | 94.4 pairs/s
+Train 75/266 | loss 0.0315 | 97.0 pairs/s
+Train 100/266 | loss 0.0296 | 99.2 pairs/s
+Train 125/266 | loss 0.0294 | 99.7 pairs/s
+Train 150/266 | loss 0.0282 | 100.6 pairs/s
+Train 175/266 | loss 0.0292 | 101.2 pairs/s
+Train 200/266 | loss 0.0283 | 101.6 pairs/s
+Train 225/266 | loss 0.0279 | 101.8 pairs/s
+Train 250/266 | loss 0.0297 | 101.5 pairs/s
+Train 266/266 | loss 0.0290 | 101.5 pairs/s
+Validate 25/34 | loss 0.1095 | 158.1 pairs/s
+Validate 34/34 | loss 0.1367 | 158.6 pairs/s
+Epoch 5/15 | loss 0.0290 | val macro-F1 0.9701 | best 0.9736
+Starting epoch 6/15 (finetune)
+Train 25/266 | loss 0.0076 | 101.5 pairs/s
+Train 50/266 | loss 0.0136 | 103.0 pairs/s
+Train 75/266 | loss 0.0151 | 103.6 pairs/s
+Train 100/266 | loss 0.0176 | 103.9 pairs/s
+Train 125/266 | loss 0.0178 | 102.5 pairs/s
+Train 150/266 | loss 0.0227 | 102.9 pairs/s
+Train 175/266 | loss 0.0227 | 103.4 pairs/s
+Train 200/266 | loss 0.0235 | 103.3 pairs/s
+Train 225/266 | loss 0.0237 | 103.6 pairs/s
+Train 250/266 | loss 0.0228 | 103.9 pairs/s
+Train 266/266 | loss 0.0221 | 103.9 pairs/s
+Validate 25/34 | loss 0.0863 | 162.1 pairs/s
+Validate 34/34 | loss 0.1251 | 161.9 pairs/s
+Epoch 6/15 | loss 0.0221 | val macro-F1 0.9793 | best 0.9793
+Starting epoch 7/15 (finetune)
+Train 25/266 | loss 0.0154 | 106.2 pairs/s
+Train 50/266 | loss 0.0119 | 106.3 pairs/s
+Train 75/266 | loss 0.0101 | 106.0 pairs/s
+Train 100/266 | loss 0.0121 | 105.9 pairs/s
+Train 125/266 | loss 0.0128 | 105.9 pairs/s
+Train 150/266 | loss 0.0125 | 106.1 pairs/s
+Train 175/266 | loss 0.0112 | 106.1 pairs/s
+Train 200/266 | loss 0.0121 | 106.1 pairs/s
+Train 225/266 | loss 0.0125 | 106.2 pairs/s
+Train 250/266 | loss 0.0129 | 106.1 pairs/s
+Train 266/266 | loss 0.0132 | 105.8 pairs/s
+Validate 25/34 | loss 0.0899 | 162.0 pairs/s
+Validate 34/34 | loss 0.1352 | 161.5 pairs/s
+Epoch 7/15 | loss 0.0132 | val macro-F1 0.9833 | best 0.9833
+Starting epoch 8/15 (finetune)
+Train 25/266 | loss 0.0021 | 103.6 pairs/s
+Train 50/266 | loss 0.0040 | 104.5 pairs/s
+Train 75/266 | loss 0.0068 | 105.0 pairs/s
+Train 100/266 | loss 0.0069 | 105.5 pairs/s
+Train 125/266 | loss 0.0070 | 105.5 pairs/s
+Train 150/266 | loss 0.0069 | 105.8 pairs/s
+Train 175/266 | loss 0.0075 | 105.8 pairs/s
+Train 200/266 | loss 0.0086 | 105.6 pairs/s
+Train 225/266 | loss 0.0080 | 105.0 pairs/s
+Train 250/266 | loss 0.0074 | 105.0 pairs/s
+Train 266/266 | loss 0.0081 | 104.7 pairs/s
+Validate 25/34 | loss 0.0855 | 158.0 pairs/s
+Validate 34/34 | loss 0.1341 | 155.6 pairs/s
+Epoch 8/15 | loss 0.0081 | val macro-F1 0.9841 | best 0.9841
+Starting epoch 9/15 (finetune)
+Train 25/266 | loss 0.0051 | 100.0 pairs/s
+Train 50/266 | loss 0.0067 | 101.4 pairs/s
+Train 75/266 | loss 0.0060 | 101.9 pairs/s
+Train 100/266 | loss 0.0049 | 102.4 pairs/s
+Train 125/266 | loss 0.0046 | 102.5 pairs/s
+Train 150/266 | loss 0.0043 | 102.6 pairs/s
+Train 175/266 | loss 0.0044 | 102.6 pairs/s
+Train 200/266 | loss 0.0052 | 102.6 pairs/s
+Train 225/266 | loss 0.0048 | 102.8 pairs/s
+Train 250/266 | loss 0.0051 | 102.8 pairs/s
+Train 266/266 | loss 0.0049 | 102.6 pairs/s
+Validate 25/34 | loss 0.0914 | 154.6 pairs/s
+Validate 34/34 | loss 0.1447 | 155.1 pairs/s
+Epoch 9/15 | loss 0.0049 | val macro-F1 0.9832 | best 0.9841
+Starting epoch 10/15 (finetune)
+Train 25/266 | loss 0.0054 | 101.9 pairs/s
+Train 50/266 | loss 0.0038 | 102.2 pairs/s
+Train 75/266 | loss 0.0031 | 102.3 pairs/s
+Train 100/266 | loss 0.0028 | 101.4 pairs/s
+Train 125/266 | loss 0.0026 | 101.5 pairs/s
+Train 150/266 | loss 0.0025 | 100.8 pairs/s
+Train 175/266 | loss 0.0026 | 100.3 pairs/s
+Train 200/266 | loss 0.0026 | 99.8 pairs/s
+Train 225/266 | loss 0.0027 | 99.8 pairs/s
+Train 250/266 | loss 0.0028 | 100.2 pairs/s
+Train 266/266 | loss 0.0029 | 100.2 pairs/s
+Validate 25/34 | loss 0.1136 | 153.7 pairs/s
+Validate 34/34 | loss 0.1654 | 152.1 pairs/s
+Epoch 10/15 | loss 0.0029 | val macro-F1 0.9792 | best 0.9841
+Starting epoch 11/15 (finetune)
+Train 25/266 | loss 0.0010 | 103.6 pairs/s
+Train 50/266 | loss 0.0043 | 101.7 pairs/s
+Train 75/266 | loss 0.0031 | 102.4 pairs/s
+Train 100/266 | loss 0.0026 | 103.1 pairs/s
+Train 125/266 | loss 0.0025 | 103.6 pairs/s
+Train 150/266 | loss 0.0021 | 103.7 pairs/s
+Train 175/266 | loss 0.0023 | 103.8 pairs/s
+Train 200/266 | loss 0.0021 | 104.1 pairs/s
+Train 225/266 | loss 0.0020 | 104.3 pairs/s
+Train 250/266 | loss 0.0023 | 104.3 pairs/s
+Train 266/266 | loss 0.0022 | 103.9 pairs/s
+Validate 25/34 | loss 0.0953 | 156.4 pairs/s
+Validate 34/34 | loss 0.1649 | 155.6 pairs/s
+Epoch 11/15 | loss 0.0022 | val macro-F1 0.9799 | best 0.9841
+Starting epoch 12/15 (finetune)
+Train 25/266 | loss 0.0030 | 101.0 pairs/s
+Train 50/266 | loss 0.0018 | 102.3 pairs/s
+Train 75/266 | loss 0.0014 | 102.4 pairs/s
+Train 100/266 | loss 0.0024 | 102.6 pairs/s
+Train 125/266 | loss 0.0021 | 102.2 pairs/s
+Train 150/266 | loss 0.0019 | 102.0 pairs/s
+Train 175/266 | loss 0.0017 | 101.6 pairs/s
+Train 200/266 | loss 0.0020 | 101.7 pairs/s
+Train 225/266 | loss 0.0019 | 101.8 pairs/s
+Train 250/266 | loss 0.0017 | 102.1 pairs/s
+Train 266/266 | loss 0.0017 | 102.0 pairs/s
+Validate 25/34 | loss 0.1064 | 149.4 pairs/s
+Validate 34/34 | loss 0.1625 | 148.7 pairs/s
+Epoch 12/15 | loss 0.0017 | val macro-F1 0.9832 | best 0.9841
+TRAINING COMPLETE: /Users/nhatnam/Documents/DLA_261/co3133-deep-learning-project/outputs/a3_fusion/concat_seed42
