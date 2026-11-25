@@ -26,7 +26,7 @@
 
 <div class="hero">
   <div class="wrap">
-    <p class="eyebrow">Assignment 3 &middot; 30% of the course project &middot; <span class="badge wip">M1 prepared</span></p>
+    <p class="eyebrow">Assignment 3 &middot; 30% of the course project &middot; <span class="badge wip">M2 draft</span></p>
     <h1>Multimodal Deep Learning</h1>
     <p class="lede">Amazon Berkeley Objects catalog classification from product images and titles.</p>
   </div>
@@ -45,7 +45,7 @@
       <dt>Modalities</dt><dd>A = main product image, B = native English-locale title</dd>
     </dl></div><div class="card"><dl class="kv">
       <dt>M1 Proposal</dt><dd>18 Nov 2026 · 15% of A3 · Prepared, decision pending</dd>
-      <dt>M2 Draft</dt><dd>25 Nov 2026 · 25% of A3 · Planned</dd>
+      <dt>M2 Draft</dt><dd>25 Nov 2026 · 25% of A3 · Submitted: unimodal A, unimodal B and simple fusion with <a href="#results">quantitative results</a></dd>
       <dt>M3 Final</dt><dd>02 Dec 2026 · 60% of A3 · Planned</dd>
     </dl></div></div>
   </section>
@@ -59,7 +59,14 @@
       <li><a href="../assets/a3/a3_pair_review.csv">Recorded review of 36 image/title pairs</a></li>
       <li><a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project">Source repository</a> · <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/tree/main/scripts">A3 data scripts</a> (<code>scripts/a3_*.py</code>) · <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/reports/a3/a3_proposal.md">proposal source</a> · <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/reports/a3/a3_approval.md">approval record</a></li>
     </ul>
-    <p>Checkpoint, final-report, slide and presentation deliverables are scheduled for M2/M3 after dataset approval.</p>
+    <h3>M2 package</h3>
+    <ul>
+      <li>Image-only A: <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/tree/main/src/a3_image_only">code</a> · <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/tree/main/results/a3_image_only/resnet50">results</a></li>
+      <li>Title-only B: <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/src/a3/models/text_only.py">encoder</a> · <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/scripts/a3_train_text.py">training script</a> · <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/tree/main/results/a3/text_only_seed42">results</a> · <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/results/a3/tables/a3_token_lengths.csv">token-length check</a></li>
+      <li>Simple fusion: <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/src/a3/models/fusion.py">model</a> · <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/scripts/a3_train_fusion.py">training script</a> · <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/tree/main/outputs/a3_fusion/concat_seed42">results</a></li>
+      <li>Shared data loader: <a href="https://github.com/nguyenhohongphuc/co3133-deep-learning-project/blob/main/src/a3/data.py"><code>src/a3/data.py</code></a></li>
+    </ul>
+    <p>Final-report, slide, presentation and checkpoint deliverables are scheduled for M3.</p>
   </section>
 
   <!-- ============ PROPOSAL ============ -->
@@ -115,10 +122,10 @@
 → ResNet-18 image encoder and DistilBERT title encoder → classifier or fusion
 → cross-entropy loss → optimization → validation-selected checkpoint → evaluation</code></pre>
     <div class="table-scroll"><table><thead><tr><th>Required model</th><th>Planned architecture</th><th>Status</th></tr></thead><tbody>
-      <tr><td>Image-only A</td><td>ImageNet-pretrained ResNet-18, pooled 512-vector, 12-class head.</td><td>Planned after approval</td></tr>
-      <tr><td>Title-only B</td><td>Pretrained distilbert-base-uncased, masked mean-pooled 768-vector, 12-class head.</td><td>Planned after approval</td></tr>
-      <tr><td>Simple fusion</td><td>Concatenate image/title vectors, then a 256-unit MLP and class head.</td><td>Planned after approval</td></tr>
-      <tr><td>Improved fusion</td><td>Project both vectors to 256 units, learn a sigmoid gate, blend and classify.</td><td>Planned after approval</td></tr>
+      <tr><td>Image-only A</td><td>ImageNet-pretrained ResNet-18, pooled 512-vector, 12-class head.</td><td>M2 draft run with ResNet-50 (2048-vector)</td></tr>
+      <tr><td>Title-only B</td><td>Pretrained distilbert-base-uncased, masked mean-pooled 768-vector, 12-class head.</td><td>M2 draft run</td></tr>
+      <tr><td>Simple fusion</td><td>Concatenate image/title vectors, then a 256-unit MLP and class head.</td><td>M2 draft run (ResNet-50 + DistilBERT, 2816→256→12)</td></tr>
+      <tr><td>Improved fusion</td><td>Project both vectors to 256 units, learn a sigmoid gate, blend and classify.</td><td>Planned for M3</td></tr>
     </tbody></table></div>
     <p>Images preserve aspect ratio and use white padding to 224×224 with ImageNet normalization. Titles retain natural product names and use WordPiece IDs plus an attention mask with planned length 96. The truncation rate will be measured with the tokenizer.</p>
     <p>Each model minimizes cross-entropy for its own output. The controlled gate ablation uses a fixed 0.5 blend with the same projections and training policy. Additional inference ablations mask either representation in the improved model.</p>
@@ -134,8 +141,24 @@
 
   <!-- ============ RESULTS ============ -->
   <section id="results">
-    <h2>Milestone evidence and planned results</h2>
-    <p>M1 evidence consists of the completed source/quality audit, EDA plots, fixed manifests and proposal. Quantitative unimodal and simple-fusion comparisons are scheduled for M2, followed by improved fusion and ablations for M3.</p>
+    <h2>Milestone evidence and results</h2>
+    <p>M1 evidence consists of the completed source/quality audit, EDA plots, fixed manifests and proposal.</p>
+    <h3>M2 draft results (seed 42)</h3>
+    <p>All three models use the same fixed train/validation/test manifests (8,501 / 1,063 / 1,063 pairs). The checkpoint with the best validation macro-F1 is kept for each model.</p>
+    <div class="table-scroll"><table><thead><tr><th>Model</th><th>Encoder(s)</th><th>Best epoch</th><th>Val accuracy</th><th>Val macro-F1</th><th>Test accuracy</th><th>Test macro-F1</th><th>Parameters</th><th>Training time</th></tr></thead><tbody>
+      <tr><td>Image-only A</td><td>ResNet-50, ImageNet</td><td>11 / 15</td><td>0.9605</td><td>0.9652</td><td>0.8937</td><td>0.9061</td><td>23.5 M</td><td>749 s</td></tr>
+      <tr><td>Title-only B</td><td>DistilBERT, mean pooling</td><td>9 / 13</td><td>0.9652</td><td>0.9686</td><td>0.9247</td><td>0.9357</td><td>66.4 M</td><td>126 s</td></tr>
+      <tr><td>Simple fusion</td><td>ResNet-50 + DistilBERT, concatenation</td><td>8 / 12</td><td>0.9812</td><td><strong>0.9841</strong></td><td>0.9398</td><td><strong>0.9474</strong></td><td>90.6 M</td><td>1,047 s</td></tr>
+    </tbody></table></div>
+    <p>Simple fusion is the strongest model on both validation and test in this single-seed draft. It beats the better unimodal model (title-only) by 1.6 macro-F1 points on validation and 1.2 points on test.</p>
+    <p><strong>Draft limitations, to be resolved for M3:</strong></p>
+    <ul>
+      <li>Each model has one seed. Seeds 43 and 44 are still to run, so the gaps above have no variability estimate yet.</li>
+      <li>Training policies are not yet aligned. The image-only run fine-tunes all of ResNet-50 for 15 epochs at learning rate 1e-4, without frozen warm-up or early stopping. The title-only and fusion runs use the proposal policy: two frozen epochs, partial fine-tuning, and early stopping with patience 4. The proposal's ResNet-18 image encoder was replaced by ResNet-50 in this draft.</li>
+      <li>Runs used different hardware (CUDA laptop GPU and Apple MPS), so training times are not directly comparable.</li>
+      <li>All three models lose 3–6 points between validation and test. This gap will be examined in the M3 error analysis.</li>
+    </ul>
+    <p>Improved (gated) fusion, ablations and error analysis follow in M3.</p>
   </section>
 
   <!-- ============ DISCUSSION ============ -->
