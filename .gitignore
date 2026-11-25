@@ -25,7 +25,6 @@ venv/
 /runs/
 /logs/
 /wandb/
-/outputs/
 
 # OS / editor
 .DS_Store

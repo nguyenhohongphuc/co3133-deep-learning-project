@@ -1,0 +1,79 @@
+{
+  "config": {
+    "seed": 42,
+    "data": {
+      "dir": "data/processed/abo",
+      "image_root": "/private/tmp/dla261-a3-fusion-cache",
+      "max_length": 96,
+      "workers": 0
+    },
+    "model": {
+      "name": "distilbert/distilbert-base-uncased",
+      "revision": "12040accade4e8a0f71eabdb258fecc2e7e948be",
+      "image_weights": "IMAGENET1K_V2",
+      "hidden_dim": 256,
+      "dropout": 0.2
+    },
+    "train": {
+      "batch_size": 32,
+      "epochs": 15,
+      "freeze_epochs": 2,
+      "unfreeze_last": 2,
+      "lr_head": 0.001,
+      "lr_encoder": 2e-05,
+      "weight_decay": 0.01,
+      "grad_clip": 1.0,
+      "patience": 4,
+      "amp": true
+    },
+    "output_dir": "outputs/a3_fusion/concat_seed42"
+  },
+  "labels": {
+    "BOOT": 0,
+    "CHAIR": 1,
+    "FINEEARRING": 2,
+    "FINENECKLACEBRACELETANKLET": 3,
+    "FINERING": 4,
+    "HANDBAG": 5,
+    "RUG": 6,
+    "SANDAL": 7,
+    "SHOES": 8,
+    "SOFA": 9,
+    "TABLE": 10,
+    "WALL_ART": 11
+  },
+  "fingerprint": {
+    "train.csv": "1d29006f8d7b749bfb68103805b3ea07a01ca40ee3b723e819c7e5f5365a64b2",
+    "validation.csv": "693c080dbb93afb9721b8d30984b528eb6c0cddaad2dbfc33233ae8944aec4d6",
+    "test.csv": "20d32425e28565b136f55d9eb2a6a21380a5ad784d33e0482439610d34bbefe0",
+    "labels.json": "5b4f4c88a5848499fffb63bf5247d070a4b9ae0ede1a93da1cf14d0dc273f690"
+  },
+  "git_commit": "577aeef53a15345540d11ea689b6b2f2512181b7",
+  "versions": {
+    "torch": "2.8.0",
+    "torchvision": "0.23.0",
+    "transformers": "4.57.6",
+    "numpy": "2.3.5",
+    "Pillow": "13.0.0",
+    "PyYAML": "6.0.4"
+  },
+  "device": "mps",
+  "resolved_text_revision": "12040accade4e8a0f71eabdb258fecc2e7e948be",
+  "image_weights": "IMAGENET1K_V2",
+  "parameters": 90595148,
+  "pooling": "attention-masked mean (including valid special tokens), shared TextEncoder",
+  "image_preprocessing_source": "sonphan:68e9f7e/src/a3_image_only/dataset.py",
+  "split_counts": {
+    "train": 8501,
+    "validation": 1063,
+    "test": 1063
+  },
+  "source_sha256": {
+    "scripts/a3_train_fusion.py": "092d910b63634cceee48d7204d9c0f9204902073dab13737935928a566ad8ae2",
+    "src/a3/fusion_engine.py": "b42f7138339b71456ccef2e59d691afd37a6321f2a16022940dd5d3e4ef8f5fb",
+    "src/a3/fusion_data.py": "196fc15d3bd927c20c51e6d5bfc4164d8147721a8bb2cecf106da9b9ee50a607",
+    "src/a3/models/fusion.py": "2c80bfceb33f5c40fb8fa4afc77b9c6c20dea1c6c395bd9eb1dd4e52a9c4f8a7",
+    "src/a3/models/text_only.py": "f4a42cb3ab777ffa285e0f48d8c849a871162bd1356219f9b9d1b6a432f130b0",
+    "src/a3/data.py": "1383ea693fcd6f7503b7e771fb547da42287e802a732f13596f0832596d4aabd"
+  }
+}
